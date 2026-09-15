@@ -1,7 +1,7 @@
 ---
 name: obsidian-rest
 description: >
-  Thin wrapper around the Obsidian Local REST API (v4.0.2, http://127.0.0.1:27123).
+  Thin wrapper around the Obsidian Local REST API (v4.0.2, https://127.0.0.1:27124).
   Delegates every operation to `python3 ~/.claude/scripts/obsidian.py`.
   Triggers on: "obsidian open", "open in obsidian", "show in obsidian",
   "obsidian read", "obsidian list", "obsidian tags",

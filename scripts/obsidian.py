@@ -1,13 +1,21 @@
 #!/usr/bin/env python3
 import json
+import ssl
 import sys
 import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
 
-BASE_URL = "http://127.0.0.1:27123"
+BASE_URL = "https://127.0.0.1:27124"  # HTTP 27123 is disabled; HTTPS with the plugin cert pinned
 TOKEN_PATH = Path.home() / ".claude" / ".obsidian-token"
+CERT_PATH = Path.home() / ".claude" / ".obsidian-rest-cert.pem"  # exported from the plugin settings
+
+
+def ssl_context() -> ssl.SSLContext:
+    ctx = ssl.create_default_context(cafile=str(CERT_PATH))
+    ctx.check_hostname = False  # the self-signed cert is pinned through cafile
+    return ctx
 
 
 def token() -> str:
@@ -27,7 +35,7 @@ def request(method: str, url: str, body: bytes | None = None, accept: str | None
         h["Accept"] = accept
     req = urllib.request.Request(url, data=body, headers=h, method=method)
     try:
-        with urllib.request.urlopen(req) as resp:
+        with urllib.request.urlopen(req, context=ssl_context()) as resp:
             return resp.status, resp.read()
     except urllib.error.HTTPError as e:
         return e.code, e.read()
