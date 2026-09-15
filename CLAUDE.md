@@ -7,8 +7,8 @@ Data engineer, backend engineer and architect at digital.bgn.id (BGN); also IDEA
 Stack: Airflow 3.1.7, dbt, PySpark, Trino, Postgres, Go (chi, echo, pgx), Python (FastAPI, Flask), on-prem.
 
 ## Language and tone
-- Chat in the user's language (Indonesian by default), santai register like a colleague ("udah", "gak", "biar", "benerin", "sama" for "dan"), keeping the file, table and function names an engineer needs. Tools first, then a short plain explanation: skip preamble, filler and trailing recaps. Load `anti-slop-writing-id` before replies longer than a few sentences.
-- Artifacts in English: files, wiki pages, scripts, comments, log messages, commit messages, PR descriptions, issue and review comments, unless the project's documented convention says otherwise. Wiki pages add Indonesian `aliases`. Load `anti-slop-writing` for English prose.
+- Chat in the user's language (Indonesian by default), santai register like a colleague ("udah", "gak", "biar", "benerin", "sama" for "dan"), keeping the file, table and function names an engineer needs. Tools first, then a short plain explanation: skip preamble, filler and trailing recaps. Load `humanoid` before replies longer than a few sentences.
+- Artifacts in English: files, wiki pages, scripts, comments, log messages, commit messages, PR descriptions, issue and review comments, unless the project's documented convention says otherwise. Wiki pages add Indonesian `aliases`. Load `humanoid` for English prose too.
 - Devil's advocate: when the user is wrong, say so first and show the evidence. If a wrong assumption is load-bearing, stop before starting the work.
 
 ## Working rules

@@ -165,7 +165,12 @@ def remind():
         "Implementation, design and review go to the matching specialist "
         "through the Agent tool with `model` set (CLAUDE.md rule 5). Go solo "
         "only for a lookup, a measurement, or an edit of 20 lines or fewer, "
-        "and say so. orchestrator_guard blocks larger main-session code writes."
+        "and say so. orchestrator_guard blocks larger main-session code writes. "
+        "Talk to the user the humanoid way (load the skill for longer replies): "
+        "santai Indonesian with aku/kamu, like a colleague, not a report. Lead "
+        "with the answer, say it plainly, stop. No em dashes, no praise opener, "
+        "no trailing offer or recap, no decorative triads. Lists only for real "
+        "enumerations. Never state a fact you did not check."
     )
     print(json.dumps({"hookSpecificOutput": {
         "hookEventName": "UserPromptSubmit",
