@@ -59,56 +59,16 @@ def drop_schema(conn: sqlite3.Connection) -> None:
 
 
 def parse_frontmatter(raw: str) -> tuple[dict[str, object], str]:
-    if not raw.startswith("---"):
-        return {}, raw
+    """Frontmatter parsing is shared with ~/.claude/hooks/wiki_hooks.py so both read pages the same way."""
+    import sys as _sys
+    _sys.path.insert(0, "/Users/isal/.claude/hooks")
+    import wiki_hooks
 
-    end = raw.find("\n---", 3)
-    if end == -1:
-        return {}, raw
-
-    yaml_block = raw[3:end].strip()
-    body = raw[end + 4:].lstrip("\n")
-
-    meta: dict[str, object] = {}
-    for line in yaml_block.splitlines():
-        if ":" not in line:
-            continue
-        key, _, val = line.partition(":")
-        key = key.strip()
-        val = val.strip()
-        if val:
-            meta[key] = val
-
-    # Re-parse tags as list if they appear as YAML list entries
-    tags: list[str] = []
-    in_tags = False
-    for line in yaml_block.splitlines():
-        stripped = line.strip()
-        if stripped.startswith("tags:"):
-            in_tags = True
-            inline = stripped[5:].strip()
-            if inline:
-                meta["tags"] = inline
-                in_tags = False
-            continue
-        if in_tags:
-            if stripped.startswith("- "):
-                tags.append(stripped[2:].strip())
-            else:
-                in_tags = False
-    if tags:
-        meta["tags"] = json.dumps(tags)
-    elif isinstance(meta.get("tags"), str):
-        raw_tags = meta["tags"]
-        if raw_tags.startswith("["):
-            try:
-                parsed = json.loads(raw_tags)
-                meta["tags"] = json.dumps(parsed)
-            except json.JSONDecodeError:
-                meta["tags"] = json.dumps([raw_tags])
-        else:
-            meta["tags"] = json.dumps([raw_tags])
-
+    meta: dict[str, object] = dict(wiki_hooks.parse_frontmatter(raw))
+    end = raw.find("\n---", 3) if raw.startswith("---") else -1
+    body = raw[end + 4:].lstrip("\n") if end != -1 else raw
+    tags = meta.get("tags")
+    meta["tags"] = json.dumps(tags if isinstance(tags, list) else ([tags] if tags else []))
     return meta, body
 
 
@@ -194,6 +154,13 @@ def delete_page_chunks(conn: sqlite3.Connection, page_id: str) -> None:
     conn.execute("DELETE FROM chunks WHERE page_id = ?", (page_id,))
 
 
+def _embedding_header(meta: dict[str, object]) -> str:
+    aliases = meta.get("aliases")
+    alias_text = "; ".join(aliases) if isinstance(aliases, list) else str(aliases or "")
+    parts = [str(meta.get("title") or ""), alias_text, str(meta.get("description") or "")]
+    return ". ".join(p for p in parts if p) + "\n"
+
+
 def _insert_chunk(
     conn: sqlite3.Connection,
     chunk_id: str,
@@ -222,7 +189,7 @@ def _insert_chunk(
     )
     conn.execute(
         "INSERT OR REPLACE INTO embeddings (chunk_id, embedding) VALUES (?, ?)",
-        (chunk_id, embed(content)),
+        (chunk_id, embed(_embedding_header(meta) + content)),
     )
 
 

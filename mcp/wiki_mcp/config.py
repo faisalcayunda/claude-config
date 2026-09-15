@@ -4,7 +4,7 @@ from typing import Final
 WIKI_ROOT: Final[Path] = Path("/Users/isal/.claude/wiki")
 DB_PATH: Final[Path] = Path("/Users/isal/.claude/mcp/wiki.db")
 
-EMBED_MODEL: Final[str] = "all-MiniLM-L6-v2"
+EMBED_MODEL: Final[str] = "paraphrase-multilingual-MiniLM-L12-v2"  # Indonesian prompts vs English pages (Q26)
 EMBED_DIM: Final[int] = 384
 
 DEFAULT_TOP_K: Final[int] = 5

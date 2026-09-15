@@ -52,4 +52,6 @@ if [ ${#issues[@]} -gt 0 ]; then
   for i in "${issues[@]}"; do printf '  - %s\n' "$i"; done
   printf '\n'
 fi
+# Scorecard line (always printed): wiki usage, drafts, last capture, secrets, out-of-budget injections
+/usr/bin/python3 "$ROOT/hooks/wiki_scorecard.py" 2>/dev/null
 exit 0
