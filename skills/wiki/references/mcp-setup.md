@@ -89,13 +89,13 @@ flatpak run md.obsidian.Obsidian --cli --version
 **Common operations:**
 ```bash
 # List all notes in a folder
-obsidian-cli list /path/to/vault wiki/
+obsidian-cli list /path/to/vault concepts/
 
 # Read a note
-obsidian-cli read /path/to/vault wiki/index.md
+obsidian-cli read /path/to/vault index.md
 
 # Create or update a note
-obsidian-cli write /path/to/vault wiki/new-note.md < content.md
+obsidian-cli write /path/to/vault new-note.md < content.md
 
 # Search notes by content
 obsidian-cli search /path/to/vault "query term"

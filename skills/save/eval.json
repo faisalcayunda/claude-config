@@ -19,7 +19,7 @@
       "fail": "Score <= 4, output rejected or rewritten"
     },
     "update_instructions": "Append to runs[] after each non-trivial invocation. Recompute average_score. Update last_updated.\n\nRun entry schema:\n{\n  \"run_id\": \"<YYYY-MM-DDTHH:MM:SSZ>-<6hex>\",\n  \"session_id\": \"<env:CLAUDE_CODE_SESSION_ID or 'unknown'>\",\n  \"timestamp\": \"<ISO-8601>\",\n  \"invocation_trigger\": \"claude-proactive\",\n  \"arguments\": \"<args string>\",\n  \"score\": null,\n  \"outcome\": null,\n  \"duration_ms\": <int>,\n  \"trace\": {\n    \"output_length_tokens\": null,\n    \"tool_calls_made\": [],\n    \"final_lines\": \"<last 300 chars of output>\",\n    \"failure_reason\": null\n  },\n  \"human_review\": {\n    \"scored_at\": null,\n    \"correction\": null,\n    \"note\": null\n  }\n}\n\nScore with: /score-skill --skill save  |  Optimize: /optimize-skill --skill save (needs 10+ scored runs)",
-    "skill_source_file": "/Users/isal/.claude/commands/save.md"
+    "skill_source_file": "/Users/isal/.claude/skills/save/SKILL.md"
   },
   "skill": "save",
   "description": "Files conversation insights as structured notes in ~/.claude wiki",

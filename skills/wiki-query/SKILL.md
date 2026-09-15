@@ -1,10 +1,12 @@
 ---
 name: wiki-query
 description: "Answer questions using the Obsidian wiki vault. Reads hot cache first, then index, then relevant pages. Synthesizes answers with citations. Files good answers back as wiki pages. Supports quick, standard, and deep modes. Triggers on: what do you know about, query:, what is, explain, summarize, find in wiki, search the wiki, based on the wiki, wiki query quick, wiki query deep."
-allowed-tools: Read Glob Grep
+allowed-tools: Read Glob Grep Write Edit
 ---
 
 # wiki-query: Query the Wiki
+
+Wiki root: /Users/isal/.claude/wiki
 
 The wiki has already done the synthesis work. Read strategically, answer precisely, and file good answers back so the knowledge compounds.
 
@@ -26,8 +28,8 @@ Three depths. Choose based on the question complexity.
 
 Use when the answer is likely in the hot cache or index summary.
 
-1. Read `wiki/hot.md`. If it answers the question, respond immediately.
-2. If not, read `wiki/index.md`. Scan descriptions for the answer.
+1. Read `/Users/isal/.claude/wiki/hot.md`. If it answers the question, respond immediately.
+2. If not, read `/Users/isal/.claude/wiki/index.md`. Scan descriptions for the answer.
 3. If found in index summary, respond and do not open any pages.
 4. If not found, say "Not in quick cache. Run as standard query?"
 
@@ -37,11 +39,11 @@ Do not open individual wiki pages in quick mode.
 
 ## Standard Query Workflow
 
-1. **Read** `wiki/hot.md` first. It may already have the answer or directly relevant context.
-2. **Read** `wiki/index.md` to find the most relevant pages (scan for titles and descriptions).
+1. **Read** `/Users/isal/.claude/wiki/hot.md` first. It may already have the answer or directly relevant context.
+2. **Read** `/Users/isal/.claude/wiki/index.md` to find the most relevant pages (scan for titles and descriptions).
 3. **Read** those pages. Follow wikilinks to depth-2 for key entities. No deeper.
 4. **Synthesize** the answer in chat. Cite sources with wikilinks: `(Source: [[Page Name]])`.
-5. **Offer to file** the answer: "This analysis seems worth keeping. Should I save it as `wiki/questions/answer-name.md`?"
+5. **Offer to file** the answer: "This analysis seems worth keeping. Should I save it as `/Users/isal/.claude/wiki/questions/answer-name.md`?"
 6. If the question reveals a **gap**: say "I don't have enough on X. Want to find a source?"
 
 ---
@@ -50,7 +52,7 @@ Do not open individual wiki pages in quick mode.
 
 Use for synthesis questions, comparisons, or "tell me everything about X."
 
-1. Read `wiki/hot.md` and `wiki/index.md`.
+1. Read `/Users/isal/.claude/wiki/hot.md` and `/Users/isal/.claude/wiki/index.md`.
 2. Identify all relevant sections (concepts, entities, sources, comparisons).
 3. Read every relevant page. No skipping.
 4. If wiki coverage is thin, offer to supplement with web search.
@@ -76,7 +78,7 @@ If hot.md has the answer, respond without reading further.
 
 ## Index Format Reference
 
-The master index (`wiki/index.md`) looks like:
+The master index (`/Users/isal/.claude/wiki/index.md`) looks like:
 
 ```markdown
 ## Domains
@@ -86,7 +88,7 @@ The master index (`wiki/index.md`) looks like:
 - [[Entity Name]]: role (first: [[Source]])
 
 ## Concepts
-- [[Concept Name]]: definition (status: developing)
+- [[Concept Name]]: definition (status: draft)
 
 ## Sources
 - [[Source Title]]: author, date, type
@@ -125,32 +127,48 @@ Use sub-indexes when the question is scoped to one domain. Avoid reading the ful
 
 ---
 
+## Page conventions
+
+- Pages are written in English. Add Indonesian `aliases` in frontmatter so Indonesian prompts still match.
+- Folders stay by type (concepts, entities, sources, questions, comparisons, folds, meta). The organization goes in frontmatter, not in the folder.
+- Required frontmatter:
+  ```yaml
+  ---
+  title: "Page title"
+  aliases: ["alias Bahasa Indonesia", "another alias"]
+  type: concept        # concept | entity | source | question | comparison | decision | meta | fold
+  org: BGN             # BGN | IDEAS | JDS | Trikintech | personal
+  status: draft        # draft | reviewed
+  description: "One sentence used by retrieval: what this page answers."
+  tags: [org/bgn, topic]
+  sources: ["where the facts come from"]
+  verified: 2026-09-15 # last date facts were checked against reality; omit if never checked
+  created: 2026-09-15
+  updated: 2026-09-15
+  related: ["[[Other Page]]"]
+  ---
+  ```
+- Page-worthy: hard-won facts about external systems not recorded in any repo; decisions with their rationale; recurring gotchas; repeated how-tos. Not page-worthy: progress narration, one-off outputs, things already in git or a repo, raw data rows.
+- If a page on the topic exists, update it instead of creating a new one.
+- Never write credentials, tokens, DSNs with passwords, or personal data (NIK, phone numbers). A PreToolUse guard will reject them.
+- Keep `hot.md` under 500 words.
+
+---
+
 ## Filing Answers Back
 
 Good answers compound into the wiki. Don't let insights disappear into chat history.
 
-When filing an answer:
+When filing an answer, use the frontmatter from Page conventions with `type: question`, and add:
 
 ```yaml
----
-type: question
-title: "Short descriptive title"
 question: "The exact query as asked."
 answer_quality: solid
-created: YYYY-MM-DD
-updated: YYYY-MM-DD
-tags: [question, <domain>]
-related:
-  - "[[Page referenced in answer]]"
-sources:
-  - "[[wiki/sources/relevant-source.md]]"
-status: developing
----
 ```
 
 Then write the answer as the page body. Include citations. Link every mentioned concept or entity.
 
-After filing, add an entry to `wiki/index.md` under Questions and append to `wiki/log.md`.
+After filing, add an entry to `/Users/isal/.claude/wiki/index.md` under Questions and append to `/Users/isal/.claude/wiki/log.md`.
 
 ---
 

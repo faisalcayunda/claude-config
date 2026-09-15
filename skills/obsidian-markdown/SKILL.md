@@ -6,6 +6,8 @@ allowed-tools: Read Write Edit
 
 # obsidian-markdown: Obsidian Flavored Markdown
 
+Wiki root: /Users/isal/.claude/wiki
+
 Reference this skill when writing any wiki page. Obsidian extends standard Markdown with wikilinks, embeds, callouts, and properties. Getting syntax wrong causes broken links, invisible callouts, or malformed frontmatter.
 
 **Cross-reference**: If the kepano/obsidian-skills plugin is installed, prefer its canonical obsidian-markdown skill for authoritative Obsidian syntax reference. Otherwise, use the reference below. See also [github.com/kepano/obsidian-skills](https://github.com/kepano/obsidian-skills).
@@ -97,7 +99,7 @@ updated: 2026-04-08
 tags:
   - tag-one                      # list items use - format
   - tag-two
-status: developing
+status: draft
 related:
   - "[[Other Note]]"             # wikilinks must be quoted in YAML
 sources:
@@ -108,7 +110,7 @@ sources:
 Rules:
 - Flat YAML only. Never nest objects.
 - Dates as `YYYY-MM-DD`, not `2026-04-08T00:00:00`.
-- Lists as `- item`, not inline `[a, b, c]`.
+- Lists: inline `[a, b]` and block `- item` both work. Page conventions use inline lists for short values.
 - Wikilinks in YAML must be quoted: `"[[Page]]"`.
 - `tags` field: Obsidian reads this as the tag list, searchable in vault.
 
@@ -227,5 +229,5 @@ This sentence has a footnote.[^1]
 - Do not use `[link text](path/to/note.md)` for internal links: use `[[Note Name]]` instead.
 - Do not use HTML inside callouts: stick to Markdown.
 - Do not use `##` inside a callout body: headings don't render inside callouts.
-- Do not write `tags: [a, b, c]` inline in frontmatter: Obsidian prefers the list format.
+- Frontmatter lists may be inline (`tags: [a, b]`) or block style; keep one style within a page.
 - Do not write ISO datetimes in frontmatter (`2026-04-08T00:00:00Z`): use `2026-04-08`.

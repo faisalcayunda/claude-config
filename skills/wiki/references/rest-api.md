@@ -15,7 +15,7 @@ KEY="your-api-key-here"
 ```bash
 curl -sk \
   -H "Authorization: Bearer $KEY" \
-  "$API/vault/wiki/index.md"
+  "$API/vault/index.md"
 ```
 
 ---
@@ -27,7 +27,7 @@ curl -sk -X PUT \
   -H "Authorization: Bearer $KEY" \
   -H "Content-Type: text/markdown" \
   --data-binary @local-file.md \
-  "$API/vault/wiki/entities/Name.md"
+  "$API/vault/entities/Name.md"
 ```
 
 Or with inline content:
@@ -38,7 +38,7 @@ curl -sk -X PUT \
   --data "# Page Title
 
 Content here." \
-  "$API/vault/wiki/concepts/Name.md"
+  "$API/vault/concepts/Name.md"
 ```
 
 ---
@@ -50,7 +50,7 @@ curl -sk -X POST \
   -H "Authorization: Bearer $KEY" \
   -H "Content-Type: text/markdown" \
   --data "- New log entry" \
-  "$API/vault/wiki/log.md"
+  "$API/vault/log.md"
 ```
 
 ---
@@ -65,7 +65,7 @@ curl -sk -X PATCH \
   -H "Target: status" \
   -H "Content-Type: application/json" \
   --data '"mature"' \
-  "$API/vault/wiki/concepts/Name.md"
+  "$API/vault/concepts/Name.md"
 ```
 
 ---
@@ -80,7 +80,7 @@ curl -sk -X PATCH \
   -H "Target: Connections" \
   -H "Content-Type: text/markdown" \
   --data "- [[New Page]]" \
-  "$API/vault/wiki/entities/Name.md"
+  "$API/vault/entities/Name.md"
 ```
 
 ---
@@ -99,7 +99,7 @@ Dataview query:
 curl -sk -X POST \
   -H "Authorization: Bearer $KEY" \
   -H "Content-Type: application/vnd.olrapi.dataview.dql+txt" \
-  --data 'TABLE status FROM "wiki" WHERE status = "seed"' \
+  --data 'TABLE status WHERE status = "seed"' \
   "$API/search/"
 ```
 
@@ -120,5 +120,5 @@ curl -sk \
 ```bash
 curl -sk \
   -H "Authorization: Bearer $KEY" \
-  "$API/vault/wiki/entities/"
+  "$API/vault/entities/"
 ```

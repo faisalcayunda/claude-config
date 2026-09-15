@@ -6,30 +6,24 @@ Every wiki page starts with flat YAML frontmatter. No nested objects. Obsidian's
 
 ## Universal Fields
 
-Every page, no exceptions:
+Every page, no exceptions. This is the required frontmatter from the Page conventions section of `/Users/isal/.claude/skills/wiki/SKILL.md`:
 
 ```yaml
 ---
-type: <source|entity|concept|domain|comparison|question|overview|meta>
-title: "Human-Readable Title"
-created: 2026-04-07
-updated: 2026-04-07
-tags:
-  - <domain-tag>
-  - <type-tag>
-status: <seed|developing|mature|evergreen>
-related:
-  - "[[Other Page]]"
-sources:
-  - "[[.raw/articles/source-file.md]]"
+title: "Page title"
+aliases: ["alias Bahasa Indonesia", "another alias"]
+type: concept        # concept | entity | source | question | comparison | decision | meta | fold
+org: BGN             # BGN | IDEAS | JDS | Trikintech | personal
+status: draft        # draft | reviewed
+description: "One sentence used by retrieval: what this page answers."
+tags: [org/bgn, topic]
+sources: ["where the facts come from"]
+verified: 2026-09-15 # last date facts were checked against reality; omit if never checked
+created: 2026-09-15
+updated: 2026-09-15
+related: ["[[Other Page]]"]
 ---
 ```
-
-**status values:**
-- `seed`: exists, barely populated
-- `developing`: has real content, not yet complete
-- `mature`: comprehensive, well-linked
-- `evergreen`: unlikely to need updates
 
 ---
 
@@ -63,9 +57,6 @@ first_mentioned: "[[Source Title]]"
 ```yaml
 complexity: intermediate  # basic | intermediate | advanced
 domain: ""
-aliases:
-  - "alternative name"
-  - "abbreviation"
 ```
 
 ### comparison
@@ -101,7 +92,7 @@ page_count: 0
 
 1. Use flat YAML only. Never nest objects.
 2. Dates as `YYYY-MM-DD` strings, not ISO datetime.
-3. Lists always use the `- item` format, not inline `[a, b, c]`.
+3. Lists use inline `[a, b]` or the `- item` format.
 4. Wikilinks in YAML fields must be quoted: `"[[Page Name]]"`.
-5. Keep `related` and `sources` as wikilinks, not plain URLs.
+5. Keep `related` as wikilinks, not plain URLs.
 6. Update `updated` every time you edit the page content.

@@ -6,7 +6,7 @@ Apply during scaffold. This makes the file explorer color-coded by folder type a
 
 ## CSS Snippet
 
-Create this file at `.obsidian/snippets/vault-colors.css` inside the vault:
+Create this file at `/Users/isal/.claude/wiki/.obsidian/snippets/vault-colors.css`:
 
 ```css
 :root {
@@ -20,14 +20,13 @@ Create this file at `.obsidian/snippets/vault-colors.css` inside the vault:
 }
 
 /* Folder colors in file explorer */
-.nav-folder-title[data-path^="wiki/domains"]     { color: var(--wiki-1); }
-.nav-folder-title[data-path^="wiki/entities"]    { color: var(--wiki-2); }
-.nav-folder-title[data-path^="wiki/concepts"]    { color: var(--wiki-3); }
-.nav-folder-title[data-path^="wiki/sources"]     { color: var(--wiki-4); }
-.nav-folder-title[data-path^="wiki/questions"]   { color: var(--wiki-5); }
-.nav-folder-title[data-path^="wiki/comparisons"] { color: var(--wiki-6); }
-.nav-folder-title[data-path^="wiki/meta"]        { color: var(--wiki-7); }
-.nav-folder-title[data-path=".raw"]              { color: #808080; opacity: 0.6; }
+.nav-folder-title[data-path^="domains"]     { color: var(--wiki-1); }
+.nav-folder-title[data-path^="entities"]    { color: var(--wiki-2); }
+.nav-folder-title[data-path^="concepts"]    { color: var(--wiki-3); }
+.nav-folder-title[data-path^="sources"]     { color: var(--wiki-4); }
+.nav-folder-title[data-path^="questions"]   { color: var(--wiki-5); }
+.nav-folder-title[data-path^="comparisons"] { color: var(--wiki-6); }
+.nav-folder-title[data-path^="meta"]        { color: var(--wiki-7); }
 
 /* Custom callouts */
 .callout[data-callout='contradiction'] {
@@ -62,12 +61,11 @@ Guide the user to set these in Graph View settings (click the settings icon in t
 
 | Query | Color |
 |-------|-------|
-| `path:wiki/domains` | Blue (`#4fc1ff`) |
-| `path:wiki/entities` | Purple (`#c586c0`) |
-| `path:wiki/concepts` | Yellow (`#dcdcaa`) |
-| `path:wiki/sources` | Orange (`#ce9178`) |
-| `path:wiki/questions` | Green (`#6a9955`) |
-| `path:.raw` | Gray (dimmed) |
+| `path:domains` | Blue (`#4fc1ff`) |
+| `path:entities` | Purple (`#c586c0`) |
+| `path:concepts` | Yellow (`#dcdcaa`) |
+| `path:sources` | Orange (`#ce9178`) |
+| `path:questions` | Green (`#6a9955`) |
 
 ---
 

@@ -6,6 +6,8 @@ allowed-tools: Read Write
 
 # obsidian-bases: Obsidian's Database Layer
 
+Wiki root: /Users/isal/.claude/wiki
+
 Obsidian Bases (launched 2025) turns vault notes into queryable, dynamic views. Tables, cards, lists, maps. Defined in `.base` files. No plugin required; it is a core Obsidian feature.
 
 **Authoritative reference**: If the kepano/obsidian-skills plugin is installed, prefer its canonical obsidian-bases skill. Otherwise, use the reference below. Official docs: https://help.obsidian.md/bases/syntax
@@ -72,12 +74,12 @@ filters:
 # NOT: exclude matches
 filters:
   not:
-    - file.inFolder("wiki/meta")
+    - file.inFolder("meta")
 
 # Nested
 filters:
   and:
-    - file.inFolder("wiki/")
+    - 'file.ext == "md"'
     - or:
         - 'type == "concept"'
         - 'type == "entity"'
@@ -92,7 +94,7 @@ filters:
 | Function | Example |
 |----------|---------|
 | `file.hasTag("x")` | Notes with tag `x` |
-| `file.inFolder("path/")` | Notes in folder |
+| `file.inFolder("path")` | Notes in folder |
 | `file.hasLink("Note")` | Notes linking to Note |
 
 ---
@@ -189,10 +191,8 @@ views:
 
 ```yaml
 filters:
-  and:
-    - file.inFolder("wiki/")
-    - not:
-        - file.inFolder("wiki/meta")
+  not:
+    - file.inFolder("meta")
 
 formulas:
   age: '(now() - file.ctime).days.round(0)'
@@ -220,7 +220,7 @@ views:
 ```yaml
 filters:
   and:
-    - file.inFolder("wiki/entities/")
+    - file.inFolder("entities")
     - 'file.ext == "md"'
 
 views:
@@ -241,7 +241,7 @@ views:
 ```yaml
 filters:
   and:
-    - file.inFolder("wiki/sources/")
+    - file.inFolder("sources")
 
 views:
   - type: table
@@ -270,10 +270,10 @@ views:
 
 ## Where to Save
 
-Store `.base` files in `wiki/meta/` for vault dashboards:
-- `wiki/meta/dashboard.base`: main content view
-- `wiki/meta/entities.base`: entity tracker
-- `wiki/meta/sources.base`: ingestion log
+Store `.base` files in `/Users/isal/.claude/wiki/meta/` for vault dashboards:
+- `/Users/isal/.claude/wiki/meta/dashboard.base`: main content view
+- `/Users/isal/.claude/wiki/meta/entities.base`: entity tracker
+- `/Users/isal/.claude/wiki/meta/sources.base`: ingestion log
 
 ---
 

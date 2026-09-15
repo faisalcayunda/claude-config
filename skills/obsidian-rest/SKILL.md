@@ -12,6 +12,8 @@ allowed-tools: Bash
 
 # obsidian-rest: Obsidian Local REST API Wrapper
 
+Wiki root: /Users/isal/.claude/wiki (the vault root; every `<vault-relative-path>` below is relative to it)
+
 Single entry point for all Obsidian UI and vault-read operations within Claude Code.
 The script handles auth, URL encoding, and error reporting.
 
@@ -25,7 +27,7 @@ The script handles auth, URL encoding, and error reporting.
 python3 ~/.claude/scripts/obsidian.py open "<vault-relative-path>"
 ```
 
-Example: `python3 ~/.claude/scripts/obsidian.py open "wiki/concepts/LLM Wiki Pattern.md"`
+Example: `python3 ~/.claude/scripts/obsidian.py open "concepts/LLM Wiki Pattern.md"`
 
 Use after any skill writes a new note and the user wants to view it immediately in Obsidian.
 
@@ -51,7 +53,7 @@ No argument — lists the vault root.
 With argument — lists the specified subfolder.
 
 ```bash
-python3 ~/.claude/scripts/obsidian.py list wiki/concepts
+python3 ~/.claude/scripts/obsidian.py list concepts
 ```
 
 ---

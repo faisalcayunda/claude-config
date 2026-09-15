@@ -22,7 +22,7 @@ tags:
   - meta
   - fold
   - "fold/k{K}"
-status: mature
+status: reviewed
 children:
   - date: "{YYYY-MM-DD}"
     op: "{save|ingest|fold|session|setup|decision}"
@@ -31,7 +31,6 @@ children:
     page_missing: false
   # ... one record per log entry. No dedupe by page.
 related:
-  - "[[DragonScale Memory]]"
   - "[[log]]"
   - "[[index]]"
 ---
@@ -58,8 +57,8 @@ One row per log entry. Row count must equal `entry_count` in frontmatter and the
 
 | Date | Op | Title | Page | Summary (extractive) |
 |---|---|---|---|---|
-| 2026-04-23 | save | DragonScale Memory v0.2 — post-adversarial-review | [[DragonScale Memory]] | Adversarial-review rewrite; 7/7 critiques accepted after one surgical fix. |
-| 2026-04-15 | save | Claude SEO v1.9.0 Slides and GitHub Release | [[2026-04-15-slides-and-release-session]] | 15-slide HTML deck, v1.9.0 tagged, GitHub release with PDF asset. |
+| 2026-06-17 | save | Scalar UI Inline Spec Init Pattern | [[2026-06-17-scalar-ui-inline-spec-init-pattern]] | Two-element inline spec pattern fixes the GET /docs page. |
+| 2026-06-17 | save | PMID Pool Implementation | [[2026-06-17-pmid-pool-implementation]] | UIN-PM pool service implemented. |
 <!-- one row per log entry; no dedupe by page -->
 ```
 
@@ -118,7 +117,6 @@ The `Child Pages` section is **deduped by page**: one wikilink per unique target
 
 ## Related
 
-- [[DragonScale Memory]] - fold-operator spec
 - [[log]] - source entries
 - [[index]] - vault catalog
 ```
