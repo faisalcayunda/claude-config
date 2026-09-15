@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(brew:*)",
-      "Bash(source:*)"
+      "Bash(source:*)",
+      "Bash(/bin/rm -f /Users/isal/.claude/Untitled.base)",
+      "Bash(/bin/rm -rf /Users/isal/.claude/Excalidraw)",
+      "Bash(claude plugin *)",
+      "Bash(/usr/bin/sed -n '1,25p')"
     ]
   }
 }

@@ -193,19 +193,12 @@
     ]
   },
   "enabledPlugins": {
-    "claude-obsidian@claude-obsidian-marketplace": true,
     "vercel@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
     "ponytail@ponytail": true,
     "mattpocock-skills@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
-    "claude-obsidian-marketplace": {
-      "source": {
-        "source": "github",
-        "repo": "AgriciDaniel/claude-obsidian"
-      }
-    },
     "claude-plugins-official": {
       "source": {
         "source": "github",
