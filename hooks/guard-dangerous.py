@@ -46,6 +46,9 @@ DENY = [
     (r'\bdd\b[^\n]*\bof=/dev/', "dd to a raw device"),
     (r'>\s*/dev/(sd|nvme|disk)', "overwrite a raw disk"),
     (r'\bchmod\s+-R\s+777\s+/(\s|$)', "recursive 777 on /"),
+    # Secrets reach tools through the environment (Infisical wrapper), so a bare dump prints them.
+    (r'(^|[;&|(]\s*)(env|printenv|set)\s*($|[;&|)])', "bare env/printenv/set dumps environment secrets"),
+    (r'(^|[;&|(]\s*)(export\s+-p|declare\s+-[a-z]*x[a-z]*)\s*($|[;&|)])', "export -p / declare -x dumps environment secrets"),
 ]
 for pat, why in DENY:
     if re.search(pat, cmd, re.IGNORECASE):
