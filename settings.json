@@ -9,7 +9,7 @@
       "WebSearch",
       "WebFetch"
     ],
-    "defaultMode": "default"
+    "defaultMode": "auto"
   },
   "hooks": {
     "UserPromptSubmit": [
@@ -55,14 +55,14 @@
         ]
       },
       {
+        "matcher": "Read",
         "hooks": [
           {
             "type": "command",
             "command": "/usr/bin/python3 /Users/isal/.claude/hooks/wiki_hooks.py read-log",
             "timeout": 5
           }
-        ],
-        "matcher": "Read"
+        ]
       }
     ],
     "PreToolUse": [
@@ -89,14 +89,14 @@
         ]
       },
       {
+        "matcher": "Write|Edit|MultiEdit",
         "hooks": [
           {
             "type": "command",
             "command": "/usr/bin/python3 /Users/isal/.claude/hooks/secret_guard.py",
             "timeout": 5
           }
-        ],
-        "matcher": "Write|Edit|MultiEdit"
+        ]
       }
     ],
     "PostCompact": [
@@ -114,7 +114,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/isal/.claude/governance/drift-check.sh 2>/dev/null; true"
+            "command": "bash /Users/isal/.claude/hooks/drift-check.sh 2>/dev/null; true"
           }
         ]
       }

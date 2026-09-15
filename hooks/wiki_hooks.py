@@ -36,7 +36,7 @@ SKIP_DIRS = {".obsidian", ".git", ".trash", "templates", "hubs", "log"}
 NAV_PAGES = {"index.md", "log.md", "hot.md", "_index.md"}
 ORG_BY_FOLDER = {"bgn": "BGN", "ideas": "IDEAS", "jds": "JDS", "trikintech": "Trikintech"}
 
-# Short acknowledgements never trigger retrieval (extends wave0-enforce.py's list).
+# Short acknowledgements never trigger retrieval (list inherited from the retired wave0-enforce hook).
 CONTINUATIONS = {
     "ya", "iya", "ok", "oke", "okay", "sip", "siap", "yes", "y", "lanjut", "lanjutkan",
     "teruskan", "gas", "proceed", "go", "next", "no", "ngga", "nggak", "gak", "tidak",

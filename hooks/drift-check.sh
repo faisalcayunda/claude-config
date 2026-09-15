@@ -48,7 +48,7 @@ ll="$ROOT/lessons_learned.md"
 [ -f "$ll" ] && kb=$(( $(wc -c < "$ll") / 1024 )) && [ "$kb" -gt 200 ] && issues+=("INFO: lessons_learned.md ${kb}KB — consider folding/archiving")
 
 if [ ${#issues[@]} -gt 0 ]; then
-  printf '\n⚠ CONFIG DRIFT (%d) — from ~/.claude/governance/drift-check.sh:\n' "${#issues[@]}"
+  printf '\n⚠ CONFIG DRIFT (%d) — from ~/.claude/hooks/drift-check.sh:\n' "${#issues[@]}"
   for i in "${issues[@]}"; do printf '  - %s\n' "$i"; done
   printf '\n'
 fi
