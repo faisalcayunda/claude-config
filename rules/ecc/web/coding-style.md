@@ -1,3 +1,8 @@
+---
+paths:
+  - "**/*.{tsx,jsx,vue,svelte,astro,css,scss,sass,less,html}"
+---
+
 > This file extends [common/coding-style.md](../common/coding-style.md) with web-specific frontend content.
 
 # Web Coding Style

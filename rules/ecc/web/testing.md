@@ -1,3 +1,8 @@
+---
+paths:
+  - "**/*.{tsx,jsx,vue,svelte,astro,css,scss,sass,less,html}"
+---
+
 > This file extends [common/testing.md](../common/testing.md) with web-specific testing content.
 
 # Web Testing Rules
