@@ -64,7 +64,9 @@ PATTERNS = [
      re.compile(r"\b[a-z][a-z0-9+.\-]{1,20}://[^\s:/@'\"<>\\]*:([^\s@'\"<>\\]+)@[^\s'\"<>\\]+"), _dsn_ok),
     ("SECRET_ASSIGNMENT",
      re.compile(r"(?i)\b[A-Z0-9_\-]*(?:PASSWORD|PASSWD|PASWORD|PWD|SECRET|TOKEN|API[_\-]?KEY|"
-                r"ACCESS[_\-]?KEY|PRIVATE[_\-]?KEY|PAT)(?:[_\-]?VALUE)?\\?[\"']?\s*[:=]\s*\\?[\"']?([^\s\"'#,;)\\]{8,})"), _assign_ok),
+                r"ACCESS[_\-]?KEY|PRIVATE[_\-]?KEY|PAT)(?:[_\-]?VALUE)?(?:\\?[\"'])?\s*[:=]\s*(?:\\?[\"'])?"
+                # backslashes join the value as an escaped pair or when they cannot start a JSON escape
+                r"((?:[^\s\"'#,;)\\]|\\\\|\\(?![\"'\\/bfnrtu])){8,})"), _assign_ok),
     ("AUTH_HEADER",
      re.compile(r"(?i)\bauthorization[\"']?\s*[:=]\s*[\"']?(?:bearer|basic|token)\s+([A-Za-z0-9._~+/=\-]{16,})"),
      _assign_ok),
@@ -208,6 +210,12 @@ def selftest():
     real = _json.dumps({"display": 'set \"DB_PASSWORD=' + "Qw8" + 'rty55Zx\" now'})
     red, n = redact_text(real)
     assert n == 1 and _json.loads(red) and scan_text(red) == [], red   # escape survives redaction
+    for s in ("DB_PAS" + "SWORD=\nDB_HOST=10.0.0.1", "PAS" + "SWORD=\t" + "Qw8" + "rty55Zx"):
+        _json.loads(redact_text(_json.dumps({"d": s}))[0])              # lone \n or \t is never eaten
+    bs = "DB_PAS" + "SWORD=Ab3" + "\\xY9zQ12kk"
+    assert kinds(bs) == {"SECRET_ASSIGNMENT"}                           # plain-text backslash value
+    red, n = redact_text(_json.dumps({"d": bs + '\\"'}))
+    assert n == 1 and "xY9" not in red and _json.loads(red), red       # JSON-escaped backslash pair
     print("selftest OK (%d patterns)" % len(PATTERNS))
     return 0
 
