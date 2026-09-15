@@ -9,6 +9,7 @@ Usage:
   secret_scan.py --selftest           run built-in checks
   --baseline FILE                     suppress findings whose fingerprint is listed in FILE
   --write-baseline FILE               write current findings as a baseline (only after human review)
+  --redact FILE...                    replace secret values in place with <REDACTED>; prints counts only
 
 Exit codes: 0 clean, 1 findings, 2 usage or runtime error.
 Files whose first 5 lines contain the allow-file pragma are skipped (this file carries it).
@@ -98,6 +99,29 @@ def scan_text(text):
     return [(n, k) for n, k, _ in scan_lines(text)]
 
 
+REDACTION = "<REDACTED>"
+
+
+def redact_text(text):
+    """Return (new_text, count). Validated patterns redact their captured value, others the whole match."""
+    out, count = [], 0
+    for line in text.split("\n"):
+        for kind, rx, ok in PATTERNS:
+            def repl(m):
+                nonlocal count
+                if ok is not None and not ok(m):
+                    return m.group(0)
+                count += 1
+                if m.groups() and m.group(1):
+                    start, end = m.span(1)
+                    base = m.start(0)
+                    return m.group(0)[: start - base] + REDACTION + m.group(0)[end - base:]
+                return REDACTION
+            line = rx.sub(repl, line)
+        out.append(line)
+    return "\n".join(out), count
+
+
 def fingerprint(name, kind, line):
     raw = "%s\0%s\0%s" % (name, kind, line.strip())
     return hashlib.sha256(raw.encode("utf-8", errors="replace")).hexdigest()[:20]
@@ -175,6 +199,9 @@ def selftest():
     fp = fingerprint("docs/x.md", "SECRET_ASSIGNMENT", line)
     assert _report("docs/x.md", line.encode(), frozenset([fp])) == 0
     assert _report("docs/x.md", (line + "9").encode(), frozenset([fp])) == 1
+    dirty = "a postgresql://svc:" + "Zx9" + "fake7Qq" + "@db.example.invalid/app b\nMDM_DB_PAS" + "WORD=" + "BGf" + "iZjBAu213\n" + "gh" + "p_" + "b" * 36
+    clean, n = redact_text(dirty)
+    assert n == 3 and scan_text(clean) == [] and "db.example.invalid" in clean and "MDM_DB_PAS" in clean, (n, clean)
     print("selftest OK (%d patterns)" % len(PATTERNS))
     return 0
 
@@ -196,6 +223,18 @@ def main(argv):
             i = argv.index("--write-baseline")
             write_to, collect = argv[i + 1], []
             argv = argv[:i] + argv[i + 2:]
+        if argv[0] == "--redact":
+            for path in argv[1:]:
+                with open(path, "rb") as fh:
+                    text = _decode(fh.read())
+                if text is None:
+                    continue
+                new, n = redact_text(text)
+                if n:
+                    with open(path, "w", encoding="utf-8") as fh:
+                        fh.write(new)
+                    print("%s: %d redacted" % (path, n))
+            return 0
         if argv[0] == "--stdin":
             name = argv[argv.index("--name") + 1] if "--name" in argv else "<stdin>"
             total = _report(name, sys.stdin.buffer.read(), known, collect)
