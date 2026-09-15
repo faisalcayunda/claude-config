@@ -1,0 +1,50 @@
+{
+  "_meta": {
+    "purpose": "Track per-skill quality scores across invocations",
+    "scoring_rubric": {
+      "10": "Flawless — perfect execution, exceeded expectations, zero rework",
+      "9": "Excellent — all success criteria met, minimal polish",
+      "8": "Strong — correct execution, minor adjustments only",
+      "7": "Good — correct, one small correction needed",
+      "6": "Acceptable — required moderate intervention",
+      "5": "Marginal — partial result, significant rework",
+      "4": "Weak — misunderstood scope, major correction",
+      "3": "Poor — incorrect output, mostly rewritten",
+      "2": "Very poor — near-total rework",
+      "1": "Fail — unusable output"
+    },
+    "outcome_definitions": {
+      "pass": "Score >= 8, no rework beyond polish",
+      "partial": "Score 5-7, usable with corrections",
+      "fail": "Score <= 4, output rejected or rewritten"
+    },
+    "update_instructions": "Append to runs[] after each non-trivial invocation. Recompute average_score. Update last_updated.\n\nRun entry schema:\n{\n  \"run_id\": \"<YYYY-MM-DDTHH:MM:SSZ>-<6hex>\",\n  \"session_id\": \"<env:CLAUDE_CODE_SESSION_ID or 'unknown'>\",\n  \"timestamp\": \"<ISO-8601>\",\n  \"invocation_trigger\": \"claude-proactive\",\n  \"arguments\": \"<args string>\",\n  \"score\": null,\n  \"outcome\": null,\n  \"duration_ms\": <int>,\n  \"trace\": {\n    \"output_length_tokens\": null,\n    \"tool_calls_made\": [],\n    \"final_lines\": \"<last 300 chars of output>\",\n    \"failure_reason\": null\n  },\n  \"human_review\": {\n    \"scored_at\": null,\n    \"correction\": null,\n    \"note\": null\n  }\n}\n\nScore with: /score-skill --skill <name>  |  Optimize: /optimize-skill --skill <name> (needs 10+ scored runs)"
+  },
+  "skill": "gh-fix-ci",
+  "description": "Diagnose and fix failing GitHub Actions PR checks — fetch logs via gh CLI, summarize failure, propose fix plan, implement after user approval. Scope: GitHub Actions only.",
+  "runs": [
+    {
+      "run_id": "2026-06-24T09:18:44Z-de4fe8",
+      "session_id": "a6f2bc39-7c0e-4854-9fd9-76f8a112f591",
+      "timestamp": "2026-06-24T09:18:44Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 10,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    }
+  ],
+  "average_score": null,
+  "last_updated": "2026-05-06"
+}

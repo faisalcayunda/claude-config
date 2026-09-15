@@ -1,0 +1,219 @@
+{
+  "_meta": {
+    "purpose": "Track per-skill quality scores across invocations",
+    "scoring_rubric": {
+      "10": "Flawless — perfect execution, exceeded expectations, zero rework",
+      "9": "Excellent — all success criteria met, minimal polish",
+      "8": "Strong — correct execution, minor adjustments only",
+      "7": "Good — correct, one small correction needed",
+      "6": "Acceptable — required moderate intervention",
+      "5": "Marginal — partial result, significant rework",
+      "4": "Weak — misunderstood scope, major correction",
+      "3": "Poor — incorrect output, mostly rewritten",
+      "2": "Very poor — near-total rework",
+      "1": "Fail — unusable output"
+    },
+    "outcome_definitions": {
+      "pass": "Score >= 8, no rework beyond polish",
+      "partial": "Score 5-7, usable with corrections",
+      "fail": "Score <= 4, output rejected or rewritten"
+    },
+    "update_instructions": "Append to runs[] after each non-trivial invocation. Recompute average_score. Update last_updated.\n\nRun entry schema:\n{\n  \"run_id\": \"<YYYY-MM-DDTHH:MM:SSZ>-<6hex>\",\n  \"session_id\": \"<env:CLAUDE_CODE_SESSION_ID or 'unknown'>\",\n  \"timestamp\": \"<ISO-8601>\",\n  \"invocation_trigger\": \"claude-proactive\",\n  \"arguments\": \"<args string>\",\n  \"score\": null,\n  \"outcome\": null,\n  \"duration_ms\": <int>,\n  \"trace\": {\n    \"output_length_tokens\": null,\n    \"tool_calls_made\": [],\n    \"final_lines\": \"<last 300 chars of output>\",\n    \"failure_reason\": null\n  },\n  \"human_review\": {\n    \"scored_at\": null,\n    \"correction\": null,\n    \"note\": null\n  }\n}\n\nScore with: /score-skill --skill <name>  |  Optimize: /optimize-skill --skill <name> (needs 10+ scored runs)",
+    "skill_source_file": "/Users/isal/.claude/commands/airflow-dag-lint.md"
+  },
+  "skill": "airflow-dag-lint",
+  "description": "Static lint pass for Airflow 3.1.7 DAG files — pre-gate mechanical validator for import paths, deprecated APIs, top-level code anti-patterns, and secrets hygiene.",
+  "runs": [
+    {
+      "run_id": "2026-05-18T13:22:51Z-0d6142",
+      "session_id": "b401d138-b768-4f84-9e29-811aeb8e93f3",
+      "timestamp": "2026-05-18T13:22:51Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "airflow/dags/dag_pem_mpm_master_individu_v1.py airflow/dags/tasks/etl_master_individu_task.py",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 42,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-05-18T15:29:45Z-c125e4",
+      "session_id": "b401d138-b768-4f84-9e29-811aeb8e93f3",
+      "timestamp": "2026-05-18T15:29:45Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "airflow/dags/dag_pem_mpm_master_individu_v1.py airflow/dags/dag_pem_mpm_master_kpm_v1.py airflow/dags/dag_pem_mpm_master_sppg_v1.py",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 26,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-05-18T16:01:21Z-9c7c2f",
+      "session_id": "b401d138-b768-4f84-9e29-811aeb8e93f3",
+      "timestamp": "2026-05-18T16:01:21Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "airflow/dags/dag_pem_mpm_master_individu_v1.py airflow/dags/dag_pem_mpm_master_kpm_v1.py airflow/dags/dag_pem_mpm_master_sppg_v1.py",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 29,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-05-19T23:19:09Z-6930fa",
+      "session_id": "47ebcde8-c399-4117-862e-3870cd130189",
+      "timestamp": "2026-05-19T23:19:09Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "/Users/isal/Workspaces/Organizations/BGN/domain/pem-master-individu-pm-sync-mpm/airflow/dags/tasks/master_sppg/sppg.py",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 15,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-05-19T23:38:52Z-41ab84",
+      "session_id": "47ebcde8-c399-4117-862e-3870cd130189",
+      "timestamp": "2026-05-19T23:38:52Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "/Users/isal/Workspaces/Organizations/BGN/domain/pem-master-individu-pm-sync-mpm/airflow/dags/tasks/etl_master_sppg_task.py",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 32,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-05-19T23:58:46Z-82bca7",
+      "session_id": "47ebcde8-c399-4117-862e-3870cd130189",
+      "timestamp": "2026-05-19T23:58:46Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "/Users/isal/Workspaces/Organizations/BGN/domain/pem-master-individu-pm-sync-mpm/airflow/dags/dag_pem_mpm_master_sppg_v1.py",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 16,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-05-21T01:20:02Z-917aa5",
+      "session_id": "d926974d-70e7-4b99-8a91-c7940d9b98b2",
+      "timestamp": "2026-05-21T01:20:02Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "Lint the following DAG and task files from worktree path /Users/isal/Workspaces/Organizations/BGN/domain/pem-master-individu-pm-sync-mpm/.claude/worktrees/agent-ae35946e1fe840ed4:\n\n1. airflow/dags/dag_pem_mpm_master_sppg_v1.py\n2. airflow/dags/tasks/etl_master_sppg_task.py  \n3. airflow/dags/tasks/master_sppg/xref_sync.py (new file, not a DAG but imported by DAG)\n\nChanges: added Stage 3 xref_sync task. New imports in DAG: run_xref_sync_task. New task node xref_sync (PythonOperator). New file xref_sync.py with pure functions (no Airflow imports). New callable run_xref_sync_task added at bottom of etl_master_sppg_task.py.\n\nAirflow version: 3.1.7. Check: import errors, deprecated APIs, top-level code violations, secrets hygiene.",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 24,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-05-29T04:04:16Z-6b88fe",
+      "session_id": "e7fa5e21-ce0c-46d3-b836-d62202fc801d",
+      "timestamp": "2026-05-29T04:04:16Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "/Users/isal/Workspaces/Organizations/BGN/domain/airflow-dags/staging_v2/dag_v2_supplier.py",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 29,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-06-17T03:42:12Z-68fbc9",
+      "session_id": "713dc044-b313-41a4-8c59-2137dc8b16ac",
+      "timestamp": "2026-06-17T03:42:12Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "/Users/isal/Workspaces/Organizations/BGN/domain/pem-master-individu-pm-sync-mpm/airflow/dags/dag_pem_mpm_beneficiary_created_by_v1.py",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 33,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    }
+  ],
+  "average_score": null,
+  "last_updated": "2026-05-06"
+}

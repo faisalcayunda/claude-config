@@ -1,0 +1,29 @@
+{
+  "_meta": {
+    "purpose": "Track per-skill quality scores across invocations",
+    "scoring_rubric": {
+      "10": "Flawless — perfect execution, exceeded expectations, zero rework",
+      "9": "Excellent — all success criteria met, minimal polish",
+      "8": "Strong — correct execution, minor adjustments only",
+      "7": "Good — correct, one small correction needed",
+      "6": "Acceptable — required moderate intervention",
+      "5": "Marginal — partial result, significant rework",
+      "4": "Weak — misunderstood scope, major correction",
+      "3": "Poor — incorrect output, mostly rewritten",
+      "2": "Very poor — near-total rework",
+      "1": "Fail — unusable output"
+    },
+    "outcome_definitions": {
+      "pass": "Score >= 8, no rework beyond polish",
+      "partial": "Score 5-7, usable with corrections",
+      "fail": "Score <= 4, output rejected or rewritten"
+    },
+    "update_instructions": "Append to runs[] after each non-trivial invocation. Recompute average_score. Update last_updated.\n\nRun entry schema:\n{\n  \"run_id\": \"<YYYY-MM-DDTHH:MM:SSZ>-<6hex>\",\n  \"session_id\": \"<env:CLAUDE_CODE_SESSION_ID or 'unknown'>\",\n  \"timestamp\": \"<ISO-8601>\",\n  \"invocation_trigger\": \"claude-proactive\",\n  \"arguments\": \"<args string>\",\n  \"score\": null,\n  \"outcome\": null,\n  \"duration_ms\": <int>,\n  \"trace\": {\n    \"output_length_tokens\": null,\n    \"tool_calls_made\": [],\n    \"final_lines\": \"<last 300 chars of output>\",\n    \"failure_reason\": null\n  },\n  \"human_review\": {\n    \"scored_at\": null,\n    \"correction\": null,\n    \"note\": null\n  }\n}\n\nScore with: /score-skill --skill save  |  Optimize: /optimize-skill --skill save (needs 10+ scored runs)",
+    "skill_source_file": "/Users/isal/.claude/commands/save.md"
+  },
+  "skill": "save",
+  "description": "Files conversation insights as structured notes in ~/.claude wiki",
+  "runs": [],
+  "average_score": null,
+  "last_updated": "2026-05-18"
+}

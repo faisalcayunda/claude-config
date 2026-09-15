@@ -1,0 +1,32 @@
+# Whitelist: ignore everything, then allow only reviewed config paths.
+# Secrets and volatile data (.mcp.json, backups/, history.jsonl, projects/, sessions/,
+# session-data/, file-history/, cache/, .obsidian-token, plugins/, wiki/ ...) stay ignored.
+/*
+!/.gitignore
+!/.secret-scan-baseline
+!/CLAUDE.md
+!/business-brain.md
+!/lessons_learned.md
+!/settings.json
+!/settings.local.json
+!/hooks/
+!/skills/
+!/agents/
+!/rules/
+!/commands/
+!/scripts/
+!/plans/
+!/governance/
+!/memory/
+!/mcp/
+/mcp/*
+!/mcp/README.md
+!/mcp/install.sh
+!/mcp/pyproject.toml
+!/mcp/wiki_mcp/
+
+__pycache__/
+*.pyc
+.DS_Store
+node_modules/
+.venv/

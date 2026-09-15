@@ -1,0 +1,45 @@
+{
+  "_meta": {
+    "purpose": "Track per-skill quality scores across invocations",
+    "scoring_rubric": {
+      "10": "Perfect: correct code, right imports (dhi not pydantic), accurate perf numbers, alpha limits flagged",
+      "7": "Good: mostly correct, minor issues (wrong import, missing alpha caveat)",
+      "4": "Partial: core idea right but example has bugs or uses wrong API",
+      "1": "Miss: wrong framework advice, pydantic instead of dhi, uvicorn instead of app.run()"
+    },
+    "outcome_definitions": {
+      "pass": "User gets working code or accurate answer on first try",
+      "partial": "User needs one correction round",
+      "fail": "Code doesn't run or answer is wrong"
+    },
+    "update_instructions": "After each scored invocation, append an entry to runs[] with date, score, outcome, and notes",
+    "skill_source_file": "/Users/isal/.claude/commands/turboapi.md"
+  },
+  "skill": "turboapi",
+  "description": "Expert knowledge base for TurboAPI — FastAPI-compatible Python framework with Zig HTTP core (v1.0.27+)",
+  "runs": [
+    {
+      "run_id": "2026-07-09T10:04:02Z-69eed9",
+      "session_id": "6a822be1-bbdd-4f73-8558-0e67a9167b3a",
+      "timestamp": "2026-07-09T10:04:02Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 11,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    }
+  ],
+  "average_score": null,
+  "last_updated": "2026-05-18"
+}

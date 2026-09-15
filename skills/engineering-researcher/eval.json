@@ -1,0 +1,51 @@
+{
+  "_meta": {
+    "purpose": "Track per-skill quality scores across invocations",
+    "scoring_rubric": {
+      "10": "Flawless — perfect execution, exceeded expectations, zero rework",
+      "9": "Excellent — all success criteria met, minimal polish",
+      "8": "Strong — correct execution, minor adjustments only",
+      "7": "Good — correct, one small correction needed",
+      "6": "Acceptable — required moderate intervention",
+      "5": "Marginal — partial result, significant rework",
+      "4": "Weak — misunderstood scope, major correction",
+      "3": "Poor — incorrect output, mostly rewritten",
+      "2": "Very poor — near-total rework",
+      "1": "Fail — unusable output"
+    },
+    "outcome_definitions": {
+      "pass": "Score >= 8, no rework beyond polish",
+      "partial": "Score 5-7, usable with corrections",
+      "fail": "Score <= 4, output rejected or rewritten"
+    },
+    "update_instructions": "Append to runs[] after each non-trivial invocation. Recompute average_score. Update last_updated.\n\nRun entry schema:\n{\n  \"run_id\": \"<YYYY-MM-DDTHH:MM:SSZ>-<6hex>\",\n  \"session_id\": \"<env:CLAUDE_CODE_SESSION_ID or 'unknown'>\",\n  \"timestamp\": \"<ISO-8601>\",\n  \"invocation_trigger\": \"claude-proactive\",\n  \"arguments\": \"<args string>\",\n  \"score\": null,\n  \"outcome\": null,\n  \"duration_ms\": <int>,\n  \"trace\": {\n    \"output_length_tokens\": null,\n    \"tool_calls_made\": [],\n    \"final_lines\": \"<last 300 chars of output>\",\n    \"failure_reason\": null\n  },\n  \"human_review\": {\n    \"scored_at\": null,\n    \"correction\": null,\n    \"note\": null\n  }\n}\n\nScore with: /score-skill --skill <name>  |  Optimize: /optimize-skill --skill <name> (needs 10+ scored runs)",
+    "skill_source_file": "/Users/isal/.claude/commands/engineering-researcher.md"
+  },
+  "skill": "engineering-researcher",
+  "description": "Engineering research skill — 10 knowledge domains, 12 deliverable templates, 217+ authoritative sources. Covers architecture, DevOps/SRE, cloud/security, metrics, data/ML, quality, tech debt, API, performance, and emerging tech.",
+  "runs": [
+    {
+      "run_id": "2026-06-03T00:26:22Z-5ebed5",
+      "session_id": "a727cb63-4cd2-4c22-a1a0-8eddc57cb79b",
+      "timestamp": "2026-06-03T00:26:22Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "Deliverable: a focused Tech Radar / Architecture Review answering \"what tech stack fits THIS codebase\" — validate current choices and recommend complementary stack to productionize it. Ground it in the actual current state below; do NOT propose a from-scratch rewrite. Output as a chat response (and optionally a NEW file docs/TECH_STACK.md) — do NOT modify README.md or any wiki file (a docs workflow is currently editing those).\n\n== THE CODEBASE (verified this session) ==\n- mdm-api: a STANDALONE, single-domain Go API (KPM = Kelompok Penerima Manfaat, BGN MBG program). Just migrated from Rust/Axum to Go. Not a microservice — single self-contained binary (cmd/api) behind the Kong API gateway. Only outbound deps: PostgreSQL/PostGIS (read-only \"gold\" OLAP schema + optional read replica) and an optional OTLP collector. Read-mostly: write endpoints return 400 by design.\n- Module: go 1.25 (built with go 1.26.3 via asdf). Standard Go layout (cmd/api + internal/{config,domain,dto,apperror,middleware,repository/postgres,handler,router,telemetry,state}). 131 tests pass, go build/vet/gofmt green.\n\n== CURRENT STACK (already chosen, in use) ==\n- HTTP router: chi v5 (net/http compatible)\n- DB driver/pool: pgx/v5 + pgxpool (PostGIS, ST_DWithin, pg_trgm)\n- Query building: Masterminds/squirrel\n- AuthN: golang-jwt/jwt v5 (HS256, aud via ClaimStrings) + X-API-Key (constant-time compare)\n- Validation: go-playground/validator v10\n- Config: spf13/viper (flat env scheme: DATABASE_URL, AUTH_JWT_SECRET, SERVER_PORT, ... no prefix)\n- In-process cache: dgraph-io/ristretto v2\n- Observability: go.opentelemetry.io/otel + otlphttp exporter + otelhttp middleware; structured logging via log/slog\n- API docs: swaggo/swag (Swagger UI at /docs)\n- Tests/mocks: testify + hand-written mocks\n- Migrations: golang-migrate file format (skip_migrations defaults true; gold schema externally managed)\n- Container: multi-stage Dockerfile -> distroless runtime; docker-compose with postgis/postgis:17-3.5\n\n== CONSTRAINTS / CONTEXT ==\n- Deployment target: ON-PREMISE (no AWS/GCP managed services). BGN = Indonesian government nutrition agency.\n- Compliance/sensitivity: handles beneficiary PII; Indonesian gov context (SPBE, UU PDP). Security-sensitive.\n- Gateway: Kong already in front (owns /v1 versioning, likely TLS termination, possibly rate limiting / auth).\n- Read-heavy, latency-sensitive reads over a gold OLAP schema. Geospatial (PostGIS) + fuzzy search (pg_trgm).\n\n== KNOWN GAPS / OPEN ITEMS (address these in the recommendation) ==\n1. CI/CD: no pipeline yet (Makefile targets exist). On-prem — likely GitLab CI (repo host is sipgn-git.bgn.go.id) or Jenkins. Recommend a concrete on-prem CI approach + quality gates (build, test, lint, vuln scan, container scan).\n2. Secrets management: a .env with plaintext DB creds was found (being rotated). Recommend an on-prem secrets approach (Vault? sealed secrets? env injection) — no cloud secrets manager available.\n3. Linting/static analysis: no golangci-lint/staticcheck config committed. Recommend a Go linting + security-scan stack (golangci-lint, gosec, govulncheck).\n4. Observability BACKEND not chosen (only OTLP exporter exists). Recommend an on-prem-friendly stack (Tempo/Jaeger for traces, Prometheus + Grafana for metrics, Loki for logs) and whether to add Prometheus metrics to the Go service.\n5. Rate limiting: an unused RATE_LIMIT_EXCEEDED error variant exists; service has none. Decide: rely on Kong, or add in-service limiting (and which lib).\n6. Runtime/orchestration on-prem: bare Docker? docker-compose? Kubernetes (on-prem, e.g. k3s/RKE)? Nomad? Recommend given a single read-mostly service + BGN scale.\n7. Migrations runner: make migrate is a placeholder; gold schema externally managed. Recommend how migrations should actually be run/owned given read-only gold.\n8. Dockerfile go-version skew: builder is golang:1.22 but module is go 1.25 (docker build would fail) — note as a fix.\n9. Load/perf testing + caching strategy: ristretto in-process only; consider whether a shared cache (Redis on-prem) is warranted for read scaling behind Kong.\n\nProduce: (A) a verdict on the CURRENT stack (keep/strong fits + any risky choices), (B) a Tech Radar style recommendation (Adopt/Trial/Hold) for the GAP areas above tailored to on-prem + gov + read-mostly, with concrete library/tool picks and 1-line rationale each, (C) a short prioritized action list (what to add first). Keep it practical and specific to this service; avoid generic filler.",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 127,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    }
+  ],
+  "average_score": null,
+  "last_updated": "2026-05-18"
+}

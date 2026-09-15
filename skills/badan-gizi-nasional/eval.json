@@ -1,0 +1,457 @@
+{
+  "_meta": {
+    "purpose": "Track per-skill quality scores across invocations",
+    "scoring_rubric": {
+      "10": "Flawless — perfect execution, exceeded expectations, zero rework",
+      "9": "Excellent — all success criteria met, minimal polish",
+      "8": "Strong — correct execution, minor adjustments only",
+      "7": "Good — correct, one small correction needed",
+      "6": "Acceptable — required moderate intervention",
+      "5": "Marginal — partial result, significant rework",
+      "4": "Weak — misunderstood scope, major correction",
+      "3": "Poor — incorrect output, mostly rewritten",
+      "2": "Very poor — near-total rework",
+      "1": "Fail — unusable output"
+    },
+    "outcome_definitions": {
+      "pass": "Score >= 8, no rework beyond polish",
+      "partial": "Score 5-7, usable with corrections",
+      "fail": "Score <= 4, output rejected or rewritten"
+    },
+    "domain_criteria": {
+      "bgn_mbg_factual_accuracy": "Angka spesifik (Rp15.000, 35.270 SPPG, 82.9 juta PM, 150 m², 52 personel, 300ms, dll) dikutip verbatim dari Juknis/PRD — tidak dibulatkan, tidak diestimasi, tidak direkonstruksi dari ingatan.",
+      "reference_routing": "Topik dipetakan ke file reference yang tepat (A/B/C routing table); tidak menjawab dari ingatan Quick Reference saja untuk pertanyaan kompleks.",
+      "regulatory_citation": "Jawaban yang menyebut dasar hukum menyertakan nomor eksplisit (Perpres 83/2024, Kepka BGN 401.1/2025, Permenkes 28/2019, dll) bukan hanya 'menurut Juknis'. HARD FAIL: fabrikasi nomor regulasi yang tidak ada = skor 1 tanpa toleransi.",
+      "terminology_correctness": "BGN / KPPG / SPPG / Yayasan / Peruri / Penerima Manfaat dibedakan dengan benar; modul vs aplikasi SIPGN tidak dicampur; domain MBG tidak dikontaminasi PKH/BPNT/BLT.",
+      "caveat_discipline": "Jawaban yang menyentuh area tidak tercakup knowledge base (status live SIPGN per provinsi, HET terkini, versi app terbaru) secara eksplisit menyatakan keterbatasan — tidak berspekulasi."
+    },
+    "update_instructions": "Append to runs[] after each non-trivial invocation. Recompute average_score. Update last_updated.\n\nRun entry schema:\n{\n  \"run_id\": \"<YYYY-MM-DDTHH:MM:SSZ>-<6hex>\",\n  \"session_id\": \"<env:CLAUDE_CODE_SESSION_ID or 'unknown'>\",\n  \"timestamp\": \"<ISO-8601>\",\n  \"invocation_trigger\": \"claude-proactive\",\n  \"arguments\": \"<args string>\",\n  \"score\": null,\n  \"outcome\": null,\n  \"duration_ms\": <int>,\n  \"trace\": {\n    \"output_length_tokens\": null,\n    \"tool_calls_made\": [],\n    \"final_lines\": \"<last 300 chars of output>\",\n    \"failure_reason\": null\n  },\n  \"human_review\": {\n    \"scored_at\": null,\n    \"correction\": null,\n    \"note\": null\n  }\n}\n\nScore with: /score-skill --skill badan-gizi-nasional  |  Optimize: /optimize-skill --skill badan-gizi-nasional (needs 10+ scored runs)",
+    "skill_source_file": "/Users/isal/.claude/commands/badan-gizi-nasional.md"
+  },
+  "skill": "badan-gizi-nasional",
+  "description": "Authoritative knowledge base BGN/MBG/SIPGN — factual accuracy gate for regulatory citations, numerical figures, and terminology.",
+  "runs": [
+    {
+      "run_id": "2026-06-11T17:53:28Z-a89521",
+      "session_id": "58db68c4-4c4e-449c-ac5f-982e80dd6d17",
+      "timestamp": "2026-06-11T17:53:28Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "Ekstrak konteks modul SIPGN: 26 Submodul Manajemen Kepegawaian (HRIS), 29 OIS Persuratan, 30 OIS Asset, 31 KMS & LMS, 32 OIS Manajemen Risiko, 33 Manajemen Keamanan Sistem, 34 Digital Signage. Fokus: tujuan/fungsi tiap modul, sumber data, aktor, status pengembangan, integrasi antar modul SIPGN.",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 15,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-06-11T18:01:50Z-55d63d",
+      "session_id": "58db68c4-4c4e-449c-ac5f-982e80dd6d17",
+      "timestamp": "2026-06-11T18:01:50Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "Digital Signage SIPGN modul OIS IoT SPPG - konteks data platform untuk asesmen data governance",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 12,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-06-11T18:01:51Z-c28ec5",
+      "session_id": "58db68c4-4c4e-449c-ac5f-982e80dd6d17",
+      "timestamp": "2026-06-11T18:01:51Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "OIS Asset modul 30 SIPGN - data tata kelola aset/inventaris di platform datawarehouse Pusdatin BGN",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 3,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-06-11T18:01:51Z-61c3c8",
+      "session_id": "58db68c4-4c4e-449c-ac5f-982e80dd6d17",
+      "timestamp": "2026-06-11T18:01:51Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "SIPGN modul 31 KMS LMS Knowledge Learning Management, SDMO kepegawaian SPPG, modul OIS tata kelola 26-34",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 3,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-06-11T18:19:05Z-97ef09",
+      "session_id": "58db68c4-4c4e-449c-ac5f-982e80dd6d17",
+      "timestamp": "2026-06-11T18:19:05Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "SIPGN modul 31 KMS LMS Knowledge Learning Management System pembelajaran siphr",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 15,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-06-11T18:19:06Z-19f6df",
+      "session_id": "58db68c4-4c4e-449c-ac5f-982e80dd6d17",
+      "timestamp": "2026-06-11T18:19:06Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "SIPGN modul 32 OIS Manajemen Risiko - konteks modul untuk asesmen data governance",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 3,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-06-11T18:19:06Z-499255",
+      "session_id": "58db68c4-4c4e-449c-ac5f-982e80dd6d17",
+      "timestamp": "2026-06-11T18:19:06Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "SIPGN modul OIS Persuratan - asesmen data governance untuk lapisan replika DWH; konteks dokumen siphr/sistem kepegawaian",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 2,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-06-11T19:14:36Z-93a919",
+      "session_id": "58db68c4-4c4e-449c-ac5f-982e80dd6d17",
+      "timestamp": "2026-06-11T19:14:36Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "MODUL 34 Digital Signage - IoT SPPG, health monitoring, firmware, jadwal tayang konten edukasi gizi",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 13,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-06-11T19:14:37Z-ffd077",
+      "session_id": "58db68c4-4c4e-449c-ac5f-982e80dd6d17",
+      "timestamp": "2026-06-11T19:14:37Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "MODUL 31 KMS LMS - pelatihan dan sertifikasi kompetensi SDM SPPG, kompetensi Ka.SPPG pengelolaan pangan",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 1,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-06-11T19:16:43Z-180089",
+      "session_id": "58db68c4-4c4e-449c-ac5f-982e80dd6d17",
+      "timestamp": "2026-06-11T19:16:43Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "Validasi framing modul SIPGN: persuratan/e-office (29), aset peralatan dapur SPPG (30), manajemen risiko (32), SSO Kong API Gateway 27 aplikasi RBAC SIEM PII 82,9 juta (33), Digital Signage edukasi gizi SPPG (34), SDM/relawan SPPG (26), pembelajaran sertifikasi Ka.SPPG (31). Cek konsistensi KPI per modul.",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 13,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-06-11T19:28:12Z-e72cb2",
+      "session_id": "58db68c4-4c4e-449c-ac5f-982e80dd6d17",
+      "timestamp": "2026-06-11T19:28:12Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "SIPGN Modul 32 OIS Manajemen Risiko - register risiko, skor kemungkinan x dampak, mitigasi - untuk menyusun Kondisi Ideal dari segi data dengan 8 Dimensi DQ SIPGN",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 15,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-06-11T19:28:13Z-f49079",
+      "session_id": "58db68c4-4c4e-449c-ac5f-982e80dd6d17",
+      "timestamp": "2026-06-11T19:28:13Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "MODUL 30 OIS Asset - aset & peralatan dapur SPPG, registrasi kondisi/nilai/lokasi/penyusutan, status pemeliharaan",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 5,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-06-11T19:28:14Z-7bbb50",
+      "session_id": "58db68c4-4c4e-449c-ac5f-982e80dd6d17",
+      "timestamp": "2026-06-11T19:28:14Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "MODUL 26 Manajemen Kepegawaian HRIS SIPGN - entitas pegawai/petugas SPPG, jabatan, penempatan/SK, presensi; sumber otoritatif SDMO/Dukcapil; NIK ganda ~1.082; SPPI stale",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 2,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-06-11T19:29:53Z-e72e5d",
+      "session_id": "58db68c4-4c4e-449c-ac5f-982e80dd6d17",
+      "timestamp": "2026-06-11T19:29:53Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "MODUL 30 OIS Asset SIPGN - aset & peralatan dapur SPPG, registrasi kondisi/nilai/lokasi/penyusutan, jadwal pemeliharaan. Dimensi DQ: Completeness, Validity, Integrity, Timeliness.",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 9,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-06-11T19:29:53Z-d1cf04",
+      "session_id": "58db68c4-4c4e-449c-ac5f-982e80dd6d17",
+      "timestamp": "2026-06-11T19:29:53Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "Modul HRIS Manajemen Kepegawaian SIPGN — entitas pegawai/petugas SPPG, jabatan, penempatan/SK, presensi; NIK ganda 1.082, SPPI stale, validasi SDMO/Dukcapil",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 6,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-06-11T19:29:53Z-0412f0",
+      "session_id": "58db68c4-4c4e-449c-ac5f-982e80dd6d17",
+      "timestamp": "2026-06-11T19:29:53Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "MODUL 29 OIS Persuratan — kondisi ideal dari segi data: entitas surat masuk/keluar, disposisi, persetujuan, TTD digital/e-meterai, arsip naskah",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 2,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-06-11T19:29:54Z-dfbad1",
+      "session_id": "58db68c4-4c4e-449c-ac5f-982e80dd6d17",
+      "timestamp": "2026-06-11T19:29:54Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "MODUL 34 Digital Signage SIPGN IoT — registry perangkat, jadwal tayang, bukti tayang, telemetri status (is_online, last_ping). Konteks untuk menyusun Kondisi Ideal dari segi data.",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 3,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-08-31T08:39:07Z-1b1b44",
+      "session_id": "c474a408-2caf-4827-83eb-acec0153eae8",
+      "timestamp": "2026-08-31T08:39:07Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "konteks data Dikdasmen (sekolah, peserta didik, GTK) untuk mart BGN/SPPG",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 14,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-09-09T16:15:53Z-08ce4c",
+      "session_id": "09802c95-3af4-472c-8089-5c61479104e7",
+      "timestamp": "2026-09-09T16:15:53Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 10,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    },
+    {
+      "run_id": "2026-09-14T03:25:55Z-7acc43",
+      "session_id": "37833d0d-c2eb-4711-8c96-77719899d123",
+      "timestamp": "2026-09-14T03:25:55Z",
+      "invocation_trigger": "claude-proactive",
+      "arguments": "Konteks: data seed aplikasi AI geotagging (sppg.csv master SPPG, instituion_pm_agg.csv institusi penerima manfaat/KPM per SPPG, sppg_suspend.csv SPPG berhenti operasi sementara). Butuh: arti category_code institusi (PAUD01 dll), aturan radius/jarak layanan SPPG ke sekolah/penerima manfaat, arti kejadian KM/KF, jenis SPPG, kode wilayah.",
+      "score": null,
+      "outcome": null,
+      "duration_ms": 15,
+      "trace": {
+        "output_length_tokens": null,
+        "tool_calls_made": [],
+        "final_lines": "",
+        "failure_reason": null
+      },
+      "human_review": {
+        "scored_at": null,
+        "correction": null,
+        "note": null
+      }
+    }
+  ],
+  "average_score": null,
+  "last_updated": "2026-05-18"
+}
