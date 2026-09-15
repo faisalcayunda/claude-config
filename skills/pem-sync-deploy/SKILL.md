@@ -56,11 +56,11 @@ Set `ENV`, `DRY_RUN`, `SKIP_DBT`, `DAG_ONLY` variables from the parsed flags bef
 
 ## Step 1 — Context Confirmation
 
-Read `/Users/isal/.claude/business-brain.md` and confirm:
+Read wiki `/Users/isal/.claude/wiki/entities/MPM sync pipelines.md` and `concepts/MPM sync reconciliation policy.md` and confirm:
 - Project `pem-master-individu-pm-sync-mpm` is listed as an active project.
-- Owner is `isal` / `faisal.nugraha.c@digital.bgn.id`.
+- Owner is `isal`.
 
-If `business-brain.md` is missing or the project is not listed: print a warning and continue (do not abort — the file may not be present in all environments).
+If the pages are missing or the project is not listed: print a warning and continue.
 
 ---
 

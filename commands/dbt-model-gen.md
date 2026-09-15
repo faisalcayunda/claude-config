@@ -27,7 +27,7 @@ If `--source` is absent: ask "What source table or upstream model should this be
 
 ### Step 1: Read business context
 
-Read `/Users/isal/.claude/business-brain.md` — confirm dbt context before generating.
+Read the Stack line in `/Users/isal/.claude/CLAUDE.md` to confirm dbt context before generating.
 
 ### Step 2: Apply layer rules
 

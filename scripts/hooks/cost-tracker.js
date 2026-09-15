@@ -3,8 +3,9 @@
  * Cost Tracker Hook (v2)
  *
  * Reads transcript_path from Stop hook stdin, sums usage across all
- * assistant turns in the session JSONL, and appends one row to
- * ~/.claude/metrics/costs.jsonl.
+ * assistant turns in the session JSONL (main transcript + any subagent
+ * transcripts under <session_id>/subagents/*.jsonl next to it), and
+ * appends one row to ~/.claude/metrics/costs.jsonl.
  *
  * Stop hook stdin payload: { session_id, transcript_path, cwd, hook_event_name, ... }
  * The Stop payload does NOT include `usage` or `model` directly. The previous
@@ -13,8 +14,14 @@
  * days). The fix is to read the transcript file Claude Code already passes us.
  *
  * JSONL assistant entry shape (per Claude Code):
- *   { type: "assistant", message: { model, usage: { input_tokens, output_tokens,
- *     cache_creation_input_tokens, cache_read_input_tokens } } }
+ *   { type: "assistant", requestId, message: { model, usage: { input_tokens,
+ *     output_tokens, cache_creation_input_tokens, cache_read_input_tokens,
+ *     cache_creation: { ephemeral_5m_input_tokens, ephemeral_1h_input_tokens } } } }
+ * A request can appear on several lines as it streams — dedup by requestId,
+ * keeping the line with the largest output_tokens (the final snapshot).
+ * Each line is priced at its own message.model: a subagent running a
+ * different model than the main session must not be priced at the main
+ * model's rate.
  *
  * Cumulative behavior: Stop fires per assistant response, not per session.
  * Each row therefore represents the cumulative session total up to that point.
@@ -40,6 +47,7 @@
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
+const { randomUUID } = require('crypto');
 const { ensureDir, appendFile, getClaudeDir } = require('../lib/utils');
 const { sanitizeSessionId } = require('../lib/session-bridge');
 
@@ -68,19 +76,52 @@ function readHarnessCost(sessionId, maxAgeSeconds) {
   }
 }
 
-// Approximate per-1M-token billing rates (USD).
-// Cache creation: 1.25x input rate. Cache read: 0.1x input rate.
+// Per-1M-token billing rates (USD), verified against
+// https://platform.claude.com/docs/en/about-claude/pricing on 2026-09-15.
+// Columns: in (input), cache5m (5-minute cache write), cache1h (1-hour
+// cache write), cacheRead (cache read), out (output).
+// NOTE: this hook ships as part of the ECC plugin — a plugin update can
+// silently overwrite this table. Re-verify the rates above after any
+// plugin update touching scripts/hooks/cost-tracker.js.
 const RATE_TABLE = {
-  haiku:  { in: 0.80,  out: 4.0,  cacheWrite: 1.00,  cacheRead: 0.08 },
-  sonnet: { in: 3.00,  out: 15.0, cacheWrite: 3.75,  cacheRead: 0.30 },
-  opus:   { in: 15.00, out: 75.0, cacheWrite: 18.75, cacheRead: 1.50 }
+  fable51:   { in: 10.00, cache5m: 12.50, cache1h: 20.00, cacheRead: 0.25, out: 50.0 },
+  fable5:    { in: 10.00, cache5m: 12.50, cache1h: 20.00, cacheRead: 1.00, out: 50.0 },
+  opusNew:   { in: 5.00,  cache5m: 6.25,  cache1h: 10.00, cacheRead: 0.50, out: 25.0 },
+  opusOld:   { in: 15.00, cache5m: 18.75, cache1h: 30.00, cacheRead: 1.50, out: 75.0 },
+  sonnet5:   { in: 2.00,  cache5m: 2.50,  cache1h: 4.00,  cacheRead: 0.20, out: 10.0 },
+  sonnetOld: { in: 3.00,  cache5m: 3.75,  cache1h: 6.00,  cacheRead: 0.30, out: 15.0 },
+  haiku45:   { in: 1.00,  cache5m: 1.25,  cache1h: 2.00,  cacheRead: 0.10, out: 5.0 }
 };
 
+// Unrecognized models are logged once each (per process), not once per
+// usage line — a chatty subagent on an unknown model would otherwise
+// flood stderr with an identical warning per turn.
+const warnedUnknownModels = new Set();
+
+/**
+ * Most-specific-match-first model -> rate lookup.
+ * An id that matches nothing recognized is priced at the most expensive
+ * known rate (Fable 5) and logged to stderr, instead of silently falling
+ * back to Sonnet rates (the old behavior under-priced unknown/new models,
+ * e.g. Opus by ~3x and Fable 5.1 by ~3x).
+ */
 function getRates(model) {
   const m = String(model || '').toLowerCase();
-  if (m.includes('haiku')) return RATE_TABLE.haiku;
-  if (m.includes('opus'))  return RATE_TABLE.opus;
-  return RATE_TABLE.sonnet;
+  if (m.includes('fable-5-1'))   return RATE_TABLE.fable51;
+  if (m.includes('fable-5'))     return RATE_TABLE.fable5;
+  if (m.includes('sonnet-5'))    return RATE_TABLE.sonnet5;
+  if (m.includes('opus-4-1') || /opus-4$/.test(m)) {
+    return RATE_TABLE.opusOld;
+  }
+  if (m.includes('opus'))        return RATE_TABLE.opusNew;
+  if (m.includes('sonnet'))      return RATE_TABLE.sonnetOld;
+  if (m.includes('haiku'))       return RATE_TABLE.haiku45;
+
+  if (!warnedUnknownModels.has(model)) {
+    warnedUnknownModels.add(model);
+    process.stderr.write(`[Hook] cost-tracker: unrecognized model "${model}", pricing at most expensive known rate (Fable 5)\n`);
+  }
+  return RATE_TABLE.fable5;
 }
 
 function toNumber(v) {
@@ -89,23 +130,19 @@ function toNumber(v) {
 }
 
 /**
- * Scan the session JSONL and sum token usage across all assistant turns.
- * Returns { inputTokens, outputTokens, cacheWriteTokens, cacheReadTokens, model }
- * or null on read failure.
+ * Parse the usage-bearing assistant lines out of one transcript's JSONL
+ * content. Dedups by requestId, keeping the line with the largest
+ * output_tokens (a request can stream across several lines before the
+ * final usage snapshot lands). A line with no requestId can't be matched
+ * to a sibling, so it gets its own synthetic key and is kept as-is.
+ * Models starting with '<' (e.g. <synthetic>) are skipped.
+ *
+ * Returns { rows, lastModel }, where each row is
+ * { model, inputTokens, outputTokens, cacheWrite5m, cacheWrite1h, cacheReadTokens }.
  */
-function sumUsageFromTranscript(transcriptPath) {
-  let content;
-  try {
-    content = fs.readFileSync(transcriptPath, 'utf8');
-  } catch {
-    return null;
-  }
-
-  let inputTokens = 0;
-  let outputTokens = 0;
-  let cacheWriteTokens = 0;
-  let cacheReadTokens = 0;
-  let model = 'unknown';
+function parseUsageContent(content) {
+  const byRequestId = new Map();
+  let lastModel = null;
 
   for (const line of content.split('\n')) {
     if (!line.trim()) continue;
@@ -116,16 +153,117 @@ function sumUsageFromTranscript(transcriptPath) {
     const msg = entry.message;
     if (!msg || !msg.usage) continue;
 
-    const u = msg.usage;
-    inputTokens      += toNumber(u.input_tokens);
-    outputTokens     += toNumber(u.output_tokens);
-    cacheWriteTokens += toNumber(u.cache_creation_input_tokens);
-    cacheReadTokens  += toNumber(u.cache_read_input_tokens);
+    const model = msg.model || 'unknown';
+    if (model.startsWith('<')) continue; // e.g. <synthetic> — not real billed usage
 
-    if (msg.model && msg.model !== 'unknown') model = msg.model;
+    const u = msg.usage;
+    const outputTokens = toNumber(u.output_tokens);
+
+    // Split cache writes into 5m/1h buckets when the breakdown is present;
+    // otherwise count the whole cache_creation_input_tokens as a 5m write.
+    const cc = u.cache_creation;
+    const hasSplit = cc && (cc.ephemeral_5m_input_tokens != null || cc.ephemeral_1h_input_tokens != null);
+
+    const row = {
+      model,
+      inputTokens: toNumber(u.input_tokens),
+      outputTokens,
+      cacheWrite5m: hasSplit ? toNumber(cc.ephemeral_5m_input_tokens) : toNumber(u.cache_creation_input_tokens),
+      cacheWrite1h: hasSplit ? toNumber(cc.ephemeral_1h_input_tokens) : 0,
+      cacheReadTokens: toNumber(u.cache_read_input_tokens)
+    };
+
+    const requestId = entry.requestId || randomUUID();
+    const prev = byRequestId.get(requestId);
+    if (!prev || outputTokens > prev.outputTokens) {
+      byRequestId.set(requestId, row);
+    }
+
+    if (model !== 'unknown') lastModel = model;
   }
 
-  return { inputTokens, outputTokens, cacheWriteTokens, cacheReadTokens, model };
+  return { rows: Array.from(byRequestId.values()), lastModel };
+}
+
+/** Cost of one usage row, priced at that row's own model rate. */
+function costForRow(row) {
+  const rates = getRates(row.model);
+  return (
+    (row.inputTokens     / 1e6) * rates.in +
+    (row.outputTokens    / 1e6) * rates.out +
+    (row.cacheWrite5m    / 1e6) * rates.cache5m +
+    (row.cacheWrite1h    / 1e6) * rates.cache1h +
+    (row.cacheReadTokens / 1e6) * rates.cacheRead
+  );
+}
+
+/**
+ * List a main transcript's subagent transcript files:
+ * <dir>/<session_id>/subagents/*.jsonl next to <dir>/<session_id>.jsonl.
+ * Returns [] when there is no subagents folder (older sessions, or a
+ * session that never spawned a subagent) — that is not an error.
+ */
+function listSubagentFiles(transcriptPath) {
+  const dir = path.dirname(transcriptPath);
+  const sessionId = path.basename(transcriptPath, '.jsonl');
+  const subagentsDir = path.join(dir, sessionId, 'subagents');
+  try {
+    return fs.readdirSync(subagentsDir)
+      .filter(f => f.endsWith('.jsonl'))
+      .map(f => path.join(subagentsDir, f));
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Scan the session JSONL — main transcript plus any subagent transcripts —
+ * and sum token usage and cost across all assistant turns. Each row is
+ * priced at its own message.model (a subagent on a different model than
+ * the main session is priced at that model's rate, not the main model's).
+ * `model` in the result is the main transcript's own last-seen model —
+ * what the emitted row's `model` field records — not a per-line value.
+ * Returns { inputTokens, outputTokens, cacheWriteTokens, cacheReadTokens,
+ * costUsd, model } or null on read failure of the main transcript.
+ */
+function sumUsageFromTranscript(transcriptPath) {
+  let mainContent;
+  try {
+    mainContent = fs.readFileSync(transcriptPath, 'utf8');
+  } catch {
+    return null;
+  }
+
+  const main = parseUsageContent(mainContent);
+
+  let subagentRows = [];
+  for (const file of listSubagentFiles(transcriptPath)) {
+    let content;
+    try {
+      content = fs.readFileSync(file, 'utf8');
+    } catch {
+      continue; // one unreadable subagent file shouldn't sink the whole estimate
+    }
+    subagentRows = subagentRows.concat(parseUsageContent(content).rows);
+  }
+
+  const allRows = main.rows.concat(subagentRows);
+
+  let inputTokens = 0;
+  let outputTokens = 0;
+  let cacheWriteTokens = 0;
+  let cacheReadTokens = 0;
+  let costUsd = 0;
+
+  for (const row of allRows) {
+    inputTokens      += row.inputTokens;
+    outputTokens     += row.outputTokens;
+    cacheWriteTokens += row.cacheWrite5m + row.cacheWrite1h;
+    cacheReadTokens  += row.cacheReadTokens;
+    costUsd          += costForRow(row);
+  }
+
+  return { inputTokens, outputTokens, cacheWriteTokens, cacheReadTokens, costUsd, model: main.lastModel || 'unknown' };
 }
 
 // 1MB, matching the other Stop hooks. The Stop payload carries
@@ -170,16 +308,16 @@ process.stdin.on('end', () => {
       outputTokens = 0,
       cacheWriteTokens = 0,
       cacheReadTokens = 0,
+      costUsd = 0,
       model = 'unknown'
     } = usageTotals || {};
 
-    const rates = getRates(model);
-    const transcriptCostUsd = Math.round((
-      (inputTokens      / 1e6) * rates.in +
-      (outputTokens     / 1e6) * rates.out +
-      (cacheWriteTokens / 1e6) * rates.cacheWrite +
-      (cacheReadTokens  / 1e6) * rates.cacheRead
-    ) * 1e6) / 1e6;
+    // Each row (main transcript + any subagent transcripts) was already
+    // priced at its own message.model inside sumUsageFromTranscript — do
+    // not re-price the aggregate totals against a single model's rate,
+    // that would mis-price subagent turns run on a different model than
+    // the main session.
+    const transcriptCostUsd = Math.round(costUsd * 1e6) / 1e6;
 
     // Prefer the harness's authoritative `cost.total_cost_usd` when the
     // statusline has written it to the per-session cache (see contract in

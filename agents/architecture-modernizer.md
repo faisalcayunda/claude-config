@@ -1,6 +1,6 @@
 ---
 name: architecture-modernizer
-model: sonnet
+model: fable
 description: Software architecture modernization specialist. Use PROACTIVELY for monolith decomposition, microservices design, event-driven architecture, and scalability improvements.
 tools: Read, Write, Edit, Bash, Grep
 ---

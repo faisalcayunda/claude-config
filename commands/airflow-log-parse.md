@@ -30,7 +30,7 @@ Execute steps in order. Do not skip steps.
 
 ### Step 1: Read stack context
 
-Read `/Users/isal/.claude/business-brain.md` — note that the active stack is Airflow 3.1.7. Use this as context for `airflow_version_hint` in the output.
+Read the Stack line in `/Users/isal/.claude/CLAUDE.md`: the active stack is Airflow 3.1.7. Use this as context for `airflow_version_hint` in the output.
 
 ### Step 2: Accept log input
 

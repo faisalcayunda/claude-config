@@ -31,7 +31,7 @@ Do NOT proceed until at least one is available.
 
 ## Step 1 — Read context
 
-Read `/Users/isal/.claude/business-brain.md`.
+Read the Stack line in `/Users/isal/.claude/CLAUDE.md`.
 Confirm stack: dbt + Airflow 3.1.7, on-premise. Apply hard rules (no overengineering; no guessing).
 
 ---
@@ -176,7 +176,7 @@ After all generated blocks, append a coverage table:
 - GENERATOR ONLY — this skill produces test definitions. It never runs `dbt test`, never executes against live data.
 - Do NOT fabricate column names or types. If schema is unknown, ask before generating.
 - For `categorical_column`: always output `# TODO: fill accepted values` placeholder. Never guess accepted values.
-- Hard rule from business-brain.md: Do not overengineer. Apply the matrix above only.
+- Hard rule: do not overengineer. Apply the matrix above only.
 - Never add tests beyond the matrix without explicit user request.
 - Never modify existing schema.yml files — output is always a new text block for the user to integrate.
 

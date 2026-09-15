@@ -49,6 +49,15 @@ DENY = [
     # Secrets reach tools through the environment (Infisical wrapper), so a bare dump prints them.
     (r'(^|[;&|(]\s*)(env|printenv|set)\s*($|[;&|)])', "bare env/printenv/set dumps environment secrets"),
     (r'(^|[;&|(]\s*)(export\s+-p|declare\s+-[a-z]*x[a-z]*)\s*($|[;&|)])', "export -p / declare -x dumps environment secrets"),
+    # Keychain secrets (MCP migration): reading or dumping items prints credentials.
+    # ponytail: string matching, so obfuscated commands still pass. Items trust /usr/bin/security, so any
+    # process running as this user can read them; this only stops accidental prints into model context.
+    (r'find-(generic|internet)-password\b[^\n]*["\'\s]-[a-z]*[wg]\b',
+     "security find-generic-password/find-internet-password with -w or -g prints a Keychain secret"),
+    (r'find-(generic|internet)-password\b[^\n]*claude-mcp|claude-mcp[^\n]*find-(generic|internet)-password',
+     "reading a claude-mcp Keychain item prints an MCP secret"),
+    (r'\bdump-keychain\b', "security dump-keychain prints all Keychain secrets"),
+    (r'\bmcp_secret(\.py)?\s+(exec|headers)\b', "direct invocation of mcp_secret.py resolves a Keychain secret"),
 ]
 for pat, why in DENY:
     if re.search(pat, cmd, re.IGNORECASE):

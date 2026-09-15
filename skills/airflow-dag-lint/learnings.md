@@ -18,7 +18,7 @@
 **Trigger:** <invocation command / parameters used>
 **Outcome:** <what happened — success / failure / partial>
 **Lesson:** <generalizable rule extracted>
-**Action:** <change to skill / SKILL.md / business-brain.md if any>
+**Action:** <change to skill / SKILL.md / wiki page if any>
 ```
 
 ---
@@ -31,6 +31,6 @@
 
 ## Cross-references
 
-- Global lessons: `/Users/isal/.claude/lessons_learned.md`
+- Global gotchas: wiki `concepts/*gotchas*.md` (history: `~/.claude/archive/legacy/lessons_learned.md`)
 - Skill source: `../../commands/airflow-dag-lint.md`
-- Business brain: `/Users/isal/.claude/business-brain.md`
+- Identity and stack: `~/.claude/CLAUDE.md`; BGN domain: wiki `concepts/MPM sync reconciliation policy.md`

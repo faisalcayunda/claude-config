@@ -30,7 +30,7 @@ Do NOT proceed until stack is specified. All other arguments have safe defaults.
 
 ## Step 1 — Read business context
 
-Read `/Users/isal/.claude/business-brain.md` — confirm active stack, domain names, and naming conventions before generating. Use domain names from business-brain.md as concrete substitutes for `{domain}` and `{source}` placeholders below. If business-brain.md is not found or has no relevant domain, use `example` as the placeholder value.
+Read the Stack line in `/Users/isal/.claude/CLAUDE.md` to confirm the active stack. Take domain names from the relevant wiki page (for example `wiki/entities/MPM sync pipelines.md`) as substitutes for `{domain}` and `{source}` below. If none applies, use `example`.
 
 ---
 
@@ -39,8 +39,8 @@ Read `/Users/isal/.claude/business-brain.md` — confirm active stack, domain na
 Set `PROJECT = --project value (or "my_data_project")`.
 
 Substitute `{project_name}` → `PROJECT` in all folder trees and stubs below.
-Substitute `{domain}` → first domain found in business-brain.md (or `example`).
-Substitute `{source}` → first source system found in business-brain.md (or `raw`).
+Substitute `{domain}` → first domain from that wiki page (or `example`).
+Substitute `{source}` → first source system from that wiki page (or `raw`).
 
 | Depth | Folder tree | File stubs |
 |---|---|---|

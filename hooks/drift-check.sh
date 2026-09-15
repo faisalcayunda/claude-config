@@ -10,7 +10,7 @@ issues=()
 for f in "$ROOT/.mcp.json" "$HOME/.claude.json"; do
   [ -f "$f" ] || continue
   dsn=$(grep -oE '://[^:@/"]+:[^@/"]+@' "$f" 2>/dev/null | wc -l | tr -d ' ')
-  key=$(grep -oiE '"(api[_-]?key|token|z_ai_api_key|secret|password)"[[:space:]]*:[[:space:]]*"[^"$][^"]{6,}"' "$f" 2>/dev/null | wc -l | tr -d ' ')
+  key=$(grep -oiE '"(api[_-]?key|token|z_ai_api_key|secret|password)"[[:space:]]*:[[:space:]]*"[^"${][^"]{6,}"' "$f" 2>/dev/null | wc -l | tr -d ' ')
   n=$((dsn + key))
   [ "$n" -gt 0 ] && issues+=("CRITICAL: $n inline secret(s) in $(basename "$f") — rotate + move to \${ENV} (see audit TIER 0)")
 done

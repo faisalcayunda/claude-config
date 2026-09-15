@@ -15,7 +15,7 @@ Extract from $ARGUMENTS:
 
 ## Lint Workflow
 
-**Step 1:** Read `/Users/isal/.claude/business-brain.md` — confirm active stack is Airflow 3.1.7 on-premise. If not confirmed, note it and continue.
+**Step 1:** Read the Stack line in `/Users/isal/.claude/CLAUDE.md` and wiki `entities/BGN Airflow deployment.md`: confirm the active stack is Airflow 3.1.7 on-premise. If not confirmed, note it and continue.
 
 **Step 2:** Read the target DAG file (use Read tool if file path given; if pasted content, proceed with the pasted text).
 
