@@ -61,10 +61,10 @@ def _assign_ok(m):
 # (kind, regex, validator or None)
 PATTERNS = [
     ("DSN_WITH_PASSWORD",
-     re.compile(r"\b[a-z][a-z0-9+.\-]{1,20}://[^\s:/@'\"<>]*:([^\s@'\"<>]+)@[^\s'\"<>]+"), _dsn_ok),
+     re.compile(r"\b[a-z][a-z0-9+.\-]{1,20}://[^\s:/@'\"<>\\]*:([^\s@'\"<>\\]+)@[^\s'\"<>\\]+"), _dsn_ok),
     ("SECRET_ASSIGNMENT",
      re.compile(r"(?i)\b[A-Z0-9_\-]*(?:PASSWORD|PASSWD|PASWORD|PWD|SECRET|TOKEN|API[_\-]?KEY|"
-                r"ACCESS[_\-]?KEY|PRIVATE[_\-]?KEY|PAT)(?:[_\-]?VALUE)?[\"']?\s*[:=]\s*[\"']?([^\s\"'#,;)]{8,})"), _assign_ok),
+                r"ACCESS[_\-]?KEY|PRIVATE[_\-]?KEY|PAT)(?:[_\-]?VALUE)?\\?[\"']?\s*[:=]\s*\\?[\"']?([^\s\"'#,;)\\]{8,})"), _assign_ok),
     ("AUTH_HEADER",
      re.compile(r"(?i)\bauthorization[\"']?\s*[:=]\s*[\"']?(?:bearer|basic|token)\s+([A-Za-z0-9._~+/=\-]{16,})"),
      _assign_ok),
@@ -202,6 +202,12 @@ def selftest():
     dirty = "a postgresql://svc:" + "Zx9" + "fake7Qq" + "@db.example.invalid/app b\nMDM_DB_PAS" + "WORD=" + "BGf" + "iZjBAu213\n" + "gh" + "p_" + "b" * 36
     clean, n = redact_text(dirty)
     assert n == 3 and scan_text(clean) == [] and "db.example.invalid" in clean and "MDM_DB_PAS" in clean, (n, clean)
+    import json as _json
+    embedded = _json.dumps({"display": 'use \"-e POSTGRES_PASSWORD=password\" on docker run'})
+    assert scan_text(embedded) == []                                   # placeholder inside JSON escapes
+    real = _json.dumps({"display": 'set \"DB_PASSWORD=' + "Qw8" + 'rty55Zx\" now'})
+    red, n = redact_text(real)
+    assert n == 1 and _json.loads(red) and scan_text(red) == [], red   # escape survives redaction
     print("selftest OK (%d patterns)" % len(PATTERNS))
     return 0
 
