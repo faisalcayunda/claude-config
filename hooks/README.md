@@ -19,6 +19,14 @@ User request → Claude picks a tool → PreToolUse hook runs → Tool executes 
 Memory persistence lifecycle definitions live in `hooks/memory-persistence/`.
 The executable hook graph remains `hooks/hooks.json`; the memory persistence directory is the stable contract for SessionStart, PreCompact, observation, activity tracking, and SessionEnd behavior.
 
+## Manual Hooks (wired directly in `settings.json`, not part of `hooks.json`)
+
+These are personal hooks referenced straight from `~/.claude/settings.json` (alongside `secret_guard.py`, `wiki_hooks.py`, `drift-check.sh`); they are not part of the ECC plugin's hook graph above.
+
+| Hook | Event / Matcher | Behavior | Exit Code |
+|------|------------------|----------|-----------|
+| **Orchestrator guard** (`orchestrator_guard.py`) | `UserPromptSubmit` (remind) / `PreToolUse: Write\|Edit\|MultiEdit\|NotebookEdit\|Bash\|Agent` (guard) | Reminds the main session to delegate; denies main-session code writes over 20 lines to code-extension files. Denies any non-fork Agent dispatch without `model`, and `review\|plan\|architect\|design\|audit` agent types on a model other than fable (also nested dispatches). Allowed inside subagents (`agent_id` present), under wiki/plans/memory/scratchpad paths, or with a per-session override file in `~/.claude/state/orchestrator-solo/` | 0 (denies via `permissionDecision`, fails open on error) |
+
 ## Installing These Hooks Manually
 
 For Claude Code manual installs, do not paste the raw repo `hooks.json` into `~/.claude/settings.json` or copy it directly into `~/.claude/hooks/hooks.json`. The checked-in file is plugin/repo-oriented and is meant to be installed through the ECC installer or loaded as a plugin.

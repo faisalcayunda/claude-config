@@ -1,7 +1,8 @@
 {
   "env": {
     "CLAUDE_CODE_ENABLE_AUTO_MODE": "1",
-    "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet"
+    "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet",
+    "PONYTAIL_SUBAGENT_MATCHER": "^(general-purpose|python-pro|data-engineer|frontend-developer|.*-resolver|refactor-cleaner|code-simplifier|tdd-guide|test-engineer|e2e-runner|debugger|gan-generator)$"
   },
   "includeCoAuthoredBy": false,
   "permissions": {
@@ -12,6 +13,7 @@
     ],
     "defaultMode": "auto"
   },
+  "model": "opus[1m]",
   "hooks": {
     "UserPromptSubmit": [
       {
@@ -20,6 +22,14 @@
             "type": "command",
             "command": "/usr/bin/python3 /Users/isal/.claude/hooks/wiki_hooks.py retrieve",
             "timeout": 5
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 /Users/isal/.claude/hooks/orchestrator_guard.py remind"
           }
         ]
       }
@@ -95,6 +105,16 @@
           {
             "type": "command",
             "command": "/usr/bin/python3 /Users/isal/.claude/hooks/secret_guard.py",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit|MultiEdit|NotebookEdit|Bash|Agent",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 /Users/isal/.claude/hooks/orchestrator_guard.py guard",
             "timeout": 5
           }
         ]
@@ -217,6 +237,11 @@
     }
   },
   "effortLevel": "xhigh",
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "high"
+    }
+  },
   "tui": "fullscreen",
   "skipWorkflowUsageWarning": true,
   "agentPushNotifEnabled": true,
@@ -247,6 +272,5 @@
       "**Org-specific CLIs**: None configured",
       "routine under isal/ prefix: none found"
     ]
-  },
-  "model": "opus[1m]"
+  }
 }
