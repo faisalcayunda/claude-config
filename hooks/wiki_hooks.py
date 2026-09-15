@@ -125,8 +125,26 @@ def _as_list(v):
 
 
 # ---------------------------------------------------------------- index
+def _norm(t):
+    return t[:-3] if t.endswith("nya") and len(t) > 6 else t   # Indonesian possessive suffix
+
+
 def tokens(text):
-    return [t for t in TOKEN_RX.findall(text.lower()) if len(t) >= 3 and t not in STOPWORDS]
+    out = []
+    for t in TOKEN_RX.findall(text.lower()):
+        t = _norm(t)
+        if len(t) >= 3 and t not in STOPWORDS:
+            out.append(t)
+    return out
+
+
+def _hit(token, vocab):
+    """Exact match, or containment for tokens of 4+ chars (brew in homebrew, venv in venvs)."""
+    if token in vocab:
+        return True
+    if len(token) < 4:
+        return False
+    return any(len(v) >= 4 and (token in v or v in token) for v in vocab)
 
 
 def _page_files(root):
@@ -209,7 +227,7 @@ def score_page(page, prompt_low, prompt_tokens, cwd_org):
     desc_t = set(tokens(page["description"]))
     score, matched, phrase = 0.0, 0, False
     for t in set(prompt_tokens):
-        w = 3 if t in title_alias else 2 if t in tag_t else 1 if t in desc_t else 0
+        w = 3 if _hit(t, title_alias) else 2 if _hit(t, tag_t) else 1 if _hit(t, desc_t) else 0
         if w:
             score += w
             matched += 1
@@ -383,6 +401,8 @@ def selftest():
     assert not draft or draft[0][0] < hits[0][0]
     assert rank(idx, "sppg", "BGN") == []                        # one weak token is not enough
     assert rank(idx, "jebakan brew autoremove node", None)[0][1]["org"] == "personal"
+    assert tokens("cegahnya") == ["cegah"] and _hit("brew", {"homebrew"}) and not _hit("api", {"apis"})
+    assert rank(idx, "buatkan fungsi fibonacci di python", "BGN") == []
     assert len(render(hits)) <= MAX_CONTEXT_CHARS
 
     state = {"injected": [hits[0][1]["path"]], "last_hits": []}
