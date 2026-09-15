@@ -1,14 +1,14 @@
 # Claude context consolidation plan
 
 - Date: 2026-09-15
-- Status: design agreed by the user through a grilling session (Q1 to Q35). Execution NOT started.
+- Status: design agreed (Q1 to Q35). Phase 0 DONE 2026-09-15. Next: Phase 1 (needs user go-ahead).
 - Role: single source of truth for this work until Phase 1 moves it into the wiki as a decision page.
 
 ## 0. Resume checklist (read first after compaction)
 
 1. Read this whole file before doing anything else.
 2. Ignore stale injected context until Phase 4 removes it: `business-brain.md` and `wiki/hot.md` are still injected by the SessionStart hook, and `hooks/post-compact-restore.sh` tells the model to re-read `hot.md`. Both are outdated and contradict this plan.
-3. Next step: Phase 0.
+3. Next step: Phase 1. See section 7 for what Phase 0 produced.
 4. Confirm with the user at the start of each phase before any destructive or outward-facing step (rm, uninstall, moving the vault, git init, editing settings.json or MCP config). Plan approval is not blanket approval.
 5. Verification traps on this machine:
    - The `rtk` PreToolUse hook rewrites `head`, `grep`, `find`, `wc` into `rtk ...` and truncates output (a leading `// ...` marks truncation). For exact counts use `/usr/bin/<cmd>` or `python3`; those are not rewritten.
@@ -142,3 +142,18 @@ Rotation (7) must follow `${VAR}` (6), otherwise the new passwords get pasted in
 
 - `~/.gemini` (13MB) holds Google Antigravity IDE data created 2026-09-14 (implicit context, builtin skills, 3 empty crash logs, no saved conversations); the app is not installed. Awaiting the user's decision to delete. gemini-cli itself is already removed.
 - Optional: `brew cleanup` would free ~235MB of installer cache.
+
+## 7. Progress log
+
+### Phase 0 (done 2026-09-15)
+
+- Permissions: 84 secret-bearing files set to 600 (`~/.claude.json`, `.obsidian-token`, REST API `data.json`, `context-snapshot.md`, `history.jsonl`, all of `backups/` and `session-data/`); `backups/` and `session-data/` dirs 700.
+  - Correction: this machine has a single account (`isal`, UID 501) and `/Users/isal` is 750, so the earlier 644 files were not readable by another account. The real exposure is plaintext duplication plus secrets printed into model context. chmod is defence in depth.
+- Scanner: `scripts/secret_scan.py` (12 patterns: DSN with password, secret assignments incl. `PASWORD` typo and `PAT_VALUE`, Authorization headers, private keys, AWS, GitHub, GitLab, Slack, Anthropic/OpenAI, Google keys, JWT, NIK). Runs on `/usr/bin/python3` 3.9. `--selftest` covers regressions found against real files. `--baseline` suppresses reviewed examples by fingerprint (sha256 of path, kind, line); values are never stored or printed.
+  - First version missed lowercase DSN passwords, `PAT_VALUE`, Authorization headers, and flagged floats as NIK. Found only by testing against files known to hold secrets. Keep testing new patterns the same way.
+  - `hooks/secret-scanner.py` already existed but is not wired anywhere and misses unquoted `.env` passwords, `postgresql+psycopg2://`, NIK and Authorization. Archive it in Phase 5.
+- Git pre-commit: `scripts/git-pre-commit-secret-scan.sh`, symlinked as `.git/hooks/pre-commit` in both repos.
+- Config repo `~/.claude`: whitelist `.gitignore`, `.secret-scan-baseline` with 30 reviewed vendor-doc example credentials (ECC skills/rules, test-engineer, kotlin/rust test commands, data-engineer-boilerplate, old secret-scanner regex source). Baseline commit `016c7ff`.
+- Wiki repo `~/.claude/wiki`: `.gitignore` ready for `.obsidian` (workspace files, REST API `data.json`). Baseline commit `9f3ceaf`.
+- Verified: full scan of tracked files is 0 in both repos; a staged fake DSN is rejected by pre-commit in both repos; working trees clean.
+- Author on commits: user identity only, no Claude attribution (feedback_commit_authorship).
