@@ -25,7 +25,7 @@ These are personal hooks referenced straight from `~/.claude/settings.json` (alo
 
 | Hook | Event / Matcher | Behavior | Exit Code |
 |------|------------------|----------|-----------|
-| **Orchestrator guard** (`orchestrator_guard.py`) | `UserPromptSubmit` (remind) / `PreToolUse: Write\|Edit\|MultiEdit\|NotebookEdit\|Bash\|Agent` (guard) | Reminds the main session to delegate; denies main-session code writes over 20 lines to code-extension files. Denies any non-fork Agent dispatch without `model`, and `review\|plan\|architect\|design\|audit` agent types on a model other than fable (also nested dispatches). Allowed inside subagents (`agent_id` present), under wiki/plans/memory/scratchpad paths, or with a per-session override file in `~/.claude/state/orchestrator-solo/` | 0 (denies via `permissionDecision`, fails open on error) |
+| **Orchestrator guard** (`orchestrator_guard.py`) | `UserPromptSubmit` (remind) / `PreToolUse: Write\|Edit\|MultiEdit\|NotebookEdit\|Bash\|Agent` (guard) | Reminds the main session to delegate; denies main-session code writes over 20 lines to code-extension files. Denies any non-fork Agent dispatch without `model`, and `review\|plan\|architect\|design\|audit` agent types on a model other than opus (also nested dispatches). Allowed inside subagents (`agent_id` present), under wiki/plans/memory/scratchpad paths, or with a per-session override file in `~/.claude/state/orchestrator-solo/` | 0 (denies via `permissionDecision`, fails open on error) |
 
 ## Installing These Hooks Manually
 

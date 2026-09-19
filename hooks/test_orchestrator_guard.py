@@ -131,17 +131,17 @@ check("Agent fork without model allowed", r.returncode == 0 and out_json(r) is N
 r = run("guard", base("Agent", {"subagent_type": "code-reviewer", "model": "sonnet"}))
 check("Agent code-reviewer with model sonnet denied", r.returncode == 0 and is_deny(r))
 
-# 17. Agent planner with model fable is allowed
-r = run("guard", base("Agent", {"subagent_type": "planner", "model": "fable"}))
-check("Agent planner with model fable allowed", r.returncode == 0 and out_json(r) is None)
+# 17. Agent planner with model opus is allowed
+r = run("guard", base("Agent", {"subagent_type": "planner", "model": "opus"}))
+check("Agent planner with model opus allowed", r.returncode == 0 and out_json(r) is None)
 
 # 18. Agent python-pro with model sonnet is allowed
 r = run("guard", base("Agent", {"subagent_type": "python-pro", "model": "sonnet"}))
 check("Agent python-pro with model sonnet allowed", r.returncode == 0 and out_json(r) is None)
 
-# 19. full model ID for fable is accepted for a reviewer
-r = run("guard", base("Agent", {"subagent_type": "code-reviewer", "model": "claude-fable-5-1"}))
-check("Agent code-reviewer with claude-fable-5-1 allowed", r.returncode == 0 and out_json(r) is None)
+# 19. full model ID for opus is accepted for a reviewer
+r = run("guard", base("Agent", {"subagent_type": "code-reviewer", "model": "claude-opus-5"}))
+check("Agent code-reviewer with claude-opus-5 allowed", r.returncode == 0 and out_json(r) is None)
 
 failed = [n for n, c in checks if not c]
 if failed:

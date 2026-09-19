@@ -1,6 +1,6 @@
 ---
 name: security-engineer
-model: fable
+model: opus
 description: Security infrastructure and compliance specialist. Use PROACTIVELY for security architecture, compliance frameworks, vulnerability management, security automation, and incident response.
 tools: Read, Write, Edit, Bash
 ---

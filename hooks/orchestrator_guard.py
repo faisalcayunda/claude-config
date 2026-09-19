@@ -8,7 +8,7 @@ Modes (argv[1]):
   guard  - PreToolUse (Write|Edit|MultiEdit|NotebookEdit|Bash): deny large
            main-session code writes. Also checks Agent|Task dispatches: a
            missing `model` is denied, and reviewer/planner/designer/
-           architect/auditor subagent_types must use model fable.
+           architect/auditor subagent_types must use model opus.
 
 Discriminator: `agent_id` is present in the hook payload only when the hook
 fires inside a subagent (verified via code.claude.com/docs/en/hooks). Main
@@ -99,16 +99,16 @@ def guard(payload):
             return  # forks always run on the orchestrator's model
         if not model:
             emit_deny(
-                "Pass `model` on every Agent dispatch (CLAUDE.md rule 5): fable "
+                "Pass `model` on every Agent dispatch (CLAUDE.md rule 5): opus "
                 "for reviewers, planners, designers, architects, auditors and "
                 "long tasks; sonnet for implementation and triage; haiku for "
                 "Explore and pure search."
             )
             return
-        if AGENT_REVIEW_RE.search(subagent_type) and not model.startswith(("fable", "claude-fable")):
+        if AGENT_REVIEW_RE.search(subagent_type) and not model.startswith(("opus", "claude-opus")):
             emit_deny(
                 f"`{subagent_type}` is a reviewer/planner/designer role: dispatch "
-                "it with model fable (CLAUDE.md rule 5)."
+                "it with model opus (CLAUDE.md rule 5)."
             )
         return
     if "agent_id" in payload:
