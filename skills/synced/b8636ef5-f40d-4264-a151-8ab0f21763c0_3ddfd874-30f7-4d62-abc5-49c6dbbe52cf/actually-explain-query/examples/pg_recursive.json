@@ -1,0 +1,50 @@
+{
+  "title": "Org chart roll-up into reporting_lines",
+  "dialect": "postgres",
+  "lang": "en",
+  "grounding": "estimate",
+  "summary": "A recursive CTE walks the employee hierarchy down from every VP, a second CTE pulls in contractors, the two are stacked with UNION ALL, and the combined set is written into reporting_lines.",
+  "sql": "WITH RECURSIVE chain AS (\n    SELECT e.id, e.manager_id, e.name, 1 AS depth\n    FROM employees e\n    WHERE e.title = 'VP'\n  UNION ALL\n    SELECT e.id, e.manager_id, e.name, c.depth + 1\n    FROM employees e\n    JOIN chain c ON e.manager_id = c.id\n    WHERE c.depth < 6\n),\ncontractors AS (\n  SELECT c.id, c.agency_manager_id AS manager_id, c.name, 1 AS depth\n  FROM contractors_raw c\n  WHERE c.ended_at IS NULL\n)\nINSERT INTO reporting_lines (id, manager_id, name, depth)\nSELECT * FROM chain\nUNION ALL\nSELECT * FROM contractors\nRETURNING id, depth",
+  "groups": [{"id":"g_chain","label":"RECURSIVE: chain"},{"id":"g_con","label":"CTE: contractors"}],
+  "nodes": [
+    {"id":"t_emp","kind":"table","label":"employees e","plain":"Loads the employee table.","detail":"Base table for the recursion's seed query.","sql_span":"FROM employees e","group":"g_chain","rows_out":14200},
+    {"id":"w_vp","kind":"where","label":"WHERE e.title = 'VP'","plain":"Keeps only the VPs — the roots of the walk.","detail":"The anchor (seed) member of the recursive CTE. Everything the recursion finds hangs off these rows.","sql_span":"WHERE e.title = 'VP'","group":"g_chain","rows_in":14200,"rows_out":38,"delta_note":"38 VPs become the 38 starting rows of the recursion."},
+    {"id":"un_rec","kind":"union","label":"UNION ALL","plain":"Stacks the seed rows and every recursive round.","detail":"In a recursive CTE, `UNION ALL` is what feeds each round's output back in. Rows accumulate here: the working table is re-run until a round returns nothing.","sql_span":"UNION ALL\n    SELECT e.id, e.manager_id","group":"g_chain","rows_out":9450,"delta_note":"38 seed rows plus roughly 9.400 rows found across 5 recursive rounds."},
+    {"id":"t_emp2","kind":"table","label":"employees e","plain":"Re-reads employees for the recursive step.","detail":"Each round joins the working table back to `employees` to find the next layer of reports.","sql_span":"FROM employees e\n    JOIN chain c","group":"g_chain","rows_out":14200},
+    {"id":"j_rec","kind":"join","label":"JOIN chain c ON e.manager_id = c.id","plain":"Matches each employee to a manager already found.","detail":"This join is what walks one level down the tree per round. One manager row can match many employees, so this is the step where the row count grows.","sql_span":"JOIN chain c ON e.manager_id = c.id","group":"g_chain","rows_in":14200,"rows_out":2800,"delta_note":"Per round: each already-found manager pulls in its direct reports (≈4.9 on average)."},
+    {"id":"w_depth","kind":"where","label":"WHERE c.depth < 6","plain":"Stops the walk after six levels.","detail":"The depth guard is the recursion's termination condition. Without it, a cycle in `manager_id` would loop forever — Postgres has no built-in recursion limit.","sql_span":"WHERE c.depth < 6","group":"g_chain","rows_in":2800,"rows_out":2650,"delta_note":"Cuts the branches that already reached level 6."},
+    {"id":"cte_chain","kind":"cte","label":"RECURSIVE: chain","plain":"The finished hierarchy walk.","detail":"`chain` holds every employee reachable from a VP within six levels, each row carrying its depth.","sql_span":"WITH RECURSIVE chain AS","group":"g_chain","rows_out":9450},
+
+    {"id":"t_con","kind":"table","label":"contractors_raw c","plain":"Loads the raw contractor list.","detail":"A separate source that is not part of the employee tree.","sql_span":"FROM contractors_raw c","group":"g_con","rows_out":3100},
+    {"id":"w_con","kind":"where","label":"WHERE c.ended_at IS NULL","plain":"Keeps contractors whose engagement is still open.","detail":"`IS NULL` is the right test here: `ended_at <> ...` would silently drop every open engagement, because a comparison against NULL is never true.","sql_span":"WHERE c.ended_at IS NULL","group":"g_con","rows_in":3100,"rows_out":610,"delta_note":"2.490 contractors have an end date and are excluded."},
+    {"id":"cte_con","kind":"cte","label":"CTE: contractors","plain":"Temporary set of active contractors.","sql_span":"contractors AS","group":"g_con","rows_out":610},
+
+    {"id":"un_main","kind":"union","label":"UNION ALL","plain":"Stacks employees and contractors into one list.","detail":"`UNION ALL` keeps duplicates, so an employee who also appears as a contractor will land in `reporting_lines` twice. Plain `UNION` would de-duplicate but cost a full sort.","sql_span":"UNION ALL\nSELECT * FROM contractors","rows_in":9450,"rows_out":10060,"delta_note":"The only step here that adds rows: 9.450 + 610."},
+    {"id":"ins","kind":"insert","label":"INSERT INTO reporting_lines (id, manager_id, name, depth)","plain":"Writes the combined rows into reporting_lines.","detail":"Column order matters: the `SELECT *` feeding this insert must line up positionally with `(id, manager_id, name, depth)`. Adding a column to either side later will break it silently.","sql_span":"INSERT INTO reporting_lines","rows_in":10060,"rows_out":10060},
+    {"id":"tgt","kind":"insert_target","label":"reporting_lines","plain":"The table receiving the rows.","sql_span":"reporting_lines (id, manager_id, name, depth)","rows_out":10060},
+    {"id":"ret","kind":"returning","label":"RETURNING id, depth","plain":"Hands back the ids and depths just written.","detail":"Avoids a second query to see what was inserted.","sql_span":"RETURNING id, depth","rows_in":10060,"rows_out":10060}
+  ],
+  "edges": [
+    {"from":"t_emp","to":"w_vp"},{"from":"w_vp","to":"un_rec","kind":"union"},
+    {"from":"t_emp2","to":"j_rec","kind":"join"},{"from":"j_rec","to":"w_depth"},
+    {"from":"w_depth","to":"un_rec","kind":"union"},
+    {"from":"un_rec","to":"cte_chain","kind":"cte"},
+    {"from":"cte_chain","to":"j_rec","kind":"cte","recursive":true},
+    {"from":"t_con","to":"w_con"},{"from":"w_con","to":"cte_con","kind":"cte"},
+    {"from":"cte_chain","to":"un_main","kind":"union"},{"from":"cte_con","to":"un_main","kind":"union"},
+    {"from":"un_main","to":"ins"},{"from":"ins","to":"tgt","kind":"insert"},{"from":"tgt","to":"ret","kind":"returning"}
+  ],
+  "funnel": [
+    {"node":"t_emp","stage":"employees (base)","rows":14200,"why":"Every employee row is the starting point."},
+    {"node":"w_vp","stage":"WHERE title = 'VP'","rows":38,"why":"Only VPs seed the recursion."},
+    {"node":"un_rec","stage":"recursive rounds (UNION ALL)","rows":9450,"why":"Each round adds the direct reports of the rows found in the previous round — this is the one step that multiplies."},
+    {"node":"cte_con","stage":"+ active contractors","rows":610,"why":"A separate branch, filtered to open engagements."},
+    {"node":"un_main","stage":"UNION ALL of both branches","rows":10060,"why":"9.450 employees stacked on 610 contractors, duplicates kept."},
+    {"node":"tgt","stage":"rows written to reporting_lines","rows":10060,"why":"Every row that reaches the INSERT is written."}
+  ],
+  "notes": [
+    "Row counts here are reasoned estimates from an average span of control of ~4.9, not measured — run each stage as `SELECT count(*)` to confirm.",
+    "`UNION ALL` between chain and contractors keeps duplicates: anyone present in both lists is inserted twice.",
+    "The recursion's only guard is `depth < 6`. A cycle in `manager_id` would be capped by that guard, but would still produce wrong rows."
+  ]
+}

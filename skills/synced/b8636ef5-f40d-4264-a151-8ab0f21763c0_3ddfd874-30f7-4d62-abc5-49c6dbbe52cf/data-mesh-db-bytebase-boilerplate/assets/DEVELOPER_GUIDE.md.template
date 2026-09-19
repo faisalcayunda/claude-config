@@ -1,0 +1,182 @@
+# Developer Guide — {DB_NAME}
+
+## 1. Roles
+
+| Role | LOGIN | Purpose |
+|---|---|---|
+| `{DB_NAME}` | Yes | Owner of every schema/object. The only credential Bytebase uses to run DDL. Treat as a production secret. |
+| `{DB_NAME}_readonly` | Yes | Shared credential for BI/reporting tools and read-only human access. |
+| `{DB_NAME}_readwrite` | Yes | Shared credential for developers doing DML by hand. Cannot TRUNCATE or DROP anywhere outside `sandbox`. |
+| `{DB_NAME}_ops` | Yes | The application/pipeline runtime credential. Cannot TRUNCATE or DROP anywhere outside `sandbox`. |
+
+All four are created `LOGIN NOINHERIT`: `LOGIN` because each connects
+directly, `NOINHERIT` so privileges only ever come from the explicit
+`GRANT`s below, never silently through role membership.
+
+## 2. Schemas
+
+| Schema | Purpose |
+|---|---|
+| `bronze` | Raw ingestion — source-aligned, append-mostly. |
+| `silver` | Cleaned + validated / conformed data. |
+| `gold` | Curated, aggregated serving layer. |
+| `audit` | Immutable logs. Read-only for everyone except `_ops`, which may only `INSERT`. |
+| `sandbox` | Free-for-all exploration. See §4. |
+| `extensions` | Every PostgreSQL extension lives here, never in `public`. |
+| `remote` | `postgres_fdw` foreign tables pointing at upstream/remote Postgres servers. |
+
+## 3. Grant matrix
+
+| Schema | `_readonly` | `_readwrite` | `_ops` |
+|---|---|---|---|
+| `sandbox` | USAGE, CREATE, full DML incl. TRUNCATE, `sandbox.drop_table()` | same | same |
+| `extensions` | USAGE, EXECUTE | USAGE, EXECUTE | USAGE, EXECUTE |
+| `remote` | USAGE, SELECT | USAGE, SELECT | USAGE, SELECT, INSERT |
+| `bronze` | USAGE, SELECT | USAGE, DML (no CREATE) | USAGE, CREATE, DML |
+| `silver` | USAGE, SELECT | USAGE, DML | USAGE, DML |
+| `gold` | USAGE, SELECT | USAGE, DML | USAGE, SELECT only |
+| `audit` | USAGE, SELECT | USAGE, SELECT only | USAGE, SELECT + INSERT only |
+
+`ALTER DEFAULT PRIVILEGES` is set for every schema so **future** tables
+automatically pick up the same grants — you never need to re-run a GRANT
+statement after adding a table. One nuance worth knowing if you ever extend
+this: `DEFAULT PRIVILEGES` in PostgreSQL is scoped to whichever role actually
+*creates* the object, not to the schema. In `bronze`, `_ops` has `CREATE`
+(pipelines land raw tables directly, outside Bytebase), so the bootstrap SQL
+declares `ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME}_ops` in addition to
+`FOR ROLE {DB_NAME}` — if you ever grant `CREATE` on another schema to a
+non-owner role, you need the matching `FOR ROLE <that role>` default-privilege
+statement too, or tables it creates will silently lack grants for everyone
+else. This exact gap was caught by testing this template against a live
+database, not by inspection — worth re-testing after any change here.
+
+No role other than `{DB_NAME}` ever receives `DROP TABLE`, `TRUNCATE`
+(outside `sandbox`), `ALTER TABLE`, `DROP SCHEMA`, or `CREATE SCHEMA`. All
+structural DDL against `bronze`/`silver`/`gold`/`audit`/`remote` goes through
+Bytebase migrations, run as the owner.
+
+## 4. Why `sandbox` is a deliberate exception
+
+Plain PostgreSQL has no grantable `DROP TABLE` privilege — only the owner (or
+a superuser) can drop a table. To let `_readonly`/`_readwrite`/`_ops` behave
+like true free-for-all sandbox users — including dropping tables they didn't
+create — without widening `DROP` anywhere else in the database, the
+bootstrap installs one `SECURITY DEFINER` helper:
+
+```sql
+SELECT sandbox.drop_table('my_scratch_table');
+```
+
+It's scoped to `sandbox` only (hardcoded schema, regex-validated table name),
+owned by `{DB_NAME}`, and `EXECUTE`-granted to all three roles. This is the
+one place in the whole database where a non-owner role can destroy data
+belonging to someone else — by design, and only here.
+
+`ALTER DEFAULT PRIVILEGES` is set **for every role as a possible creator** in
+`sandbox` (not just the owner), so it doesn't matter which of the four roles
+creates a table there — everyone else still gets full DML + TRUNCATE on it
+automatically.
+
+## 5. Extensions
+
+Installed in `extensions`, all in the bootstrap SQL: `pgcrypto`, `pg_trgm`,
+`dblink`, `postgres_fdw`, `uuid-ossp`, `pg_stat_statements`.
+
+`pg_stat_statements` additionally requires, before `CREATE EXTENSION` will
+succeed:
+1. `shared_preload_libraries = 'pg_stat_statements'` in `postgresql.conf`
+2. A full PostgreSQL **restart** (a reload is not enough)
+
+If that hasn't been done yet on a given environment, comment out the
+`pg_stat_statements` line in `bootstrap/{BOOTSTRAP_FILE}`, apply the config
+change + restart, then re-run the bootstrap (it's idempotent — safe to
+re-run in full).
+
+## 6. search_path
+
+```
+public, extensions, audit, gold, silver, bronze, sandbox, remote
+```
+
+`extensions` sits right after `public` so extension functions
+(`gen_random_bytes()`, `uuid_generate_v4()`, etc.) resolve without a schema
+prefix anywhere else in the path. `remote` is last on purpose — foreign
+tables are meant to be referenced schema-qualified (`remote.some_table`) in
+day-to-day queries, to keep it obvious when a query is touching an external
+system.
+
+## 7. Day-to-day migration workflow (branch-per-environment)
+
+This repo maps git branches to environments 1:1 — by default `{BRANCH_MAP_SUMMARY}` —
+instead of promoting sequentially through every environment on each push to
+`main`. There's no single "promote to next stage" pipeline run; promotion
+happens by merging one environment's branch into the next one's.
+
+1. Branch off of the branch mapped to your lowest environment (e.g.
+   `development`), add a migration under `migrations/`, named with a leading
+   version: `202607230001_add_column_x_ddl.sql` (or semver: `1.1.0_x.sql`).
+2. Open a PR back into that branch — Jenkins runs `bytebase-action check` on
+   every branch/PR and reports SQL Review results.
+3. Merge. Jenkins triggers a build for that branch, re-runs the check, then
+   rolls out — automatically, if that environment isn't configured to
+   require approval (the default for the first/lowest environment).
+4. When ready to promote, open a PR merging that branch into the next one
+   (e.g. `development` → `main`). This is itself a normal code review. Once
+   merged, Jenkins builds the target branch and, if `requireApproval: true`
+   for that environment (the default for every environment after the
+   first), pauses on a Jenkins `input` step before rolling out.
+5. Confirm in Bytebase's Issues view that the release landed in the right
+   environment.
+
+See `docs/BYTEBASE_SETUP.md` for the one-time console setup this all
+depends on (must be a **Multibranch Pipeline** job, not a plain Pipeline
+job, so each branch gets its own build and `env.BRANCH_NAME` resolves), and
+the Jenkinsfile itself for the exact branch → environment mapping
+(`BRANCH_ENV_MAP`).
+
+## 8. Running this against a managed Postgres (RDS, Cloud SQL, Azure, etc.)
+
+Most managed providers give you an "admin" login that has `CREATEDB` and
+`CREATEROLE` but is **not** a true PostgreSQL superuser. Two things in the
+bootstrap SQL exist specifically to handle that:
+
+- **Ownership transfers** (`ALTER DATABASE ... OWNER TO`, `ALTER SCHEMA ...
+  OWNER TO`, `ALTER DEFAULT PRIVILEGES FOR ROLE ...`) need the connecting
+  role to already be able to `SET ROLE` to the target — PostgreSQL 16
+  tightened this so that merely having *created* a role (via `CREATEROLE`)
+  is no longer enough on its own. The bootstrap SQL works around this with
+  a temporary self-grant (`GRANT {role} TO CURRENT_USER`) right after
+  `BEGIN`, and cleans it up again with a matching `REVOKE` right before
+  `COMMIT` — you don't need to do anything for this one, it's automatic and
+  harmless even if you genuinely are a superuser. Confirmed against a real
+  non-superuser CREATEDB/CREATEROLE account while building this template —
+  the error to recognize if you ever see it despite this fix is `must be
+  able to SET ROLE "..."`, or `permission denied to change default
+  privileges`.
+- **Three extensions — `dblink`, `postgres_fdw`, `pg_stat_statements` —
+  genuinely require actual superuser** (or your provider's equivalent, e.g.
+  AWS RDS's `rds_superuser` pseudo-role) to install. No role grant works
+  around this; it's a hard privilege check inside PostgreSQL itself. The
+  bootstrap SQL wraps each extension individually so a permission failure
+  on one prints a `WARNING` and moves on, rather than aborting the whole
+  script — you'll see something like:
+  ```
+  WARNING:  Skipped extension "postgres_fdw" — needs an actual superuser...
+  ```
+  If you see these: ask whoever has actual superuser (or the provider
+  equivalent) to run the one `CREATE EXTENSION` line the warning names,
+  then re-run `scripts/run-bootstrap.sh` for that environment — it's
+  idempotent, so re-running only fills in what's still missing.
+
+## 9. Anti-patterns this repo avoids
+
+- ❌ Hardcoding passwords in SQL files → bootstrap SQL takes them as `psql -v`
+  variables, sourced from `.env`, never committed.
+- ❌ Running the bootstrap SQL through Bytebase → it must run manually first,
+  since Bytebase can't connect until the owner role it needs already exists.
+- ❌ Tables in `public` → always `bronze`/`silver`/`gold`/`sandbox`.
+- ❌ Extensions in `public` → always `extensions`.
+- ❌ Granting `TRUNCATE`/`DROP` broadly to make `sandbox` work → scoped to a
+  single `SECURITY DEFINER` function instead of a blanket privilege.
+- ❌ Skipping `ALTER DEFAULT PRIVILEGES` → future tables would silently lack
+  grants until someone remembers to re-run them by hand.

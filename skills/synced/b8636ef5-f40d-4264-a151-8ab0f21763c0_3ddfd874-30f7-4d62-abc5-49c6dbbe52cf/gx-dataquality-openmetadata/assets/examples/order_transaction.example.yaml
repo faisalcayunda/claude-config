@@ -1,0 +1,100 @@
+# sipscmdb_prod.order_transaction -- 31 rows, the order header / funnel core
+# of SCM (one row per order between a buyer and seller client).
+#
+# Every check below traces back to a BVR-tagged rule in
+# data_dictionary_order_transaction.md / data_vocabulary_order_transaction.md
+# stated as CONFIRMED. Deliberately excluded: the total_amount = total_price
+# + delivery_fee + admin_fee + insurance_fee formula (BVR-005) -- the docs
+# explicitly flag "formula final perlu konfirmasi tim product", so it's left
+# out until the product team confirms it. Also excluded: order_type,
+# payment_reff, shipping_reff, use_insurance, need_transfer -- every row has
+# the same single value today and the docs say the full valid code set
+# "belum dapat dipastikan dari data" (can't be established from data alone).
+
+table:
+  source: scm
+  schema: sipscmdb_prod
+  name: order_transaction
+  fqn: "Replica Prod DB - prod_mysql_sipscm_primary_sipscmdb_prod.prod_mysql_sipscm_primary_sipscmdb_prod.sipscmdb_prod.order_transaction"
+
+columns_needed: [id, buyer_id, seller_id, invoice_number, total_price, admin_fee, delivery_fee, insurance_fee, total_amount, status_transaction, created_at, updated_at]
+
+checks:
+  # BVR-001 -- id: unique, not null
+  - name: id_not_null
+    expectation: ExpectColumnValuesToNotBeNull
+    kwargs: {column: id}
+
+  - name: id_unique
+    expectation: ExpectColumnValuesToBeUnique
+    kwargs: {column: id}
+
+  # BVR-002 -- buyer_id: not null + must reference a real clients.id
+  # (confirmed 100% match, 31/31 -- a clean example of this pattern)
+  - name: buyer_id_not_null
+    expectation: ExpectColumnValuesToNotBeNull
+    kwargs: {column: buyer_id}
+
+  - name: buyer_id_references_clients
+    expectation: ExpectColumnValuesToBeInSet
+    kwargs: {column: buyer_id}
+    value_set_from:
+      source: scm
+      query: "SELECT id FROM sipscmdb_prod.clients"
+
+  # BVR-003 -- seller_id: not null + must reference a real clients.id
+  # (confirmed 100% match, 31/31)
+  - name: seller_id_not_null
+    expectation: ExpectColumnValuesToNotBeNull
+    kwargs: {column: seller_id}
+
+  - name: seller_id_references_clients
+    expectation: ExpectColumnValuesToBeInSet
+    kwargs: {column: seller_id}
+    value_set_from:
+      source: scm
+      query: "SELECT id FROM sipscmdb_prod.clients"
+
+  # BVR-004 -- invoice_number unique per order (confirmed: 31 distinct = row count)
+  - name: invoice_number_unique
+    expectation: ExpectColumnValuesToBeUnique
+    kwargs: {column: invoice_number}
+
+  # Monetary columns -- all confirmed non-negative (observed ranges in the docs)
+  - name: total_price_non_negative
+    expectation: ExpectColumnValuesToBeBetween
+    kwargs: {column: total_price, min_value: 0}
+
+  - name: admin_fee_non_negative
+    expectation: ExpectColumnValuesToBeBetween
+    kwargs: {column: admin_fee, min_value: 0}
+
+  - name: delivery_fee_non_negative
+    expectation: ExpectColumnValuesToBeBetween
+    kwargs: {column: delivery_fee, min_value: 0}
+
+  - name: insurance_fee_non_negative
+    expectation: ExpectColumnValuesToBeBetween
+    kwargs: {column: insurance_fee, min_value: 0}
+
+  - name: total_amount_non_negative
+    expectation: ExpectColumnValuesToBeBetween
+    kwargs: {column: total_amount, min_value: 0}
+
+  # BVR-006 -- status_transaction must be a real order_statuses.id. The docs
+  # confirm this list comes straight from the DB lookup table itself (not a
+  # guess) -- using the full valid set {1..11}, not just the 4 codes seen so
+  # far, so a legitimate-but-not-yet-seen status doesn't get flagged wrongly.
+  - name: status_transaction_known_values
+    expectation: ExpectColumnValuesToBeInSet
+    kwargs: {column: status_transaction, value_set: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]}
+
+  # BVR-009 -- created_at must never be in the future
+  - name: created_at_not_in_future
+    expectation: not_in_future
+    kwargs: {column: created_at}
+
+  # BVR-010 -- updated_at >= created_at (audit consistency)
+  - name: updated_at_after_created_at
+    expectation: ExpectColumnPairValuesAToBeGreaterThanB
+    kwargs: {column_A: updated_at, column_B: created_at, or_equal: true}

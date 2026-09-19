@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+# run-bootstrap.sh — Apply bootstrap/{BOOTSTRAP_FILE} against one environment.
+# Usage: scripts/run-bootstrap.sh --env dev
+#
+# Reads {ENV}_PG_HOST / {ENV}_SUPERUSER / {ENV}_SUPERUSER_PASSWORD /
+# {ENV}_OWNER_PASSWORD / etc. from .env (never from argv, so passwords never
+# land in shell history or `ps`), and passes them to psql as -v variables,
+# which the SQL file references as :owner_pw / :readonly_pw / :readwrite_pw
+# / :ops_pw.
+#
+# The bootstrap account (.env's {ENV}_SUPERUSER) needs CREATEDB/CREATEROLE at
+# minimum, NOT necessarily a true PostgreSQL superuser — see docs/
+# DEVELOPER_GUIDE.md section 8 if you're on a managed provider (RDS, Cloud
+# SQL, Azure, Huawei Cloud, etc.), where this is whatever admin username you
+# chose when the instance was created, almost never literally "postgres".
+#
+# Run this ONCE per environment, BEFORE registering that environment's
+# database in Bytebase (see docs/BYTEBASE_SETUP.md).
+set -euo pipefail
+
+ENV_NAME=""
+PG_SUPERUSER_FLAG=""   # only set if --superuser is passed explicitly on the CLI
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --env) ENV_NAME="$2"; shift 2 ;;
+    --superuser) PG_SUPERUSER_FLAG="$2"; shift 2 ;;
+    *) echo "Unknown flag: $1"; exit 1 ;;
+  esac
+done
+
+[[ -z "$ENV_NAME" ]] && { echo "Usage: scripts/run-bootstrap.sh --env <{ENV_LIST_LOWER}> [--superuser name]"; exit 1; }
+
+if [[ ! -f .env ]]; then
+  echo "✗ .env not found. Run: cp .env.example .env  (then fill in real values)"
+  exit 1
+fi
+set -a
+source .env
+set +a
+
+ENV_UPPER=$(echo "$ENV_NAME" | tr '[:lower:]' '[:upper:]')
+HOST_VAR="${ENV_UPPER}_PG_HOST"
+PORT_VAR="${ENV_UPPER}_PG_PORT"
+SUPERUSER_VAR="${ENV_UPPER}_SUPERUSER"
+SUPERUSER_PW_VAR="${ENV_UPPER}_SUPERUSER_PASSWORD"
+OWNER_PW_VAR="${ENV_UPPER}_OWNER_PASSWORD"
+READONLY_PW_VAR="${ENV_UPPER}_READONLY_PASSWORD"
+READWRITE_PW_VAR="${ENV_UPPER}_READWRITE_PASSWORD"
+OPS_PW_VAR="${ENV_UPPER}_OPS_PASSWORD"
+
+: "${!HOST_VAR:?Missing $HOST_VAR in .env}"
+: "${!PORT_VAR:?Missing $PORT_VAR in .env}"
+: "${!OWNER_PW_VAR:?Missing $OWNER_PW_VAR in .env}"
+: "${!READONLY_PW_VAR:?Missing $READONLY_PW_VAR in .env}"
+: "${!READWRITE_PW_VAR:?Missing $READWRITE_PW_VAR in .env}"
+: "${!OPS_PW_VAR:?Missing $OPS_PW_VAR in .env}"
+
+# Precedence: --superuser flag (explicit, one-off override) > {ENV}_SUPERUSER
+# in .env (the normal path) > "postgres" (last-resort default, almost
+# certainly wrong on a managed provider — this is exactly the gap that used
+# to make this script silently try to log in as "postgres" with no password
+# at all when {ENV}_SUPERUSER wasn't in .env yet).
+PG_SUPERUSER="${PG_SUPERUSER_FLAG:-${!SUPERUSER_VAR:-postgres}}"
+SUPERUSER_PASSWORD="${!SUPERUSER_PW_VAR:-}"
+
+if [[ -z "$SUPERUSER_PASSWORD" ]]; then
+  echo "⚠ No password found for '${PG_SUPERUSER}' (checked ${SUPERUSER_PW_VAR} in .env)."
+  echo "  Proceeding with an empty password — fine for local trust-auth Postgres,"
+  echo "  will fail against any real managed instance. Set ${SUPERUSER_PW_VAR} in .env if this fails."
+fi
+
+echo "→ Applying bootstrap to '${ENV_NAME}' (${!HOST_VAR}:${!PORT_VAR}) as '${PG_SUPERUSER}'"
+read -r -p "  Continue? [y/N] " CONFIRM
+[[ "$CONFIRM" =~ ^[Yy]$ ]] || { echo "Aborted."; exit 1; }
+
+# IMPORTANT: pass the RAW password value, with no extra quotes added here.
+# bootstrap/{BOOTSTRAP_FILE} uses psql's `:'varname'` syntax (quote-and-escape
+# on interpolation), which expects the raw value and does its own SQL-literal
+# escaping. Wrapping it in quotes here would double-quote it and silently set
+# every role's password to the wrong (quote-mangled) string — verified by
+# hand while building this template, so don't "helpfully" add quotes back.
+PGPASSWORD="$SUPERUSER_PASSWORD" psql \
+  -U "$PG_SUPERUSER" \
+  -h "${!HOST_VAR}" \
+  -p "${!PORT_VAR}" \
+  -d postgres \
+  -v owner_pw="${!OWNER_PW_VAR}" \
+  -v readonly_pw="${!READONLY_PW_VAR}" \
+  -v readwrite_pw="${!READWRITE_PW_VAR}" \
+  -v ops_pw="${!OPS_PW_VAR}" \
+  -f bootstrap/{BOOTSTRAP_FILE}
+
+echo "✓ Bootstrap applied to '${ENV_NAME}'. Next: register this database in Bytebase (docs/BYTEBASE_SETUP.md)."

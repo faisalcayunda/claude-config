@@ -1,0 +1,9 @@
+.env
+*.env.local
+__pycache__/
+*.pyc
+.DS_Store
+bytebase-check-result.json
+bytebase-rollout-*.json
+bytebase-manual-check-*.json
+bytebase-manual-rollout-*.json

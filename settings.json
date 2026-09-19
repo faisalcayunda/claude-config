@@ -240,6 +240,9 @@
   "modelSettings": {
     "claude-opus-5": {
       "effortLevel": "medium"
+    },
+    "claude-sonnet-5": {
+      "effortLevel": "high"
     }
   },
   "tui": "fullscreen",
@@ -272,5 +275,6 @@
       "**Org-specific CLIs**: None configured",
       "routine under isal/ prefix: none found"
     ]
-  }
+  },
+  "skipDangerousModePermissionPrompt": true
 }

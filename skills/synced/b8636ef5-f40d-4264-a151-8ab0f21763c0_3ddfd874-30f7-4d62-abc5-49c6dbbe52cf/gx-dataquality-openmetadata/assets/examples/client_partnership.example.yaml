@@ -1,0 +1,98 @@
+# sipscmdb_prod.client_partnership -- 17,738 rows, "Master Backbone" of the
+# SCM marketplace model (which sellers/buyers are allowed to transact).
+#
+# Every check below traces back to a BVR-tagged rule in
+# data_dictionary_client_partnership.md / data_vocabulary_client_partnership.md
+# that is stated as CONFIRMED (not flagged [TBC] / [BELUM TERKONFIRMASI]).
+# `partnership_status`'s human-readable labels (0=Pending, 1=Diajukan, ...)
+# are explicitly flagged as unconfirmed hypotheses in the docs -- so this
+# config only asserts the observed VALID CODE SET {0,1,2,3,4}, never what
+# each code means.
+
+table:
+  source: scm
+  schema: sipscmdb_prod
+  name: client_partnership
+  fqn: "Replica Prod DB - prod_mysql_sipscm_primary_sipscmdb_prod.prod_mysql_sipscm_primary_sipscmdb_prod.sipscmdb_prod.client_partnership"
+
+columns_needed: [id, seller_id, buyer_id, partnership_status, created_at, updated_at]
+
+checks:
+  # BVR-001 -- id: unique, not null, UUID-formatted
+  - name: id_not_null
+    expectation: ExpectColumnValuesToNotBeNull
+    kwargs: {column: id}
+
+  - name: id_unique
+    expectation: ExpectColumnValuesToBeUnique
+    kwargs: {column: id}
+
+  - name: id_matches_uuid_format
+    expectation: ExpectColumnValuesToMatchRegex
+    kwargs:
+      column: id
+      regex: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+
+  # BVR-002 -- seller_id: not null + must reference a real clients.id
+  # (confirmed 98.1% match, ~1.9% known orphans -- this check is EXPECTED to
+  # show some failures; that gap is exactly what it's meant to surface)
+  - name: seller_id_not_null
+    expectation: ExpectColumnValuesToNotBeNull
+    kwargs: {column: seller_id}
+
+  - name: seller_id_references_clients
+    expectation: ExpectColumnValuesToBeInSet
+    kwargs: {column: seller_id}
+    value_set_from:
+      source: scm
+      query: "SELECT id FROM sipscmdb_prod.clients"
+
+  # BVR-003 -- buyer_id: not null + must reference a real clients.id
+  - name: buyer_id_not_null
+    expectation: ExpectColumnValuesToNotBeNull
+    kwargs: {column: buyer_id}
+
+  - name: buyer_id_references_clients
+    expectation: ExpectColumnValuesToBeInSet
+    kwargs: {column: buyer_id}
+    value_set_from:
+      source: scm
+      query: "SELECT id FROM sipscmdb_prod.clients"
+
+  # BVR-004 -- (seller_id, buyer_id) pair must be unique (confirmed: 0
+  # duplicate pairs observed across all 17,738 rows). Multi-column rule --
+  # this is the "fairly complex" case: a plain per-column check can't
+  # express it, it genuinely needs a compound-uniqueness expectation.
+  - name: seller_buyer_pair_unique
+    expectation: ExpectCompoundColumnsToBeUnique
+    kwargs: {column_list: [seller_id, buyer_id]}
+
+  # BVR-005 -- seller_id must never equal buyer_id (confirmed: 0 self-pairs
+  # observed). Also multi-column / "fairly complex": it's a same-row
+  # cross-column comparison, not a property of either column alone.
+  - name: seller_not_equal_buyer
+    expectation: ExpectSelectColumnValuesToBeUniqueWithinRecord
+    kwargs: {column_list: [seller_id, buyer_id]}
+
+  # BVR-006 -- partnership_status: not null + known code set (values
+  # observed via full-table profiling: 0, 1, 2, 3, 4). Meaning of each code
+  # is NOT asserted here since the docs flag that as unconfirmed.
+  - name: partnership_status_not_null
+    expectation: ExpectColumnValuesToNotBeNull
+    kwargs: {column: partnership_status}
+
+  - name: partnership_status_known_values
+    expectation: ExpectColumnValuesToBeInSet
+    kwargs: {column: partnership_status, value_set: [0, 1, 2, 3, 4]}
+
+  # BVR-007 -- created_at must never be in the future
+  - name: created_at_not_in_future
+    expectation: not_in_future
+    kwargs: {column: created_at}
+
+  # BVR-008 -- updated_at >= created_at (audit consistency). Multi-column,
+  # but a common/simple shape -- GX has a built-in expectation for exactly
+  # this pair comparison.
+  - name: updated_at_after_created_at
+    expectation: ExpectColumnPairValuesAToBeGreaterThanB
+    kwargs: {column_A: updated_at, column_B: created_at, or_equal: true}

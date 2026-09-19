@@ -1,0 +1,114 @@
+# user-role-mapping.yaml — User to Role Mapping Configuration
+# Data Product : {DOMAIN_SHORTCODE}/{DATA_PRODUCT_SHORTCODE}
+# DB Name      : {DB_NAME}
+#
+# CARA PENGGUNAAN:
+#   1. Isi section 'members' di setiap role dengan login users yang sudah ada di PostgreSQL
+#   2. Jalankan: make apply-grants        (apply ke database)
+#   3. Jalankan: make apply-grants-dry    (preview tanpa execute)
+#
+# CATATAN PENTING:
+#   - Login users harus dibuat dulu di PostgreSQL: CREATE USER svc_dbt LOGIN PASSWORD '...';
+#   - Script ini hanya GRANT users ke roles, tidak CREATE USER.
+#   - Jangan hardcode password di file ini.
+#   - File ini boleh di-commit ke Git (tidak ada credential di sini).
+#
+# ROLE DESCRIPTIONS:
+#   {DB_NAME}            → Owner: full privileges, CI/CD, Atlas migrations
+#   {DB_NAME}_readonly   → Analysts, BI tools: CONNECT + USAGE + SELECT
+#   {DB_NAME}_readwrite  → Developers: DML (no DROP/TRUNCATE). CREATE TABLE in sandbox only.
+#   {DB_NAME}_ops        → Pipelines, ETL, external apps: CREATE TABLE in bronze + sandbox.
+
+db_name: {DB_NAME}
+
+roles:
+
+  # ──────────────────────────────────────────────────────────────────────────
+  # OWNER — Full control atas semua schemas dan objects
+  # Gunakan sparingly. Biasanya hanya 1-2 service accounts.
+  # ──────────────────────────────────────────────────────────────────────────
+  owner:
+    role: {DB_NAME}
+    comment: "DB owner — full privileges on all schemas and objects"
+    members:
+      []
+      # Contoh:
+      # - username: svc_atlas_migrations
+      #   comment: "Atlas CLI migration service account"
+      #
+      # - username: svc_owner
+      #   comment: "Owner service account for admin operations"
+
+  # ──────────────────────────────────────────────────────────────────────────
+  # READONLY — Read-only consumers
+  # BI tools, dashboards, analysts, data catalog crawlers
+  # Privileges: CONNECT + USAGE (all schemas) + SELECT (all tables)
+  # ──────────────────────────────────────────────────────────────────────────
+  readonly:
+    role: {DB_NAME}_readonly
+    comment: "Read-only: CONNECT + USAGE + SELECT on all schemas"
+    members:
+      []
+      # Contoh:
+      # - username: analyst_jane
+      #   comment: "Data analyst — dashboard access"
+      #
+      # - username: svc_metabase
+      #   comment: "Metabase BI tool service account"
+      #
+      # - username: svc_grafana
+      #   comment: "Grafana datasource service account"
+      #
+      # - username: svc_datahub_crawler
+      #   comment: "DataHub metadata crawler"
+
+  # ──────────────────────────────────────────────────────────────────────────
+  # READWRITE — DML access
+  # Developers, dbt with write access
+  # Privileges: CONNECT + USAGE (all) + SELECT/INSERT/UPDATE/DELETE
+  # Restrictions: NO DROP, TRUNCATE, ALTER, CREATE SCHEMA
+  # CREATE TABLE: sandbox only
+  # Audit schema: SELECT only (cannot write)
+  # Gold schema: full DML (can write curated outputs)
+  # ──────────────────────────────────────────────────────────────────────────
+  readwrite:
+    role: {DB_NAME}_readwrite
+    comment: "Read-write DML (no DROP/TRUNCATE). CREATE TABLE in sandbox only."
+    members:
+      []
+      # Contoh:
+      # - username: dev_john
+      #   comment: "Backend developer"
+      #
+      # - username: dev_sarah
+      #   comment: "Data engineer - dbt write access"
+      #
+      # - username: svc_dbt_write
+      #   comment: "dbt with write access to silver/gold"
+
+  # ──────────────────────────────────────────────────────────────────────────
+  # OPS — Pipeline and external app service accounts
+  # Ingestion tools (Airbyte, Fivetran), transformation (dbt), external APIs
+  # Privileges: CONNECT + USAGE + CREATE TABLE (bronze + sandbox)
+  # DML: bronze, silver, sandbox (full), gold (read-only), audit (insert only)
+  # ──────────────────────────────────────────────────────────────────────────
+  ops:
+    role: {DB_NAME}_ops
+    comment: "Ops: pipelines, ETL, external apps. CREATE TABLE in bronze + sandbox."
+    members:
+      []
+      # Contoh:
+      # - username: svc_airbyte
+      #   comment: "Airbyte ingestion pipeline — lands data in bronze"
+      #
+      # - username: svc_fivetran
+      #   comment: "Fivetran connector — lands data in bronze"
+      #
+      # - username: svc_dbt_prod
+      #   comment: "dbt production run — transforms bronze → silver → gold"
+      #
+      # - username: svc_fastapi
+      #   comment: "FastAPI backend — reads silver/gold, writes audit"
+      #
+      # - username: svc_kafka_consumer
+      #   comment: "Kafka consumer — writes events to bronze"

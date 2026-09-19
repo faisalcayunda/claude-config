@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# verify-roles.sh — Sanity-check that bootstrap provisioning applied correctly.
+# Usage: scripts/verify-roles.sh --env dev
+set -euo pipefail
+
+ENV_NAME=""
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --env) ENV_NAME="$2"; shift 2 ;;
+    *) echo "Unknown flag: $1"; exit 1 ;;
+  esac
+done
+[[ -z "$ENV_NAME" ]] && { echo "Usage: scripts/verify-roles.sh --env <{ENV_LIST_LOWER}>"; exit 1; }
+
+set -a; source .env; set +a
+ENV_UPPER=$(echo "$ENV_NAME" | tr '[:lower:]' '[:upper:]')
+HOST_VAR="${ENV_UPPER}_PG_HOST"; PORT_VAR="${ENV_UPPER}_PG_PORT"
+OWNER_PW_VAR="${ENV_UPPER}_OWNER_PASSWORD"
+
+export PGPASSWORD="${!OWNER_PW_VAR}"
+
+echo "── Roles ──────────────────────────────────────────────────────────"
+psql -U "{DB_NAME}" -h "${!HOST_VAR}" -p "${!PORT_VAR}" -d "{DB_NAME}" -c "\du {DB_NAME}*"
+
+echo "── Schemas ─────────────────────────────────────────────────────────"
+psql -U "{DB_NAME}" -h "${!HOST_VAR}" -p "${!PORT_VAR}" -d "{DB_NAME}" -c "\dn+"
+
+echo "── Extensions ──────────────────────────────────────────────────────"
+psql -U "{DB_NAME}" -h "${!HOST_VAR}" -p "${!PORT_VAR}" -d "{DB_NAME}" -c "\dx"
+
+echo "── search_path ─────────────────────────────────────────────────────"
+psql -U "{DB_NAME}" -h "${!HOST_VAR}" -p "${!PORT_VAR}" -d "{DB_NAME}" -c "SHOW search_path;"
+
+echo "── pg_stat_statements loaded? ──────────────────────────────────────"
+psql -U "{DB_NAME}" -h "${!HOST_VAR}" -p "${!PORT_VAR}" -d "{DB_NAME}" -c \
+  "SELECT count(*) AS tracked_queries FROM extensions.pg_stat_statements;" \
+  || echo "  ⚠ pg_stat_statements not queryable yet — check shared_preload_libraries + restart (see docs/DEVELOPER_GUIDE.md)"
+
+echo "✓ Verification complete for '${ENV_NAME}'."

@@ -1,0 +1,23 @@
+# docker-compose.bytebase.yml — local Bytebase instance for testing this
+# repo's integration WITHOUT needing Jenkins running at all.
+#
+# Usage:
+#   docker compose -f docker-compose.bytebase.yml up -d
+#   open http://localhost:8080   # first run: create workspace admin
+#   docker compose -f docker-compose.bytebase.yml down   # stop when done
+#
+# This is the same image/setup documented in docs/BYTEBASE_SETUP.md, just as
+# a compose file for convenience. Data persists in the bytebase_data volume
+# between runs; delete the volume to start from a clean workspace.
+services:
+  bytebase:
+    image: bytebase/bytebase:{BYTEBASE_VERSION}
+    init: true
+    ports:
+      - "8080:8080"
+    volumes:
+      - bytebase_data:/var/opt/bytebase
+    restart: unless-stopped
+
+volumes:
+  bytebase_data:

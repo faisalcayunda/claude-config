@@ -1,0 +1,299 @@
+#!/usr/bin/env groovy
+/**
+ * Jenkinsfile — Data Mesh Docs Pipeline
+ *
+ * Git Flow Stages:
+ *   feature/* / fix/* → lint + validate + build check
+ *   develop           → lint + build + deploy preview
+ *   release/*         → lint + build + update-doc-history + tag + deploy production
+ *                     + optional Confluence sync + optional Google Drive sync
+ *   main              → (receives merge from release, triggers deploy)
+ *   hotfix/*          → same as release/* fast-track
+ *
+ * Required Jenkins Credentials (configure in Jenkins > Credentials):
+ *   surge-token            : Secret text — Surge.sh token
+ *   gdrive-sa-json         : Secret file  — Google Service Account JSON
+ *   confluence-api-token   : Secret text  — Confluence API token
+ *   slack-webhook-url      : Secret text  — Slack webhook (optional)
+ *   github-ssh-key         : SSH key      — for git operations
+ */
+
+pipeline {
+    agent {
+        docker {
+            image 'node:20-bullseye'
+            args '-u root'
+            reuseNode true
+        }
+    }
+
+    environment {
+        // Project config — override in Jenkins job or Jenkinsfile.env
+        PROJECT_NAME    = "${env.PROJECT_NAME ?: 'data-mesh-docs'}"
+        SURGE_DOMAIN    = "${env.SURGE_DOMAIN ?: "${PROJECT_NAME}.surge.sh"}"
+        SURGE_PREVIEW   = "${env.SURGE_PREVIEW_DOMAIN ?: "${PROJECT_NAME}-preview.surge.sh"}"
+        REPO_URL        = "${env.REPO_URL ?: 'https://github.com/your-org/your-repo'}"
+
+        // Feature toggles
+        GDRIVE_ENABLED      = "${env.GDRIVE_ENABLED ?: 'false'}"
+        CONFLUENCE_ENABLED  = "${env.CONFLUENCE_ENABLED ?: 'false'}"
+        SLACK_ENABLED       = "${env.SLACK_ENABLED ?: 'false'}"
+
+        // Confluence config
+        CONFLUENCE_URL      = "${env.CONFLUENCE_URL ?: ''}"
+        CONFLUENCE_SPACE    = "${env.CONFLUENCE_SPACE ?: ''}"
+        CONFLUENCE_USERNAME = "${env.CONFLUENCE_USERNAME ?: ''}"
+        CONFLUENCE_PARENT_PAGE_ID = "${env.CONFLUENCE_PARENT_PAGE_ID ?: ''}"
+
+        // Google Drive config
+        GDRIVE_FOLDER_ID    = "${env.GDRIVE_FOLDER_ID ?: ''}"
+        GDRIVE_SHARE_EMAILS = "${env.GDRIVE_SHARE_EMAILS ?: ''}"
+    }
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '20'))
+        timeout(time: 30, unit: 'MINUTES')
+        timestamps()
+        ansiColor('xterm')
+    }
+
+    stages {
+
+        // ── ALWAYS: Install dependencies ────────────────────────────────────
+        stage('Install') {
+            steps {
+                sh '''
+                    apt-get update -qq && apt-get install -y -qq pandoc python3 python3-pip git
+                    npm ci --prefer-offline
+                    pip3 install -q google-api-python-client google-auth-httplib2 \
+                                    google-auth-oauthlib python-frontmatter pyyaml requests
+                '''
+            }
+        }
+
+        // ── ALWAYS: Lint Markdown ───────────────────────────────────────────
+        stage('Lint Markdown') {
+            steps {
+                sh 'npm run lint'
+            }
+            post {
+                failure {
+                    echo '❌ Markdownlint failed. Run `npm run lint:fix` locally.'
+                }
+            }
+        }
+
+        // ── ALWAYS: Validate frontmatter ────────────────────────────────────
+        stage('Validate Frontmatter') {
+            steps {
+                sh 'npm run validate-frontmatter'
+            }
+        }
+
+        // ── ALWAYS: Build Docusaurus ─────────────────────────────────────────
+        stage('Build') {
+            steps {
+                sh 'npm run build'
+            }
+        }
+
+        // ── develop / feature: Deploy preview ───────────────────────────────
+        stage('Deploy Preview') {
+            when {
+                anyOf {
+                    branch 'develop'
+                    branch pattern: 'feature/*', comparator: 'GLOB'
+                    branch pattern: 'fix/*', comparator: 'GLOB'
+                }
+            }
+            environment {
+                SURGE_TOKEN = credentials('surge-token')
+            }
+            steps {
+                script {
+                    def previewDomain = "${PROJECT_NAME}-${env.BRANCH_NAME.replaceAll('/', '-')}.surge.sh"
+                    sh "npx surge build/ ${previewDomain} --token ${SURGE_TOKEN}"
+                    env.PREVIEW_URL = "https://${previewDomain}"
+                    echo "📖 Preview: ${env.PREVIEW_URL}"
+                }
+            }
+        }
+
+        // ── release/* + hotfix/* + main: Update Document History ────────────
+        stage('Update Document History') {
+            when {
+                anyOf {
+                    branch 'main'
+                    branch pattern: 'release/*', comparator: 'GLOB'
+                    branch pattern: 'hotfix/*', comparator: 'GLOB'
+                }
+            }
+            steps {
+                script {
+                    def version = sh(
+                        script: "git describe --tags --abbrev=0 2>/dev/null || echo '1.0.0'",
+                        returnStdout: true
+                    ).trim().replaceAll('^v', '')
+                    def nextVersion = incrementVersion(version)
+
+                    sshagent(['github-ssh-key']) {
+                        sh """
+                            git config user.email "jenkins@datamesh.internal"
+                            git config user.name "Jenkins CI"
+                            bash scripts/update-doc-history.sh ${nextVersion}
+                            git push origin HEAD
+                        """
+                    }
+                    env.RELEASE_VERSION = nextVersion
+                }
+            }
+        }
+
+        // ── release/* + hotfix/* + main: Tag Release ────────────────────────
+        stage('Tag Release') {
+            when {
+                anyOf {
+                    branch 'main'
+                    branch pattern: 'release/*', comparator: 'GLOB'
+                    branch pattern: 'hotfix/*', comparator: 'GLOB'
+                }
+            }
+            steps {
+                sshagent(['github-ssh-key']) {
+                    sh """
+                        git tag -a "v${env.RELEASE_VERSION}" \
+                            -m "Release v${env.RELEASE_VERSION}" \
+                            2>/dev/null || echo "Tag already exists, skipping"
+                        git push origin "v${env.RELEASE_VERSION}" || true
+                    """
+                }
+            }
+        }
+
+        // ── release/* + main: Deploy Production ─────────────────────────────
+        stage('Deploy Production') {
+            when {
+                anyOf {
+                    branch 'main'
+                    branch pattern: 'release/*', comparator: 'GLOB'
+                    branch pattern: 'hotfix/*', comparator: 'GLOB'
+                }
+            }
+            environment {
+                SURGE_TOKEN = credentials('surge-token')
+            }
+            steps {
+                sh "npx surge build/ ${SURGE_DOMAIN} --token ${SURGE_TOKEN}"
+                echo "🚀 Production: https://${SURGE_DOMAIN}"
+            }
+        }
+
+        // ── OPTIONAL: Sync to Confluence ────────────────────────────────────
+        stage('Sync to Confluence') {
+            when {
+                allOf {
+                    anyOf {
+                        branch 'main'
+                        branch pattern: 'release/*', comparator: 'GLOB'
+                    }
+                    environment name: 'CONFLUENCE_ENABLED', value: 'true'
+                }
+            }
+            environment {
+                CONFLUENCE_API_TOKEN = credentials('confluence-api-token')
+            }
+            steps {
+                sh '''
+                    # Install mark CLI
+                    curl -sSL https://github.com/kovetskiy/mark/releases/latest/download/mark_Linux_x86_64.tar.gz \
+                        | tar -xz -C /usr/local/bin mark
+                    chmod +x /usr/local/bin/mark
+
+                    python3 scripts/sync-confluence.py
+                '''
+            }
+            post {
+                success { echo "✅ Confluence sync complete." }
+                failure { echo "⚠️ Confluence sync failed — docs still live on surge.sh" }
+            }
+        }
+
+        // ── OPTIONAL: Sync to Google Drive ──────────────────────────────────
+        stage('Sync to Google Drive') {
+            when {
+                allOf {
+                    anyOf {
+                        branch 'main'
+                        branch pattern: 'release/*', comparator: 'GLOB'
+                    }
+                    environment name: 'GDRIVE_ENABLED', value: 'true'
+                }
+            }
+            steps {
+                withCredentials([file(credentialsId: 'gdrive-sa-json', variable: 'GDRIVE_SERVICE_ACCOUNT_JSON')]) {
+                    sh 'python3 scripts/sync-gdrive.py'
+                }
+            }
+            post {
+                success { echo "✅ Google Drive sync complete." }
+                failure { echo "⚠️ Google Drive sync failed — docs still live on surge.sh" }
+            }
+        }
+
+    } // end stages
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'build/**', fingerprint: true, allowEmptyArchive: true
+            cleanWs()
+        }
+        success {
+            script {
+                if (env.SLACK_ENABLED == 'true') {
+                    def msg = buildSlackMessage('SUCCESS')
+                    withCredentials([string(credentialsId: 'slack-webhook-url', variable: 'SLACK_URL')]) {
+                        sh """curl -X POST -H 'Content-type: application/json' \
+                            --data '${msg}' ${SLACK_URL}"""
+                    }
+                }
+            }
+        }
+        failure {
+            script {
+                if (env.SLACK_ENABLED == 'true') {
+                    def msg = buildSlackMessage('FAILURE')
+                    withCredentials([string(credentialsId: 'slack-webhook-url', variable: 'SLACK_URL')]) {
+                        sh """curl -X POST -H 'Content-type: application/json' \
+                            --data '${msg}' ${SLACK_URL}"""
+                    }
+                }
+            }
+        }
+    }
+
+} // end pipeline
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+
+def incrementVersion(String version) {
+    def parts = version.tokenize('.')
+    def major = parts[0].toInteger()
+    def minor = parts.size() > 1 ? parts[1].toInteger() : 0
+    def patch = parts.size() > 2 ? parts[2].toInteger() : 0
+    return "${major}.${minor + 1}.0"
+}
+
+def buildSlackMessage(String status) {
+    def icon = status == 'SUCCESS' ? '✅' : '❌'
+    def color = status == 'SUCCESS' ? '#36a64f' : '#ff0000'
+    def url = env.PREVIEW_URL ?: "https://${env.SURGE_DOMAIN}"
+    return """{
+        "attachments": [{
+            "color": "${color}",
+            "text": "${icon} *${env.PROJECT_NAME} Docs Pipeline — ${status}*\\n" +
+                    "Branch: \`${env.BRANCH_NAME}\` | Build: #${env.BUILD_NUMBER}\\n" +
+                    "URL: ${url}",
+            "footer": "Jenkins CI | ${new Date().format('yyyy-MM-dd HH:mm')}"
+        }]
+    }"""
+}

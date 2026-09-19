@@ -1,0 +1,453 @@
+-- =============================================================================
+-- {SEQ}_provision_{DB_NAME}.sql — One-time Database Bootstrap
+-- DB Name : {DB_NAME}
+--
+-- ⚠  PHASE 0 — RUN MANUALLY, ONCE PER ENVIRONMENT. NOT MANAGED BY BYTEBASE.
+--
+-- Why this file lives in bootstrap/ and not migrations/:
+--   Bytebase connects to a database using a login role that already exists.
+--   This file is what CREATES that role (the {DB_NAME} owner) plus the
+--   database, schemas, and grants. Nothing can hand Bytebase credentials to
+--   connect with before this has run — so it is a manual pre-flight step,
+--   executed once per environment ({ENV_LIST}), and only AFTER it succeeds
+--   do you register the instance+database in Bytebase (see
+--   docs/BYTEBASE_SETUP.md). Every statement below is idempotent
+--   (IF NOT EXISTS / guarded DO blocks) so re-running it is always safe.
+--
+-- Run as: the account in .env's {ENV}_SUPERUSER — needs CREATEDB/CREATEROLE
+-- at minimum, does NOT need to be a true PostgreSQL superuser. On managed
+-- providers (RDS, Cloud SQL, Azure, Huawei Cloud, etc.) this is whatever
+-- admin username you chose when the instance was created, almost never
+-- literally "postgres" — see docs/DEVELOPER_GUIDE.md section 8.
+--
+-- Passwords are NEVER hardcoded here. Run via the wrapper, which reads
+-- .env (including {ENV}_SUPERUSER / {ENV}_SUPERUSER_PASSWORD) and passes
+-- everything as psql variables:
+--   scripts/run-bootstrap.sh --env dev
+--
+-- Or manually (note: RAW values, no surrounding quotes — the SQL below uses
+-- `:'owner_pw'` which quotes/escapes on interpolation; adding quotes here
+-- too would double-quote the password). Substitute DEV_ for whichever
+-- environment's variables you're using, matching your .env:
+--   psql -U "$DEV_SUPERUSER" -h "$DEV_PG_HOST" -p "$DEV_PG_PORT" -d postgres \
+--     -v owner_pw="$DEV_OWNER_PASSWORD" \
+--     -v readonly_pw="$DEV_READONLY_PASSWORD" \
+--     -v readwrite_pw="$DEV_READWRITE_PASSWORD" \
+--     -v ops_pw="$DEV_OPS_PASSWORD" \
+--     -f bootstrap/{SEQ}_provision_{DB_NAME}.sql
+-- =============================================================================
+
+-- =============================================================================
+-- PART 0/1: ROLES + DATABASE
+--
+-- ⚠  Both CREATE ROLE and CREATE DATABASE (a) cannot run inside a transaction
+-- block, and (b) have no native `IF NOT EXISTS` in PostgreSQL. The
+-- `SELECT ... WHERE NOT EXISTS (...) \gexec` idiom below solves both at once:
+-- it only generates (and then, via \gexec, runs) the CREATE statement when
+-- the role/database doesn't already exist yet.
+--
+-- ⚠  Passwords MUST be built this way — at the top level, not inside a
+-- `DO $$ ... $$` block. psql's `:varname` interpolation is intentionally
+-- suppressed inside dollar-quoted strings (so it doesn't collide with
+-- plpgsql's own `:=` assignment syntax), so `PASSWORD :owner_pw` inside a
+-- DO block silently reaches the server as literal text and fails. Verified
+-- empirically against a live PostgreSQL 16 instance while building this
+-- template — this is not a stylistic choice, the DO-block version does
+-- not work.
+--
+-- All 4 roles are LOGIN roles (unlike a NOLOGIN-group-role design) because:
+--   - {DB_NAME}            is the credential Bytebase uses to run DDL rollouts.
+--   - {DB_NAME}_readonly   is a shared credential for BI/reporting tools.
+--   - {DB_NAME}_readwrite  is a shared credential for human developers doing DML.
+--   - {DB_NAME}_ops        is the credential the application / pipeline runtime uses.
+-- NOINHERIT on all of them: privileges come only from direct GRANTs below,
+-- never implicitly through role membership, so `\du` always shows the truth.
+-- =============================================================================
+
+SELECT format('CREATE ROLE %I LOGIN NOINHERIT PASSWORD %L', '{DB_NAME}', :'owner_pw')
+WHERE NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = '{DB_NAME}')
+\gexec
+
+SELECT format('CREATE ROLE %I LOGIN NOINHERIT PASSWORD %L', '{DB_NAME}_readonly', :'readonly_pw')
+WHERE NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = '{DB_NAME}_readonly')
+\gexec
+
+SELECT format('CREATE ROLE %I LOGIN NOINHERIT PASSWORD %L', '{DB_NAME}_readwrite', :'readwrite_pw')
+WHERE NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = '{DB_NAME}_readwrite')
+\gexec
+
+SELECT format('CREATE ROLE %I LOGIN NOINHERIT PASSWORD %L', '{DB_NAME}_ops', :'ops_pw')
+WHERE NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = '{DB_NAME}_ops')
+\gexec
+
+-- Database itself — created with no explicit OWNER (would fail if the
+-- connecting superuser isn't allowed to set arbitrary ownership on some
+-- managed Postgres providers); ownership is transferred explicitly right
+-- after connecting to it below, which works everywhere.
+SELECT format('CREATE DATABASE %I', '{DB_NAME}')
+WHERE NOT EXISTS (SELECT 1 FROM pg_database WHERE datname = '{DB_NAME}')
+\gexec
+
+\c {DB_NAME}
+
+BEGIN;
+
+-- =============================================================================
+-- Postgres 16+ requires the connecting role to already be able to SET ROLE
+-- to a role before it can create/alter objects owned by that role (a real
+-- superuser bypasses this automatically). Many managed Postgres providers
+-- (RDS, Cloud SQL, Azure Database for PostgreSQL) give you an "admin"
+-- account that has CREATEROLE/CREATEDB but is NOT a true superuser — and
+-- as of PG16, even having just *created* a role via CREATEROLE does not by
+-- itself grant the "SET" capability on it (only ADMIN OPTION, a distinct
+-- flag). Without this, every ALTER ... OWNER TO {DB_NAME} statement below
+-- fails with: ERROR: must be able to SET ROLE "{DB_NAME}".
+--
+-- Using CURRENT_USER (rather than hardcoding an admin username) means this
+-- works unmodified whether you're running this as "postgres", "dwh_admin",
+-- or whatever your provider calls its admin account — self-granting only
+-- works because CREATEROLE creators automatically get ADMIN OPTION on
+-- roles they create, which is what lets them grant that role to anyone,
+-- including themselves. Harmless no-op if you already are a superuser.
+--
+-- All 4 roles need this, not just the owner: the sandbox and bronze
+-- sections further down issue `ALTER DEFAULT PRIVILEGES FOR ROLE
+-- {DB_NAME}_readonly/_readwrite/_ops`, and each of those needs this same
+-- capability on itself, independently of the other three — membership on
+-- the owner role does not carry over to them. Confirmed by hand: without
+-- this, the script gets partway through (owner-level statements succeed)
+-- and then fails with "permission denied to change default privileges" on
+-- the first non-owner FOR ROLE statement it hits.
+--
+-- Revoked again at the very end of this file, once every ownership
+-- transfer / default-privilege statement that needs it is done — see the
+-- matching REVOKE block before COMMIT.
+GRANT {DB_NAME} TO CURRENT_USER;
+GRANT {DB_NAME}_readonly TO CURRENT_USER;
+GRANT {DB_NAME}_readwrite TO CURRENT_USER;
+GRANT {DB_NAME}_ops TO CURRENT_USER;
+
+ALTER DATABASE {DB_NAME} OWNER TO {DB_NAME};
+
+-- =============================================================================
+-- PART 2: SCHEMAS (7)
+-- =============================================================================
+
+CREATE SCHEMA IF NOT EXISTS sandbox;
+CREATE SCHEMA IF NOT EXISTS extensions;
+CREATE SCHEMA IF NOT EXISTS bronze;
+CREATE SCHEMA IF NOT EXISTS silver;
+CREATE SCHEMA IF NOT EXISTS gold;
+CREATE SCHEMA IF NOT EXISTS audit;
+CREATE SCHEMA IF NOT EXISTS remote;
+
+ALTER SCHEMA sandbox    OWNER TO {DB_NAME};
+ALTER SCHEMA extensions OWNER TO {DB_NAME};
+ALTER SCHEMA bronze     OWNER TO {DB_NAME};
+ALTER SCHEMA silver     OWNER TO {DB_NAME};
+ALTER SCHEMA gold       OWNER TO {DB_NAME};
+ALTER SCHEMA audit      OWNER TO {DB_NAME};
+ALTER SCHEMA remote     OWNER TO {DB_NAME};
+
+COMMENT ON SCHEMA sandbox    IS 'Free-for-all exploration area — all 3 roles can CREATE/DROP/TRUNCATE here.';
+COMMENT ON SCHEMA extensions IS 'All PostgreSQL extensions installed here (not public) so they are easy to audit and lock down.';
+COMMENT ON SCHEMA bronze     IS 'Raw ingestion layer — source-aligned, append-mostly.';
+COMMENT ON SCHEMA silver     IS 'Cleaned + validated data — conformance layer.';
+COMMENT ON SCHEMA gold       IS 'Curated aggregations + serving layer — read-heavy.';
+COMMENT ON SCHEMA audit      IS 'Immutable audit/lineage logs — read-only for everyone except ops (insert-only).';
+COMMENT ON SCHEMA remote     IS 'Foreign tables imported via postgres_fdw pointing at remote/upstream Postgres servers.';
+
+-- =============================================================================
+-- PART 3: SECURITY HARDENING
+-- =============================================================================
+
+REVOKE CREATE ON SCHEMA public FROM PUBLIC;
+REVOKE CONNECT ON DATABASE {DB_NAME} FROM PUBLIC;
+
+GRANT CONNECT ON DATABASE {DB_NAME} TO {DB_NAME}_readonly;
+GRANT CONNECT ON DATABASE {DB_NAME} TO {DB_NAME}_readwrite;
+GRANT CONNECT ON DATABASE {DB_NAME} TO {DB_NAME}_ops;
+
+-- =============================================================================
+-- PART 4: SCHEMA GRANTS + DEFAULT PRIVILEGES (existing AND future tables)
+--
+-- Grant matrix:
+--   sandbox    : readonly/readwrite/ops all get USAGE+CREATE+full DML+TRUNCATE
+--                (intentional exception — see docs/DEVELOPER_GUIDE.md)
+--   extensions : all roles USAGE + EXECUTE on functions
+--   remote     : readonly/readwrite SELECT | ops SELECT+INSERT (fdw push-out)
+--   bronze     : readonly SELECT | readwrite DML (no CREATE) | ops USAGE+CREATE+DML
+--   silver     : readonly SELECT | readwrite DML | ops DML
+--   gold       : readonly SELECT | readwrite DML | ops SELECT only (serving layer)
+--   audit      : readonly SELECT | readwrite SELECT only | ops SELECT+INSERT only
+--
+-- No role except the {DB_NAME} owner ever receives DROP TABLE, TRUNCATE (outside
+-- sandbox), ALTER TABLE, DROP SCHEMA, or CREATE SCHEMA. Bytebase, running as
+-- the owner, is the only path for DDL against bronze/silver/gold/audit/remote.
+-- =============================================================================
+
+-- ── SANDBOX — free-for-all ───────────────────────────────────────────────────
+GRANT USAGE, CREATE ON SCHEMA sandbox TO {DB_NAME}_readonly, {DB_NAME}_readwrite, {DB_NAME}_ops;
+GRANT SELECT, INSERT, UPDATE, DELETE, TRUNCATE ON ALL TABLES IN SCHEMA sandbox
+  TO {DB_NAME}_readonly, {DB_NAME}_readwrite, {DB_NAME}_ops;
+
+-- Whichever of the 4 roles creates a sandbox table, everyone else must still
+-- get full grants automatically — so DEFAULT PRIVILEGES is set FOR every
+-- possible creator, not just the owner.
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA sandbox
+  GRANT SELECT, INSERT, UPDATE, DELETE, TRUNCATE ON TABLES TO {DB_NAME}_readonly, {DB_NAME}_readwrite, {DB_NAME}_ops;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME}_readonly IN SCHEMA sandbox
+  GRANT SELECT, INSERT, UPDATE, DELETE, TRUNCATE ON TABLES TO {DB_NAME}, {DB_NAME}_readwrite, {DB_NAME}_ops;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME}_readwrite IN SCHEMA sandbox
+  GRANT SELECT, INSERT, UPDATE, DELETE, TRUNCATE ON TABLES TO {DB_NAME}, {DB_NAME}_readonly, {DB_NAME}_ops;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME}_ops IN SCHEMA sandbox
+  GRANT SELECT, INSERT, UPDATE, DELETE, TRUNCATE ON TABLES TO {DB_NAME}, {DB_NAME}_readonly, {DB_NAME}_readwrite;
+
+-- "Delete or drop tables" for non-owners: plain PostgreSQL has no grantable
+-- DROP TABLE privilege (only the owner/superuser can drop). Rather than widen
+-- DROP rights database-wide, expose a SECURITY DEFINER helper scoped to
+-- sandbox only — this is what actually gives readonly/readwrite/ops the
+-- ability to drop a sandbox table without owning it, safely.
+CREATE OR REPLACE FUNCTION sandbox.drop_table(p_table_name text)
+RETURNS void
+SECURITY DEFINER
+SET search_path = sandbox, pg_temp
+AS $$
+BEGIN
+  IF p_table_name !~ '^[a-zA-Z_][a-zA-Z0-9_]*$' THEN
+    RAISE EXCEPTION 'Invalid table name: %', p_table_name;
+  END IF;
+  EXECUTE format('DROP TABLE IF EXISTS sandbox.%I', p_table_name);
+END;
+$$ LANGUAGE plpgsql;
+
+ALTER FUNCTION sandbox.drop_table(text) OWNER TO {DB_NAME};
+COMMENT ON FUNCTION sandbox.drop_table(text) IS
+  'Lets readonly/readwrite/ops drop any table in sandbox without owning it, '
+  'without granting DROP anywhere else in the database. Usage: SELECT sandbox.drop_table(''my_table'');';
+
+GRANT EXECUTE ON FUNCTION sandbox.drop_table(text) TO {DB_NAME}_readonly, {DB_NAME}_readwrite, {DB_NAME}_ops;
+
+-- ── EXTENSIONS ────────────────────────────────────────────────────────────────
+GRANT USAGE ON SCHEMA extensions TO {DB_NAME}_readonly, {DB_NAME}_readwrite, {DB_NAME}_ops;
+GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA extensions TO {DB_NAME}_readonly, {DB_NAME}_readwrite, {DB_NAME}_ops;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA extensions
+  GRANT EXECUTE ON FUNCTIONS TO {DB_NAME}_readonly, {DB_NAME}_readwrite, {DB_NAME}_ops;
+
+-- ── REMOTE (postgres_fdw foreign tables) ─────────────────────────────────────
+GRANT USAGE ON SCHEMA remote TO {DB_NAME}_readonly, {DB_NAME}_readwrite, {DB_NAME}_ops;
+
+GRANT SELECT ON ALL TABLES IN SCHEMA remote TO {DB_NAME}_readonly;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA remote
+  GRANT SELECT ON TABLES TO {DB_NAME}_readonly;
+
+GRANT SELECT ON ALL TABLES IN SCHEMA remote TO {DB_NAME}_readwrite;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA remote
+  GRANT SELECT ON TABLES TO {DB_NAME}_readwrite;
+
+-- ops gets INSERT too, in case a pipeline needs to push data out through an
+-- fdw-mapped foreign table (bidirectional integration). Drop this line if
+-- your remote tables are strictly read-only sources.
+GRANT SELECT, INSERT ON ALL TABLES IN SCHEMA remote TO {DB_NAME}_ops;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA remote
+  GRANT SELECT, INSERT ON TABLES TO {DB_NAME}_ops;
+
+-- ── BRONZE (raw ingestion) ───────────────────────────────────────────────────
+GRANT USAGE ON SCHEMA bronze TO {DB_NAME}_readonly;
+GRANT SELECT ON ALL TABLES IN SCHEMA bronze TO {DB_NAME}_readonly;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA bronze
+  GRANT SELECT ON TABLES TO {DB_NAME}_readonly;
+
+GRANT USAGE ON SCHEMA bronze TO {DB_NAME}_readwrite;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA bronze TO {DB_NAME}_readwrite;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA bronze
+  GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO {DB_NAME}_readwrite;
+
+GRANT USAGE, CREATE ON SCHEMA bronze TO {DB_NAME}_ops;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA bronze TO {DB_NAME}_ops;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA bronze
+  GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO {DB_NAME}_ops;
+
+-- {DB_NAME}_ops is the only non-owner role with CREATE on bronze (ingestion
+-- pipelines land raw tables directly, outside of Bytebase migrations), so
+-- DEFAULT PRIVILEGES must ALSO be declared with ops as the creator — the
+-- three "FOR ROLE {DB_NAME}" defaults above only cover tables created by the
+-- owner (i.e. through a Bytebase-run migration), and would otherwise leave
+-- ops-created tables invisible to readonly/readwrite until someone remembers
+-- a manual GRANT. Verified this distinction by hand while building this
+-- template — it's easy to miss.
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME}_ops IN SCHEMA bronze
+  GRANT SELECT ON TABLES TO {DB_NAME}_readonly;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME}_ops IN SCHEMA bronze
+  GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO {DB_NAME}_readwrite;
+
+-- ── SILVER (cleaned/conformed) ───────────────────────────────────────────────
+GRANT USAGE ON SCHEMA silver TO {DB_NAME}_readonly;
+GRANT SELECT ON ALL TABLES IN SCHEMA silver TO {DB_NAME}_readonly;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA silver
+  GRANT SELECT ON TABLES TO {DB_NAME}_readonly;
+
+GRANT USAGE ON SCHEMA silver TO {DB_NAME}_readwrite;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA silver TO {DB_NAME}_readwrite;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA silver
+  GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO {DB_NAME}_readwrite;
+
+GRANT USAGE ON SCHEMA silver TO {DB_NAME}_ops;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA silver TO {DB_NAME}_ops;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA silver
+  GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO {DB_NAME}_ops;
+
+-- ── GOLD (curated serving) ───────────────────────────────────────────────────
+GRANT USAGE ON SCHEMA gold TO {DB_NAME}_readonly;
+GRANT SELECT ON ALL TABLES IN SCHEMA gold TO {DB_NAME}_readonly;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA gold
+  GRANT SELECT ON TABLES TO {DB_NAME}_readonly;
+
+GRANT USAGE ON SCHEMA gold TO {DB_NAME}_readwrite;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA gold TO {DB_NAME}_readwrite;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA gold
+  GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO {DB_NAME}_readwrite;
+
+-- ops is read-only in gold: it's the serving layer, pipelines shouldn't write here directly
+GRANT USAGE ON SCHEMA gold TO {DB_NAME}_ops;
+GRANT SELECT ON ALL TABLES IN SCHEMA gold TO {DB_NAME}_ops;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA gold
+  GRANT SELECT ON TABLES TO {DB_NAME}_ops;
+
+-- ── AUDIT (read-only / append-only) ──────────────────────────────────────────
+GRANT USAGE ON SCHEMA audit TO {DB_NAME}_readonly;
+GRANT SELECT ON ALL TABLES IN SCHEMA audit TO {DB_NAME}_readonly;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA audit
+  GRANT SELECT ON TABLES TO {DB_NAME}_readonly;
+
+-- readwrite is SELECT-only here — audit logs are immutable, even for the
+-- "readwrite" role. This is what "audit should be read only" means in practice.
+GRANT USAGE ON SCHEMA audit TO {DB_NAME}_readwrite;
+GRANT SELECT ON ALL TABLES IN SCHEMA audit TO {DB_NAME}_readwrite;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA audit
+  GRANT SELECT ON TABLES TO {DB_NAME}_readwrite;
+
+-- ops gets SELECT + INSERT only — pipelines write audit rows, never update/delete them.
+GRANT USAGE ON SCHEMA audit TO {DB_NAME}_ops;
+GRANT SELECT, INSERT ON ALL TABLES IN SCHEMA audit TO {DB_NAME}_ops;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA audit
+  GRANT SELECT, INSERT ON TABLES TO {DB_NAME}_ops;
+
+-- =============================================================================
+-- PART 5: EXTENSIONS
+-- All extensions live in the `extensions` schema (not public) so they're easy
+-- to find, audit, and lock down. pg_stat_statements is installed here too,
+-- per project convention — if your PostgreSQL build rejects a non-default
+-- schema for it (rare, but happens on some managed/hardened builds), drop the
+-- `WITH SCHEMA extensions` clause below and it will install into pg_catalog.
+--
+-- ⚠  dblink, postgres_fdw, and pg_stat_statements require an actual
+-- PostgreSQL superuser to install — confirmed by hand: a CREATEDB+CREATEROLE
+-- admin account (the kind many managed providers give you, e.g. plain RDS/
+-- Cloud SQL/Azure "admin" logins that are not true superusers) gets
+-- "permission denied ... must be superuser to create this extension" on all
+-- three, and no amount of role GRANT works around it — this is a hard
+-- Postgres privilege check, unlike the SET ROLE issue above. Some providers
+-- have their own workaround (e.g. AWS RDS's rds_superuser pseudo-role can
+-- create these specific extensions even without true superuser), so
+-- whether this actually blocks you depends on your provider.
+--
+-- Each extension below is wrapped so a permission failure on ANY of them
+-- prints a clear warning and moves on, instead of aborting the entire
+-- bootstrap — pgcrypto/pg_trgm/uuid-ossp are trusted (install fine for any
+-- database owner) so they'll always succeed regardless.
+--
+-- If any warning fires below: ask whoever has actual superuser (or your
+-- provider's equivalent) to run the one CREATE EXTENSION line it names,
+-- then re-run this whole file — it's idempotent, so re-running only fills
+-- in what's still missing.
+--
+-- ⚠  pg_stat_statements ALSO requires, before this will succeed:
+--    1. shared_preload_libraries = 'pg_stat_statements'   in postgresql.conf
+--    2. A full PostgreSQL restart (not reload) after that config change
+--    If it's not preloaded yet, comment out the pg_stat_statements block
+--    below, apply the config + restart, then re-run this file.
+-- =============================================================================
+
+SET search_path = extensions, public;
+
+DO $$
+BEGIN
+  EXECUTE 'CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA extensions';
+EXCEPTION
+  WHEN insufficient_privilege THEN
+    RAISE WARNING 'Skipped extension "pgcrypto" — insufficient privilege. Ask a superuser to run: CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA extensions; then re-run this file.';
+END $$;
+
+DO $$
+BEGIN
+  EXECUTE 'CREATE EXTENSION IF NOT EXISTS pg_trgm WITH SCHEMA extensions';
+EXCEPTION
+  WHEN insufficient_privilege THEN
+    RAISE WARNING 'Skipped extension "pg_trgm" — insufficient privilege. Ask a superuser to run: CREATE EXTENSION IF NOT EXISTS pg_trgm WITH SCHEMA extensions; then re-run this file.';
+END $$;
+
+DO $$
+BEGIN
+  EXECUTE 'CREATE EXTENSION IF NOT EXISTS dblink WITH SCHEMA extensions';
+EXCEPTION
+  WHEN insufficient_privilege THEN
+    RAISE WARNING 'Skipped extension "dblink" — needs an actual superuser (or provider equivalent, e.g. rds_superuser on AWS RDS). Ask a superuser to run: CREATE EXTENSION IF NOT EXISTS dblink WITH SCHEMA extensions; then re-run this file.';
+END $$;
+
+DO $$
+BEGIN
+  EXECUTE 'CREATE EXTENSION IF NOT EXISTS postgres_fdw WITH SCHEMA extensions';
+EXCEPTION
+  WHEN insufficient_privilege THEN
+    RAISE WARNING 'Skipped extension "postgres_fdw" — needs an actual superuser (or provider equivalent, e.g. rds_superuser on AWS RDS). The remote schema depends on this one. Ask a superuser to run: CREATE EXTENSION IF NOT EXISTS postgres_fdw WITH SCHEMA extensions; then re-run this file.';
+END $$;
+
+DO $$
+BEGIN
+  EXECUTE 'CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA extensions';
+EXCEPTION
+  WHEN insufficient_privilege THEN
+    RAISE WARNING 'Skipped extension "uuid-ossp" — insufficient privilege. Ask a superuser to run: CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA extensions; then re-run this file.';
+END $$;
+
+DO $$
+BEGIN
+  EXECUTE 'CREATE EXTENSION IF NOT EXISTS pg_stat_statements WITH SCHEMA extensions';
+EXCEPTION
+  WHEN insufficient_privilege THEN
+    RAISE WARNING 'Skipped extension "pg_stat_statements" — needs an actual superuser (or provider equivalent, e.g. rds_superuser on AWS RDS), and also needs shared_preload_libraries set + a restart. Ask a superuser to run: CREATE EXTENSION IF NOT EXISTS pg_stat_statements WITH SCHEMA extensions; then re-run this file.';
+END $$;
+
+-- =============================================================================
+-- PART 6: SEARCH PATH
+-- `extensions` sits right after `public` so extension functions resolve
+-- without schema-qualification anywhere else in the search path.
+-- `remote` sits last — foreign tables are intentionally opt-in / schema-
+-- qualified in day-to-day queries to avoid confusing local vs. remote data.
+-- =============================================================================
+
+ALTER DATABASE {DB_NAME}
+  SET search_path = public, extensions, audit, gold, silver, bronze, sandbox, remote;
+
+-- Matches the GRANT block right after BEGIN — every ALTER ... OWNER TO /
+-- ALTER DEFAULT PRIVILEGES statement needing this is done by this point,
+-- so the temporary self-grants are removed again. Safe even if any of them
+-- was never actually needed (e.g. a true superuser ran this): REVOKE on a
+-- non-existent grant only warns, it does not error.
+REVOKE {DB_NAME} FROM CURRENT_USER;
+REVOKE {DB_NAME}_readonly FROM CURRENT_USER;
+REVOKE {DB_NAME}_readwrite FROM CURRENT_USER;
+REVOKE {DB_NAME}_ops FROM CURRENT_USER;
+
+DO $$
+BEGIN
+  RAISE NOTICE '✓ Bootstrap complete: {DB_NAME}';
+  RAISE NOTICE '  Roles      : {DB_NAME} (owner/LOGIN — used by Bytebase) | {DB_NAME}_readonly | {DB_NAME}_readwrite | {DB_NAME}_ops';
+  RAISE NOTICE '  Schemas    : sandbox, extensions, bronze, silver, gold, audit, remote';
+  RAISE NOTICE '  Extensions : pgcrypto, pg_trgm, dblink, postgres_fdw, uuid-ossp, pg_stat_statements';
+  RAISE NOTICE '  search_path: public, extensions, audit, gold, silver, bronze, sandbox, remote';
+  RAISE NOTICE '  Next       : register this database in Bytebase using the {DB_NAME} credential — see docs/BYTEBASE_SETUP.md';
+END $$;
+
+COMMIT;

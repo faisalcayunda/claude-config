@@ -1,0 +1,163 @@
+# Bytebase Setup Guide — {DB_NAME}
+
+This is a **one-time, console-side setup**. None of it can be scripted from
+this repo, because it's state that lives inside Bytebase itself, not in git.
+Do this once per Bytebase workspace (not once per environment) — the actual
+per-environment Postgres provisioning already happened when you ran
+`bootstrap/{BOOTSTRAP_FILE}` for each environment (see the main README).
+
+Do the steps below **after** the Postgres bootstrap has succeeded for every
+environment — Bytebase needs a working, connectable database to register.
+
+## Prerequisites
+
+- A self-hosted Bytebase instance reachable from wherever Jenkins runs.
+  ```bash
+  docker run --rm --init \
+    --name bytebase \
+    --publish 8080:8080 --pull always \
+    --volume ~/.bytebase/data:/var/opt/bytebase \
+    bytebase/bytebase:{BYTEBASE_VERSION}
+  ```
+  For production, run this on infrastructure Jenkins' network can reach —
+  never expose it directly to the public internet.
+- The `{DB_NAME}` bootstrap already applied for every environment
+  ({ENV_LIST}), so each Postgres instance already has the `{DB_NAME}` owner
+  role, schemas, and grants in place.
+
+## Step 1 — Create environments
+
+**Settings → Environments** → create one environment per deployment target,
+named to match this repo exactly: {ENV_LIST}. The names matter — the
+Jenkinsfile's `--target-stage=environments/<name>` flag must match verbatim.
+
+## Step 2 — Register each Postgres instance
+
+**Instances → Add Instance**, once per environment:
+
+| Field | Value |
+|---|---|
+| Environment | the matching one from Step 1 |
+| Host / Port | your Postgres host for that environment |
+| Username | `{DB_NAME}` |
+| Password | the `OWNER_PASSWORD` you set for that environment in `.env` |
+| Database | `{DB_NAME}` |
+
+Bytebase connects **as the owner role**, because that's the credential that
+holds DDL rights (`CREATE`/`ALTER`/`DROP` on the schemas it owns). This is
+why the owner role — and only the owner role — is `LOGIN`-enabled with a
+password Bytebase is trusted with; treat this credential like a production
+secret, store it only in Bytebase's own secret storage and in Jenkins
+credentials, never in a shared team password doc.
+
+## Step 3 — Create the project and add the databases
+
+**Projects → New Project** → name it `{DB_NAME}` (or your own convention —
+just update `BYTEBASE_PROJECT` in the Jenkinsfile to match). Add the
+`{DB_NAME}` database from every instance you registered in Step 2 to this
+project.
+
+Once databases are added, note the exact resource name Bytebase assigns each
+one (visible in the database detail page URL or via the API) — it will look
+like `instances/<instance-id>/databases/{DB_NAME}`. You need these for
+Step 6.
+
+## Step 4 — Create the CI/CD service account
+
+**IAM & Admin → Users & Groups → Add User**:
+
+- Name: `svc-jenkins-{DB_NAME}` (or your convention)
+- Roles: `Workspace Member` + `GitOps Service Agent`
+
+Open the new account and **Copy Service Key** — this is the
+`BYTEBASE_SERVICE_ACCOUNT_SECRET`. You will not be able to view it again
+after leaving the page.
+
+## Step 5 — Configure SQL Review
+
+**CI/CD → SQL Review → Create SQL Review** → start from the Sample Template
+→ attach it to your production-equivalent environment(s) from Step 1 (all
+environments after the first one in {ENV_LIST}, at minimum). This is what
+makes `bytebase-action check` actually catch risky DDL in the Jenkins
+pipeline instead of rubber-stamping everything.
+
+## Step 6 — Wire up Jenkins
+
+This repo uses a **branch-per-environment** model: `{BRANCH_MAP_SUMMARY}`.
+Each of those branches deploys to exactly one environment — there's no
+sequential promotion through every environment on a single push. Promotion
+happens in git, by merging one environment branch into the next (e.g.
+merging `development` into `main`), which is also where your normal PR
+review already lives.
+
+1. **Create a Multibranch Pipeline job** (not a plain Pipeline job) pointed
+   at this repo — this is what makes Jenkins run a separate build per
+   branch and populates `env.BRANCH_NAME`, which the Jenkinsfile relies on
+   to look up which environment (if any) a branch deploys to.
+2. **Manage Jenkins → Credentials** — add two **Secret text** credentials:
+   - ID `bytebase-service-account` → value: the service account's email
+   - ID `bytebase-service-account-secret` → value: the service key from Step 4
+3. Open the generated `Jenkinsfile` and replace the `TODO` placeholders:
+   - `BYTEBASE_URL` → your Bytebase instance URL
+   - `BYTEBASE_PROJECT` → `projects/{DB_NAME}` (confirm the exact name from Step 3)
+   - Each `target:` value inside `BRANCH_ENV_MAP` → the resource names you
+     noted in Step 3, e.g. `instances/dev-instance/databases/{DB_NAME}`
+4. Optionally set **required approvers / wait timer** at the environment
+   level in Bytebase's own **Rollout Policy** settings (Enterprise plan) —
+   independent of, and in addition to, the `requireApproval` flag already
+   set per-branch in the generated `BRANCH_ENV_MAP` (which pauses the
+   Jenkins *pipeline* on an `input` step; Bytebase's rollout policy can
+   independently require sign-off on the *rollout issue* itself even if
+   something calls the API directly).
+
+## Verifying it works
+
+1. Add a small migration under `migrations/`, e.g.
+   `202607230001_create_example_table_ddl.sql`, on a feature branch off of
+   your dev branch.
+2. Open a PR into the branch mapped to your dev environment — the
+   `SQL Review (check)` stage runs on every branch and reports
+   warnings/errors.
+3. Merge it — Jenkins triggers a build for that branch, runs the check
+   again, then rolls out automatically (no approval gate on the
+   lowest-stakes environment by default).
+4. When ready to promote, open a PR merging that branch into the next one
+   in `{BRANCH_MAP_SUMMARY}` (e.g. `development` → `main`). Merging triggers
+   a build on the target branch, which pauses on Jenkins' `input` step
+   (`requireApproval: true` for every environment after the first) before
+   rolling out.
+5. Confirm in Bytebase's **Issues** view that a release + rollout was
+   created for the right environment, and that the migration actually
+   landed in the target database.
+
+## Testing locally, without Jenkins
+
+You don't need Jenkins running to test any of this. Two pieces make that
+possible:
+
+**A disposable local Bytebase**, if you don't want to point at a shared
+instance while testing:
+```bash
+docker compose -f docker-compose.bytebase.yml up -d
+# open http://localhost:8080, create a workspace admin, then repeat
+# steps 2-5 above against it
+```
+
+**Running the exact same commands Jenkins would, by hand:**
+```bash
+scripts/bytebase-manual-rollout.sh --env dev --check     # SQL Review only, read-only, safe anytime
+scripts/bytebase-manual-rollout.sh --env dev --rollout   # actually deploys, asks for confirmation first
+```
+This calls the same `bytebase-action` Docker image with the same flags the
+`Jenkinsfile` uses — it's a faithful local reproduction, not a separate
+path that could drift out of sync, and the env→target mapping comes from
+the same `--environments`/`--branch-map` values used when this repo was
+generated. Use `--check` freely; `--rollout` actually creates a release and
+deploys, so it prompts before doing anything.
+
+## Reference
+
+Full CLI flag reference for `bytebase-action`: see the upstream doc at
+<https://github.com/bytebase/bytebase/blob/main/action/README.md>, or
+`references/bytebase-action-flags.md` in this skill if you're regenerating
+or hand-editing the Jenkinsfile.

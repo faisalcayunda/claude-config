@@ -1,0 +1,100 @@
+#!/usr/bin/env bash
+# import-existing-schema.sh — Onboard an ALREADY-EXISTING database into this
+# repo by introspecting its current schema with pg_dump, so this repo (and
+# Bytebase) start from reality instead of assuming an empty database.
+#
+# Usage: scripts/import-existing-schema.sh --env production
+#
+# What this does NOT do: it does not modify the remote database, and it does
+# NOT push the snapshot into migrations/ automatically. Bytebase tracks which
+# migration versions it has already applied (its "revision" history) per
+# database — if this snapshot's CREATE TABLE statements were fed to
+# `bytebase-action rollout` against a database where those tables already
+# exist, they would fail with "already exists" errors, because as far as
+# Bytebase knows nothing has been applied yet. Reconciling "this schema
+# already exists, treat it as the starting point" is a Bytebase-side action
+# (establishing a baseline / syncing schema), not something a git script can
+# safely do on its own — see docs/IMPORTING_EXISTING_DATABASE.md.
+set -euo pipefail
+
+BOLD='\033[1m'; CYAN='\033[36m'; GREEN='\033[32m'; YELLOW='\033[33m'; RED='\033[31m'; RESET='\033[0m'
+info()    { echo -e "${CYAN}  →${RESET} $1"; }
+success() { echo -e "${GREEN}  ✓${RESET} $1"; }
+warn()    { echo -e "${YELLOW}  ⚠${RESET} $1"; }
+fail()    { echo -e "${RED}  ✗${RESET} $1"; exit 1; }
+
+ENV_NAME=""
+PG_SUPERUSER_FLAG=""   # only set if --superuser is passed explicitly on the CLI
+OUT_DIR="bootstrap/imported"
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --env)         ENV_NAME="$2";       shift 2 ;;
+    --superuser)   PG_SUPERUSER_FLAG="$2"; shift 2 ;;
+    --out-dir)     OUT_DIR="$2";        shift 2 ;;
+    *) fail "Unknown flag: $1" ;;
+  esac
+done
+
+[[ -z "$ENV_NAME" ]] && fail "Usage: scripts/import-existing-schema.sh --env <name> [--superuser name] [--out-dir bootstrap/imported]"
+
+command -v pg_dump > /dev/null || fail "pg_dump not found. Install the postgresql-client package matching your server's major version."
+
+if [[ ! -f .env ]]; then
+  fail ".env not found. Run: cp .env.example .env  (then fill in real connection details)"
+fi
+set -a; source .env; set +a
+
+ENV_UPPER=$(echo "$ENV_NAME" | tr '[:lower:]' '[:upper:]' | tr '-' '_')
+HOST_VAR="${ENV_UPPER}_PG_HOST"
+PORT_VAR="${ENV_UPPER}_PG_PORT"
+SUPERUSER_VAR="${ENV_UPPER}_SUPERUSER"
+SUPERUSER_PW_VAR="${ENV_UPPER}_SUPERUSER_PASSWORD"
+: "${!HOST_VAR:?Missing $HOST_VAR in .env — is $ENV_NAME a real environment in this repo?}"
+: "${!PORT_VAR:?Missing $PORT_VAR in .env}"
+
+# Precedence: --superuser flag > {ENV}_SUPERUSER in .env > "postgres" default.
+# See run-bootstrap.sh for why this matters — a managed provider's admin
+# account is almost never literally "postgres".
+PG_SUPERUSER="${PG_SUPERUSER_FLAG:-${!SUPERUSER_VAR:-postgres}}"
+SUPERUSER_PASSWORD="${!SUPERUSER_PW_VAR:-}"
+
+mkdir -p "$OUT_DIR"
+TIMESTAMP=$(date +%Y%m%d%H%M%S)
+OUT_FILE="${OUT_DIR}/${TIMESTAMP}_${ENV_NAME}_existing_schema_snapshot.sql"
+
+info "Dumping schema-only from '${ENV_NAME}' (${!HOST_VAR}:${!PORT_VAR}, database {DB_NAME}) as '${PG_SUPERUSER}'..."
+info "Using --no-owner --no-privileges so the dump doesn't fight with this repo's own role/grant setup in bootstrap/."
+
+PGPASSWORD="$SUPERUSER_PASSWORD" pg_dump \
+  -h "${!HOST_VAR}" \
+  -p "${!PORT_VAR}" \
+  -U "$PG_SUPERUSER" \
+  -d "{DB_NAME}" \
+  --schema-only \
+  --no-owner \
+  --no-privileges \
+  --no-tablespaces \
+  -f "$OUT_FILE"
+
+# Strip Postgres's own noise (SET statements, comments) that isn't portable
+# or useful to review — keep the actual DDL.
+sed -i.bak '/^SET /d; /^SELECT pg_catalog.set_config/d; /^--$/d' "$OUT_FILE" 2>/dev/null || true
+rm -f "${OUT_FILE}.bak"
+
+LINES=$(wc -l < "$OUT_FILE" | tr -d ' ')
+success "Wrote ${OUT_FILE} (${LINES} lines)"
+
+echo ""
+echo "  This is a SNAPSHOT for review, not an applied migration. Next steps:"
+echo "  1. Review ${OUT_FILE} — this is what pg_dump found in '${ENV_NAME}' right now."
+echo "  2. Register this database's instance in Bytebase if you haven't yet"
+echo "     (docs/BYTEBASE_SETUP.md, steps 1-2)."
+echo "  3. In Bytebase, use Sync Schema / establish a baseline against this"
+echo "     database so Bytebase records the CURRENT schema as its starting"
+echo "     point, rather than something it needs to create from scratch."
+echo "     See docs/IMPORTING_EXISTING_DATABASE.md for the full walkthrough."
+echo "  4. Only after that: new changes go in migrations/ as normal, versioned"
+echo "     forward from this snapshot — do NOT copy this file into migrations/"
+echo "     and roll it out through bytebase-action; the objects already exist"
+echo "     and CREATE TABLE would fail."

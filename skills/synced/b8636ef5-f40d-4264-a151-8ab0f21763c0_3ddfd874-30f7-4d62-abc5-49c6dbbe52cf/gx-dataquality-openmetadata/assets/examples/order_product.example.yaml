@@ -1,0 +1,76 @@
+# sipscmdb_prod.order_product -- 31 rows, the order LINE ITEM table of SCM
+# (one row = one product within one order, with a price/quantity/name snapshot
+# taken at transaction time). Child of order_transaction.
+#
+# Every check below traces to a BVR-tagged rule stated as CONFIRMED in
+# data_dictionary_order_product.md / data_vocabulary_order_product.md.
+# Deliberately EXCLUDED as unconfirmed / ambiguous:
+#   - variant_id -> product_variants (BVR-004): conditional "jika diisi", 24 of
+#     31 rows blank -- empty-vs-null handling not baked in, so left out.
+#   - product_weight (BVR-009): unit "[satuan baku perlu konfirmasi tim product]"
+#     and no >= 0 rule stated -- left out.
+#   - is_inventoried: value meaning is an explicit hypothesis "[perlu validasi
+#     tim product]" -- no code set asserted.
+#   - order_id / product_id NOT-NULL: schema marks both nullable (0 NULL only in
+#     current data); the docs assert referential integrity only, so we check
+#     that, not not-null.
+
+table:
+  source: scm
+  schema: sipscmdb_prod
+  name: order_product
+  fqn: "Replica Prod DB - prod_mysql_sipscm_primary_sipscmdb_prod.prod_mysql_sipscm_primary_sipscmdb_prod.sipscmdb_prod.order_product"
+
+columns_needed: [id, order_id, product_id, price, quantity, created_at, updated_at]
+
+checks:
+  # BVR-001 -- id: not null, unique, UUID-formatted
+  - name: id_not_null
+    expectation: ExpectColumnValuesToNotBeNull
+    kwargs: {column: id}
+
+  - name: id_unique
+    expectation: ExpectColumnValuesToBeUnique
+    kwargs: {column: id}
+
+  - name: id_matches_uuid_format
+    expectation: ExpectColumnValuesToMatchRegex
+    kwargs:
+      column: id
+      regex: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+
+  # BVR-002 -- order_id must reference a real order_transaction.id (31/31 match)
+  - name: order_id_references_order_transaction
+    expectation: ExpectColumnValuesToBeInSet
+    kwargs: {column: order_id}
+    value_set_from:
+      source: scm
+      query: "SELECT id FROM sipscmdb_prod.order_transaction"
+
+  # BVR-003 -- product_id must reference a real products.id (31/31 match, 9 distinct)
+  - name: product_id_references_products
+    expectation: ExpectColumnValuesToBeInSet
+    kwargs: {column: product_id}
+    value_set_from:
+      source: scm
+      query: "SELECT id FROM sipscmdb_prod.products"
+
+  # BVR-005 -- price: non-negative (snapshot unit price, Rupiah; observed 18k..135k)
+  - name: price_non_negative
+    expectation: ExpectColumnValuesToBeBetween
+    kwargs: {column: price, min_value: 0}
+
+  # BVR-006 -- quantity: at least 1 unit per line item (observed 1..19)
+  - name: quantity_min_one
+    expectation: ExpectColumnValuesToBeBetween
+    kwargs: {column: quantity, min_value: 1}
+
+  # BVR-007 -- created_at must never be in the future
+  - name: created_at_not_in_future
+    expectation: not_in_future
+    kwargs: {column: created_at}
+
+  # BVR-008 -- updated_at >= created_at (audit consistency)
+  - name: updated_at_after_created_at
+    expectation: ExpectColumnPairValuesAToBeGreaterThanB
+    kwargs: {column_A: updated_at, column_B: created_at, or_equal: true}

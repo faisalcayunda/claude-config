@@ -1,0 +1,1312 @@
+,,,,No.,KOMPONEN / TAHAPAN PEKERJAAN,SATUAN,SATUAN DETAIL,PERKIRAAN VOLUME/ KUANTITAS,PERKIRAAN VOLUME/ KUANTITAS DETAIL,PERKIRAAN LAMA WAKTU (BULAN),PERKIRAAN JUMLAH ORANG/UNIT,PERKIRAAN TOTAL,HARGA DASAR (Rp),KOEFISIEN/INDEKS KOMPLEKSITAS,SUB TOTAL,MARGIN 50%,PPH 2%,"HARGA SATUAN (Rp)
+INTERNAL",HARGA SATUAN (Rp),TOTAL BIAYA (Rp) INTERNAL,TOTAL BIAYA (Rp),PERSENTASE (%),KATEGORI
+1,,,,1,"KAJIAN DAN ANALISIS KOMPREHENSIF TATA KELOLA DATA 25 SATUAN KERJA
+(IN-DEPTH INTERVIEW, QUESTIONNAIRE, OBSERVATION, TESTING, FGD, CO-CREATION, DESK RESEARCH, BENCHMARK)",,,,,,,,,,,,,,,Rp 11.020.408.163,Rp 11.020.408.163,"2,48%",
+1,1,,,1.1,Data Governance Maturity Assessment 25 Satuan Kerja,Paket,Paket,1,1,12,6,72,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,Rp 5.510.204.082,Rp 5.510.204.082,,"50,00%",TATA KELOLA
+1,2,,,1.2,Data Quality Maturity Assessment 25 Satuan Kerja,Paket,Paket,1,1,12,6,72,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,Rp 5.510.204.082,Rp 5.510.204.082,,"50,00%",TATA KELOLA
+2,,,,2,"PENYUSUNAN PETUNJUK TEKNIS DAN PETUNJUK PELAKSANAAN DALAM PENYELENGGARAAN SATU DATA POLRI
+(IN-DEPTH INTERVIEW, QUESTIONNAIRE, OBSERVATION, TESTING, FGD, CO-CREATION, DESK RESEARCH, BENCHMARK)",,,,,,,,,,,,,,,Rp 51.428.571.429,Rp 51.428.571.429,"11,57%",
+2,1,,,2.1,Penyusunan Standar Operasional Prosedur Tata Kelola Data,Paket,,1,,,,,,,,,,,Rp 31.224.489.796,Rp 31.224.489.796,Rp 31.224.489.796,"60,71%",
+2,1,1,,2.1.1,SOP Perencanaan dan Inventarisasi Data,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"5,88%",TATA KELOLA
+2,1,2,,2.1.2,SOP Pengumpulan dan Akuisisi Data,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"5,88%",TATA KELOLA
+2,1,3,,2.1.3,SOP Penyimpanan dan Klasifikasi Data,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"5,88%",TATA KELOLA
+2,1,4,,2.1.4,SOP Manajemen Kualitas Data,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"5,88%",TATA KELOLA
+2,1,5,,2.1.5,SOP Verifikasi dan Validasi Data,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"5,88%",TATA KELOLA
+2,1,6,,2.1.6,SOP Katalog Data dan Metadata,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"5,88%",TATA KELOLA
+2,1,7,,2.1.7,SOP Interoperabilitas Data dan API Lifecycle,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"5,88%",TATA KELOLA
+2,1,8,,2.1.8,SOP Akses dan Pemanfaatan Data,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"5,88%",TATA KELOLA
+2,1,9,,2.1.9,SOP Publikasi dan Diseminasi Data,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"5,88%",TATA KELOLA
+2,1,10,,2.1.10,SOP Pengarsipan dan Retensi Data,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"5,88%",TATA KELOLA
+2,1,11,,2.1.11,SOP Pemusnahan Data,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"5,88%",TATA KELOLA
+2,1,12,,2.1.12,SOP Audit Data,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"5,88%",TATA KELOLA
+2,1,13,,2.1.13,SOP Keamanan Informasi dan Respons Insiden,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"5,88%",TATA KELOLA
+2,1,14,,2.1.14,SOP Data Protection Impact Assessment (DPIA) atau Uji Konsekuensi Data Sensitif,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"5,88%",TATA KELOLA
+2,1,15,,2.1.15,SOP Key Management dan Enkripsi Data,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"5,88%",TATA KELOLA
+2,1,16,,2.1.16,SOP Data Masking/Pseudonymization/Tokenization,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"5,88%",TATA KELOLA
+2,1,17,,2.1.17,SOP Data Subject Access Request (DSAR) atau Manajemen Permintaan Subjek Data,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"5,88%",TATA KELOLA
+2,2,,,2.2,Penyusunan Arsitektur Data dan Informasi SPBE,Paket,,1,,,,,,,,,,,Rp 7.346.938.776,Rp 7.346.938.776,Rp 7.346.938.776,"14,29%",
+2,2,1,,2.2.1,Conceptual Architecture,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"25,00%",TATA KELOLA
+2,2,2,,2.2.2,Logical Architecture,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"25,00%",TATA KELOLA
+2,2,3,,2.2.3,Physical Architecture,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"25,00%",TATA KELOLA
+2,2,4,,2.2.4,Layanan Lintas Fungsi,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"25,00%",TATA KELOLA
+2,3,,,2.3,Penyusunan Standar Data dan/atau Metadata,Paket,,1,,,,,,,,,,,Rp 12.857.142.857,Rp 12.857.142.857,Rp 12.857.142.857,"25,00%",
+2,3,1,,2.3.1,Standard Naming Conventions,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"14,29%",TATA KELOLA
+2,3,2,,2.3.2,Manajemen Metadata (Kelengkapan dan Kualitas),,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"14,29%",TATA KELOLA
+2,3,3,,2.3.3,Manajemen Kamus Data,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"14,29%",TATA KELOLA
+2,3,4,,2.3.4,Manajemen Kontrak Data atau Data Sharing Agreement,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"14,29%",TATA KELOLA
+2,3,5,,2.3.5,Manajemen Masa Retensi Data,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"14,29%",TATA KELOLA
+2,3,6,,2.3.6,Manajemen Asal Usul Data (Data Lineage),,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"14,29%",TATA KELOLA
+2,3,7,,2.3.7,Manajemen Kode Referensi,,Paket,,1,6,4,24,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.836.734.694,,"14,29%",TATA KELOLA
+3,,,,3,IMPLEMENTASI TATA KELOLA DATA DALAM PENYELENGGARAAN SATU DATA POLRI DI 25 SATUAN KERJA,,,,,,,,,,,,,,,Rp 24.795.918.367,Rp 24.795.918.367,"5,58%",
+3,1,,,3.1,Data Discovery ke 25 Satuan Kerja,Paket,,1,,,,,,,,,,,Rp 13.775.510.204,Rp 13.775.510.204,Rp 13.775.510.204,"55,56%",
+3,1,1,,3.1.1,Inventarisasi dan Klasifikasi Data Prioritas,,Paket,,1,6,6,36,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 2.755.102.041,,"20,00%",DATA
+3,1,2,,3.1.2,Inventarisasi dan Klasifikasi Data Induk/Master,,Paket,,1,6,6,36,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 2.755.102.041,,"20,00%",DATA
+3,1,3,,3.1.3,Inventarisasi dan Klasifikasi Data Referensi,,Paket,,1,6,6,36,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 2.755.102.041,,"20,00%",DATA
+3,1,4,,3.1.4,Inventarisasi dan Klasifikasi Data Transaksi,,Paket,,1,6,6,36,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 2.755.102.041,,"20,00%",DATA
+3,1,5,,3.1.5,Inventarisasi dan Klasifikasi Data Pendukung Lainnya,,Paket,,1,6,6,36,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 2.755.102.041,,"20,00%",DATA
+3,2,,,3.2,Data Quality Management untuk 25 Satuan Kerja,Paket,,1,,,,,,,,,,,Rp 11.020.408.163,Rp 11.020.408.163,Rp 11.020.408.163,"44,44%",
+3,2,1,,3.2.1,Data Profiling,,Paket,,1,6,6,36,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 2.755.102.041,,"25,00%",DATA
+3,2,2,,3.2.2,Data Cleansing,,Paket,,1,6,6,36,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 2.755.102.041,,"25,00%",DATA
+3,2,3,,3.2.3,Data Quality Rules,,Paket,,1,6,6,36,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 2.755.102.041,,"25,00%",DATA
+3,2,4,,3.2.4,Data Quality Monitoring,,Paket,,1,6,6,36,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 2.755.102.041,,"25,00%",DATA
+4,,,,4,PENGEMBANGAN PLATFORM EKOSISTEM DATA POLRI,,,,,,,,,,,,,,,Rp 283.220.663.265,Rp 283.220.663.265,"63,74%",
+4,1,,,4.1,Modul Manajemen Data,,,,,,,,,,,,,,,Rp 37.098.214.286,Rp 37.098.214.286,"13,10%",
+4,1,1,,4.1.1,Fitur Pengelolaan Data Prioritas,Fitur,,1,,,,,,,,,,,Rp 4.190.051.020,Rp 4.190.051.020,Rp 4.190.051.020,"11,29%",
+4,1,1,1,4.1.1.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,1,1,2,4.1.1.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,1,1,3,4.1.1.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,1,1,4,4.1.1.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,4,2,1,8,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 459.183.673,,"10,96%",PRODUCT
+4,1,1,5,4.1.1.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"4,11%",PRODUCT
+4,1,1,6,4.1.1.6,Pemrograman dan Pengkodean,,Fitur,,1,3,6,18,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.033.163.265,,"24,66%",PRODUCT
+4,1,1,7,4.1.1.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 918.367.347,,"21,92%",PRODUCT
+4,1,1,8,4.1.1.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 918.367.347,,"21,92%",PRODUCT
+4,1,1,9,4.1.1.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,1,1,10,4.1.1.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,1,1,11,4.1.1.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,1,2,,4.1.2,Fitur Pengelolaan Data Indikator,Fitur,,1,,,,,,,,,,,Rp 4.190.051.020,Rp 4.190.051.020,Rp 4.190.051.020,"11,29%",
+4,1,2,1,4.1.2.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,1,2,2,4.1.2.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,1,2,3,4.1.2.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,1,2,4,4.1.2.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,4,2,1,8,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 459.183.673,,"10,96%",PRODUCT
+4,1,2,5,4.1.2.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"4,11%",PRODUCT
+4,1,2,6,4.1.2.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,6,18,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.033.163.265,,"24,66%",PRODUCT
+4,1,2,7,4.1.2.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 918.367.347,,"21,92%",PRODUCT
+4,1,2,8,4.1.2.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 918.367.347,,"21,92%",PRODUCT
+4,1,2,9,4.1.2.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,1,2,10,4.1.2.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,1,2,11,4.1.2.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,1,3,,4.1.3,Fitur Pengelolaan Data Statistik,Fitur,,1,,,,,,,,,,,Rp 2.678.571.429,Rp 2.678.571.429,Rp 2.678.571.429,"7,22%",
+4,1,3,1,4.1.3.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,86%",PRODUCT
+4,1,3,2,4.1.3.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,86%",PRODUCT
+4,1,3,3,4.1.3.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,86%",PRODUCT
+4,1,3,4,4.1.3.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,7,2,1,14,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 535.714.286,,"20,00%",PRODUCT
+4,1,3,5,4.1.3.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"4,29%",PRODUCT
+4,1,3,6,4.1.3.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 344.387.755,,"12,86%",PRODUCT
+4,1,3,7,4.1.3.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 612.244.898,,"22,86%",PRODUCT
+4,1,3,8,4.1.3.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 612.244.898,,"22,86%",PRODUCT
+4,1,3,9,4.1.3.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,86%",PRODUCT
+4,1,3,10,4.1.3.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,86%",PRODUCT
+4,1,3,11,4.1.3.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,86%",PRODUCT
+4,1,4,,4.1.4,Fitur Pengelolaan Data Induk/Master,Fitur,,1,,,,,,,,,,,Rp 2.793.367.347,Rp 2.793.367.347,Rp 2.793.367.347,"7,53%",
+4,1,4,1,4.1.4.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,74%",PRODUCT
+4,1,4,2,4.1.4.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,74%",PRODUCT
+4,1,4,3,4.1.4.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,74%",PRODUCT
+4,1,4,4,4.1.4.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,4,2,1,8,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"10,96%",PRODUCT
+4,1,4,5,4.1.4.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"4,11%",PRODUCT
+4,1,4,6,4.1.4.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,6,18,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 688.775.510,,"24,66%",PRODUCT
+4,1,4,7,4.1.4.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 612.244.898,,"21,92%",PRODUCT
+4,1,4,8,4.1.4.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 612.244.898,,"21,92%",PRODUCT
+4,1,4,9,4.1.4.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,74%",PRODUCT
+4,1,4,10,4.1.4.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,74%",PRODUCT
+4,1,4,11,4.1.4.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,74%",PRODUCT
+4,1,5,,4.1.5,Fitur Pengelolaan Data Referensi,Fitur,,1,,,,,,,,,,,Rp 2.793.367.347,Rp 2.793.367.347,Rp 2.793.367.347,"7,53%",
+4,1,5,1,4.1.5.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,74%",PRODUCT
+4,1,5,2,4.1.5.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,74%",PRODUCT
+4,1,5,3,4.1.5.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,74%",PRODUCT
+4,1,5,4,4.1.5.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,4,2,1,8,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"10,96%",PRODUCT
+4,1,5,5,4.1.5.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"4,11%",PRODUCT
+4,1,5,6,4.1.5.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,6,18,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 688.775.510,,"24,66%",PRODUCT
+4,1,5,7,4.1.5.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 612.244.898,,"21,92%",PRODUCT
+4,1,5,8,4.1.5.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 612.244.898,,"21,92%",PRODUCT
+4,1,5,9,4.1.5.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,74%",PRODUCT
+4,1,5,10,4.1.5.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,74%",PRODUCT
+4,1,5,11,4.1.5.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,74%",PRODUCT
+4,1,6,,4.1.6,Fitur Pengelolaan Data Transaksi,Fitur,,1,,,,,,,,,,,Rp 1.224.489.796,Rp 1.224.489.796,Rp 1.224.489.796,"3,30%",
+4,1,6,1,4.1.6.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,1,6,2,4.1.6.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,1,6,3,4.1.6.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,1,6,4,4.1.6.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,4,2,1,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"12,50%",PRODUCT
+4,1,6,5,4.1.6.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,69%",PRODUCT
+4,1,6,6,4.1.6.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"14,06%",PRODUCT
+4,1,6,7,4.1.6.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,1,6,8,4.1.6.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,1,6,9,4.1.6.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,1,6,10,4.1.6.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,1,6,11,4.1.6.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,1,7,,4.1.7,Fitur Pengelolaan Data Pendukung,Fitur,,1,,,,,,,,,,,Rp 1.396.683.673,Rp 1.396.683.673,Rp 1.396.683.673,"3,76%",
+4,1,7,1,4.1.7.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,74%",PRODUCT
+4,1,7,2,4.1.7.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,74%",PRODUCT
+4,1,7,3,4.1.7.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,74%",PRODUCT
+4,1,7,4,4.1.7.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,4,2,1,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"10,96%",PRODUCT
+4,1,7,5,4.1.7.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,11%",PRODUCT
+4,1,7,6,4.1.7.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,6,18,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 344.387.755,,"24,66%",PRODUCT
+4,1,7,7,4.1.7.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"21,92%",PRODUCT
+4,1,7,8,4.1.7.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"21,92%",PRODUCT
+4,1,7,9,4.1.7.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,74%",PRODUCT
+4,1,7,10,4.1.7.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,74%",PRODUCT
+4,1,7,11,4.1.7.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,74%",PRODUCT
+4,1,8,,4.1.8,Fitur Pengelolaan Data Spasial,Fitur,,1,,,,,,,,,,,Rp 1.339.285.714,Rp 1.339.285.714,Rp 1.339.285.714,"3,61%",
+4,1,8,1,4.1.8.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,86%",PRODUCT
+4,1,8,2,4.1.8.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,86%",PRODUCT
+4,1,8,3,4.1.8.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,86%",PRODUCT
+4,1,8,4,4.1.8.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,7,2,1,14,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 267.857.143,,"20,00%",PRODUCT
+4,1,8,5,4.1.8.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,29%",PRODUCT
+4,1,8,6,4.1.8.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"12,86%",PRODUCT
+4,1,8,7,4.1.8.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"22,86%",PRODUCT
+4,1,8,8,4.1.8.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"22,86%",PRODUCT
+4,1,8,9,4.1.8.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,86%",PRODUCT
+4,1,8,10,4.1.8.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,86%",PRODUCT
+4,1,8,11,4.1.8.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,86%",PRODUCT
+4,1,9,,4.1.9,Fitur Tabular Quality Scoring,Fitur,,1,,,,,,,,,,,Rp 975.765.306,Rp 975.765.306,Rp 975.765.306,"2,63%",
+4,1,9,1,4.1.9.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,92%",PRODUCT
+4,1,9,2,4.1.9.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,92%",PRODUCT
+4,1,9,3,4.1.9.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,92%",PRODUCT
+4,1,9,4,4.1.9.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,92%",PRODUCT
+4,1,9,5,4.1.9.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"5,88%",PRODUCT
+4,1,9,6,4.1.9.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,6,3,18,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 344.387.755,,"35,29%",PRODUCT
+4,1,9,7,4.1.9.7,Pelaksanaan Unit Testing,,Skenario Uji,,4,1,2,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"15,69%",PRODUCT
+4,1,9,8,4.1.9.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,4,1,2,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"15,69%",PRODUCT
+4,1,9,9,4.1.9.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,92%",PRODUCT
+4,1,9,10,4.1.9.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,92%",PRODUCT
+4,1,9,11,4.1.9.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,92%",PRODUCT
+4,1,10,,4.1.10,Fitur Pengelolaan Metadata Data Tabular,Fitur,,1,,,,,,,,,,,Rp 1.434.948.980,Rp 1.434.948.980,Rp 1.434.948.980,"3,87%",
+4,1,10,1,4.1.10.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,67%",PRODUCT
+4,1,10,2,4.1.10.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,67%",PRODUCT
+4,1,10,3,4.1.10.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,67%",PRODUCT
+4,1,10,4,4.1.10.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,4,2,1,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"10,67%",PRODUCT
+4,1,10,5,4.1.10.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,00%",PRODUCT
+4,1,10,6,4.1.10.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,6,6,36,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 688.775.510,,"48,00%",PRODUCT
+4,1,10,7,4.1.10.7,Pelaksanaan Unit Testing,,Skenario Uji,,4,1,2,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"10,67%",PRODUCT
+4,1,10,8,4.1.10.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,4,1,2,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"10,67%",PRODUCT
+4,1,10,9,4.1.10.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,67%",PRODUCT
+4,1,10,10,4.1.10.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,67%",PRODUCT
+4,1,10,11,4.1.10.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,67%",PRODUCT
+4,1,11,,4.1.11,Fitur Spatial Quality Scoring,Fitur,,1,,,,,,,,,,,Rp 803.571.429,Rp 803.571.429,Rp 803.571.429,"2,17%",
+4,1,11,1,4.1.11.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"4,76%",PRODUCT
+4,1,11,2,4.1.11.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"4,76%",PRODUCT
+4,1,11,3,4.1.11.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"4,76%",PRODUCT
+4,1,11,4,4.1.11.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"4,76%",PRODUCT
+4,1,11,5,4.1.11.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"7,14%",PRODUCT
+4,1,11,6,4.1.11.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"21,43%",PRODUCT
+4,1,11,7,4.1.11.7,Pelaksanaan Unit Testing,,Skenario Uji,,4,1,2,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"19,05%",PRODUCT
+4,1,11,8,4.1.11.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,4,1,2,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"19,05%",PRODUCT
+4,1,11,9,4.1.11.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"4,76%",PRODUCT
+4,1,11,10,4.1.11.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"4,76%",PRODUCT
+4,1,11,11,4.1.11.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"4,76%",PRODUCT
+4,1,12,,4.1.12,Fitur Pengelolaan Metadata Data Spasial,Fitur,,1,,,,,,,,,,,Rp 1.109.693.878,Rp 1.109.693.878,Rp 1.109.693.878,"2,99%",
+4,1,12,1,4.1.12.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,45%",PRODUCT
+4,1,12,2,4.1.12.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,45%",PRODUCT
+4,1,12,3,4.1.12.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,45%",PRODUCT
+4,1,12,4,4.1.12.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,45%",PRODUCT
+4,1,12,5,4.1.12.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"5,17%",PRODUCT
+4,1,12,6,4.1.12.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"15,52%",PRODUCT
+4,1,12,7,4.1.12.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"27,59%",PRODUCT
+4,1,12,8,4.1.12.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"27,59%",PRODUCT
+4,1,12,9,4.1.12.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,45%",PRODUCT
+4,1,12,10,4.1.12.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,45%",PRODUCT
+4,1,12,11,4.1.12.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,45%",PRODUCT
+4,1,13,,4.1.13,Fitur Verifikasi & Validasi Data,Fitur,,1,,,,,,,,,,,Rp 841.836.735,Rp 841.836.735,Rp 841.836.735,"2,27%",
+4,1,13,1,4.1.13.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"4,55%",PRODUCT
+4,1,13,2,4.1.13.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"4,55%",PRODUCT
+4,1,13,3,4.1.13.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"4,55%",PRODUCT
+4,1,13,4,4.1.13.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,2,2,1,4,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"9,09%",PRODUCT
+4,1,13,5,4.1.13.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"6,82%",PRODUCT
+4,1,13,6,4.1.13.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"20,45%",PRODUCT
+4,1,13,7,4.1.13.7,Pelaksanaan Unit Testing,,Skenario Uji,,4,1,2,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"18,18%",PRODUCT
+4,1,13,8,4.1.13.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,4,1,2,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"18,18%",PRODUCT
+4,1,13,9,4.1.13.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"4,55%",PRODUCT
+4,1,13,10,4.1.13.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"4,55%",PRODUCT
+4,1,13,11,4.1.13.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"4,55%",PRODUCT
+4,1,14,,4.1.14,Fitur Permohonan Data,Fitur,,1,,,,,,,,,,,Rp 1.014.030.612,Rp 1.014.030.612,Rp 1.014.030.612,"2,73%",
+4,1,14,1,4.1.14.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,77%",PRODUCT
+4,1,14,2,4.1.14.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,77%",PRODUCT
+4,1,14,3,4.1.14.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,77%",PRODUCT
+4,1,14,4,4.1.14.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,2,2,1,4,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"7,55%",PRODUCT
+4,1,14,5,4.1.14.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"5,66%",PRODUCT
+4,1,14,6,4.1.14.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,6,3,18,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 344.387.755,,"33,96%",PRODUCT
+4,1,14,7,4.1.14.7,Pelaksanaan Unit Testing,,Skenario Uji,,4,1,2,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"15,09%",PRODUCT
+4,1,14,8,4.1.14.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,4,1,2,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"15,09%",PRODUCT
+4,1,14,9,4.1.14.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,77%",PRODUCT
+4,1,14,10,4.1.14.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,77%",PRODUCT
+4,1,14,11,4.1.14.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,77%",PRODUCT
+4,1,15,,4.1.15,Fitur Monitoring dan Evaluasi Ekosistem Data,Fitur,,1,,,,,,,,,,,Rp 822.704.082,Rp 822.704.082,Rp 822.704.082,"2,22%",
+4,1,15,1,4.1.15.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"4,65%",PRODUCT
+4,1,15,2,4.1.15.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"4,65%",PRODUCT
+4,1,15,3,4.1.15.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"4,65%",PRODUCT
+4,1,15,4,4.1.15.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"4,65%",PRODUCT
+4,1,15,5,4.1.15.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"6,98%",PRODUCT
+4,1,15,6,4.1.15.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,6,18,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 344.387.755,,"41,86%",PRODUCT
+4,1,15,7,4.1.15.7,Pelaksanaan Unit Testing,,Skenario Uji,,2,1,2,4,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"9,30%",PRODUCT
+4,1,15,8,4.1.15.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,2,1,2,4,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"9,30%",PRODUCT
+4,1,15,9,4.1.15.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"4,65%",PRODUCT
+4,1,15,10,4.1.15.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"4,65%",PRODUCT
+4,1,15,11,4.1.15.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"4,65%",PRODUCT
+4,1,16,,4.1.16,Fitur Global Search,Fitur,,1,,,,,,,,,,,Rp 1.186.224.490,Rp 1.186.224.490,Rp 1.186.224.490,"3,20%",
+4,1,16,1,4.1.16.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,16,2,4.1.16.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,16,3,4.1.16.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,16,4,4.1.16.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,3,2,1,6,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"9,68%",PRODUCT
+4,1,16,5,4.1.16.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,84%",PRODUCT
+4,1,16,6,4.1.16.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"14,52%",PRODUCT
+4,1,16,7,4.1.16.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,81%",PRODUCT
+4,1,16,8,4.1.16.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,81%",PRODUCT
+4,1,16,9,4.1.16.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,16,10,4.1.16.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,16,11,4.1.16.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,17,,4.1.17,Fitur Koleksi Dataset,Fitur,,1,,,,,,,,,,,Rp 1.186.224.490,Rp 1.186.224.490,Rp 1.186.224.490,"3,20%",
+4,1,17,1,4.1.17.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,17,2,4.1.17.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,17,3,4.1.17.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,17,4,4.1.17.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,3,2,1,6,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"9,68%",PRODUCT
+4,1,17,5,4.1.17.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,84%",PRODUCT
+4,1,17,6,4.1.17.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"14,52%",PRODUCT
+4,1,17,7,4.1.17.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,81%",PRODUCT
+4,1,17,8,4.1.17.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,81%",PRODUCT
+4,1,17,9,4.1.17.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,17,10,4.1.17.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,17,11,4.1.17.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,18,,4.1.18,Fitur Koleksi Mapset,Fitur,,1,,,,,,,,,,,Rp 1.186.224.490,Rp 1.186.224.490,Rp 1.186.224.490,"3,20%",
+4,1,18,1,4.1.18.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,18,2,4.1.18.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,18,3,4.1.18.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,18,4,4.1.18.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,3,2,1,6,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"9,68%",PRODUCT
+4,1,18,5,4.1.18.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,84%",PRODUCT
+4,1,18,6,4.1.18.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"14,52%",PRODUCT
+4,1,18,7,4.1.18.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,81%",PRODUCT
+4,1,18,8,4.1.18.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,81%",PRODUCT
+4,1,18,9,4.1.18.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,18,10,4.1.18.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,18,11,4.1.18.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,19,,4.1.19,Fitur Koleksi Artikel,Fitur,,1,,,,,,,,,,,Rp 1.186.224.490,Rp 1.186.224.490,Rp 1.186.224.490,"3,20%",
+4,1,19,1,4.1.19.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,19,2,4.1.19.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,19,3,4.1.19.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,19,4,4.1.19.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,3,2,1,6,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"9,68%",PRODUCT
+4,1,19,5,4.1.19.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,84%",PRODUCT
+4,1,19,6,4.1.19.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"14,52%",PRODUCT
+4,1,19,7,4.1.19.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,81%",PRODUCT
+4,1,19,8,4.1.19.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,81%",PRODUCT
+4,1,19,9,4.1.19.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,19,10,4.1.19.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,19,11,4.1.19.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,20,,4.1.20,Fitur Koleksi Infografis,Fitur,,1,,,,,,,,,,,Rp 1.186.224.490,Rp 1.186.224.490,Rp 1.186.224.490,"3,20%",
+4,1,20,1,4.1.20.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,20,2,4.1.20.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,20,3,4.1.20.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,20,4,4.1.20.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,3,2,1,6,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"9,68%",PRODUCT
+4,1,20,5,4.1.20.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,84%",PRODUCT
+4,1,20,6,4.1.20.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"14,52%",PRODUCT
+4,1,20,7,4.1.20.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,81%",PRODUCT
+4,1,20,8,4.1.20.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,81%",PRODUCT
+4,1,20,9,4.1.20.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,20,10,4.1.20.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,20,11,4.1.20.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,21,,4.1.21,Fitur Koleksi Visualisasi,Fitur,,1,,,,,,,,,,,Rp 1.186.224.490,Rp 1.186.224.490,Rp 1.186.224.490,"3,20%",
+4,1,21,1,4.1.21.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,21,2,4.1.21.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,21,3,4.1.21.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,21,4,4.1.21.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,3,2,1,6,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"9,68%",PRODUCT
+4,1,21,5,4.1.21.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,84%",PRODUCT
+4,1,21,6,4.1.21.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"14,52%",PRODUCT
+4,1,21,7,4.1.21.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,81%",PRODUCT
+4,1,21,8,4.1.21.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,81%",PRODUCT
+4,1,21,9,4.1.21.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,21,10,4.1.21.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,21,11,4.1.21.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,22,,4.1.22,Fitur Eksplorasi Mapset,Fitur,,1,,,,,,,,,,,Rp 1.186.224.490,Rp 1.186.224.490,Rp 1.186.224.490,"3,20%",
+4,1,22,1,4.1.22.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,22,2,4.1.22.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,22,3,4.1.22.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,22,4,4.1.22.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,3,2,1,6,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"9,68%",PRODUCT
+4,1,22,5,4.1.22.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,84%",PRODUCT
+4,1,22,6,4.1.22.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"14,52%",PRODUCT
+4,1,22,7,4.1.22.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,81%",PRODUCT
+4,1,22,8,4.1.22.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,81%",PRODUCT
+4,1,22,9,4.1.22.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,22,10,4.1.22.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,22,11,4.1.22.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,23,,4.1.23,Fitur Pengelolaan Artikel,Fitur,,1,,,,,,,,,,,Rp 1.186.224.490,Rp 1.186.224.490,Rp 1.186.224.490,"3,20%",
+4,1,23,1,4.1.23.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,23,2,4.1.23.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,23,3,4.1.23.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,23,4,4.1.23.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,3,2,1,6,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"9,68%",PRODUCT
+4,1,23,5,4.1.23.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,84%",PRODUCT
+4,1,23,6,4.1.23.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"14,52%",PRODUCT
+4,1,23,7,4.1.23.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,81%",PRODUCT
+4,1,23,8,4.1.23.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,81%",PRODUCT
+4,1,23,9,4.1.23.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,23,10,4.1.23.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,1,23,11,4.1.23.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,23%",PRODUCT
+4,2,,,4.2,Modul Manajemen Konten,,,,,,,,,,,,,,,Rp 13.469.387.755,Rp 13.469.387.755,"4,76%",
+4,2,1,,4.2.1,Fitur Pengelolaan Dashboard Group,Fitur,,1,,,,,,,,,,,Rp 1.224.489.796,Rp 1.224.489.796,Rp 1.224.489.796,"9,09%",
+4,2,1,1,4.2.1.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,1,2,4.2.1.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,1,3,4.2.1.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,1,4,4.2.1.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,4,2,1,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"12,50%",PRODUCT
+4,2,1,5,4.2.1.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,69%",PRODUCT
+4,2,1,6,4.2.1.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"14,06%",PRODUCT
+4,2,1,7,4.2.1.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,2,1,8,4.2.1.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,2,1,9,4.2.1.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,1,10,4.2.1.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,1,11,4.2.1.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,2,,4.2.2,Fitur Pengaturan Umum (Pengelolaan Identitas Visual),Fitur,,1,,,,,,,,,,,Rp 1.224.489.796,Rp 1.224.489.796,Rp 1.224.489.796,"9,09%",
+4,2,2,1,4.2.2.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,2,2,4.2.2.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,2,3,4.2.2.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,2,4,4.2.2.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,4,2,1,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"12,50%",PRODUCT
+4,2,2,5,4.2.2.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,69%",PRODUCT
+4,2,2,6,4.2.2.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"14,06%",PRODUCT
+4,2,2,7,4.2.2.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,2,2,8,4.2.2.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,2,2,9,4.2.2.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,2,10,4.2.2.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,2,11,4.2.2.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,3,,4.2.3,Fitur Pengaturan Umum (Pengelolaan Organisasi),Fitur,,1,,,,,,,,,,,Rp 1.224.489.796,Rp 1.224.489.796,Rp 1.224.489.796,"9,09%",
+4,2,3,1,4.2.3.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,3,2,4.2.3.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,3,3,4.2.3.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,3,4,4.2.3.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,4,2,1,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"12,50%",PRODUCT
+4,2,3,5,4.2.3.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,69%",PRODUCT
+4,2,3,6,4.2.3.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"14,06%",PRODUCT
+4,2,3,7,4.2.3.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,2,3,8,4.2.3.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,2,3,9,4.2.3.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,3,10,4.2.3.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,3,11,4.2.3.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,4,,4.2.4,Fitur Pengaturan Umum (Pengelolaan Topik),Fitur,,1,,,,,,,,,,,Rp 1.224.489.796,Rp 1.224.489.796,Rp 1.224.489.796,"9,09%",
+4,2,4,1,4.2.4.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,4,2,4.2.4.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,4,3,4.2.4.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,4,4,4.2.4.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,4,2,1,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"12,50%",PRODUCT
+4,2,4,5,4.2.4.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,69%",PRODUCT
+4,2,4,6,4.2.4.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"14,06%",PRODUCT
+4,2,4,7,4.2.4.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,2,4,8,4.2.4.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,2,4,9,4.2.4.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,4,10,4.2.4.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,4,11,4.2.4.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,5,,4.2.5,Fitur Pengaturan Umum (Pengelolaan Satuan),Fitur,,1,,,,,,,,,,,Rp 1.224.489.796,Rp 1.224.489.796,Rp 1.224.489.796,"9,09%",
+4,2,5,1,4.2.5.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,5,2,4.2.5.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,5,3,4.2.5.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,5,4,4.2.5.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,4,2,1,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"12,50%",PRODUCT
+4,2,5,5,4.2.5.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,69%",PRODUCT
+4,2,5,6,4.2.5.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"14,06%",PRODUCT
+4,2,5,7,4.2.5.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,2,5,8,4.2.5.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,2,5,9,4.2.5.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,5,10,4.2.5.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,5,11,4.2.5.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,6,,4.2.6,Fitur Pengaturan Umum (Pengelolaan Label),Fitur,,1,,,,,,,,,,,Rp 1.224.489.796,Rp 1.224.489.796,Rp 1.224.489.796,"9,09%",
+4,2,6,1,4.2.6.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,6,2,4.2.6.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,6,3,4.2.6.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,6,4,4.2.6.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,4,2,1,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"12,50%",PRODUCT
+4,2,6,5,4.2.6.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,69%",PRODUCT
+4,2,6,6,4.2.6.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"14,06%",PRODUCT
+4,2,6,7,4.2.6.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,2,6,8,4.2.6.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,2,6,9,4.2.6.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,6,10,4.2.6.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,6,11,4.2.6.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,7,,4.2.7,Fitur Pengelolaan Publikasi,Fitur,,1,,,,,,,,,,,Rp 1.224.489.796,Rp 1.224.489.796,Rp 1.224.489.796,"9,09%",
+4,2,7,1,4.2.7.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,7,2,4.2.7.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,7,3,4.2.7.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,7,4,4.2.7.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,4,2,1,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"12,50%",PRODUCT
+4,2,7,5,4.2.7.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,69%",PRODUCT
+4,2,7,6,4.2.7.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"14,06%",PRODUCT
+4,2,7,7,4.2.7.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,2,7,8,4.2.7.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,2,7,9,4.2.7.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,7,10,4.2.7.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,7,11,4.2.7.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,8,,4.2.8,Fitur Pengelolaan Fitur,Fitur,,1,,,,,,,,,,,Rp 1.224.489.796,Rp 1.224.489.796,Rp 1.224.489.796,"9,09%",
+4,2,8,1,4.2.8.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,8,2,4.2.8.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,8,3,4.2.8.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,8,4,4.2.8.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,4,2,1,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"12,50%",PRODUCT
+4,2,8,5,4.2.8.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,69%",PRODUCT
+4,2,8,6,4.2.8.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"14,06%",PRODUCT
+4,2,8,7,4.2.8.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,2,8,8,4.2.8.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,2,8,9,4.2.8.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,8,10,4.2.8.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,8,11,4.2.8.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,9,,4.2.9,Fitur Pengelolaan Konten Publikasi - Pengelolaan Infografis,Fitur,,1,,,,,,,,,,,Rp 1.224.489.796,Rp 1.224.489.796,Rp 1.224.489.796,"9,09%",
+4,2,9,1,4.2.9.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,9,2,4.2.9.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,9,3,4.2.9.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,9,4,4.2.9.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,4,2,1,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"12,50%",PRODUCT
+4,2,9,5,4.2.9.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,69%",PRODUCT
+4,2,9,6,4.2.9.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"14,06%",PRODUCT
+4,2,9,7,4.2.9.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,2,9,8,4.2.9.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,2,9,9,4.2.9.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,9,10,4.2.9.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,9,11,4.2.9.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,10,,4.2.10,Fitur Pengelolaan Konten Publikasi - Pengelolaan Visualisasi,Fitur,,1,,,,,,,,,,,Rp 1.224.489.796,Rp 1.224.489.796,Rp 1.224.489.796,"9,09%",
+4,2,10,1,4.2.10.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,10,2,4.2.10.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,10,3,4.2.10.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,10,4,4.2.10.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,4,2,1,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"12,50%",PRODUCT
+4,2,10,5,4.2.10.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,69%",PRODUCT
+4,2,10,6,4.2.10.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"14,06%",PRODUCT
+4,2,10,7,4.2.10.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,2,10,8,4.2.10.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,2,10,9,4.2.10.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,10,10,4.2.10.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,10,11,4.2.10.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,11,,4.2.11,Fitur Pengelolaan Halaman dan Akses Dashboard,Fitur,,1,,,,,,,,,,,Rp 1.224.489.796,Rp 1.224.489.796,Rp 1.224.489.796,"9,09%",
+4,2,11,1,4.2.11.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,11,2,4.2.11.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,11,3,4.2.11.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,11,4,4.2.11.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,4,2,1,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"12,50%",PRODUCT
+4,2,11,5,4.2.11.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,69%",PRODUCT
+4,2,11,6,4.2.11.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"14,06%",PRODUCT
+4,2,11,7,4.2.11.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,2,11,8,4.2.11.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,2,11,9,4.2.11.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,11,10,4.2.11.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,2,11,11,4.2.11.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,3,,,4.3,Modul Manajemen Pengguna & Hak Akses,,,,,,,,,,,,,,,Rp 4.400.510.204,Rp 4.400.510.204,"1,55%",
+4,3,1,,4.3.1,Fitur Pengelolaan Profil,Fitur,,1,,,,,,,,,,,Rp 650.510.204,Rp 650.510.204,Rp 650.510.204,"14,78%",
+4,3,1,1,4.3.1.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,88%",PRODUCT
+4,3,1,2,4.3.1.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,88%",PRODUCT
+4,3,1,3,4.3.1.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,88%",PRODUCT
+4,3,1,4,4.3.1.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,88%",PRODUCT
+4,3,1,5,4.3.1.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"8,82%",PRODUCT
+4,3,1,6,4.3.1.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"26,47%",PRODUCT
+4,3,1,7,4.3.1.7,Pelaksanaan Unit Testing,,Skenario Uji,,2,1,2,4,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"11,76%",PRODUCT
+4,3,1,8,4.3.1.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,2,1,2,4,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"11,76%",PRODUCT
+4,3,1,9,4.3.1.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,88%",PRODUCT
+4,3,1,10,4.3.1.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,88%",PRODUCT
+4,3,1,11,4.3.1.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,88%",PRODUCT
+4,3,2,,4.3.2,Fitur Login,Fitur,,1,,,,,,,,,,,Rp 650.510.204,Rp 650.510.204,Rp 650.510.204,"14,78%",
+4,3,2,1,4.3.2.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,88%",PRODUCT
+4,3,2,2,4.3.2.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,88%",PRODUCT
+4,3,2,3,4.3.2.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,88%",PRODUCT
+4,3,2,4,4.3.2.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,88%",PRODUCT
+4,3,2,5,4.3.2.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"8,82%",PRODUCT
+4,3,2,6,4.3.2.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"26,47%",PRODUCT
+4,3,2,7,4.3.2.7,Pelaksanaan Unit Testing,,Skenario Uji,,2,1,2,4,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"11,76%",PRODUCT
+4,3,2,8,4.3.2.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,2,1,2,4,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"11,76%",PRODUCT
+4,3,2,9,4.3.2.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,88%",PRODUCT
+4,3,2,10,4.3.2.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,88%",PRODUCT
+4,3,2,11,4.3.2.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,88%",PRODUCT
+4,3,3,,4.3.3,Fitur Log Aktivitas,Fitur,,1,,,,,,,,,,,Rp 650.510.204,Rp 650.510.204,Rp 650.510.204,"14,78%",
+4,3,3,1,4.3.3.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,88%",PRODUCT
+4,3,3,2,4.3.3.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,88%",PRODUCT
+4,3,3,3,4.3.3.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,88%",PRODUCT
+4,3,3,4,4.3.3.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,88%",PRODUCT
+4,3,3,5,4.3.3.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"8,82%",PRODUCT
+4,3,3,6,4.3.3.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"26,47%",PRODUCT
+4,3,3,7,4.3.3.7,Pelaksanaan Unit Testing,,Skenario Uji,,2,1,2,4,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"11,76%",PRODUCT
+4,3,3,8,4.3.3.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,2,1,2,4,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"11,76%",PRODUCT
+4,3,3,9,4.3.3.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,88%",PRODUCT
+4,3,3,10,4.3.3.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,88%",PRODUCT
+4,3,3,11,4.3.3.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,88%",PRODUCT
+4,3,4,,4.3.4,Fitur Pengelolaan Pengguna,Fitur,,1,,,,,,,,,,,Rp 1.224.489.796,Rp 1.224.489.796,Rp 1.224.489.796,"27,83%",
+4,3,4,1,4.3.4.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,3,4,2,4.3.4.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,3,4,3,4.3.4.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,3,4,4,4.3.4.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,4,2,1,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"12,50%",PRODUCT
+4,3,4,5,4.3.4.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,69%",PRODUCT
+4,3,4,6,4.3.4.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"14,06%",PRODUCT
+4,3,4,7,4.3.4.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,3,4,8,4.3.4.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,3,4,9,4.3.4.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,3,4,10,4.3.4.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,3,4,11,4.3.4.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,3,5,,4.3.5,Fitur Pengelolaan Role & Permission,Fitur,,1,,,,,,,,,,,Rp 1.224.489.796,Rp 1.224.489.796,Rp 1.224.489.796,"27,83%",
+4,3,5,1,4.3.5.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,3,5,2,4.3.5.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,3,5,3,4.3.5.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,3,5,4,4.3.5.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,4,2,1,8,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"12,50%",PRODUCT
+4,3,5,5,4.3.5.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,69%",PRODUCT
+4,3,5,6,4.3.5.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"14,06%",PRODUCT
+4,3,5,7,4.3.5.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,3,5,8,4.3.5.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,00%",PRODUCT
+4,3,5,9,4.3.5.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,3,5,10,4.3.5.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,3,5,11,4.3.5.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,13%",PRODUCT
+4,4,,,4.4,Modul Manajemen Product Analytics,,,,,,,,,,,,,,,Rp 2.621.173.469,Rp 2.621.173.469,"0,93%",
+4,4,1,,4.4.1,Fitur Product Analytics,Fitur,,1,,,,,,,,,,,Rp 1.855.867.347,Rp 1.855.867.347,Rp 1.855.867.347,"70,80%",
+4,4,1,1,4.4.1.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,06%",PRODUCT
+4,4,1,2,4.4.1.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,06%",PRODUCT
+4,4,1,3,4.4.1.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,06%",PRODUCT
+4,4,1,4,4.4.1.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,06%",PRODUCT
+4,4,1,5,4.4.1.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"3,09%",PRODUCT
+4,4,1,6,4.4.1.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,12,6,72,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.377.551.020,,"74,23%",PRODUCT
+4,4,1,7,4.4.1.7,Pelaksanaan Unit Testing,,Skenario Uji,,2,1,2,4,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"4,12%",PRODUCT
+4,4,1,8,4.4.1.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,2,1,2,4,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"4,12%",PRODUCT
+4,4,1,9,4.4.1.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,06%",PRODUCT
+4,4,1,10,4.4.1.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,06%",PRODUCT
+4,4,1,11,4.4.1.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,06%",PRODUCT
+4,4,2,,4.4.2,Fitur Pengelolaan Umpan Balik,Fitur,,1,,,,,,,,,,,Rp 765.306.122,Rp 765.306.122,Rp 765.306.122,"29,20%",
+4,4,2,1,4.4.2.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,00%",PRODUCT
+4,4,2,2,4.4.2.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,00%",PRODUCT
+4,4,2,3,4.4.2.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,00%",PRODUCT
+4,4,2,4,4.4.2.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,00%",PRODUCT
+4,4,2,5,4.4.2.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"7,50%",PRODUCT
+4,4,2,6,4.4.2.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,5,15,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 286.989.796,,"37,50%",PRODUCT
+4,4,2,7,4.4.2.7,Pelaksanaan Unit Testing,,Skenario Uji,,2,1,2,4,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"10,00%",PRODUCT
+4,4,2,8,4.4.2.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,2,1,2,4,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"10,00%",PRODUCT
+4,4,2,9,4.4.2.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,00%",PRODUCT
+4,4,2,10,4.4.2.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,00%",PRODUCT
+4,4,2,11,4.4.2.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"5,00%",PRODUCT
+4,5,,,4.5,Modul Manajemen Form Dinamis,,,,,,,,,,,,,,,Rp 34.094.387.755,Rp 34.094.387.755,"12,04%",
+4,5,1,,4.5.1,Fitur Halaman Isi Form,Fitur,,1,,,,,,,,,,,Rp 2.448.979.592,Rp 2.448.979.592,Rp 2.448.979.592,"7,18%",
+4,5,1,1,4.5.1.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"3,13%",PRODUCT
+4,5,1,2,4.5.1.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"3,13%",PRODUCT
+4,5,1,3,4.5.1.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"3,13%",PRODUCT
+4,5,1,4,4.5.1.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"3,13%",PRODUCT
+4,5,1,5,4.5.1.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"4,69%",PRODUCT
+4,5,1,6,4.5.1.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,5,15,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 573.979.592,,"23,44%",PRODUCT
+4,5,1,7,4.5.1.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 612.244.898,,"25,00%",PRODUCT
+4,5,1,8,4.5.1.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 612.244.898,,"25,00%",PRODUCT
+4,5,1,9,4.5.1.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"3,13%",PRODUCT
+4,5,1,10,4.5.1.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"3,13%",PRODUCT
+4,5,1,11,4.5.1.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"3,13%",PRODUCT
+4,5,2,,4.5.2,Fitur Pengelolaan Form,Fitur,,1,,,,,,,,,,,Rp 2.678.571.429,Rp 2.678.571.429,Rp 2.678.571.429,"7,86%",
+4,5,2,1,4.5.2.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,86%",PRODUCT
+4,5,2,2,4.5.2.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,86%",PRODUCT
+4,5,2,3,4.5.2.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,86%",PRODUCT
+4,5,2,4,4.5.2.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,4,2,1,8,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"11,43%",PRODUCT
+4,5,2,5,4.5.2.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"4,29%",PRODUCT
+4,5,2,6,4.5.2.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,5,15,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 573.979.592,,"21,43%",PRODUCT
+4,5,2,7,4.5.2.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 612.244.898,,"22,86%",PRODUCT
+4,5,2,8,4.5.2.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 612.244.898,,"22,86%",PRODUCT
+4,5,2,9,4.5.2.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,86%",PRODUCT
+4,5,2,10,4.5.2.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,86%",PRODUCT
+4,5,2,11,4.5.2.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"2,86%",PRODUCT
+4,5,3,,4.5.3,Fitur Pengelolaan Tanggapan,Fitur,,1,,,,,,,,,,,Rp 1.301.020.408,Rp 1.301.020.408,Rp 1.301.020.408,"3,82%",
+4,5,3,1,4.5.3.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,5,3,2,4.5.3.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,5,3,3,4.5.3.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,5,3,4,4.5.3.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,5,3,5,4.5.3.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"8,82%",PRODUCT
+4,5,3,6,4.5.3.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 344.387.755,,"26,47%",PRODUCT
+4,5,3,7,4.5.3.7,Pelaksanaan Unit Testing,,Skenario Uji,,2,1,2,4,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"11,76%",PRODUCT
+4,5,3,8,4.5.3.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,2,1,2,4,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"11,76%",PRODUCT
+4,5,3,9,4.5.3.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,5,3,10,4.5.3.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,5,3,11,4.5.3.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,5,4,,4.5.4,Fitur Form by PDF,Fitur,,1,,,,,,,,,,,Rp 1.301.020.408,Rp 1.301.020.408,Rp 1.301.020.408,"3,82%",
+4,5,4,1,4.5.4.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,5,4,2,4.5.4.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,5,4,3,4.5.4.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,5,4,4,4.5.4.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,5,4,5,4.5.4.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"8,82%",PRODUCT
+4,5,4,6,4.5.4.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 344.387.755,,"26,47%",PRODUCT
+4,5,4,7,4.5.4.7,Pelaksanaan Unit Testing,,Skenario Uji,,2,1,2,4,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"11,76%",PRODUCT
+4,5,4,8,4.5.4.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,2,1,2,4,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"11,76%",PRODUCT
+4,5,4,9,4.5.4.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,5,4,10,4.5.4.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,5,4,11,4.5.4.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,5,5,,4.5.5,Fitur Data Visualisasi,Fitur,,1,,,,,,,,,,,Rp 1.951.530.612,Rp 1.951.530.612,Rp 1.951.530.612,"5,72%",
+4,5,5,1,4.5.5.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"3,92%",PRODUCT
+4,5,5,2,4.5.5.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"3,92%",PRODUCT
+4,5,5,3,4.5.5.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"3,92%",PRODUCT
+4,5,5,4,4.5.5.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,2,2,1,4,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"7,84%",PRODUCT
+4,5,5,5,4.5.5.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,88%",PRODUCT
+4,5,5,6,4.5.5.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,4,4,16,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 612.244.898,,"31,37%",PRODUCT
+4,5,5,7,4.5.5.7,Pelaksanaan Unit Testing,,Skenario Uji,,4,1,2,8,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"15,69%",PRODUCT
+4,5,5,8,4.5.5.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,4,1,2,8,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"15,69%",PRODUCT
+4,5,5,9,4.5.5.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"3,92%",PRODUCT
+4,5,5,10,4.5.5.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"3,92%",PRODUCT
+4,5,5,11,4.5.5.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"3,92%",PRODUCT
+4,5,6,,4.5.6,Fitur Integrasi Pihak Ke 3,Fitur,,1,,,,,,,,,,,Rp 1.568.877.551,Rp 1.568.877.551,Rp 1.568.877.551,"4,60%",
+4,5,6,1,4.5.6.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"4,88%",PRODUCT
+4,5,6,2,4.5.6.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"4,88%",PRODUCT
+4,5,6,3,4.5.6.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"4,88%",PRODUCT
+4,5,6,4,4.5.6.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"4,88%",PRODUCT
+4,5,6,5,4.5.6.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"7,32%",PRODUCT
+4,5,6,6,4.5.6.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,4,4,16,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 612.244.898,,"39,02%",PRODUCT
+4,5,6,7,4.5.6.7,Pelaksanaan Unit Testing,,Skenario Uji,,2,1,2,4,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"9,76%",PRODUCT
+4,5,6,8,4.5.6.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,2,1,2,4,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"9,76%",PRODUCT
+4,5,6,9,4.5.6.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"4,88%",PRODUCT
+4,5,6,10,4.5.6.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"4,88%",PRODUCT
+4,5,6,11,4.5.6.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"4,88%",PRODUCT
+4,5,7,,4.5.7,Fitur Geospatial Tagging,Fitur,,1,,,,,,,,,,,Rp 1.301.020.408,Rp 1.301.020.408,Rp 1.301.020.408,"3,82%",
+4,5,7,1,4.5.7.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,5,7,2,4.5.7.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,5,7,3,4.5.7.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,5,7,4,4.5.7.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,5,7,5,4.5.7.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"8,82%",PRODUCT
+4,5,7,6,4.5.7.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 344.387.755,,"26,47%",PRODUCT
+4,5,7,7,4.5.7.7,Pelaksanaan Unit Testing,,Skenario Uji,,2,1,2,4,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"11,76%",PRODUCT
+4,5,7,8,4.5.7.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,2,1,2,4,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"11,76%",PRODUCT
+4,5,7,9,4.5.7.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,5,7,10,4.5.7.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,5,7,11,4.5.7.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,5,8,,4.5.8,Fitur NIK Verification & Validation,Fitur,,1,,,,,,,,,,,Rp 1.951.530.612,Rp 1.951.530.612,Rp 1.951.530.612,"5,72%",
+4,5,8,1,4.5.8.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,88%",PRODUCT
+4,5,8,2,4.5.8.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,88%",PRODUCT
+4,5,8,3,4.5.8.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,88%",PRODUCT
+4,5,8,4,4.5.8.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,88%",PRODUCT
+4,5,8,5,4.5.8.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"8,82%",PRODUCT
+4,5,8,6,4.5.8.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 516.581.633,,"26,47%",PRODUCT
+4,5,8,7,4.5.8.7,Pelaksanaan Unit Testing,,Skenario Uji,,2,1,2,4,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 229.591.837,,"11,76%",PRODUCT
+4,5,8,8,4.5.8.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,2,1,2,4,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 229.591.837,,"11,76%",PRODUCT
+4,5,8,9,4.5.8.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,88%",PRODUCT
+4,5,8,10,4.5.8.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,88%",PRODUCT
+4,5,8,11,4.5.8.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,88%",PRODUCT
+4,5,9,,4.5.9,Hardware Modul Manajemen Form Dinamis,Paket,,1,,,,,,,,,,,Rp 19.591.836.735,Rp 19.591.836.735,Rp 19.591.836.735,"57,46%",
+4,5,9,1,4.5.9.1,"Application Server
+
+Rack Units:
+2U
+
+Processor:
+Up to four 4th Generation Intel Xeon Scalable processor with up to 60 cores per processor and with optional Intel® QuickAssist Technology;
+
+Memory:
+- 64 DDR5 DIMM slots, supports RDIMM 16 TB max, speeds up to 4800 MT/s; 
+- Supports registered ECC DDR5 DIMMs only
+
+Storage controllers:
+- Internal Controllers: PERC H965i, PERC H755, PERC H355, HBA355i, HBA465i
+- External Controller: PERC H965e
+- Internal Boot: Boot Optimized Storage Subsystem (BOSS-N1): HWRAID 2 x M.2 NVMe SSDs or USB
+- External HBA (non-RAID): HBA355e, HBA465e
+- Software Raid: S160
+
+Drive Bays:
+Front bays
+- Up to 8 x 2.5-inch SAS/SATA (HDD/SSD) drives max 122.88 TB
+- Up to 8 x EDSFF E3.S Gen5 NVMe (SSD) drives max 61.44 TB
+- Up to 16 x 2.5-inch SAS/SATA/NVMe (HDD/SSD) drives max 245.76 TB
+- Up to 24 x 2.5-inch SAS/SATA/NVMe (HDD/SSD) drives max 368.34 TB
+- Up to 16 x 2.5-inch SAS/SATA (HDD/SSD) drives + 8 x 2.5-inch NVMe (SSD) drives max 368.34 TB
+Rear bays
+- Up to 2 x 2.5-inch SAS/SATA (HDD/SSD) drives max 30.72 TB
+- Up to 4 x EDSFF E3.S Gen5 NVMe (SSD) drives max 30.72 TB",,Paket,,1,1,1,1,Rp 6.000.000.000,"100,00%",,Rp 3.000.000.000,Rp 183.673.469,Rp 9.183.673.469,,Rp 9.183.673.469,,"46,88%",HARDWARE
+4,5,9,2,4.5.9.2,"Database Application Server
+
+Rack Units:
+2U
+
+Processor:
+Up to four 4th Generation Intel Xeon Scalable processor with up to 60 cores per processor and with optional Intel® QuickAssist Technology;
+
+Memory:
+- 64 DDR5 DIMM slots, supports RDIMM 16 TB max, speeds up to 4800 MT/s; 
+- Supports registered ECC DDR5 DIMMs only
+
+Storage controllers:
+- Internal Controllers: PERC H965i, PERC H755, PERC H355, HBA355i, HBA465i
+- External Controller: PERC H965e
+- Internal Boot: Boot Optimized Storage Subsystem (BOSS-N1): HWRAID 2 x M.2 NVMe SSDs or USB
+- External HBA (non-RAID): HBA355e, HBA465e
+- Software Raid: S160
+
+Drive Bays:
+Front bays
+- Up to 8 x 2.5-inch SAS/SATA (HDD/SSD) drives max 122.88 TB
+- Up to 8 x EDSFF E3.S Gen5 NVMe (SSD) drives max 61.44 TB
+- Up to 16 x 2.5-inch SAS/SATA/NVMe (HDD/SSD) drives max 245.76 TB
+- Up to 24 x 2.5-inch SAS/SATA/NVMe (HDD/SSD) drives max 368.34 TB
+- Up to 16 x 2.5-inch SAS/SATA (HDD/SSD) drives + 8 x 2.5-inch NVMe (SSD) drives max 368.34 TB
+Rear bays
+- Up to 2 x 2.5-inch SAS/SATA (HDD/SSD) drives max 30.72 TB
+- Up to 4 x EDSFF E3.S Gen5 NVMe (SSD) drives max 30.72 TB",,Paket,,1,1,1,1,Rp 6.000.000.000,"100,00%",,Rp 3.000.000.000,Rp 183.673.469,Rp 9.183.673.469,,Rp 9.183.673.469,,"46,88%",HARDWARE
+4,5,9,3,4.5.9.3,Switch Infiniband,,Paket,,1,1,1,1,Rp 300.000.000,"100,00%",,Rp 150.000.000,Rp 9.183.673,Rp 459.183.673,,Rp 459.183.673,,"2,34%",HARDWARE
+4,5,9,4,4.5.9.4,Switch DC,,Paket,,1,1,2,2,Rp 100.000.000,"100,00%",,Rp 50.000.000,Rp 3.061.224,Rp 153.061.224,,Rp 306.122.449,,"1,56%",HARDWARE
+4,5,9,5,4.5.9.5,UPS,,Paket,,1,1,1,1,Rp 100.000.000,"100,00%",,Rp 50.000.000,Rp 3.061.224,Rp 153.061.224,,Rp 153.061.224,,"0,78%",HARDWARE
+4,5,9,6,4.5.9.6,Electrical Equipment,,Paket,,1,1,1,1,Rp 100.000.000,"100,00%",,Rp 50.000.000,Rp 3.061.224,Rp 153.061.224,,Rp 153.061.224,,"0,78%",HARDWARE
+4,5,9,7,4.5.9.7,Server Operating System,,Paket,,1,1,1,1,Rp 100.000.000,"100,00%",,Rp 50.000.000,Rp 3.061.224,Rp 153.061.224,,Rp 153.061.224,,"0,78%",HARDWARE
+4,6,,,4.6,Modul Manajemen Dashboard,,,,,,,,,,,,,,,Rp 8.380.102.041,Rp 8.380.102.041,"2,96%",
+4,6,1,,4.6.1,Executive Dashboard,Fitur,,1,,,,,,,,,,,Rp 4.190.051.020,Rp 4.190.051.020,Rp 4.190.051.020,"50,00%",
+4,6,1,1,4.6.1.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,6,1,2,4.6.1.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,6,1,3,4.6.1.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,6,1,4,4.6.1.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,6,1,5,4.6.1.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"4,11%",PRODUCT
+4,6,1,6,4.6.1.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,12,4,48,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 2.755.102.041,,"65,75%",PRODUCT
+4,6,1,7,4.6.1.7,Pelaksanaan Unit Testing,,Skenario Uji,,2,1,2,4,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 229.591.837,,"5,48%",PRODUCT
+4,6,1,8,4.6.1.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,2,1,2,4,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 229.591.837,,"5,48%",PRODUCT
+4,6,1,9,4.6.1.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,6,1,10,4.6.1.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,6,1,11,4.6.1.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,6,2,,4.6.2,Citizen Dashboard,Fitur,,1,,,,,,,,,,,Rp 4.190.051.020,Rp 4.190.051.020,Rp 4.190.051.020,"50,00%",
+4,6,2,1,4.6.2.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,6,2,2,4.6.2.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,6,2,3,4.6.2.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,6,2,4,4.6.2.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,6,2,5,4.6.2.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"4,11%",PRODUCT
+4,6,2,6,4.6.2.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,12,4,48,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 2.755.102.041,,"65,75%",PRODUCT
+4,6,2,7,4.6.2.7,Pelaksanaan Unit Testing,,Skenario Uji,,2,1,2,4,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 229.591.837,,"5,48%",PRODUCT
+4,6,2,8,4.6.2.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,2,1,2,4,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 229.591.837,,"5,48%",PRODUCT
+4,6,2,9,4.6.2.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,6,2,10,4.6.2.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,6,2,11,4.6.2.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"2,74%",PRODUCT
+4,7,,,4.7,Modul Manajemen Data Exchange,,,,,,,,,,,,,,,Rp 49.668.367.347,Rp 49.668.367.347,"17,54%",
+4,7,1,,4.7.1,Fitur Pengelolaan Layanan,Fitur,,1,,,,,,,,,,,Rp 23.954.081.633,Rp 23.954.081.633,Rp 23.954.081.633,"48,23%",
+4,7,1,1,4.7.1.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"0,32%",PRODUCT
+4,7,1,2,4.7.1.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"0,32%",PRODUCT
+4,7,1,3,4.7.1.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"0,32%",PRODUCT
+4,7,1,4,4.7.1.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"0,32%",PRODUCT
+4,7,1,5,4.7.1.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"0,48%",PRODUCT
+4,7,1,6,4.7.1.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,4,12,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 459.183.673,,"1,92%",PRODUCT
+4,7,1,7,4.7.1.7,Deployment Central Server ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"0,32%",PRODUCT
+4,7,1,8,4.7.1.8,Integrasi Central Server Development dengan Certificate Authority,,Paket,,1,1,1,1,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"0,16%",PRODUCT
+4,7,1,9,4.7.1.9,Integrasi Central Server Development dengan Timestamp Authority,,Paket,,1,1,1,1,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"0,16%",PRODUCT
+4,7,1,10,4.7.1.10,Deployment Central Server ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"0,32%",PRODUCT
+4,7,1,11,4.7.1.11,Deployment Central Server ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"0,32%",PRODUCT
+4,7,1,12,4.7.1.12,Integrasi Central Server Staging dan Production dengan Certificate Authority,,Paket,,1,1,1,1,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"0,16%",PRODUCT
+4,7,1,13,4.7.1.13,Integrasi Central Server Staging dan Production dengan Timestamp Authority,,Paket,,1,1,1,1,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"0,16%",PRODUCT
+4,7,1,14,4.7.1.14,Deployment Security Server di Setiap Satker,,Paket,,12,12,4,576,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 22.040.816.327,,"92,01%",PRODUCT
+4,7,1,15,4.7.1.15,Pelaksanaan Unit Testing,,Skenario Uji,,2,1,2,4,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"0,64%",PRODUCT
+4,7,1,16,4.7.1.16,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,2,1,2,4,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"0,64%",PRODUCT
+4,7,1,17,4.7.1.17,Deployment Management Panel ke Server Development,,Paket,,1,1,3,3,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"0,48%",PRODUCT
+4,7,1,18,4.7.1.18,Deployment Management Panel ke Server Staging,,Paket,,1,1,3,3,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"0,48%",PRODUCT
+4,7,1,19,4.7.1.19,Deployment Management Panel ke Server Production,,Paket,,1,1,3,3,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"0,48%",PRODUCT
+4,7,2,,4.7.2,Fitur Data Contract,Fitur,,1,,,,,,,,,,,Rp 2.295.918.367,Rp 2.295.918.367,Rp 2.295.918.367,"4,62%",
+4,7,2,1,4.7.2.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,00%",PRODUCT
+4,7,2,2,4.7.2.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,00%",PRODUCT
+4,7,2,3,4.7.2.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,00%",PRODUCT
+4,7,2,4,4.7.2.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,00%",PRODUCT
+4,7,2,5,4.7.2.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"7,50%",PRODUCT
+4,7,2,6,4.7.2.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,4,12,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 688.775.510,,"30,00%",PRODUCT
+4,7,2,7,4.7.2.7,Pelaksanaan Unit Testing,,Skenario Uji,,2,1,2,4,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 229.591.837,,"10,00%",PRODUCT
+4,7,2,8,4.7.2.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,2,1,2,4,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 229.591.837,,"10,00%",PRODUCT
+4,7,2,9,4.7.2.9,Deployment ke Server Development,,Paket,,1,1,3,3,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"7,50%",PRODUCT
+4,7,2,10,4.7.2.10,Deployment ke Server Staging,,Paket,,1,1,3,3,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"7,50%",PRODUCT
+4,7,2,11,4.7.2.11,Deployment ke Server Production,,Paket,,1,1,3,3,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"7,50%",PRODUCT
+4,7,3,,4.7.3,Fitur Audit Transaksi,Fitur,,1,,,,,,,,,,,Rp 2.295.918.367,Rp 2.295.918.367,Rp 2.295.918.367,"4,62%",
+4,7,3,1,4.7.3.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,00%",PRODUCT
+4,7,3,2,4.7.3.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,00%",PRODUCT
+4,7,3,3,4.7.3.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,00%",PRODUCT
+4,7,3,4,4.7.3.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,00%",PRODUCT
+4,7,3,5,4.7.3.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"7,50%",PRODUCT
+4,7,3,6,4.7.3.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,4,12,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 688.775.510,,"30,00%",PRODUCT
+4,7,3,7,4.7.3.7,Pelaksanaan Unit Testing,,Skenario Uji,,2,1,2,4,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 229.591.837,,"10,00%",PRODUCT
+4,7,3,8,4.7.3.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,2,1,2,4,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 229.591.837,,"10,00%",PRODUCT
+4,7,3,9,4.7.3.9,Deployment ke Server Development,,Paket,,1,1,3,3,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"7,50%",PRODUCT
+4,7,3,10,4.7.3.10,Deployment ke Server Staging,,Paket,,1,1,3,3,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"7,50%",PRODUCT
+4,7,3,11,4.7.3.11,Deployment ke Server Production,,Paket,,1,1,3,3,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"7,50%",PRODUCT
+4,7,4,,4.7.4,Fitur Monitoring Transaksi,Fitur,,1,,,,,,,,,,,Rp 1.530.612.245,Rp 1.530.612.245,Rp 1.530.612.245,"3,08%",
+4,7,4,1,4.7.4.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,00%",PRODUCT
+4,7,4,2,4.7.4.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,00%",PRODUCT
+4,7,4,3,4.7.4.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,00%",PRODUCT
+4,7,4,4,4.7.4.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,00%",PRODUCT
+4,7,4,5,4.7.4.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"7,50%",PRODUCT
+4,7,4,6,4.7.4.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,4,12,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 459.183.673,,"30,00%",PRODUCT
+4,7,4,7,4.7.4.7,Pelaksanaan Unit Testing,,Skenario Uji,,2,1,2,4,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"10,00%",PRODUCT
+4,7,4,8,4.7.4.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,2,1,2,4,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"10,00%",PRODUCT
+4,7,4,9,4.7.4.9,Deployment ke Server Development,,Paket,,1,1,3,3,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"7,50%",PRODUCT
+4,7,4,10,4.7.4.10,Deployment ke Server Staging,,Paket,,1,1,3,3,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"7,50%",PRODUCT
+4,7,4,11,4.7.4.11,Deployment ke Server Production,,Paket,,1,1,3,3,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"7,50%",PRODUCT
+4,7,5,,4.7.5,Hardware Modul Manajemen Data Exchange,Paket,,1,,,,,,,,,,,Rp 19.591.836.735,Rp 19.591.836.735,Rp 19.591.836.735,"39,45%",
+4,7,5,1,4.7.5.1,"Application Server
+
+Rack Units:
+2U
+
+Processor:
+Up to four 4th Generation Intel Xeon Scalable processor with up to 60 cores per processor and with optional Intel® QuickAssist Technology;
+
+Memory:
+- 64 DDR5 DIMM slots, supports RDIMM 16 TB max, speeds up to 4800 MT/s; 
+- Supports registered ECC DDR5 DIMMs only
+
+Storage controllers:
+- Internal Controllers: PERC H965i, PERC H755, PERC H355, HBA355i, HBA465i
+- External Controller: PERC H965e
+- Internal Boot: Boot Optimized Storage Subsystem (BOSS-N1): HWRAID 2 x M.2 NVMe SSDs or USB
+- External HBA (non-RAID): HBA355e, HBA465e
+- Software Raid: S160
+
+Drive Bays:
+Front bays
+- Up to 8 x 2.5-inch SAS/SATA (HDD/SSD) drives max 122.88 TB
+- Up to 8 x EDSFF E3.S Gen5 NVMe (SSD) drives max 61.44 TB
+- Up to 16 x 2.5-inch SAS/SATA/NVMe (HDD/SSD) drives max 245.76 TB
+- Up to 24 x 2.5-inch SAS/SATA/NVMe (HDD/SSD) drives max 368.34 TB
+- Up to 16 x 2.5-inch SAS/SATA (HDD/SSD) drives + 8 x 2.5-inch NVMe (SSD) drives max 368.34 TB
+Rear bays
+- Up to 2 x 2.5-inch SAS/SATA (HDD/SSD) drives max 30.72 TB
+- Up to 4 x EDSFF E3.S Gen5 NVMe (SSD) drives max 30.72 TB",,Paket,,1,1,1,1,Rp 6.000.000.000,"100,00%",,Rp 3.000.000.000,Rp 183.673.469,Rp 9.183.673.469,,Rp 9.183.673.469,,"46,88%",HARDWARE
+4,7,5,2,4.7.5.2,"Database Application Server
+
+Rack Units:
+2U
+
+Processor:
+Up to four 4th Generation Intel Xeon Scalable processor with up to 60 cores per processor and with optional Intel® QuickAssist Technology;
+
+Memory:
+- 64 DDR5 DIMM slots, supports RDIMM 16 TB max, speeds up to 4800 MT/s; 
+- Supports registered ECC DDR5 DIMMs only
+
+Storage controllers:
+- Internal Controllers: PERC H965i, PERC H755, PERC H355, HBA355i, HBA465i
+- External Controller: PERC H965e
+- Internal Boot: Boot Optimized Storage Subsystem (BOSS-N1): HWRAID 2 x M.2 NVMe SSDs or USB
+- External HBA (non-RAID): HBA355e, HBA465e
+- Software Raid: S160
+
+Drive Bays:
+Front bays
+- Up to 8 x 2.5-inch SAS/SATA (HDD/SSD) drives max 122.88 TB
+- Up to 8 x EDSFF E3.S Gen5 NVMe (SSD) drives max 61.44 TB
+- Up to 16 x 2.5-inch SAS/SATA/NVMe (HDD/SSD) drives max 245.76 TB
+- Up to 24 x 2.5-inch SAS/SATA/NVMe (HDD/SSD) drives max 368.34 TB
+- Up to 16 x 2.5-inch SAS/SATA (HDD/SSD) drives + 8 x 2.5-inch NVMe (SSD) drives max 368.34 TB
+Rear bays
+- Up to 2 x 2.5-inch SAS/SATA (HDD/SSD) drives max 30.72 TB
+- Up to 4 x EDSFF E3.S Gen5 NVMe (SSD) drives max 30.72 TB",,Paket,,1,1,1,1,Rp 6.000.000.000,"100,00%",,Rp 3.000.000.000,Rp 183.673.469,Rp 9.183.673.469,,Rp 9.183.673.469,,"46,88%",HARDWARE
+4,7,5,3,4.7.5.3,Switch Infiniband,,Paket,,1,1,1,1,Rp 300.000.000,"100,00%",,Rp 150.000.000,Rp 9.183.673,Rp 459.183.673,,Rp 459.183.673,,"2,34%",HARDWARE
+4,7,5,4,4.7.5.4,Switch DC,,Paket,,1,1,2,2,Rp 100.000.000,"100,00%",,Rp 50.000.000,Rp 3.061.224,Rp 153.061.224,,Rp 306.122.449,,"1,56%",HARDWARE
+4,7,5,5,4.7.5.5,UPS,,Paket,,1,1,1,1,Rp 100.000.000,"100,00%",,Rp 50.000.000,Rp 3.061.224,Rp 153.061.224,,Rp 153.061.224,,"0,78%",HARDWARE
+4,7,5,6,4.7.5.6,Electrical Equipment,,Paket,,1,1,1,1,Rp 100.000.000,"100,00%",,Rp 50.000.000,Rp 3.061.224,Rp 153.061.224,,Rp 153.061.224,,"0,78%",HARDWARE
+4,7,5,7,4.7.5.7,Server Operating System,,Paket,,1,1,1,1,Rp 100.000.000,"100,00%",,Rp 50.000.000,Rp 3.061.224,Rp 153.061.224,,Rp 153.061.224,,"0,78%",HARDWARE
+4,8,,,4.8,Modul Core Data Engine,,,,,,,,,,,,,,,Rp 90.401.785.714,Rp 90.401.785.714,"31,92%",
+4,8,1,,4.8.1,Data Ingestion Platform Engine,Fitur,,1,,,,,,,,,,,Rp 1.281.887.755,Rp 1.281.887.755,Rp 1.281.887.755,"1,42%",
+4,8,1,1,4.8.1.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,48%",PRODUCT
+4,8,1,2,4.8.1.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,48%",PRODUCT
+4,8,1,3,4.8.1.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,48%",PRODUCT
+4,8,1,4,4.8.1.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,1,1,1,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 19.132.653,,"1,49%",PRODUCT
+4,8,1,5,4.8.1.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,1,1,1,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 19.132.653,,"1,49%",PRODUCT
+4,8,1,6,4.8.1.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,6,18,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 344.387.755,,"26,87%",PRODUCT
+4,8,1,7,4.8.1.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"23,88%",PRODUCT
+4,8,1,8,4.8.1.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"23,88%",PRODUCT
+4,8,1,9,4.8.1.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,99%",PRODUCT
+4,8,1,10,4.8.1.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,99%",PRODUCT
+4,8,1,11,4.8.1.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,99%",PRODUCT
+4,8,2,,4.8.2,Data Pipeline Platform Engine,Fitur,,1,,,,,,,,,,,Rp 1.989.795.918,Rp 1.989.795.918,Rp 1.989.795.918,"2,20%",
+4,8,2,1,4.8.2.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"1,92%",PRODUCT
+4,8,2,2,4.8.2.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"1,92%",PRODUCT
+4,8,2,3,4.8.2.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"1,92%",PRODUCT
+4,8,2,4,4.8.2.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"1,92%",PRODUCT
+4,8,2,5,4.8.2.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"2,88%",PRODUCT
+4,8,2,6,4.8.2.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,12,3,36,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 688.775.510,,"34,62%",PRODUCT
+4,8,2,7,4.8.2.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,3,24,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 459.183.673,,"23,08%",PRODUCT
+4,8,2,8,4.8.2.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,3,24,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 459.183.673,,"23,08%",PRODUCT
+4,8,2,9,4.8.2.9,Deployment ke Server Development,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"2,88%",PRODUCT
+4,8,2,10,4.8.2.10,Deployment ke Server Staging,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"2,88%",PRODUCT
+4,8,2,11,4.8.2.11,Deployment ke Server Production,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"2,88%",PRODUCT
+4,8,3,,4.8.3,Data Lake/Data Lakehouse Platform Engine,Fitur,,1,,,,,,,,,,,Rp 1.033.163.265,Rp 1.033.163.265,Rp 1.033.163.265,"1,14%",
+4,8,3,1,4.8.3.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,70%",PRODUCT
+4,8,3,2,4.8.3.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,70%",PRODUCT
+4,8,3,3,4.8.3.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,70%",PRODUCT
+4,8,3,4,4.8.3.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,70%",PRODUCT
+4,8,3,5,4.8.3.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"5,56%",PRODUCT
+4,8,3,6,4.8.3.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,1,2,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,70%",PRODUCT
+4,8,3,7,4.8.3.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"29,63%",PRODUCT
+4,8,3,8,4.8.3.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"29,63%",PRODUCT
+4,8,3,9,4.8.3.9,Deployment ke Server Development,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"5,56%",PRODUCT
+4,8,3,10,4.8.3.10,Deployment ke Server Staging,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"5,56%",PRODUCT
+4,8,3,11,4.8.3.11,Deployment ke Server Production,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"5,56%",PRODUCT
+4,8,4,,4.8.4,Data Warehouse/Data Mart Platform Engine,Fitur,,1,,,,,,,,,,,Rp 2.563.775.510,Rp 2.563.775.510,Rp 2.563.775.510,"2,84%",
+4,8,4,1,4.8.4.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,1,1,1,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 19.132.653,,"0,75%",PRODUCT
+4,8,4,2,4.8.4.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,1,1,1,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 19.132.653,,"0,75%",PRODUCT
+4,8,4,3,4.8.4.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,1,1,1,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 19.132.653,,"0,75%",PRODUCT
+4,8,4,4,4.8.4.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,1,1,1,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 19.132.653,,"0,75%",PRODUCT
+4,8,4,5,4.8.4.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,1,1,1,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 19.132.653,,"0,75%",PRODUCT
+4,8,4,6,4.8.4.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,12,2,24,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 459.183.673,,"17,91%",PRODUCT
+4,8,4,7,4.8.4.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,3,2,48,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 918.367.347,,"35,82%",PRODUCT
+4,8,4,8,4.8.4.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,3,2,48,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 918.367.347,,"35,82%",PRODUCT
+4,8,4,9,4.8.4.9,Deployment ke Server Development,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"2,24%",PRODUCT
+4,8,4,10,4.8.4.10,Deployment ke Server Staging,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"2,24%",PRODUCT
+4,8,4,11,4.8.4.11,Deployment ke Server Production,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"2,24%",PRODUCT
+4,8,5,,4.8.5,Data Quality Platform Engine,Fitur,,1,,,,,,,,,,,Rp 2.257.653.061,Rp 2.257.653.061,Rp 2.257.653.061,"2,50%",
+4,8,5,1,4.8.5.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,1,1,1,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 19.132.653,,"0,85%",PRODUCT
+4,8,5,2,4.8.5.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,1,1,1,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 19.132.653,,"0,85%",PRODUCT
+4,8,5,3,4.8.5.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,1,1,1,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 19.132.653,,"0,85%",PRODUCT
+4,8,5,4,4.8.5.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,1,1,1,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 19.132.653,,"0,85%",PRODUCT
+4,8,5,5,4.8.5.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,1,1,1,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 19.132.653,,"0,85%",PRODUCT
+4,8,5,6,4.8.5.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,12,6,72,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.377.551.020,,"61,02%",PRODUCT
+4,8,5,7,4.8.5.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"13,56%",PRODUCT
+4,8,5,8,4.8.5.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"13,56%",PRODUCT
+4,8,5,9,4.8.5.9,Deployment ke Server Development,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"2,54%",PRODUCT
+4,8,5,10,4.8.5.10,Deployment ke Server Staging,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"2,54%",PRODUCT
+4,8,5,11,4.8.5.11,Deployment ke Server Production,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"2,54%",PRODUCT
+4,8,6,,4.8.6,Metadata Platform Engine,Fitur,,1,,,,,,,,,,,Rp 2.372.448.980,Rp 2.372.448.980,Rp 2.372.448.980,"2,62%",
+4,8,6,1,4.8.6.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"1,61%",PRODUCT
+4,8,6,2,4.8.6.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"1,61%",PRODUCT
+4,8,6,3,4.8.6.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"1,61%",PRODUCT
+4,8,6,4,4.8.6.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"1,61%",PRODUCT
+4,8,6,5,4.8.6.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"2,42%",PRODUCT
+4,8,6,6,4.8.6.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,12,6,72,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.377.551.020,,"58,06%",PRODUCT
+4,8,6,7,4.8.6.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"12,90%",PRODUCT
+4,8,6,8,4.8.6.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"12,90%",PRODUCT
+4,8,6,9,4.8.6.9,Deployment ke Server Development,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"2,42%",PRODUCT
+4,8,6,10,4.8.6.10,Deployment ke Server Staging,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"2,42%",PRODUCT
+4,8,6,11,4.8.6.11,Deployment ke Server Production,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"2,42%",PRODUCT
+4,8,7,,4.8.7,Geospatial Engine Platform Engine,Fitur,,1,,,,,,,,,,,Rp 1.454.081.633,Rp 1.454.081.633,Rp 1.454.081.633,"1,61%",
+4,8,7,1,4.8.7.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,63%",PRODUCT
+4,8,7,2,4.8.7.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,63%",PRODUCT
+4,8,7,3,4.8.7.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,63%",PRODUCT
+4,8,7,4,4.8.7.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,63%",PRODUCT
+4,8,7,5,4.8.7.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"3,95%",PRODUCT
+4,8,7,6,4.8.7.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,6,4,24,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 459.183.673,,"31,58%",PRODUCT
+4,8,7,7,4.8.7.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"21,05%",PRODUCT
+4,8,7,8,4.8.7.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"21,05%",PRODUCT
+4,8,7,9,4.8.7.9,Deployment ke Server Development,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"3,95%",PRODUCT
+4,8,7,10,4.8.7.10,Deployment ke Server Staging,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"3,95%",PRODUCT
+4,8,7,11,4.8.7.11,Deployment ke Server Production,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"3,95%",PRODUCT
+4,8,8,,4.8.8,Secure Data Exchange Platform Engine,Fitur,,1,,,,,,,,,,,Rp 3.692.602.041,Rp 3.692.602.041,Rp 3.692.602.041,"4,08%",
+4,8,8,1,4.8.8.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,6,1,6,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"3,11%",PRODUCT
+4,8,8,2,4.8.8.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,6,1,6,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"3,11%",PRODUCT
+4,8,8,3,4.8.8.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,6,1,6,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"3,11%",PRODUCT
+4,8,8,4,4.8.8.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,1,1,1,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 19.132.653,,"0,52%",PRODUCT
+4,8,8,5,4.8.8.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"1,55%",PRODUCT
+4,8,8,6,4.8.8.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,12,6,72,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.377.551.020,,"37,31%",PRODUCT
+4,8,8,7,4.8.8.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,3,2,48,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 918.367.347,,"24,87%",PRODUCT
+4,8,8,8,4.8.8.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,3,2,48,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 918.367.347,,"24,87%",PRODUCT
+4,8,8,9,4.8.8.9,Deployment ke Server Development,,Paket,,1,1,1,1,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 19.132.653,,"0,52%",PRODUCT
+4,8,8,10,4.8.8.10,Deployment ke Server Staging,,Paket,,1,1,1,1,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 19.132.653,,"0,52%",PRODUCT
+4,8,8,11,4.8.8.11,Deployment ke Server Production,,Paket,,1,1,1,1,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 19.132.653,,"0,52%",PRODUCT
+4,8,9,,4.8.9,Master & Reference Data Platform Engine,Fitur,,1,,,,,,,,,,,Rp 1.205.357.143,Rp 1.205.357.143,Rp 1.205.357.143,"1,33%",
+4,8,9,1,4.8.9.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,17%",PRODUCT
+4,8,9,2,4.8.9.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,17%",PRODUCT
+4,8,9,3,4.8.9.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,17%",PRODUCT
+4,8,9,4,4.8.9.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,17%",PRODUCT
+4,8,9,5,4.8.9.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"3,17%",PRODUCT
+4,8,9,6,4.8.9.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,4,3,12,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 229.591.837,,"19,05%",PRODUCT
+4,8,9,7,4.8.9.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,40%",PRODUCT
+4,8,9,8,4.8.9.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"25,40%",PRODUCT
+4,8,9,9,4.8.9.9,Deployment ke Server Development,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,76%",PRODUCT
+4,8,9,10,4.8.9.10,Deployment ke Server Staging,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,76%",PRODUCT
+4,8,9,11,4.8.9.11,Deployment ke Server Production,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"4,76%",PRODUCT
+4,8,10,,4.8.10,Data Analytics Platform Engine,Fitur,,1,,,,,,,,,,,Rp 1.530.612.245,Rp 1.530.612.245,Rp 1.530.612.245,"1,69%",
+4,8,10,1,4.8.10.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,50%",PRODUCT
+4,8,10,2,4.8.10.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,50%",PRODUCT
+4,8,10,3,4.8.10.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,50%",PRODUCT
+4,8,10,4,4.8.10.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"2,50%",PRODUCT
+4,8,10,5,4.8.10.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"3,75%",PRODUCT
+4,8,10,6,4.8.10.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,4,3,12,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 229.591.837,,"15,00%",PRODUCT
+4,8,10,7,4.8.10.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,3,24,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 459.183.673,,"30,00%",PRODUCT
+4,8,10,8,4.8.10.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,3,24,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 459.183.673,,"30,00%",PRODUCT
+4,8,10,9,4.8.10.9,Deployment ke Server Development,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"3,75%",PRODUCT
+4,8,10,10,4.8.10.10,Deployment ke Server Staging,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"3,75%",PRODUCT
+4,8,10,11,4.8.10.11,Deployment ke Server Production,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"3,75%",PRODUCT
+4,8,11,,4.8.11,Data Security Platform Engine,Fitur,,1,,,,,,,,,,,Rp 3.137.755.102,Rp 3.137.755.102,Rp 3.137.755.102,"3,47%",
+4,8,11,1,4.8.11.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"1,22%",PRODUCT
+4,8,11,2,4.8.11.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"1,22%",PRODUCT
+4,8,11,3,4.8.11.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"1,22%",PRODUCT
+4,8,11,4,4.8.11.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"1,22%",PRODUCT
+4,8,11,5,4.8.11.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"1,83%",PRODUCT
+4,8,11,6,4.8.11.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,12,4,48,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 918.367.347,,"29,27%",PRODUCT
+4,8,11,7,4.8.11.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,3,2,48,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 918.367.347,,"29,27%",PRODUCT
+4,8,11,8,4.8.11.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,3,2,48,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 918.367.347,,"29,27%",PRODUCT
+4,8,11,9,4.8.11.9,Deployment ke Server Development,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"1,83%",PRODUCT
+4,8,11,10,4.8.11.10,Deployment ke Server Staging,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"1,83%",PRODUCT
+4,8,11,11,4.8.11.11,Deployment ke Server Production,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"1,83%",PRODUCT
+4,8,12,,4.8.12,Data Privacy Platform Engine,Fitur,,1,,,,,,,,,,,Rp 2.372.448.980,Rp 2.372.448.980,Rp 2.372.448.980,"2,62%",
+4,8,12,1,4.8.12.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"1,61%",PRODUCT
+4,8,12,2,4.8.12.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"1,61%",PRODUCT
+4,8,12,3,4.8.12.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"1,61%",PRODUCT
+4,8,12,4,4.8.12.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 38.265.306,,"1,61%",PRODUCT
+4,8,12,5,4.8.12.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"2,42%",PRODUCT
+4,8,12,6,4.8.12.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,12,6,72,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 1.377.551.020,,"58,06%",PRODUCT
+4,8,12,7,4.8.12.7,Pelaksanaan Unit Testing,,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"12,90%",PRODUCT
+4,8,12,8,4.8.12.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,8,1,2,16,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 306.122.449,,"12,90%",PRODUCT
+4,8,12,9,4.8.12.9,Deployment ke Server Development,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"2,42%",PRODUCT
+4,8,12,10,4.8.12.10,Deployment ke Server Staging,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"2,42%",PRODUCT
+4,8,12,11,4.8.12.11,Deployment ke Server Production,,Paket,,1,1,3,3,Rp 50.000.000,"25,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 57.397.959,,"2,42%",PRODUCT
+4,8,13,,4.8.13,Hardware Modul Core Data Engine,Paket,,1,,,,,,,,,,,Rp 65.510.204.082,Rp 65.510.204.082,Rp 65.510.204.082,"72,47%",
+4,8,13,1,4.8.13.1,"Application Server
+
+Rack Units:
+2U
+
+Processor:
+Up to four 4th Generation Intel Xeon Scalable processor with up to 60 cores per processor and with optional Intel® QuickAssist Technology;
+
+Memory:
+- 64 DDR5 DIMM slots, supports RDIMM 16 TB max, speeds up to 4800 MT/s; 
+- Supports registered ECC DDR5 DIMMs only
+
+Storage controllers:
+- Internal Controllers: PERC H965i, PERC H755, PERC H355, HBA355i, HBA465i
+- External Controller: PERC H965e
+- Internal Boot: Boot Optimized Storage Subsystem (BOSS-N1): HWRAID 2 x M.2 NVMe SSDs or USB
+- External HBA (non-RAID): HBA355e, HBA465e
+- Software Raid: S160
+
+Drive Bays:
+Front bays
+- Up to 8 x 2.5-inch SAS/SATA (HDD/SSD) drives max 122.88 TB
+- Up to 8 x EDSFF E3.S Gen5 NVMe (SSD) drives max 61.44 TB
+- Up to 16 x 2.5-inch SAS/SATA/NVMe (HDD/SSD) drives max 245.76 TB
+- Up to 24 x 2.5-inch SAS/SATA/NVMe (HDD/SSD) drives max 368.34 TB
+- Up to 16 x 2.5-inch SAS/SATA (HDD/SSD) drives + 8 x 2.5-inch NVMe (SSD) drives max 368.34 TB
+Rear bays
+- Up to 2 x 2.5-inch SAS/SATA (HDD/SSD) drives max 30.72 TB
+- Up to 4 x EDSFF E3.S Gen5 NVMe (SSD) drives max 30.72 TB",,Paket,,1,1,1,1,Rp 6.000.000.000,"100,00%",,Rp 3.000.000.000,Rp 183.673.469,Rp 9.183.673.469,,Rp 9.183.673.469,,"14,02%",HARDWARE
+4,8,13,2,4.8.13.2,"Database Application Server
+
+Rack Units:
+2U
+
+Processor:
+Up to four 4th Generation Intel Xeon Scalable processor with up to 60 cores per processor and with optional Intel® QuickAssist Technology;
+
+Memory:
+- 64 DDR5 DIMM slots, supports RDIMM 16 TB max, speeds up to 4800 MT/s; 
+- Supports registered ECC DDR5 DIMMs only
+
+Storage controllers:
+- Internal Controllers: PERC H965i, PERC H755, PERC H355, HBA355i, HBA465i
+- External Controller: PERC H965e
+- Internal Boot: Boot Optimized Storage Subsystem (BOSS-N1): HWRAID 2 x M.2 NVMe SSDs or USB
+- External HBA (non-RAID): HBA355e, HBA465e
+- Software Raid: S160
+
+Drive Bays:
+Front bays
+- Up to 8 x 2.5-inch SAS/SATA (HDD/SSD) drives max 122.88 TB
+- Up to 8 x EDSFF E3.S Gen5 NVMe (SSD) drives max 61.44 TB
+- Up to 16 x 2.5-inch SAS/SATA/NVMe (HDD/SSD) drives max 245.76 TB
+- Up to 24 x 2.5-inch SAS/SATA/NVMe (HDD/SSD) drives max 368.34 TB
+- Up to 16 x 2.5-inch SAS/SATA (HDD/SSD) drives + 8 x 2.5-inch NVMe (SSD) drives max 368.34 TB
+Rear bays
+- Up to 2 x 2.5-inch SAS/SATA (HDD/SSD) drives max 30.72 TB
+- Up to 4 x EDSFF E3.S Gen5 NVMe (SSD) drives max 30.72 TB",,Paket,,1,1,1,1,Rp 6.000.000.000,"100,00%",,Rp 3.000.000.000,Rp 183.673.469,Rp 9.183.673.469,,Rp 9.183.673.469,,"14,02%",HARDWARE
+4,8,13,3,4.8.13.3,"Compute Model Training Server
+
+Rack Units:
+2U
+
+Processor:
+Up to two 5th Generation Intel Xeon Scalable processor with up to 64 cores per processor and optional Intel® QuickAssist Technology.
+
+Memory:
+- 32 DDR5 DIMM slot, supports RDIMM 8 TB max
+- Speeds up to 4800 MT/s on the 4th Generation Intel® Xeon Scalable processor
+- Speeds up to 5600 MT/s on the 5th Generation Intel® Xeon Scalable processor
+- Supports registered ECC DDR5 DIMMs only
+
+Storage controllers:
+- Internal controllers: PERC H965i, PERC H755, PERC H755N, PERC H355, HBA355i, HBA465i
+- Internal Boot: Boot Optimized Storage Subsystem (BOSS-N1): HWRAID 2 x M.2 NVMe SSDs, or USB
+- External HBA (non-RAID): HBA355e, HBA465e, H965e
+- Software RAID: S160
+
+Drive Bays:
+Front bays
+- Up to 6 x E3.S Gen5 NVMe, max 46.08 TB
+- Up to 6 x 2.5-inch NVMe, max 92.16 TB
+- Up to 8 x 2.5-inch SAS/SATA/NVMe, max 122.88 TB
+
+GPU Options:
+- Up to 4 x 400 W DW PCIe x16 GPU cards
+- Up to 12 x 75 W SW PCIe x8 GPU cards",,Paket,,1,1,1,1,Rp 10.000.000.000,"100,00%",,Rp 5.000.000.000,Rp 306.122.449,Rp 15.306.122.449,,Rp 15.306.122.449,,"23,36%",HARDWARE
+4,8,13,4,4.8.13.4,"Compute Processing Server
+
+Rack Units:
+4U
+
+Processor:
+Two 5th Generation AMD EPYC 9005 Series processors with up to 192 cores per processor
+
+Memory:
+- 24 DDR5 DIMM slots, supports RDIMM 3 TB max, speeds up to 6400 MT/s
+- Supports unregistered ECC DDR5 DIMMs only
+
+Storage controllers:
+Internal Boot: Boot Optimized Storage Subsystem (BOSS-N1 DC-MHS): HWRAID 1, 2 x M.2 NVMe SSDs or USB
+
+Drive Bays:
+Front bays
+- Up to 8 x EDSFF E3.S Gen5 NVMe (SSD) max 122.88 TB
+
+GPU Options:
+- 8x PCIe Gen 5 x16 DW-FHFL up to 600W or
+- 16x PCIe Gen 5 x16 SW-FHFL up to 75W",,Paket,,1,1,1,1,Rp 20.000.000.000,"100,00%",,Rp 10.000.000.000,Rp 612.244.898,Rp 30.612.244.898,,Rp 30.612.244.898,,"46,73%",HARDWARE
+4,8,13,5,4.8.13.5,Switch Infiniband,,Paket,,1,1,1,1,Rp 300.000.000,"100,00%",,Rp 150.000.000,Rp 9.183.673,Rp 459.183.673,,Rp 459.183.673,,"0,70%",HARDWARE
+4,8,13,6,4.8.13.6,Switch DC,,Paket,,1,1,2,2,Rp 100.000.000,"100,00%",,Rp 50.000.000,Rp 3.061.224,Rp 153.061.224,,Rp 306.122.449,,"0,47%",HARDWARE
+4,8,13,7,4.8.13.7,UPS,,Paket,,1,1,1,1,Rp 100.000.000,"100,00%",,Rp 50.000.000,Rp 3.061.224,Rp 153.061.224,,Rp 153.061.224,,"0,23%",HARDWARE
+4,8,13,8,4.8.13.8,Electrical Equipment,,Paket,,1,1,1,1,Rp 100.000.000,"100,00%",,Rp 50.000.000,Rp 3.061.224,Rp 153.061.224,,Rp 153.061.224,,"0,23%",HARDWARE
+4,8,13,9,4.8.13.9,Server Operating System,,Paket,,1,1,1,1,Rp 100.000.000,"100,00%",,Rp 50.000.000,Rp 3.061.224,Rp 153.061.224,,Rp 153.061.224,,"0,23%",HARDWARE
+4,9,,,4.9,Modul Analytics Dashboard,,,,,,,,,,,,,,,Rp 27.474.489.796,Rp 27.474.489.796,"9,70%",
+4,9,1,,4.9.1,Pengembangan Dashboard Data Prioritas untuk Eksekutif,Fitur,,1,,,,,,,,,,,Rp 2.410.714.286,Rp 2.410.714.286,Rp 2.410.714.286,"8,77%",
+4,9,1,1,4.9.1.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"4,76%",PRODUCT
+4,9,1,2,4.9.1.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"4,76%",PRODUCT
+4,9,1,3,4.9.1.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"4,76%",PRODUCT
+4,9,1,4,4.9.1.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,5,2,1,10,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 573.979.592,,"23,81%",PRODUCT
+4,9,1,5,4.9.1.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"7,14%",PRODUCT
+4,9,1,6,4.9.1.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 516.581.633,,"21,43%",PRODUCT
+4,9,1,7,4.9.1.7,Pelaksanaan Unit Testing,,Skenario Uji,,2,1,2,4,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 229.591.837,,"9,52%",PRODUCT
+4,9,1,8,4.9.1.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,2,1,2,4,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 229.591.837,,"9,52%",PRODUCT
+4,9,1,9,4.9.1.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"4,76%",PRODUCT
+4,9,1,10,4.9.1.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"4,76%",PRODUCT
+4,9,1,11,4.9.1.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"4,76%",PRODUCT
+4,9,2,,4.9.2,Pengembangan Dashboard Data Prioritas untuk Publik,Fitur,,1,,,,,,,,,,,Rp 2.410.714.286,Rp 2.410.714.286,Rp 2.410.714.286,"8,77%",
+4,9,2,1,4.9.2.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"4,76%",PRODUCT
+4,9,2,2,4.9.2.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"4,76%",PRODUCT
+4,9,2,3,4.9.2.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"4,76%",PRODUCT
+4,9,2,4,4.9.2.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,5,2,1,10,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 573.979.592,,"23,81%",PRODUCT
+4,9,2,5,4.9.2.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"7,14%",PRODUCT
+4,9,2,6,4.9.2.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 516.581.633,,"21,43%",PRODUCT
+4,9,2,7,4.9.2.7,Pelaksanaan Unit Testing,,Skenario Uji,,2,1,2,4,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 229.591.837,,"9,52%",PRODUCT
+4,9,2,8,4.9.2.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,2,1,2,4,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 229.591.837,,"9,52%",PRODUCT
+4,9,2,9,4.9.2.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"4,76%",PRODUCT
+4,9,2,10,4.9.2.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"4,76%",PRODUCT
+4,9,2,11,4.9.2.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"4,76%",PRODUCT
+4,9,3,,4.9.3,Hardware Modul Analytics Dashboard,Paket,,1,,,,,,,,,,,Rp 22.653.061.224,Rp 22.653.061.224,Rp 22.653.061.224,"82,45%",
+4,9,3,1,4.9.3.1,"Data Compute Processing Server
+
+Rack Units:
+4U
+
+Processor:
+Up to four 4th Generation Intel Xeon Scalable processor with up to 60 cores per processor and with optional Intel® QuickAssist Technology.
+
+Memory:
+- 64 DDR5 DIMM slots, supports RDIMM 16 TB max, speeds up to 4800 MT/s
+- Supports registered ECC DDR5 DIMMs only
+
+Storage controllers:
+- Internal Controllers: PERC H965i, PERC H755, PERC H355, HBA355i, HBA465ii
+- Internal Boot: Boot Optimized Storage Subsystem (BOSS-N1): HWRAID 2 x M.2 NVMe SSDs or USB
+- External HBA (non-RAID): HBA355e, HBA465e
+- Software RAID: S160
+
+Drive Bays:
+Front bays
+- Up to 8 x 2.5-inch SAS/SATA (HDD/SSD) max 122.88 TB
+- Up to 16 x 2.5-inch SAS/SATA (HDD/SSD) max 245.76 TB
+- Up to 24 x 2.5-inch NVMe (SSD) max 368.64 TB
+- Up to 16 x 2.5-inch SAS/SATA (HDD/SSD) + 8 x 2.5-inch NVMe (SSD) max 368.64 TB
+- Up to 32 x 2.5-inch SAS/SATA (HDD/SSD) max 491.52 TB
+
+GPU Options:
+Up to 4 x 400 W DW",,Paket,,1,1,1,1,Rp 8.000.000.000,"100,00%",,Rp 4.000.000.000,Rp 244.897.959,Rp 12.244.897.959,,Rp 12.244.897.959,,"54,05%",HARDWARE
+4,9,3,2,4.9.3.2,"Data Storage Server
+
+Rack Units:
+2U
+
+Processor:
+Up to four 4th Generation Intel Xeon Scalable processor with up to 60 cores per processor and with optional Intel® QuickAssist Technology;
+
+Memory:
+- 64 DDR5 DIMM slots, supports RDIMM 16 TB max, speeds up to 4800 MT/s; 
+- Supports registered ECC DDR5 DIMMs only
+
+Storage controllers:
+- Internal Controllers: PERC H965i, PERC H755, PERC H355, HBA355i, HBA465i
+- External Controller: PERC H965e
+- Internal Boot: Boot Optimized Storage Subsystem (BOSS-N1): HWRAID 2 x M.2 NVMe SSDs or USB
+- External HBA (non-RAID): HBA355e, HBA465e
+- Software Raid: S160
+
+Drive Bays:
+Front bays
+- Up to 8 x 2.5-inch SAS/SATA (HDD/SSD) drives max 122.88 TB
+- Up to 8 x EDSFF E3.S Gen5 NVMe (SSD) drives max 61.44 TB
+- Up to 16 x 2.5-inch SAS/SATA/NVMe (HDD/SSD) drives max 245.76 TB
+- Up to 24 x 2.5-inch SAS/SATA/NVMe (HDD/SSD) drives max 368.34 TB
+- Up to 16 x 2.5-inch SAS/SATA (HDD/SSD) drives + 8 x 2.5-inch NVMe (SSD) drives max 368.34 TB
+Rear bays
+- Up to 2 x 2.5-inch SAS/SATA (HDD/SSD) drives max 30.72 TB
+- Up to 4 x EDSFF E3.S Gen5 NVMe (SSD) drives max 30.72 TB",,Paket,,1,1,1,1,Rp 6.000.000.000,"100,00%",,Rp 3.000.000.000,Rp 183.673.469,Rp 9.183.673.469,,Rp 9.183.673.469,,"40,54%",HARDWARE
+4,9,3,3,4.9.3.3,Switch Infiniband,,Paket,,1,1,1,1,Rp 300.000.000,"100,00%",,Rp 150.000.000,Rp 9.183.673,Rp 459.183.673,,Rp 459.183.673,,"2,03%",HARDWARE
+4,9,3,4,4.9.3.4,Switch DC,,Paket,,1,1,2,2,Rp 100.000.000,"100,00%",,Rp 50.000.000,Rp 3.061.224,Rp 153.061.224,,Rp 306.122.449,,"1,35%",HARDWARE
+4,9,3,5,4.9.3.5,UPS,,Paket,,1,1,1,1,Rp 100.000.000,"100,00%",,Rp 50.000.000,Rp 3.061.224,Rp 153.061.224,,Rp 153.061.224,,"0,68%",HARDWARE
+4,9,3,6,4.9.3.6,Electrical Equipment,,Paket,,1,1,1,1,Rp 100.000.000,"100,00%",,Rp 50.000.000,Rp 3.061.224,Rp 153.061.224,,Rp 153.061.224,,"0,68%",HARDWARE
+4,9,3,7,4.9.3.7,Server Operating System,,Paket,,1,1,1,1,Rp 100.000.000,"100,00%",,Rp 50.000.000,Rp 3.061.224,Rp 153.061.224,,Rp 153.061.224,,"0,68%",HARDWARE
+4,10,,,4.10,Modul Integrasi,,,,,,,,,,,,,,,Rp 15.612.244.898,Rp 15.612.244.898,"5,51%",
+4,10,1,,4.10.1,Integrasi dengan Sistem Administrasi Kepegawaian (API) untuk Single Sign-On Data Kepegawaian,Fitur,,1,,,,,,,,,,,Rp 1.951.530.612,Rp 1.951.530.612,Rp 1.951.530.612,"12,50%",
+4,10,1,1,4.10.1.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,88%",PRODUCT
+4,10,1,2,4.10.1.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,88%",PRODUCT
+4,10,1,3,4.10.1.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,88%",PRODUCT
+4,10,1,4,4.10.1.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,88%",PRODUCT
+4,10,1,5,4.10.1.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"8,82%",PRODUCT
+4,10,1,6,4.10.1.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 516.581.633,,"26,47%",PRODUCT
+4,10,1,7,4.10.1.7,Pelaksanaan Unit Testing,,Skenario Uji,,2,1,2,4,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 229.591.837,,"11,76%",PRODUCT
+4,10,1,8,4.10.1.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,2,1,2,4,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 229.591.837,,"11,76%",PRODUCT
+4,10,1,9,4.10.1.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,88%",PRODUCT
+4,10,1,10,4.10.1.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,88%",PRODUCT
+4,10,1,11,4.10.1.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,88%",PRODUCT
+4,10,2,,4.10.2,Integrasi dengan Sistem Administrasi Kependudukan (API) untuk verifikasi dan validasi Data Kependudukan,Fitur,,1,,,,,,,,,,,Rp 1.951.530.612,Rp 1.951.530.612,Rp 1.951.530.612,"12,50%",
+4,10,2,1,4.10.2.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,88%",PRODUCT
+4,10,2,2,4.10.2.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,88%",PRODUCT
+4,10,2,3,4.10.2.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,88%",PRODUCT
+4,10,2,4,4.10.2.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,88%",PRODUCT
+4,10,2,5,4.10.2.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 172.193.878,,"8,82%",PRODUCT
+4,10,2,6,4.10.2.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 516.581.633,,"26,47%",PRODUCT
+4,10,2,7,4.10.2.7,Pelaksanaan Unit Testing,,Skenario Uji,,2,1,2,4,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 229.591.837,,"11,76%",PRODUCT
+4,10,2,8,4.10.2.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,2,1,2,4,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 229.591.837,,"11,76%",PRODUCT
+4,10,2,9,4.10.2.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,88%",PRODUCT
+4,10,2,10,4.10.2.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,88%",PRODUCT
+4,10,2,11,4.10.2.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"75,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"5,88%",PRODUCT
+4,10,3,,4.10.3,Integrasi dengan Portal Satu Data Indonesia (API),Fitur,,1,,,,,,,,,,,Rp 1.301.020.408,Rp 1.301.020.408,Rp 1.301.020.408,"8,33%",
+4,10,3,1,4.10.3.1,Penyusunan Spesifikasi Kebutuhan Produk (Product Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,10,3,2,4.10.3.2,Penyusunan Spesifikasi Kebutuhan Bisnis (Business Requirements Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,10,3,3,4.10.3.3,Penyusunan Spesifikasi Kebutuhan Fungsional (Functional Spesification Document),,Paket,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,10,3,4,4.10.3.4,Antarmuka Pengguna (User Interface Design),,Halaman/Layar,,1,2,1,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,10,3,5,4.10.3.5,Pengalaman Pengguna (User Experience Design) dan Pembuatan Prototype,,Paket,,1,3,1,3,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 114.795.918,,"8,82%",PRODUCT
+4,10,3,6,4.10.3.6,Pemrograman dan Pengkodean Fitur,,Fitur,,1,3,3,9,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 344.387.755,,"26,47%",PRODUCT
+4,10,3,7,4.10.3.7,Pelaksanaan Unit Testing,,Skenario Uji,,2,1,2,4,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"11,76%",PRODUCT
+4,10,3,8,4.10.3.8,Pelaksanaan User Acceptance Test (UAT),,Skenario Uji,,2,1,2,4,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 153.061.224,,"11,76%",PRODUCT
+4,10,3,9,4.10.3.9,Deployment ke Server Development,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,10,3,10,4.10.3.10,Deployment ke Server Staging,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,10,3,11,4.10.3.11,Deployment ke Server Production,,Paket,,1,1,2,2,Rp 50.000.000,"50,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,,Rp 76.530.612,,"5,88%",PRODUCT
+4,10,4,,4.10.4,Hardware Modul Integrasi,Paket,,1,,,,,,,,,,,Rp 10.408.163.265,Rp 10.408.163.265,Rp 10.408.163.265,"66,67%",
+4,10,4,1,4.10.4.1,"Application Server
+
+Rack Units:
+2U
+
+Processor:
+Up to four 4th Generation Intel Xeon Scalable processor with up to 60 cores per processor and with optional Intel® QuickAssist Technology;
+
+Memory:
+- 64 DDR5 DIMM slots, supports RDIMM 16 TB max, speeds up to 4800 MT/s; 
+- Supports registered ECC DDR5 DIMMs only
+
+Storage controllers:
+- Internal Controllers: PERC H965i, PERC H755, PERC H355, HBA355i, HBA465i
+- External Controller: PERC H965e
+- Internal Boot: Boot Optimized Storage Subsystem (BOSS-N1): HWRAID 2 x M.2 NVMe SSDs or USB
+- External HBA (non-RAID): HBA355e, HBA465e
+- Software Raid: S160
+
+Drive Bays:
+Front bays
+- Up to 8 x 2.5-inch SAS/SATA (HDD/SSD) drives max 122.88 TB
+- Up to 8 x EDSFF E3.S Gen5 NVMe (SSD) drives max 61.44 TB
+- Up to 16 x 2.5-inch SAS/SATA/NVMe (HDD/SSD) drives max 245.76 TB
+- Up to 24 x 2.5-inch SAS/SATA/NVMe (HDD/SSD) drives max 368.34 TB
+- Up to 16 x 2.5-inch SAS/SATA (HDD/SSD) drives + 8 x 2.5-inch NVMe (SSD) drives max 368.34 TB
+Rear bays
+- Up to 2 x 2.5-inch SAS/SATA (HDD/SSD) drives max 30.72 TB
+- Up to 4 x EDSFF E3.S Gen5 NVMe (SSD) drives max 30.72 TB",,Paket,,1,1,1,1,Rp 6.000.000.000,"100,00%",,Rp 3.000.000.000,Rp 183.673.469,Rp 9.183.673.469,,Rp 9.183.673.469,,"88,24%",HARDWARE
+4,10,4,2,4.10.4.2,Switch Infiniband,,Paket,,1,1,1,1,Rp 300.000.000,"100,00%",,Rp 150.000.000,Rp 9.183.673,Rp 459.183.673,,Rp 459.183.673,,"4,41%",HARDWARE
+4,10,4,3,4.10.4.3,Switch DC,,Paket,,1,1,2,2,Rp 100.000.000,"100,00%",,Rp 50.000.000,Rp 3.061.224,Rp 153.061.224,,Rp 306.122.449,,"2,94%",HARDWARE
+4,10,4,4,4.10.4.4,UPS,,Paket,,1,1,1,1,Rp 100.000.000,"100,00%",,Rp 50.000.000,Rp 3.061.224,Rp 153.061.224,,Rp 153.061.224,,"1,47%",HARDWARE
+4,10,4,5,4.10.4.5,Electrical Equipment,,Paket,,1,1,1,1,Rp 100.000.000,"100,00%",,Rp 50.000.000,Rp 3.061.224,Rp 153.061.224,,Rp 153.061.224,,"1,47%",HARDWARE
+4,10,4,6,4.10.4.6,Server Operating System,,Paket,,1,1,1,1,Rp 100.000.000,"100,00%",,Rp 50.000.000,Rp 3.061.224,Rp 153.061.224,,Rp 153.061.224,,"1,47%",HARDWARE
+5,,,,5,"IMPLEMENTASI DAN ADOPSI PLATFORM EKOSISTEM DATA POLRI 
+DI 25 SATUAN KERJA DAN 34 SATUAN WILAYAH (POLDA)",,,,,,,,,,,,,,,Rp 14.762.755.102,Rp 14.762.755.102,"3,32%",
+5,1,,,5.1,Sosialisasi dan Diseminasi Platform Ekosistem Data Polri,Paket,,1,,,,,,,,,,,Rp 5.234.693.878,Rp 5.234.693.878,Rp 5.234.693.878,"35,46%",
+5,1,1,,5.1.1,Sosialisasi dan Diseminasi Platform Ekosistem Data Polri ke Satuan Kerja,,Sesi,,1,3,75,225,Rp 5.000.000,"100,00%",,Rp 2.500.000,Rp 153.061,Rp 7.653.061,,Rp 1.721.938.776,,"32,89%",PRODUCT
+5,1,2,,5.1.2,Sosialisasi dan Diseminasi Platform Ekosistem Data Polri ke Satuan Wilayah (POLDA),,Sesi,,1,3,102,306,Rp 7.500.000,"100,00%",,Rp 3.750.000,Rp 229.592,Rp 11.479.592,,Rp 3.512.755.102,,"67,11%",PRODUCT
+5,2,,,5.2,Pelatihan Penggunaan Platform Ekosistem Data Polri,Paket,,1,,,,,,,,,,,Rp 4.017.857.143,Rp 4.017.857.143,Rp 4.017.857.143,"27,22%",
+5,2,1,,5.2.1,Pelatihan Penggunaan Platform untuk Peran Administrator,,Sesi,,1,5,10,50,Rp 5.000.000,"100,00%",,Rp 2.500.000,Rp 153.061,Rp 7.653.061,,Rp 382.653.061,,"9,52%",PRODUCT
+5,2,2,,5.2.2,Pelatihan Penggunaan Platform untuk Peran Walidata,,Sesi,,1,5,20,100,Rp 5.000.000,"100,00%",,Rp 2.500.000,Rp 153.061,Rp 7.653.061,,Rp 765.306.122,,"19,05%",PRODUCT
+5,2,3,,5.2.3,Pelatihan Penggunaan Platform untuk Peran Produsen Data,,Sesi,,1,5,75,375,Rp 5.000.000,"100,00%",,Rp 2.500.000,Rp 153.061,Rp 7.653.061,,Rp 2.869.897.959,,"71,43%",PRODUCT
+5,3,,,5.3,Kajian dan Analisis Pengukuran Keberhasilan Adopsi Penggunaan dan Pemanfaatan Platform,Paket,Paket,1,1,12,6,72,Rp 50.000.000,"100,00%",,Rp 25.000.000,Rp 1.530.612,Rp 76.530.612,Rp 5.510.204.082,Rp 5.510.204.082,Rp 5.510.204.082,"37,33%",PRODUCT
+6,,,,6,"PENINGKATAN KAPASITAS, KAPABILITAS, DAN KUALITAS SDM PENGELOLA DATA 
+DI 25 SATUAN KERJA DAN 34 SATUAN WILAYAH (POLDA)",,,,,,,,,,,,,,,Rp 59.119.897.959,Rp 59.119.897.959,"13,30%",
+6,1,,,6.1,Pelatihan Data Management untuk Walidata dan Produsen Data (25 Satuan Kerja),Paket,,1,,,,,,,,,,,Rp 11.479.591.837,Rp 11.479.591.837,Rp 11.479.591.837,"19,42%",
+6,1,1,,6.1.1,Manajemen Kualitas Data,,Sesi,,1,3,125,375,Rp 5.000.000,"100,00%",,Rp 2.500.000,Rp 153.061,Rp 7.653.061,,Rp 2.869.897.959,,"25,00%",SDM
+6,1,2,,6.1.2,Privasi dan Keamanan Data,,Sesi,,1,3,125,375,Rp 5.000.000,"100,00%",,Rp 2.500.000,Rp 153.061,Rp 7.653.061,,Rp 2.869.897.959,,"25,00%",SDM
+6,1,3,,6.1.3,Pemanfaatan Data (Analisis dan Visualisasi Data),,Sesi,,1,3,125,375,Rp 5.000.000,"100,00%",,Rp 2.500.000,Rp 153.061,Rp 7.653.061,,Rp 2.869.897.959,,"25,00%",SDM
+6,1,4,,6.1.4,Pemanfaatan Data (Interoperabilitas Data),,Sesi,,1,3,125,375,Rp 5.000.000,"100,00%",,Rp 2.500.000,Rp 153.061,Rp 7.653.061,,Rp 2.869.897.959,,"25,00%",SDM
+6,2,,,6.2,Pelatihan Data Management untuk Pengelola Data Satuan Wilayah (34 POLDA),Paket,,1,,,,,,,,,,,Rp 23.418.367.347,Rp 23.418.367.347,Rp 23.418.367.347,"39,61%",
+6,2,1,,6.2.1,Manajemen Kualitas Data,,Sesi,,1,3,170,510,Rp 7.500.000,"100,00%",,Rp 3.750.000,Rp 229.592,Rp 11.479.592,,Rp 5.854.591.837,,"25,00%",SDM
+6,2,2,,6.2.2,Privasi dan Keamanan Data,,Sesi,,1,3,170,510,Rp 7.500.000,"100,00%",,Rp 3.750.000,Rp 229.592,Rp 11.479.592,,Rp 5.854.591.837,,"25,00%",SDM
+6,2,3,,6.2.3,Pemanfaatan Data (Analisis dan Visualisasi Data),,Sesi,,1,3,170,510,Rp 7.500.000,"100,00%",,Rp 3.750.000,Rp 229.592,Rp 11.479.592,,Rp 5.854.591.837,,"25,00%",SDM
+6,2,4,,6.2.4,Pemanfaatan Data (Interoperabilitas Data),,Sesi,,1,3,170,510,Rp 7.500.000,"100,00%",,Rp 3.750.000,Rp 229.592,Rp 11.479.592,,Rp 5.854.591.837,,"25,00%",SDM
+6,3,,,6.3,Sertifikasi Kompetensi Data Management untuk Walidata dan Produsen Data (25 Satuan Kerja),Paket,,1,,,,,,,,,,,Rp 8.609.693.878,Rp 8.609.693.878,Rp 8.609.693.878,"14,56%",
+6,3,1,,6.3.1,Business Intelligence,,Paket,,1,3,50,150,Rp 7.500.000,"100,00%",,Rp 3.750.000,Rp 229.592,Rp 11.479.592,,Rp 1.721.938.776,,"20,00%",SDM
+6,3,2,,6.3.2,Data Science,,Paket,,1,3,50,150,Rp 7.500.000,"100,00%",,Rp 3.750.000,Rp 229.592,Rp 11.479.592,,Rp 1.721.938.776,,"20,00%",SDM
+6,3,3,,6.3.3,Data Engineering,,Paket,,1,3,50,150,Rp 7.500.000,"100,00%",,Rp 3.750.000,Rp 229.592,Rp 11.479.592,,Rp 1.721.938.776,,"20,00%",SDM
+6,3,4,,6.3.4,Data Governance,,Paket,,1,3,50,150,Rp 7.500.000,"100,00%",,Rp 3.750.000,Rp 229.592,Rp 11.479.592,,Rp 1.721.938.776,,"20,00%",SDM
+6,3,5,,6.3.5,Data Quality,,Paket,,1,3,50,150,Rp 7.500.000,"100,00%",,Rp 3.750.000,Rp 229.592,Rp 11.479.592,,Rp 1.721.938.776,,"20,00%",SDM
+6,4,,,6.4,Sertifikasi Kompetensi Data Management untuk Pengelola Data Satuan Wilayah (34 POLDA),Paket,,1,,,,,,,,,,,Rp 15.612.244.898,Rp 15.612.244.898,Rp 15.612.244.898,"26,41%",
+6,4,1,,6.4.1,Business Intelligence,,Paket,,1,3,68,204,Rp 10.000.000,"100,00%",,Rp 5.000.000,Rp 306.122,Rp 15.306.122,,Rp 3.122.448.980,,"20,00%",SDM
+6,4,2,,6.4.2,Data Science,,Paket,,1,3,68,204,Rp 10.000.000,"100,00%",,Rp 5.000.000,Rp 306.122,Rp 15.306.122,,Rp 3.122.448.980,,"20,00%",SDM
+6,4,3,,6.4.3,Data Engineering,,Paket,,1,3,68,204,Rp 10.000.000,"100,00%",,Rp 5.000.000,Rp 306.122,Rp 15.306.122,,Rp 3.122.448.980,,"20,00%",SDM
+6,4,4,,6.4.4,Data Governance,,Paket,,1,3,68,204,Rp 10.000.000,"100,00%",,Rp 5.000.000,Rp 306.122,Rp 15.306.122,,Rp 3.122.448.980,,"20,00%",SDM
+6,4,5,,6.4.5,Data Quality,,Paket,,1,3,68,204,Rp 10.000.000,"100,00%",,Rp 5.000.000,Rp 306.122,Rp 15.306.122,,Rp 3.122.448.980,,"20,00%",SDM
+,,,,,TOTAL HPS (SEBELUM PPN),,,,,,,,,,,,,,,Rp 444.348.214.286,Rp 444.348.214.286,,
+,,,,,PPN 11%,,,,,,,,,,,,,,,Rp 54.919.442.215,Rp 54.919.442.215,,
+,,,,,TOTAL HPS (TERMASUK PPN),,,,,,,,,,,,,,,Rp 499.267.656.501,Rp 499.267.656.501,,

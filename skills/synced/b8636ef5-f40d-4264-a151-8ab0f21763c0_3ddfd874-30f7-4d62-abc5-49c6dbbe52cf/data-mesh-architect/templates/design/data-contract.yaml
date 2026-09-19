@@ -1,0 +1,245 @@
+# Data Contract YAML — <Nama Data Product>
+# Spesifikasi: datacontract-specification v1.2.1
+# Referensi: https://datacontract-specification.com
+#
+# Cara validasi: datacontract-cli lint datacontract.yaml
+# Cara test:     datacontract-cli test datacontract.yaml
+#
+# CATATAN: File ini adalah sumber kebenaran komputasional.
+# Dokumen narasi ada di: ../design/data-contract-spec.md
+
+dataContractSpecification: "1.2.1"
+
+# =============================================================
+# SECTION 1: IDENTITAS DATA CONTRACT
+# =============================================================
+id: "urn:datacontract:<domain>:<data-product-name>:v<major>"
+# Format: urn:datacontract:{domain}:{product}:v{major}
+# Contoh: urn:datacontract:beneficiary:registry:v1
+
+info:
+  title: "<Nama Data Product>"
+  version: "<1.0.0>"                  # SemVer: MAJOR.MINOR.PATCH
+  status: "<draft|active|deprecated>" # Status saat ini
+  description: |
+    <Deskripsi singkat 1-3 kalimat tentang apa yang disediakan data product ini
+    dan nilai bisnis utamanya.>
+  owner: "<Nama Domain Team>"
+  contact:
+    name: "<Data Product Owner Name>"
+    email: "<email@domain.org>"
+    url: "<https://catalog.domain.org/products/product-name>"
+
+# =============================================================
+# SECTION 2: SERVER / ENVIRONMENT
+# =============================================================
+servers:
+  production:
+    type: "<postgres|bigquery|snowflake|s3|kafka|trino>"
+    # Untuk PostgreSQL:
+    host: "<db.production.domain.org>"
+    port: 5432
+    database: "<nama_database>"
+    schema: "<nama_schema>"
+    # Untuk S3/Object Storage:
+    # location: "s3://<bucket>/<prefix>/"
+    # format: "parquet"
+    # Untuk Kafka:
+    # host: "<broker1:9092,broker2:9092>"
+    # topic: "<topic-name>"
+    # format: "avro"
+    environment: "production"
+
+  staging:
+    type: "<postgres|bigquery|snowflake|s3|kafka|trino>"
+    host: "<db.staging.domain.org>"
+    port: 5432
+    database: "<nama_database>"
+    schema: "<nama_schema>"
+    environment: "staging"
+
+# =============================================================
+# SECTION 3: TERMS & CONDITIONS
+# =============================================================
+terms:
+  usage: |
+    <Untuk apa data ini boleh digunakan. Contoh:
+    "Data ini hanya boleh digunakan untuk keperluan operasional program X
+    dan pelaporan internal. Dilarang dikombinasikan dengan dataset pihak ketiga
+    tanpa persetujuan tertulis dari Data Product Owner.">
+  limitations: |
+    <Apa yang TIDAK boleh dilakukan. Contoh:
+    "Dilarang mengekspor data PII ke luar jaringan organisasi.
+    Dilarang menggunakan untuk tujuan komersial atau marketing.">
+  billing: "<Gratis untuk penggunaan internal / Berbayar: lihat kebijakan X>"
+  noticePeriod: "<P3M>"  # ISO 8601 duration — P3M = 3 bulan, P6M = 6 bulan
+
+# =============================================================
+# SECTION 4: DATA MODEL / SCHEMA
+# =============================================================
+models:
+  # ---- TABEL / ENTITAS 1 ----
+  <nama_tabel_1>:
+    type: table              # table | view | object | record
+    description: "<Deskripsi bisnis tabel ini>"
+    fields:
+
+      <field_id>:
+        type: "varchar"
+        description: "<Definisi bisnis field ini>"
+        required: true
+        primaryKey: true
+        unique: true
+        classification: "public"   # public | internal | restricted | confidential
+        pii: false
+        # Constraints:
+        # minimum: <angka>
+        # maximum: <angka>
+        # minLength: <angka>
+        # maxLength: <angka>
+        # pattern: "<regex>"
+        # enum: [<nilai1>, <nilai2>]
+        example: "<contoh nilai>"
+        tags: ["<tag1>", "<tag2>"]
+
+      <field_nama>:
+        type: "varchar"
+        description: "Nama lengkap individu"
+        required: true
+        classification: "internal"
+        pii: true                  # ← TANDAI PII
+        # masking: "first_name_only"  # Uncomment jika menggunakan platform masking
+        maxLength: 255
+        example: "Budi Santoso"
+
+      <field_nik>:
+        type: "varchar"
+        description: "Nomor Induk Kependudukan (16 digit)"
+        required: true
+        classification: "restricted"
+        pii: true
+        unique: true
+        pattern: "^[0-9]{16}$"
+        minLength: 16
+        maxLength: 16
+        example: "3171XXXXXXXXXXXX"
+
+      <field_tanggal>:
+        type: "date"
+        description: "Tanggal kejadian/pembuatan record (ISO 8601)"
+        required: true
+        classification: "internal"
+        pii: false
+        format: "date"            # date | datetime | time
+        example: "2024-01-15"
+
+      <field_status>:
+        type: "varchar"
+        description: "Status record — valid values lihat enum"
+        required: true
+        classification: "public"
+        pii: false
+        enum: ["aktif", "nonaktif", "pending"]
+        example: "aktif"
+
+      <field_jumlah>:
+        type: "integer"
+        description: "Jumlah / kuantitas"
+        required: true
+        classification: "internal"
+        pii: false
+        minimum: 0
+        example: 150
+
+      <field_koordinat_lat>:
+        type: "double"
+        description: "Koordinat lintang (WGS84)"
+        required: false
+        classification: "restricted"  # Jika lokasi individu = PII
+        pii: true
+        minimum: -11.0                # Batas selatan Indonesia
+        maximum: 6.0                  # Batas utara Indonesia
+        example: -6.2088
+
+      # Tambahkan field lainnya sesuai kebutuhan...
+
+  # ---- TABEL / ENTITAS 2 ----
+  <nama_tabel_2>:
+    type: table
+    description: "<Deskripsi bisnis>"
+    fields:
+      # Isi field...
+
+# =============================================================
+# SECTION 5: SERVICE LEVELS
+# =============================================================
+servicelevels:
+
+  availability:
+    description: "Persentase uptime output port per bulan"
+    percentage: "99.9%"
+
+  freshness:
+    description: "Latensi maksimum dari data tersedia di sumber hingga tersedia di output port"
+    threshold: "<24h>"        # ISO 8601 duration: PT15M (15 menit), PT4H (4 jam), P1D (1 hari)
+    timestampField: "<nama_tabel_1.updated_at>"
+
+  retention:
+    description: "Berapa lama data disimpan sebelum diarsipkan atau dihapus"
+    period: "<P5Y>"           # P1Y = 1 tahun, P5Y = 5 tahun
+
+  latency:
+    description: "Waktu respons query P95 untuk output port"
+    threshold: "<200ms>"      # Untuk REST API; hilangkan jika batch/file
+
+  frequency:
+    description: "Frekuensi update data"
+    type: "batch"             # batch | streaming | on-demand
+    # Jika batch:
+    interval: "daily"         # daily | hourly | weekly | monthly
+    cron: "<0 1 * * *>"       # Cron expression (opsional)
+    # Jika streaming:
+    # type: streaming
+    # maxDelay: "PT5M"
+
+  support:
+    description: "Waktu respons insiden"
+    responseTime:
+      critical: "<PT1H>"      # P1: 1 jam
+      high: "<PT2H>"          # P2: 2 jam
+      medium: "<PT4H>"        # P3: 4 jam
+
+# =============================================================
+# SECTION 6: QUALITY CHECKS (opsional — tambahkan jika platform support)
+# =============================================================
+quality:
+  type: "SodaCL"             # SodaCL | GreatExpectations | custom
+  specification: |
+    checks for <nama_tabel_1>:
+      - row_count > 0:
+          name: "Tabel tidak kosong"
+      - missing_percent(<field_id>) = 0:
+          name: "ID tidak boleh null"
+      - missing_percent(<field_nama>) < 0.5:
+          name: "Nama max 0.5% null"
+      - duplicate_count(<field_id>) = 0:
+          name: "ID harus unique"
+      - values in (<field_status>) must exist in [aktif, nonaktif, pending]:
+          name: "Status harus nilai valid"
+      - freshness(<field_tanggal>) < 25h:
+          name: "Data tidak lebih dari 25 jam"
+
+# =============================================================
+# SECTION 7: LINKS & METADATA
+# =============================================================
+links:
+  schemaUrl: "<https://catalog.domain.org/products/product-name/schema>"
+  documentationUrl: "<https://docs.domain.org/data-products/domain/product-name>"
+  dataProductCanvasUrl: "<../bootstrap/canvas.md>"
+  pipelineBriefUrl: "<../development/pipeline-brief.md>"
+
+tags:
+  - "<domain-name>"
+  - "<data-product-name>"
+  - "<business-unit>"
+  - "<pii>"                  # Tambahkan jika ada PII

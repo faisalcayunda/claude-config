@@ -1,0 +1,78 @@
+# schema.pg.hcl — Starter table template with Data Mesh standards
+# Replace {SCHEMA} and table name with actual domain objects
+#
+# UUID v7 vs v4:
+#   uuid_generate_v7()   ← time-ordered, reduces index fragmentation (RECOMMENDED)
+#   gen_random_uuid()    ← fully random, PostgreSQL 13+ built-in (fallback)
+#
+# Use uuid_generate_v7() for all PRIMARY KEY columns.
+# Requires: extensions.uuid_generate_v7() polyfill (provisioned in 00000001_provision_db.sql)
+# With search_path = public, extensions, ..., you can call it without schema prefix.
+
+table "your_table_name" {
+  schema  = schema.{SCHEMA}   # bronze | silver | gold | audit | sandbox
+  comment = "Description of this table"
+
+  # ── Primary Key (UUID v7 — time-ordered) ───────────────────
+  column "id" {
+    type    = uuid
+    null    = false
+    default = sql("extensions.uuid_generate_v7()")
+    comment = "UUID v7 primary key — time-ordered for index performance"
+  }
+
+  # ── Business Identifier ────────────────────────────────────
+  column "external_id" {
+    type    = character_varying(255)
+    null    = true
+    comment = "Source system identifier"
+  }
+
+  # ── Business Columns (customize per data product) ──────────
+  column "name"   { type = character_varying(500); null = false }
+  column "status" {
+    type    = character_varying(50)
+    null    = false
+    default = "active"
+    comment = "active | inactive | archived"
+  }
+
+  # ── Audit Columns (MANDATORY — Data Mesh Standard) ─────────
+  column "created_at" { type = timestamptz; null = false; default = sql("now()") }
+  column "updated_at" { type = timestamptz; null = false; default = sql("now()") }
+  column "created_by" {
+    type    = character_varying(255)
+    null    = false
+    default = "system"
+    comment = "Service account or user that created this record"
+  }
+  column "is_deleted" {
+    type    = boolean
+    null    = false
+    default = false
+    comment = "Soft delete flag — never hard DELETE in data mesh"
+  }
+
+  # ── Keys & Indexes ─────────────────────────────────────────
+  primary_key { columns = [column.id] }
+
+  index "idx_{table}_external_id" {
+    columns = [column.external_id]
+    unique  = true
+    where   = "external_id IS NOT NULL"
+  }
+  index "idx_{table}_created_at" { columns = [column.created_at] }
+  index "idx_{table}_status"     { columns = [column.status] }
+}
+
+# Example column with UUID v7 FK reference:
+# column "parent_id" {
+#   type    = uuid
+#   null    = true
+#   comment = "FK to parent table"
+# }
+# foreign_key "fk_{table}_parent" {
+#   columns     = [column.parent_id]
+#   ref_columns = [table.parent_table.column.id]
+#   on_delete   = RESTRICT
+# }

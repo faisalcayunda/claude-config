@@ -1,0 +1,345 @@
+-- =============================================================================
+-- provision_db.sql — Database Provisioning Template
+-- Data Product : {DOMAIN_SHORTCODE}/{DATA_PRODUCT_SHORTCODE}
+-- DB Name      : {DB_NAME}
+--
+-- Berisi:
+--   1. CREATE ROLE (4 roles)
+--   2. CREATE SCHEMA (6 schemas) + OWNER
+--   3. REVOKE public defaults (security hardening)
+--   4. GRANT CONNECT on database
+--   5. Per-schema GRANTs + ALTER DEFAULT PRIVILEGES
+--   6. CREATE EXTENSION (6 extensions)
+--   7. ALTER DATABASE SET search_path
+--
+-- Jalankan sebagai superuser (postgres):
+--   psql -U postgres -d {DB_NAME} -f migrations/00000001_provision_db.sql
+--
+-- Atau via Atlas:
+--   atlas migrate hash --env local
+--   atlas migrate apply --env local
+-- =============================================================================
+
+BEGIN;
+
+-- =============================================================================
+-- BAGIAN 1: ROLES
+-- Group roles (NOLOGIN) — individual login users di-GRANT ke role ini
+-- via config/user-role-mapping.yaml + make apply-grants
+-- =============================================================================
+
+-- Owner role: full control, used by CI/CD + Atlas migrations
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = '{DB_NAME}') THEN
+    CREATE ROLE {DB_NAME} NOLOGIN NOINHERIT;
+    RAISE NOTICE 'Role {DB_NAME} created';
+  ELSE
+    RAISE NOTICE 'Role {DB_NAME} already exists, skipping';
+  END IF;
+END $$;
+
+-- Readonly: CONNECT + USAGE + SELECT only
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = '{DB_NAME}_readonly') THEN
+    CREATE ROLE {DB_NAME}_readonly NOLOGIN NOINHERIT;
+    RAISE NOTICE 'Role {DB_NAME}_readonly created';
+  ELSE
+    RAISE NOTICE 'Role {DB_NAME}_readonly already exists, skipping';
+  END IF;
+END $$;
+
+-- Readwrite: DML (SELECT/INSERT/UPDATE/DELETE) — NO DROP/TRUNCATE/ALTER
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = '{DB_NAME}_readwrite') THEN
+    CREATE ROLE {DB_NAME}_readwrite NOLOGIN NOINHERIT;
+    RAISE NOTICE 'Role {DB_NAME}_readwrite created';
+  ELSE
+    RAISE NOTICE 'Role {DB_NAME}_readwrite already exists, skipping';
+  END IF;
+END $$;
+
+-- Ops: pipeline/external app service accounts
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = '{DB_NAME}_ops') THEN
+    CREATE ROLE {DB_NAME}_ops NOLOGIN NOINHERIT;
+    RAISE NOTICE 'Role {DB_NAME}_ops created';
+  ELSE
+    RAISE NOTICE 'Role {DB_NAME}_ops already exists, skipping';
+  END IF;
+END $$;
+
+-- =============================================================================
+-- BAGIAN 2: SCHEMAS
+-- 6 standard schemas mengikuti medallion architecture
+-- =============================================================================
+
+CREATE SCHEMA IF NOT EXISTS sandbox;
+CREATE SCHEMA IF NOT EXISTS extensions;
+CREATE SCHEMA IF NOT EXISTS bronze;
+CREATE SCHEMA IF NOT EXISTS silver;
+CREATE SCHEMA IF NOT EXISTS gold;
+CREATE SCHEMA IF NOT EXISTS audit;
+
+-- Set ownership ke owner role
+ALTER SCHEMA sandbox    OWNER TO {DB_NAME};
+ALTER SCHEMA extensions OWNER TO {DB_NAME};
+ALTER SCHEMA bronze     OWNER TO {DB_NAME};
+ALTER SCHEMA silver     OWNER TO {DB_NAME};
+ALTER SCHEMA gold       OWNER TO {DB_NAME};
+ALTER SCHEMA audit      OWNER TO {DB_NAME};
+
+-- Schema descriptions
+COMMENT ON SCHEMA sandbox    IS 'Exploration area — readwrite + ops dapat CREATE TABLE';
+COMMENT ON SCHEMA extensions IS 'PostgreSQL extensions — diinstall di sini, bukan di public';
+COMMENT ON SCHEMA bronze     IS 'Raw ingestion layer — source-aligned, append-only';
+COMMENT ON SCHEMA silver     IS 'Cleaned + validated data — conformance layer';
+COMMENT ON SCHEMA gold       IS 'Curated aggregations + serving layer — read-heavy';
+COMMENT ON SCHEMA audit      IS 'Immutable audit + lineage logs — append-only';
+
+-- =============================================================================
+-- BAGIAN 3: SECURITY HARDENING
+-- Revoke default public schema access
+-- =============================================================================
+
+-- Revoke default PUBLIC privileges on public schema
+REVOKE CREATE ON SCHEMA public FROM PUBLIC;
+
+-- Revoke CONNECT from PUBLIC (only named roles can connect)
+REVOKE CONNECT ON DATABASE {DB_NAME} FROM PUBLIC;
+
+-- =============================================================================
+-- BAGIAN 4: GRANT CONNECT (database-level)
+-- =============================================================================
+
+GRANT CONNECT ON DATABASE {DB_NAME} TO {DB_NAME}_readonly;
+GRANT CONNECT ON DATABASE {DB_NAME} TO {DB_NAME}_readwrite;
+GRANT CONNECT ON DATABASE {DB_NAME} TO {DB_NAME}_ops;
+
+-- =============================================================================
+-- BAGIAN 5: SCHEMA GRANTS + DEFAULT PRIVILEGES
+--
+-- Grant matrix:
+--   sandbox    : readonly(USAGE,SEL) | readwrite(USAGE,CREATE,DML) | ops(USAGE,CREATE,DML)
+--   extensions : readonly(USAGE)     | readwrite(USAGE)            | ops(USAGE)
+--   bronze     : readonly(USAGE,SEL) | readwrite(USAGE,DML)        | ops(USAGE,CREATE,DML)
+--   silver     : readonly(USAGE,SEL) | readwrite(USAGE,DML)        | ops(USAGE,DML)
+--   gold       : readonly(USAGE,SEL) | readwrite(USAGE,DML)        | ops(USAGE,SEL only)
+--   audit      : readonly(USAGE,SEL) | readwrite(USAGE,SEL only)   | ops(USAGE,SEL+INS only)
+-- =============================================================================
+
+-- ── SANDBOX ─────────────────────────────────────────────────────────────────
+-- readonly: USAGE + SELECT
+GRANT USAGE ON SCHEMA sandbox TO {DB_NAME}_readonly;
+GRANT SELECT ON ALL TABLES IN SCHEMA sandbox TO {DB_NAME}_readonly;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA sandbox
+  GRANT SELECT ON TABLES TO {DB_NAME}_readonly;
+
+-- readwrite: USAGE + CREATE + full DML
+GRANT USAGE, CREATE ON SCHEMA sandbox TO {DB_NAME}_readwrite;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA sandbox TO {DB_NAME}_readwrite;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA sandbox
+  GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO {DB_NAME}_readwrite;
+
+-- ops: USAGE + CREATE + full DML
+GRANT USAGE, CREATE ON SCHEMA sandbox TO {DB_NAME}_ops;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA sandbox TO {DB_NAME}_ops;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA sandbox
+  GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO {DB_NAME}_ops;
+
+-- ── EXTENSIONS ──────────────────────────────────────────────────────────────
+-- All roles: USAGE only (no table grants needed here)
+GRANT USAGE ON SCHEMA extensions TO {DB_NAME}_readonly;
+GRANT USAGE ON SCHEMA extensions TO {DB_NAME}_readwrite;
+GRANT USAGE ON SCHEMA extensions TO {DB_NAME}_ops;
+
+-- ── BRONZE (raw ingestion) ───────────────────────────────────────────────────
+-- readonly: USAGE + SELECT
+GRANT USAGE ON SCHEMA bronze TO {DB_NAME}_readonly;
+GRANT SELECT ON ALL TABLES IN SCHEMA bronze TO {DB_NAME}_readonly;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA bronze
+  GRANT SELECT ON TABLES TO {DB_NAME}_readonly;
+
+-- readwrite: USAGE + DML (no CREATE — only ops creates tables in bronze)
+GRANT USAGE ON SCHEMA bronze TO {DB_NAME}_readwrite;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA bronze TO {DB_NAME}_readwrite;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA bronze
+  GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO {DB_NAME}_readwrite;
+
+-- ops: USAGE + CREATE + full DML (ingestion pipelines land data here)
+GRANT USAGE, CREATE ON SCHEMA bronze TO {DB_NAME}_ops;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA bronze TO {DB_NAME}_ops;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA bronze
+  GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO {DB_NAME}_ops;
+
+-- ── SILVER (cleaned/conformed) ───────────────────────────────────────────────
+-- readonly: USAGE + SELECT
+GRANT USAGE ON SCHEMA silver TO {DB_NAME}_readonly;
+GRANT SELECT ON ALL TABLES IN SCHEMA silver TO {DB_NAME}_readonly;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA silver
+  GRANT SELECT ON TABLES TO {DB_NAME}_readonly;
+
+-- readwrite: USAGE + DML
+GRANT USAGE ON SCHEMA silver TO {DB_NAME}_readwrite;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA silver TO {DB_NAME}_readwrite;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA silver
+  GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO {DB_NAME}_readwrite;
+
+-- ops: USAGE + DML (transformation pipelines transform data here)
+GRANT USAGE ON SCHEMA silver TO {DB_NAME}_ops;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA silver TO {DB_NAME}_ops;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA silver
+  GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO {DB_NAME}_ops;
+
+-- ── GOLD (curated serving) ───────────────────────────────────────────────────
+-- readonly: USAGE + SELECT
+GRANT USAGE ON SCHEMA gold TO {DB_NAME}_readonly;
+GRANT SELECT ON ALL TABLES IN SCHEMA gold TO {DB_NAME}_readonly;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA gold
+  GRANT SELECT ON TABLES TO {DB_NAME}_readonly;
+
+-- readwrite: USAGE + DML (curated outputs written here)
+GRANT USAGE ON SCHEMA gold TO {DB_NAME}_readwrite;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA gold TO {DB_NAME}_readwrite;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA gold
+  GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO {DB_NAME}_readwrite;
+
+-- ops: USAGE + SELECT ONLY (gold is the serving layer — ops should not write here)
+GRANT USAGE ON SCHEMA gold TO {DB_NAME}_ops;
+GRANT SELECT ON ALL TABLES IN SCHEMA gold TO {DB_NAME}_ops;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA gold
+  GRANT SELECT ON TABLES TO {DB_NAME}_ops;
+
+-- ── AUDIT (append-only) ──────────────────────────────────────────────────────
+-- readonly: USAGE + SELECT
+GRANT USAGE ON SCHEMA audit TO {DB_NAME}_readonly;
+GRANT SELECT ON ALL TABLES IN SCHEMA audit TO {DB_NAME}_readonly;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA audit
+  GRANT SELECT ON TABLES TO {DB_NAME}_readonly;
+
+-- readwrite: USAGE + SELECT ONLY (audit logs are immutable — no DML for readwrite)
+GRANT USAGE ON SCHEMA audit TO {DB_NAME}_readwrite;
+GRANT SELECT ON ALL TABLES IN SCHEMA audit TO {DB_NAME}_readwrite;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA audit
+  GRANT SELECT ON TABLES TO {DB_NAME}_readwrite;
+
+-- ops: USAGE + SELECT + INSERT ONLY (pipelines write audit logs, cannot update/delete)
+GRANT USAGE ON SCHEMA audit TO {DB_NAME}_ops;
+GRANT SELECT, INSERT ON ALL TABLES IN SCHEMA audit TO {DB_NAME}_ops;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA audit
+  GRANT SELECT, INSERT ON TABLES TO {DB_NAME}_ops;
+
+-- =============================================================================
+-- BAGIAN 6: EXTENSIONS
+-- Semua extension diinstall di schema 'extensions' kecuali pg_stat_statements
+--
+-- ⚠  pg_stat_statements:
+--    1. Tambahkan ke postgresql.conf: shared_preload_libraries = 'pg_stat_statements'
+--    2. Restart PostgreSQL
+--    3. Kemudian CREATE EXTENSION akan berhasil
+-- =============================================================================
+
+SET search_path = extensions, public;
+
+CREATE EXTENSION IF NOT EXISTS pgcrypto       WITH SCHEMA extensions;
+CREATE EXTENSION IF NOT EXISTS pg_trgm        WITH SCHEMA extensions;
+CREATE EXTENSION IF NOT EXISTS dblink         WITH SCHEMA extensions;
+CREATE EXTENSION IF NOT EXISTS postgres_fdw   WITH SCHEMA extensions;
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp"    WITH SCHEMA extensions;
+
+-- pg_stat_statements: harus di pg_catalog, bukan extensions schema
+-- Uncomment setelah shared_preload_libraries = 'pg_stat_statements' di postgresql.conf:
+-- CREATE EXTENSION IF NOT EXISTS pg_stat_statements;
+
+-- Grant EXECUTE on extension functions to roles
+GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA extensions TO {DB_NAME}_readonly;
+GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA extensions TO {DB_NAME}_readwrite;
+GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA extensions TO {DB_NAME}_ops;
+
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA extensions
+  GRANT EXECUTE ON FUNCTIONS TO {DB_NAME}_readonly;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA extensions
+  GRANT EXECUTE ON FUNCTIONS TO {DB_NAME}_readwrite;
+ALTER DEFAULT PRIVILEGES FOR ROLE {DB_NAME} IN SCHEMA extensions
+  GRANT EXECUTE ON FUNCTIONS TO {DB_NAME}_ops;
+
+-- =============================================================================
+-- BAGIAN 6b: UUID v7 POLYFILL
+--
+-- UUID v7 hanya tersedia native di PostgreSQL 18+.
+-- Untuk PostgreSQL <18 (termasuk RDS/Huawei PG 17), gunakan polyfill ini.
+--
+-- Keunggulan UUID v7 vs v4:
+--   ✓ Time-ordered  → drastically mengurangi B-tree index fragmentation
+--   ✓ Monotonic     → faster write throughput (sequential insert pattern)
+--   ✓ Cache locality → smaller index sizes, better read performance
+--
+-- Requires : pgcrypto di extensions schema (diinstall di atas)
+-- Location : extensions.uuid_generate_v7()
+-- Usage    : DEFAULT extensions.uuid_generate_v7()
+--            individu_id uuid PRIMARY KEY DEFAULT extensions.uuid_generate_v7()
+-- Test     : SELECT extensions.uuid_generate_v7();
+-- =============================================================================
+
+CREATE OR REPLACE FUNCTION extensions.uuid_generate_v7()
+RETURNS uuid
+AS $$
+DECLARE
+  unix_ts_ms bytea;
+  uuid_bytes bytea;
+BEGIN
+  -- 1. Get current Unix timestamp in milliseconds (48 bits / 6 bytes)
+  unix_ts_ms := decode(
+    lpad(to_hex(floor(extract(epoch from clock_timestamp()) * 1000)::bigint), 12, '0'),
+    'hex'
+  );
+
+  -- 2. Generate 10 random bytes using pgcrypto
+  --    Explicitly schema-qualified to avoid search_path ambiguity
+  uuid_bytes := unix_ts_ms || extensions.gen_random_bytes(10);
+
+  -- 3. Set version to 7 (4 bits: 0111) at byte 6
+  uuid_bytes := set_byte(uuid_bytes, 6, (get_byte(uuid_bytes, 6) & 15) | 112);
+
+  -- 4. Set variant to 2 (2 bits: 10) at byte 8
+  uuid_bytes := set_byte(uuid_bytes, 8, (get_byte(uuid_bytes, 8) & 63) | 128);
+
+  RETURN encode(uuid_bytes, 'hex')::uuid;
+END;
+$$ LANGUAGE plpgsql VOLATILE;
+
+COMMENT ON FUNCTION extensions.uuid_generate_v7() IS
+  'UUID v7 polyfill for PostgreSQL <18. '
+  'Time-ordered UUID: embeds Unix timestamp (ms) for monotonic ordering. '
+  'Reduces index fragmentation vs UUID v4. Requires: pgcrypto in extensions schema.';
+
+-- Verify the polyfill works
+DO $$
+DECLARE v_test uuid;
+BEGIN
+  v_test := extensions.uuid_generate_v7();
+  RAISE NOTICE '✓ uuid_generate_v7() polyfill OK → %', v_test;
+END $$;
+
+-- =============================================================================
+-- BAGIAN 7: SEARCH PATH
+-- Order: public, extensions, audit, gold, silver, bronze, sandbox
+-- Menempatkan 'extensions' di depan agar uuid_generate_v7(), gen_random_bytes()
+-- dan fungsi extension lain dapat dipanggil tanpa schema prefix.
+-- =============================================================================
+
+ALTER DATABASE {DB_NAME}
+  SET search_path = public, extensions, audit, gold, silver, bronze, sandbox;
+
+DO $$
+BEGIN
+  RAISE NOTICE '✓ Provisioning selesai: {DB_NAME}';
+  RAISE NOTICE '  Roles      : {DB_NAME} | {DB_NAME}_readonly | {DB_NAME}_readwrite | {DB_NAME}_ops';
+  RAISE NOTICE '  Schemas    : sandbox, extensions, bronze, silver, gold, audit';
+  RAISE NOTICE '  Extensions : pgcrypto, pg_trgm, dblink, postgres_fdw, uuid-ossp';
+  RAISE NOTICE '  UUID v7    : extensions.uuid_generate_v7() — polyfill aktif';
+  RAISE NOTICE '  search_path: public, extensions, audit, gold, silver, bronze, sandbox';
+  RAISE NOTICE '  ⚠ pg_stat_statements: uncomment setelah shared_preload_libraries config';
+  RAISE NOTICE '  ⚠ User grants: jalankan  make apply-grants';
+END $$;
+
+COMMIT;

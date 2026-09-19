@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+# bytebase-manual-rollout.sh — Run the exact same bytebase-action commands
+# the Jenkinsfile runs, directly from your machine, without Jenkins. This is
+# for testing the Bytebase integration itself before wiring up CI, or for a
+# one-off manual deploy.
+#
+# Usage:
+#   scripts/bytebase-manual-rollout.sh --env dev --check
+#   scripts/bytebase-manual-rollout.sh --env dev --rollout
+#
+# Requires: Docker, and BYTEBASE_URL / BYTEBASE_PROJECT / BYTEBASE_SERVICE_ACCOUNT
+# / BYTEBASE_SERVICE_ACCOUNT_SECRET set in .env (or already exported).
+set -euo pipefail
+
+BOLD='\033[1m'; CYAN='\033[36m'; GREEN='\033[32m'; YELLOW='\033[33m'; RED='\033[31m'; RESET='\033[0m'
+info()    { echo -e "${CYAN}  →${RESET} $1"; }
+success() { echo -e "${GREEN}  ✓${RESET} $1"; }
+warn()    { echo -e "${YELLOW}  ⚠${RESET} $1"; }
+fail()    { echo -e "${RED}  ✗${RESET} $1"; exit 1; }
+
+# Same env -> target mapping as the Jenkinsfile's BRANCH_ENV_MAP, generated
+# from the same --environments/--branch-map flags at repo-generation time, so
+# the two never drift apart. Keyed by ENVIRONMENT name here (not branch name)
+# since this script is invoked directly by a human picking an environment,
+# not triggered by a git push.
+declare -A TARGETS=(
+{TARGETS_ENTRIES}
+)
+
+ENV_NAME=""
+ACTION=""
+FILE_PATTERN="migrations/*.sql"
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --env)          ENV_NAME="$2";     shift 2 ;;
+    --check)         ACTION="check";    shift 1 ;;
+    --rollout)       ACTION="rollout";  shift 1 ;;
+    --file-pattern)  FILE_PATTERN="$2"; shift 2 ;;
+    *) fail "Unknown flag: $1" ;;
+  esac
+done
+
+[[ -z "$ENV_NAME" ]] && fail "Usage: scripts/bytebase-manual-rollout.sh --env <name> [--check|--rollout] [--file-pattern migrations/*.sql]"
+[[ -z "$ACTION" ]] && fail "Specify --check (lint only, safe) or --rollout (actually deploys)"
+[[ -z "${TARGETS[$ENV_NAME]:-}" ]] && fail "Unknown environment '${ENV_NAME}'. Known: ${!TARGETS[*]}"
+
+command -v docker > /dev/null || fail "Docker not found — required to run the bytebase-action image."
+
+if [[ ! -f .env ]]; then
+  fail ".env not found. Run: cp .env.example .env, then fill in BYTEBASE_URL / BYTEBASE_PROJECT and export BYTEBASE_SERVICE_ACCOUNT / BYTEBASE_SERVICE_ACCOUNT_SECRET (don't put the secret in .env if this repo's .env might ever be shared — export it in your shell instead)."
+fi
+set -a; source .env; set +a
+
+: "${BYTEBASE_URL:?Missing BYTEBASE_URL — set it in .env}"
+: "${BYTEBASE_PROJECT:?Missing BYTEBASE_PROJECT — set it in .env}"
+: "${BYTEBASE_SERVICE_ACCOUNT:?Missing BYTEBASE_SERVICE_ACCOUNT — export it, do not commit it to .env}"
+: "${BYTEBASE_SERVICE_ACCOUNT_SECRET:?Missing BYTEBASE_SERVICE_ACCOUNT_SECRET — export it, do not commit it to .env}"
+
+BYTEBASE_ACTION_IMAGE="bytebase/bytebase-action:{BYTEBASE_VERSION}"
+TARGET="${TARGETS[$ENV_NAME]}"
+
+DOCKER_ARGS=(
+  run --rm
+  -v "$(pwd)":/workspace -w /workspace
+  -e BYTEBASE_SERVICE_ACCOUNT="$BYTEBASE_SERVICE_ACCOUNT"
+  -e BYTEBASE_SERVICE_ACCOUNT_SECRET="$BYTEBASE_SERVICE_ACCOUNT_SECRET"
+  "$BYTEBASE_ACTION_IMAGE"
+)
+
+if [[ "$ACTION" == "check" ]]; then
+  info "Running SQL Review (check) against '${ENV_NAME}' — read-only, safe to run anytime."
+  docker "${DOCKER_ARGS[@]}" check \
+    --url="$BYTEBASE_URL" \
+    --project="$BYTEBASE_PROJECT" \
+    --file-pattern="$FILE_PATTERN" \
+    --check-release=FAIL_ON_ERROR \
+    --output=/workspace/bytebase-manual-check-${ENV_NAME}.json
+  success "Check complete — see bytebase-manual-check-${ENV_NAME}.json"
+else
+  warn "This will create a release in Bytebase and roll out '${FILE_PATTERN}' to:"
+  warn "  ${ENV_NAME} → ${TARGET}"
+  read -r -p "  Continue? [y/N] " CONFIRM
+  [[ "$CONFIRM" =~ ^[Yy]$ ]] || { echo "Aborted."; exit 1; }
+
+  docker "${DOCKER_ARGS[@]}" rollout \
+    --url="$BYTEBASE_URL" \
+    --project="$BYTEBASE_PROJECT" \
+    --file-pattern="$FILE_PATTERN" \
+    --targets="$TARGET" \
+    --target-stage="environments/${ENV_NAME}" \
+    --output=/workspace/bytebase-manual-rollout-${ENV_NAME}.json
+  success "Rollout complete — see bytebase-manual-rollout-${ENV_NAME}.json, and confirm in Bytebase's Issues view."
+fi

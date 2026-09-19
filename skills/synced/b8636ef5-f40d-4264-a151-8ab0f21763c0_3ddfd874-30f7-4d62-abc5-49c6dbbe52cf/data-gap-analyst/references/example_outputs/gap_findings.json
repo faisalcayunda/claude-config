@@ -1,0 +1,171 @@
+{
+  "metadata": {
+    "skill_version": "1.0.0",
+    "generated_at": "2026-05-23T14:00:00+07:00",
+    "case": "Fictional DWH vs OLTP — E-commerce Order Management",
+    "mode_source_a": "A",
+    "mode_source_b": "B",
+    "business_entity": "Order Management",
+    "purpose": "Rekonsiliasi pre-audit Q1 2026",
+    "threshold_rubric": "default"
+  },
+  "source_a": {
+    "identity": "prod_oltp.public",
+    "engine": "PostgreSQL 15",
+    "host": "oltp-replica-prod.example.id:5432",
+    "tables": [
+      { "name": "orders", "row_count": 1247892, "period": "2026-01-01..2026-05-23" },
+      { "name": "order_items", "row_count": 3842105, "period": "2026-01-01..2026-05-23" },
+      { "name": "customers", "row_count": 312450, "period": "all-time" }
+    ],
+    "row_count_total": 5402447
+  },
+  "source_b": {
+    "identity": "dwh.mart",
+    "engine": "Snowflake",
+    "warehouse": "ANALYTICS_WH",
+    "tables": [
+      { "name": "fact_orders", "row_count": 1103456, "period": "2026-01-01..2026-05-23" },
+      { "name": "fact_order_items", "row_count": 3398210, "period": "2026-01-01..2026-05-23" },
+      { "name": "dim_customer", "row_count": 312448, "period": "all-time" }
+    ],
+    "row_count_total": 4814114
+  },
+  "gaps": [
+    {
+      "gap_id": "D1-001",
+      "dimension": "D1",
+      "severity": "🔴",
+      "observation": "Row count orders (OLTP) 1.247.892 vs fact_orders (DWH) 1.103.456 untuk periode 2026-01-01..2026-05-23",
+      "magnitude": { "absolute": 144436, "relative": 0.1158, "unit": "rows" },
+      "hypothesis": [
+        "H1: ETL filter membuang status CANCELLED/FAILED (paling probable)",
+        "H2: Batch lag T+1 menyebabkan 1 hari terakhir belum masuk",
+        "H3: Soft-delete OLTP tidak ter-replicate"
+      ],
+      "evidence_test": "Breakdown status di OLTP: COMPLETED 1.102.898, CANCELLED 142.103, FAILED 2.891. Total CANCELLED+FAILED = 144.994, mendekati gap 144.436. MAX(loaded_at) DWH 2026-05-22 23:15 (lag <24h). deleted_at IS NOT NULL: 558 baris (kecil).",
+      "conclusion": "H1 paling didukung — ETL filter status COMPLETED only. Sisa 558 dijelaskan H3 (soft-delete), lag jelaskan sisa kecil.",
+      "confidence": "high",
+      "impact": "Laporan revenue dari DWH underreport ~11% transaksi. Mismatch dengan akuntansi & regulator. Estimasi cost rekonsiliasi Rp 50-200 juta per cycle audit.",
+      "recommendation": "Dokumentasikan ETL filter eksplisit di G-03 fact_orders. Tambah kolom is_cancelled/is_failed ke DWH supaya pesanan batal/gagal tetap tersedia untuk reconciliation tanpa harus query OLTP.",
+      "owner": "Data Engineer Lead + Data Steward Order Domain",
+      "urgency": "sprint",
+      "layer1_text": "Row count fact_orders periode 2026-01-01..2026-05-23 = 1.103.456, sementara prod_oltp.orders = 1.247.892. Delta absolut 144.436 (11.6%), melebihi threshold critical 10%. Breakdown OLTP per status menunjukkan CANCELLED 142.103 + FAILED 2.891 = 144.994 yang mendekati gap, mengindikasikan ETL filter WHERE status = 'COMPLETED'. DDL action: ALTER TABLE dwh.fact_orders ADD COLUMN is_cancelled BOOLEAN DEFAULT FALSE, ADD COLUMN is_failed BOOLEAN DEFAULT FALSE. DAMA ref: KA-04 Completeness + Consistency (DMBOK2 §13.1.3.2-3).",
+      "layer2_text": "Sistem operasional mencatat sekitar 1,25 juta pesanan dalam 5 bulan, tapi sistem laporan hanya mencatat sekitar 1,1 juta — selisih sekitar 150 ribu pesanan. Penyebabnya: sistem laporan tidak menyertakan pesanan yang dibatalkan atau gagal. Untuk dashboard internal mungkin OK, tapi laporan ke regulator dan tim akuntansi akan tidak match. Pertanyaan untuk pimpinan: apakah kebijakan ini disengaja dan didokumentasikan, atau side-effect yang baru ketahuan?",
+      "source_trace": {
+        "query_a": "SELECT COUNT(*) FROM prod_oltp.orders WHERE created_at BETWEEN '2026-01-01' AND '2026-05-23'",
+        "query_b": "fact_orders_per_column.csv row 1 column total_rows",
+        "offset_or_sheet": "Source A row 1, Source B file row 1"
+      }
+    },
+    {
+      "gap_id": "D1-002",
+      "dimension": "D1",
+      "severity": "🔴",
+      "observation": "NULL ratio customer_email di OLTP customers = 3.8% (11.872/312.450) vs DWH dim_customer = 100% (312.448/312.448)",
+      "magnitude": { "absolute": 96.2, "relative": 0.962, "unit": "percentage_point" },
+      "hypothesis": [
+        "H1: Kolom sengaja di-disable menunggu PII review (UU PDP 2022)",
+        "H2: Bug ETL — kolom di-define di schema tapi mapping kelewat",
+        "H3: Policy lama hapus email untuk hemat storage"
+      ],
+      "evidence_test": "Kolom customer_email ada di DDL dim_customer (type VARCHAR(255)). ETL job dim_customer_load line yang map email di-comment out 2025-11-12 dengan commit message 'TODO: re-enable after PII review'. DPO ticket PDP-2025-089 status WAITING.",
+      "conclusion": "H1 paling kuat — kolom di-disable menunggu PII review, tanpa placeholder hashed value.",
+      "confidence": "high",
+      "impact": "Semua segmentasi marketing berbasis email yang built dari DWH return zero. Tim Marketing kemungkinan workaround ke OLTP langsung (anti-pattern + risiko compliance).",
+      "recommendation": "Tutup ticket DPO PDP-2025-089 dengan keputusan formal: hash/tokenize/drop. Jika hash, update ETL apply hash dan re-enable kolom.",
+      "owner": "DPO + Data Engineering Lead",
+      "urgency": "now",
+      "layer1_text": "customer_email di dim_customer NULL 100% (312.448/312.448) vs prod_oltp.customers 3.8% (11.872/312.450). Delta NULL ratio 96.2pp, melebihi threshold critical 10pp dengan margin 9.6x. Root cause: commit 2025-11-12 comment out mapping ETL menunggu DPO review PDP-2025-089. Action: tutup review, apply hashing (SHA256) jika compliance approve. DAMA ref: KA-04 Completeness; konflik dengan KA-04 Validity (kolom defined tapi tidak terisi).",
+      "layer2_text": "Sistem laporan tidak punya data email pelanggan sama sekali, padahal di sistem operasional 96% pelanggan punya email valid. Akibatnya, semua kampanye marketing email yang di-build dari sistem laporan akan return nol pelanggan. Tim marketing kemungkinan sudah workaround ambil email dari sistem operasional langsung — justru bertentangan dengan tujuan keamanan data awal. Pertanyaan untuk pimpinan: apakah keputusan untuk hapus email dari sistem laporan masih relevan, atau sudah waktunya diganti dengan email yang di-hash supaya aman tapi tetap usable?",
+      "source_trace": {
+        "query_a": "SELECT COUNT(*) FILTER (WHERE customer_email IS NULL) * 100.0 / COUNT(*) FROM prod_oltp.customers",
+        "query_b": "dim_customer_per_column.csv row customer_email column null_ratio",
+        "offset_or_sheet": "Source A query result, Source B file row 4"
+      }
+    },
+    {
+      "gap_id": "D2-001",
+      "dimension": "D2",
+      "severity": "🟡",
+      "observation": "Kolom discount_code ada di prod_oltp.orders (VARCHAR(50), added 2026-03-15) tapi tidak ada di dwh.fact_orders",
+      "magnitude": { "absolute": 1, "relative": null, "unit": "missing_column" },
+      "hypothesis": [
+        "H1: ETL job fact_orders_load belum di-update setelah migration OLTP",
+        "H2: Sengaja tidak di-replicate karena field belum stable",
+        "H3: Field di-replicate ke table lain (fact_promo)"
+      ],
+      "evidence_test": "ETL job fact_orders_load.sql last modified 2026-02-28 (sebelum migration). Table fact_promo tidak ada. Backlog ticket DE-2026-104 'Add discount_code to fact_orders' status TO DO.",
+      "conclusion": "H1 dikonfirmasi backlog ticket.",
+      "confidence": "high",
+      "impact": "Tim BI tidak bisa analisis efektivitas program diskon dari DWH. Harus query OLTP langsung (beban OLTP) atau analisis tidak dilakukan.",
+      "recommendation": "Prioritaskan ticket DE-2026-104, sertakan backfill historical 3 bulan terakhir.",
+      "owner": "Data Engineer Lead",
+      "urgency": "sprint",
+      "layer1_text": "Kolom discount_code (VARCHAR(50), added via migration 2026-03-15-add-discount-code.sql) ada di OLTP orders tapi belum di DWH fact_orders. ETL job fact_orders_load.sql last modified 2026-02-28 (sebelum migration). Add column non-destructive — masuk severity moderate. Action: update ETL DDL dan ETL transform, backfill 3 bulan. Backlog ticket DE-2026-104 sudah ada. DAMA ref: KA-04 Completeness (structural).",
+      "layer2_text": "Fitur kode diskon yang ditambahkan ke sistem operasional 2 bulan lalu belum masuk ke sistem laporan. Akibatnya, tim BI tidak bisa menjawab pertanyaan 'berapa lift conversion dari kampanye diskon Q1?' dari sistem laporan. Pertanyaan: apakah analisis pengaruh program promo Q1 dibutuhkan untuk decision Q3?",
+      "source_trace": {
+        "query_a": "SELECT column_name FROM information_schema.columns WHERE table_schema='public' AND table_name='orders'",
+        "query_b": "DDL fact_orders di repo dbt models/marts/fact_orders.sql",
+        "offset_or_sheet": "Source A query result, Source B repo file line 23-67"
+      }
+    },
+    {
+      "gap_id": "D3-001",
+      "dimension": "D3",
+      "severity": "🟡",
+      "observation": "KS test 2-sample untuk amount (OLTP) vs order_amount_idr (DWH): p-value 0.003. Mean delta 11.3% (487.234 vs 432.108). Median identical (250.000).",
+      "magnitude": { "absolute": 55126, "relative": 0.113, "unit": "IDR_mean_delta" },
+      "hypothesis": [
+        "H1: DWH apply pembulatan ke ribuan",
+        "H2: Selisih distribusi adalah artefak D1 (filter status, CANCELLED biasanya nominal kecil)",
+        "H3: Konversi currency partial (USD→IDR rate lama)"
+      ],
+      "evidence_test": "10 sample row sama: match exact 2 desimal (refute H1, H3). Distribusi OLTP filter status CANCELLED/FAILED: mean 247.103, confirms cancelled skew kecil. Distribusi OLTP filter COMPLETED: mean 437.892, mendekati DWH 432.108.",
+      "conclusion": "H2 paling kuat — distribusi delta adalah konsekuensi D1, bukan ETL bug. Residual selisih 5.784 belum 100% jelas.",
+      "confidence": "medium",
+      "impact": "Dashboard AOV di DWH lebih rendah dari aktual, mislead pricing/promotion strategy. Median identical, jadi analisis median-based tidak terdampak.",
+      "recommendation": "Akan auto-resolve setelah D1-001 (kolom is_cancelled/is_failed) ada — analyst bisa exclude cancelled. Dokumentasikan di G-03 bahwa order_amount_idr DWH = amount completed only.",
+      "owner": "Data Steward Order Domain",
+      "urgency": "backlog",
+      "layer1_text": "KS test 2-sample untuk amount: p-value 0.003 (range 0.01-0.05 = moderate). Mean delta 11.3% (487.234 vs 432.108) melebihi threshold mean delta moderate 5-20%. Median identical 250.000. Distribusi OLTP-COMPLETED mean 437.892 vs DWH 432.108 — gap menyempit drastis setelah exclude CANCELLED+FAILED, confirms derivative dari D1-001. Residual 5.784 perlu cek lanjut. DAMA ref: KA-04 Consistency (definition); cross-link KA-11 business glossary.",
+      "layer2_text": "Rata-rata nilai pesanan kelihatan beda 11% antar dua sistem (Rp 487 ribu vs Rp 432 ribu), padahal nilai tengah persis sama (Rp 250 ribu). Setelah ditelusuri, ini sebenarnya konsekuensi dari point pertama (pesanan batal tidak masuk laporan — pesanan batal biasanya nominal kecil, jadi rata-rata jadi 'lebih kecil' di operasional). Akan otomatis resolve kalau point pertama dibenahi.",
+      "source_trace": {
+        "query_a": "SELECT amount FROM prod_oltp.orders WHERE created_at BETWEEN '2026-01-01' AND '2026-05-23' (sample 100K)",
+        "query_b": "fact_orders_per_column.csv row order_amount_idr columns mean,median,stddev,p25,p75",
+        "offset_or_sheet": "scripts/compute_gap.py log line 247-251"
+      }
+    },
+    {
+      "gap_id": "D4-001",
+      "dimension": "D4",
+      "severity": "🟢",
+      "observation": "MAX(created_at) OLTP orders 2026-05-23 13:42 vs MAX(order_date) DWH fact_orders 2026-05-22 20:00. Lag 17h42m.",
+      "magnitude": { "absolute": 17.7, "relative": 0.738, "unit": "hours_pct_of_sla" },
+      "hypothesis": [
+        "H1: ETL run normal, batch T+1 ada jendela natural lag",
+        "H2: Upstream job fail dan retry",
+        "H3: DWH cluster scaling issue"
+      ],
+      "evidence_test": "dwh.etl_audit 7 hari terakhir semua SUCCESS, runtime rata-rata 3.5 jam (normal). Volume orders 2026-05-22: 9.847 (normal). On-call log: no incident.",
+      "conclusion": "H1 — lag wajar untuk batch T+1, masih dalam 75% SLA. History 30 hari rata-rata 14 jam, observasi 18 jam dalam variance normal.",
+      "confidence": "high",
+      "impact": "Dashboard 'today's orders' yang dipakai operasional pagi miss data 18 jam terakhir. Tim biasanya cross-check ke OLTP untuk real-time view. UX dashboard bisa lebih baik dengan disclosure 'data as of: ...'.",
+      "recommendation": "Tambah badge 'Data as of: 2026-05-22 20:00 (T-18h)' di header dashboard. Tidak butuh perubahan ETL.",
+      "owner": "BI Engineer",
+      "urgency": "backlog",
+      "layer1_text": "MAX(updated_at) OLTP 2026-05-23 13:42, MAX(loaded_at) DWH 2026-05-22 20:00. Lag 17h42m = 75% SLA T+1. Rolling 30-day avg lag 14h, observation in normal variance. Recommend dashboard freshness badge. DAMA ref: KA-04 Timeliness (DMBOK2 §13.1.3.5).",
+      "layer2_text": "Waktu data laporan tertinggal 18 jam dari operasional. Ini wajar untuk sistem laporan harian (target 24 jam). Tim hanya perlu menampilkan label 'data per kemarin malam' di dashboard supaya pengguna paham apa yang mereka lihat.",
+      "source_trace": {
+        "query_a": "SELECT MAX(created_at) FROM prod_oltp.orders",
+        "query_b": "SELECT MAX(order_date) FROM dwh.fact_orders",
+        "offset_or_sheet": "Dijalankan 2026-05-23 14:00 WIB"
+      }
+    }
+  ],
+  "summary": {
+    "total_gaps": 5,
+    "by_severity": { "critical": 2, "moderate": 2, "minor": 1 },
+    "by_dimension": { "D1": 2, "D2": 1, "D3": 1, "D4": 1 }
+  }
+}

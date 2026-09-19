@@ -1,0 +1,70 @@
+# Importing an Existing Database — {DB_NAME}
+
+Use this when the environment you're onboarding **already has real tables**
+in it — this is not a fresh, empty database. The goal: get this repo (and
+Bytebase) to treat the current schema as the starting point, instead of
+Bytebase trying to `CREATE TABLE` things that already exist.
+
+## Why this needs a script *and* a manual step
+
+Bytebase tracks which migration versions it has already applied to each
+database (its **revision** history) and skips anything already recorded —
+that's what makes rollouts idempotent. The catch: revision history lives
+inside Bytebase itself, not in git. A database Bytebase has never seen has
+an *empty* revision history regardless of what tables physically exist in
+it, so the first time `bytebase-action rollout` touches it, Bytebase has no
+way to know "these tables are already there, don't recreate them" unless
+you tell it — that's what **establishing a baseline** means, and it's a
+Bytebase-side action (via its Sync Schema / Change History screen), not
+something this repo's scripts can safely do by remote-controlling your
+production database.
+
+So the workflow has two parts: a script that shows you (and puts in git)
+what's actually in the database right now, and a short Bytebase console step
+that tells Bytebase to treat that as ground truth.
+
+## Steps
+
+1. Run the bootstrap for this environment first if you haven't
+   (`scripts/run-bootstrap.sh --env <name>`) — it's safe even on a database
+   that already has tables, since every statement in it is idempotent and it
+   only touches roles/schemas/extensions/grants, never your existing tables.
+
+2. **Capture the current schema:**
+   ```bash
+   scripts/import-existing-schema.sh --env <name>
+   ```
+   This runs `pg_dump --schema-only --no-owner --no-privileges` against that
+   environment and writes a timestamped snapshot to `bootstrap/imported/`.
+   It does **not** touch the remote database, and it does **not** add
+   anything to `migrations/` — the snapshot is for review and for git
+   history, not for Bytebase to execute.
+
+3. **Review the snapshot.** Skim `bootstrap/imported/<timestamp>_<env>_existing_schema_snapshot.sql`
+   — this is your source of truth for "what does this database actually
+   look like right now." Commit it; it's valuable history even though
+   Bytebase never runs it directly.
+
+4. **Register the instance/database in Bytebase**, if you haven't yet
+   (`docs/BYTEBASE_SETUP.md`, steps 1–2).
+
+5. **Establish the baseline in Bytebase.** In the database's detail page in
+   Bytebase, use **Sync Schema** (or, if schema drift is detected on an
+   already-registered database, the **Establish new baseline** action from
+   Change History). This tells Bytebase "the live schema right now is
+   correct, start tracking from here" — after this, Bytebase's revision
+   history for this database reflects reality, and it will not try to
+   recreate anything that already exists.
+
+6. **From here on, everything new goes in `migrations/` as normal**,
+   versioned forward from this point — `202607230001_add_column_x_ddl.sql`,
+   etc. Do not copy the snapshot from step 2 into `migrations/` — those
+   `CREATE TABLE` statements would fail against a database where the tables
+   already exist.
+
+## If you'd rather test this without touching a real environment first
+
+Use `docker-compose.bytebase.yml` to run a throwaway local Bytebase (see
+`docs/BYTEBASE_SETUP.md`) and `scripts/bytebase-manual-rollout.sh --env <name> --check`
+against a local Postgres you don't mind experimenting on, to see how the
+whole flow behaves before doing it against something that matters.

@@ -1,0 +1,108 @@
+// =============================================================================
+// Jenkinsfile — Bytebase GitOps pipeline for {DB_NAME}
+// Branch-per-environment model: each long-lived branch deploys to exactly
+// one environment. There is no sequential promotion through multiple
+// environments within a single pipeline run — promotion happens in git,
+// by merging one branch into the next (e.g. development -> main), which is
+// also where your normal PR review/approval already lives.
+//
+// REQUIRES a "Multibranch Pipeline" job in Jenkins, not a plain Pipeline
+// job -- that's what populates env.BRANCH_NAME per build and triggers a
+// separate run for each branch. See docs/BYTEBASE_SETUP.md, step 6.
+//
+// Default branch -> environment mapping for this repo: {BRANCH_MAP_SUMMARY}
+//
+// Requires on the Jenkins agent: Docker (plain `sh 'docker run ...'`, no
+// Docker Pipeline plugin needed). Requires in Jenkins: Credentials plugin
+// (bundled).
+//
+// Jenkins credentials this pipeline expects (Manage Jenkins > Credentials):
+//   bytebase-service-account         Secret text -- service account email
+//   bytebase-service-account-secret  Secret text -- service account key
+//
+// EDIT ME after you've done the one-time Bytebase console setup
+// (docs/BYTEBASE_SETUP.md) -- fill in the real instance/database resource
+// names Bytebase assigned when you registered each environment.
+// =============================================================================
+
+def BYTEBASE_URL = 'https://bytebase.your-company.internal' // TODO: self-hosted Bytebase URL
+def BYTEBASE_ACTION_IMAGE = 'bytebase/bytebase-action:{BYTEBASE_VERSION}' // pin to your server version
+def BYTEBASE_PROJECT = 'projects/{DB_NAME}'                  // TODO: confirm project resource name in Bytebase
+def FILE_PATTERN = 'migrations/*.sql'
+
+// Every branch NOT in this map gets SQL Review only, no rollout -- that's
+// what happens for ordinary feature branches. requireApproval: true means
+// the pipeline pauses on a Jenkins `input` step before rolling out, as a
+// second (independent) safety net on top of whatever your Bytebase Rollout
+// Policy and git branch-protection rules already require.
+def BRANCH_ENV_MAP = [
+{BRANCH_MAP_ENTRIES}
+]
+
+pipeline {
+  agent any
+
+  environment {
+    BYTEBASE_SERVICE_ACCOUNT        = credentials('bytebase-service-account')
+    BYTEBASE_SERVICE_ACCOUNT_SECRET = credentials('bytebase-service-account-secret')
+  }
+
+  stages {
+
+    stage('SQL Review (check)') {
+      // Runs on every branch, including feature branches and PR builds --
+      // this is what gives you review feedback before anything merges.
+      steps {
+        sh """
+          docker run --rm \\
+            -v \$WORKSPACE:/workspace -w /workspace \\
+            -e BYTEBASE_SERVICE_ACCOUNT=\$BYTEBASE_SERVICE_ACCOUNT \\
+            -e BYTEBASE_SERVICE_ACCOUNT_SECRET=\$BYTEBASE_SERVICE_ACCOUNT_SECRET \\
+            ${BYTEBASE_ACTION_IMAGE} check \\
+              --url=${BYTEBASE_URL} \\
+              --project=${BYTEBASE_PROJECT} \\
+              --file-pattern=${FILE_PATTERN} \\
+              --check-release=FAIL_ON_ERROR \\
+              --output=/workspace/bytebase-check-result.json
+        """
+        archiveArtifacts artifacts: 'bytebase-check-result.json', allowEmptyArchive: true
+      }
+    }
+
+    stage('Rollout') {
+      // Only runs when this branch is one of the environment branches --
+      // feature branches stop after the check stage above.
+      when { expression { BRANCH_ENV_MAP.containsKey(env.BRANCH_NAME) } }
+      steps {
+        script {
+          def cfg = BRANCH_ENV_MAP[env.BRANCH_NAME]
+
+          if (cfg.requireApproval) {
+            input message: "Deploy {DB_NAME} to '${cfg.envName}' (branch ${env.BRANCH_NAME})?", ok: 'Deploy'
+          }
+
+          sh """
+            docker run --rm \\
+              -v \$WORKSPACE:/workspace -w /workspace \\
+              -e BYTEBASE_SERVICE_ACCOUNT=\$BYTEBASE_SERVICE_ACCOUNT \\
+              -e BYTEBASE_SERVICE_ACCOUNT_SECRET=\$BYTEBASE_SERVICE_ACCOUNT_SECRET \\
+              ${BYTEBASE_ACTION_IMAGE} rollout \\
+                --url=${BYTEBASE_URL} \\
+                --project=${BYTEBASE_PROJECT} \\
+                --file-pattern=${FILE_PATTERN} \\
+                --targets=${cfg.target} \\
+                --target-stage=environments/${cfg.envName} \\
+                --output=/workspace/bytebase-rollout-${cfg.envName}.json
+          """
+          archiveArtifacts artifacts: "bytebase-rollout-${cfg.envName}.json", allowEmptyArchive: true
+        }
+      }
+    }
+  }
+
+  post {
+    always {
+      cleanWs()
+    }
+  }
+}

@@ -1,0 +1,14 @@
+# Maps a friendly "source" name (referenced from each table's YAML under
+# config/tables/) to the environment variable that holds its real
+# connection string. No secrets live in this file -- only which env var to
+# look up. Same idea as the [[sources]] blocks in your dbhub.toml.
+#
+# Add a new source here whenever you add tables from a new database --
+# nothing else in this repo needs to change.
+sources:
+  scm:
+    env: SCM_DB_DSN
+
+om:
+  host_env: OM_HOST
+  token_env: OM_TOKEN

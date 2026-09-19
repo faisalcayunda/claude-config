@@ -1,0 +1,115 @@
+# {DB_NAME}
+
+PostgreSQL data product database, provisioned with a fixed role/schema
+structure and deployed through **Bytebase** GitOps, run by **Jenkins**, with
+one long-lived git branch per environment: **{BRANCH_MAP_SUMMARY}**.
+Promotion between environments happens by merging one branch into the next
+(e.g. `development` → `main`) — not by a single pipeline sequentially
+rolling out to every environment.
+
+- Environments: {ENV_LIST}
+- Branch map: {BRANCH_MAP_SUMMARY}
+- Owner role (Bytebase's migration credential): `{DB_NAME}`
+- Human/app roles: `{DB_NAME}_readonly`, `{DB_NAME}_readwrite`, `{DB_NAME}_ops`
+- Schemas: `bronze`, `silver`, `gold`, `audit` (read-only), `sandbox` (free-for-all), `extensions`, `remote` (postgres_fdw)
+
+## Quick start
+
+```
+{QUICK_START_STEPS}
+```
+
+## Full workflow (first-time setup vs. day-to-day)
+
+This repo has two very different kinds of work in it: things you do **once
+per environment, ever**, and things you do **every time you ship a
+change**. Mixing them up is the most common source of confusion, so
+they're kept separate here.
+
+### Phase A — First-time setup, once per environment
+
+Do this for every environment in {ENV_LIST} before anything else works.
+
+1. `cp .env.example .env` and fill in real passwords for that environment.
+2. `scripts/run-bootstrap.sh --env <name>` — creates the 4 roles, 7
+   schemas, grants, and extensions. Safe to re-run; every statement is
+   idempotent.
+3. `scripts/verify-roles.sh --env <name>` — confirms roles/schemas/
+   extensions/search_path landed correctly.
+4. **Only if this environment already has real tables in it** (not a fresh
+   database): `scripts/import-existing-schema.sh --env <name>`, review the
+   snapshot it writes to `bootstrap/imported/`, then follow
+   `docs/IMPORTING_EXISTING_DATABASE.md` before touching Bytebase — skip
+   this step entirely for a genuinely empty database.
+
+### Phase B — One-time Bytebase + Jenkins wiring, once per repo
+
+This is done once by whoever owns this data product, not by every
+developer. Full detail in `docs/BYTEBASE_SETUP.md`; the short version:
+
+5. Register each environment's Postgres instance in Bytebase, connecting
+   as the `{DB_NAME}` owner role (only possible after Phase A, since that
+   role doesn't exist until then). Create matching environments, a
+   project, and add the databases to it.
+6. Create a Bytebase service account and copy its key.
+7. Fill in the `Jenkinsfile`'s `TODO`s (`BYTEBASE_URL`, `BYTEBASE_PROJECT`,
+   each environment's instance/database target) and add the service
+   account's credentials to Jenkins.
+8. Create a **Multibranch Pipeline** job in Jenkins pointed at this repo.
+
+None of Phase B can be scripted — it's state that lives inside Bytebase
+itself, not in this repo.
+
+### Phase C — Day-to-day, every change
+
+Once Phases A and B are done, this is the only part most developers ever
+need:
+
+9. Branch off the branch mapped to your lowest environment ({BRANCH_MAP_SUMMARY}).
+10. Add a migration under `migrations/`, named with a leading version:
+    `202607230001_add_column_x_ddl.sql`.
+11. Open a PR back into that branch — Jenkins runs SQL Review on every
+    push. Want to check it yourself first, without waiting on Jenkins?
+    `scripts/bytebase-manual-rollout.sh --env <name> --check`.
+12. Merge — Jenkins rolls out to that environment automatically (no
+    approval gate on the lowest environment by default).
+13. To promote, open a PR merging that branch into the next one (e.g.
+    `development` → `main`). Merging triggers Jenkins on the target
+    branch, which pauses on an approval gate before rolling out, since
+    every environment after the first requires one by default.
+
+See `docs/DEVELOPER_GUIDE.md` for the full grant matrix, search_path
+details, and the reasoning behind each design decision above.
+
+## Repository layout
+
+| Path | What it is |
+|---|---|
+| `bootstrap/{BOOTSTRAP_FILE}` | One-time, per-environment provisioning SQL (roles, schemas, grants, extensions). Run manually via `scripts/run-bootstrap.sh`, **not** through Bytebase. |
+| `migrations/` | Ongoing schema changes, managed by Bytebase from this point forward. Filename must start with a version: `202607230001_add_column_x_ddl.sql`. |
+| `.env.example` | Template for per-environment connection info. Copy to `.env`, fill in real passwords, never commit `.env`. |
+| `Jenkinsfile` | Multibranch pipeline: `check` (SQL Review) on every branch, `rollout` only on branches in `BRANCH_ENV_MAP`, with a manual approval gate on every environment after the first. |
+| `docs/BYTEBASE_SETUP.md` | One-time Bytebase console setup (environments, instance connections, project, service account, SQL Review policy) and the Multibranch Pipeline job setup. |
+| `docs/IMPORTING_EXISTING_DATABASE.md` | Onboarding a database that already has real tables in it — schema snapshot + establishing a Bytebase baseline. |
+| `docs/DEVELOPER_GUIDE.md` | Full reference: grant matrix, search_path, branch-per-environment workflow. |
+| `scripts/run-bootstrap.sh` | Applies `bootstrap/{BOOTSTRAP_FILE}` safely (passwords from `.env`, never from argv). |
+| `scripts/verify-roles.sh` | Post-provisioning sanity check: roles, schemas, extensions, search_path. |
+| `scripts/import-existing-schema.sh` | Snapshots an already-existing database's schema via `pg_dump` for review/onboarding — see `docs/IMPORTING_EXISTING_DATABASE.md`. |
+| `scripts/bytebase-manual-rollout.sh` | Runs the same `bytebase-action check`/`rollout` the Jenkinsfile runs, by hand — for testing without Jenkins. |
+| `docker-compose.bytebase.yml` | Disposable local Bytebase instance for testing the whole integration without a shared server. |
+
+## Why roles are LOGIN, not group roles
+
+Every role — `{DB_NAME}`, `_readonly`, `_readwrite`, `_ops` — is directly
+login-able with its own password, rather than the more common
+NOLOGIN-group-role + individual-user-grant pattern. This is deliberate: the
+`{DB_NAME}` owner credential is what **Bytebase itself** authenticates with
+to run DDL migrations, so it has to be a real login. The other three follow
+the same shape for consistency and because they're meant to back shared
+service/tool connections (a BI tool, an app, a pipeline) rather than
+individually-named human accounts. If your team later wants per-person
+accounts, grant membership into `_readonly` / `_readwrite` the normal way —
+`GRANT {DB_NAME}_readonly TO jane;` — nothing about this design prevents it.
+
+See `docs/DEVELOPER_GUIDE.md` for the full grant matrix and rationale, and
+`docs/BYTEBASE_SETUP.md` before your first deploy.

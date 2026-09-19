@@ -1,0 +1,722 @@
+{
+  "S1.1": {
+    "name": "Data Strategy & Roadmap Development",
+    "pillar": 1,
+    "tasks": [
+      {
+        "id": "S1.1-01",
+        "desc": "Conduct stakeholder interviews & requirements gathering",
+        "man_days": 10
+      },
+      {
+        "id": "S1.1-02",
+        "desc": "Assess current data landscape & inventory",
+        "man_days": 15
+      },
+      {
+        "id": "S1.1-03",
+        "desc": "Conduct data maturity assessment (DAMA-DMBOK based)",
+        "man_days": 12
+      },
+      {
+        "id": "S1.1-04",
+        "desc": "Benchmark against industry standards & peers",
+        "man_days": 8
+      },
+      {
+        "id": "S1.1-05",
+        "desc": "Define data vision, mission, and strategic objectives",
+        "man_days": 8
+      },
+      {
+        "id": "S1.1-06",
+        "desc": "Design target-state data architecture blueprint",
+        "man_days": 15
+      },
+      {
+        "id": "S1.1-07",
+        "desc": "Develop prioritized implementation roadmap",
+        "man_days": 10
+      },
+      {
+        "id": "S1.1-08",
+        "desc": "Define KPIs, success metrics, and governance model",
+        "man_days": 8
+      },
+      {
+        "id": "S1.1-09",
+        "desc": "Prepare executive presentation & final report",
+        "man_days": 5
+      }
+    ]
+  },
+  "S1.2": {
+    "name": "Data Governance & Compliance Framework",
+    "pillar": 1,
+    "tasks": [
+      {
+        "id": "S1.2-01",
+        "desc": "Assess current governance maturity & gap analysis",
+        "man_days": 10
+      },
+      {
+        "id": "S1.2-02",
+        "desc": "Map regulatory requirements (UU PDP, SPBE, SDI)",
+        "man_days": 12
+      },
+      {
+        "id": "S1.2-03",
+        "desc": "Design data governance organizational structure",
+        "man_days": 8
+      },
+      {
+        "id": "S1.2-04",
+        "desc": "Define data ownership & stewardship model (RASCI)",
+        "man_days": 10
+      },
+      {
+        "id": "S1.2-05",
+        "desc": "Develop data policies & standards documentation",
+        "man_days": 15
+      },
+      {
+        "id": "S1.2-06",
+        "desc": "Design data classification & sensitivity framework",
+        "man_days": 10
+      },
+      {
+        "id": "S1.2-07",
+        "desc": "Develop data quality rules & SLA framework",
+        "man_days": 10
+      },
+      {
+        "id": "S1.2-08",
+        "desc": "Create data governance charter & council structure",
+        "man_days": 8
+      },
+      {
+        "id": "S1.2-09",
+        "desc": "Design governance metrics & monitoring dashboard spec",
+        "man_days": 8
+      },
+      {
+        "id": "S1.2-10",
+        "desc": "Conduct governance framework socialization & training",
+        "man_days": 10
+      }
+    ]
+  },
+  "S1.3": {
+    "name": "Data Maturity Assessment & Benchmarking",
+    "pillar": 1,
+    "tasks": [
+      {
+        "id": "S1.3-01",
+        "desc": "Design assessment methodology & questionnaire",
+        "man_days": 8
+      },
+      {
+        "id": "S1.3-02",
+        "desc": "Conduct interviews & evidence collection across KAs",
+        "man_days": 15
+      },
+      {
+        "id": "S1.3-03",
+        "desc": "Score & analyze maturity across 14 DAMA KAs",
+        "man_days": 10
+      },
+      {
+        "id": "S1.3-04",
+        "desc": "Benchmark against industry & regulatory standards",
+        "man_days": 8
+      },
+      {
+        "id": "S1.3-05",
+        "desc": "Identify gaps & prioritize improvement areas",
+        "man_days": 8
+      },
+      {
+        "id": "S1.3-06",
+        "desc": "Develop improvement roadmap with quick wins",
+        "man_days": 8
+      },
+      {
+        "id": "S1.3-07",
+        "desc": "Prepare maturity assessment report & presentation",
+        "man_days": 5
+      }
+    ]
+  },
+  "S1.4": {
+    "name": "Data Governance & Policy Framework Development",
+    "pillar": 1,
+    "tasks": [
+      {
+        "id": "S1.4-01",
+        "desc": "Audit existing policies, SOPs, and data procedures",
+        "man_days": 10
+      },
+      {
+        "id": "S1.4-02",
+        "desc": "Gap analysis against regulations (UU PDP, SPBE, SDI)",
+        "man_days": 8
+      },
+      {
+        "id": "S1.4-03",
+        "desc": "Develop data governance policy & charter",
+        "man_days": 12
+      },
+      {
+        "id": "S1.4-04",
+        "desc": "Develop data quality management SOP",
+        "man_days": 10
+      },
+      {
+        "id": "S1.4-05",
+        "desc": "Develop data security & privacy policy (UU PDP aligned)",
+        "man_days": 12
+      },
+      {
+        "id": "S1.4-06",
+        "desc": "Develop metadata management SOP",
+        "man_days": 8
+      },
+      {
+        "id": "S1.4-07",
+        "desc": "Develop data lifecycle management SOP",
+        "man_days": 8
+      },
+      {
+        "id": "S1.4-08",
+        "desc": "Develop data ethics & handling guidelines",
+        "man_days": 8
+      },
+      {
+        "id": "S1.4-09",
+        "desc": "Develop master & reference data management SOP",
+        "man_days": 8
+      },
+      {
+        "id": "S1.4-10",
+        "desc": "Review, approval, and socialization of all policies",
+        "man_days": 10
+      }
+    ]
+  },
+  "S1.5": {
+    "name": "Data Asset Valuation & Monetization Advisory",
+    "pillar": 1,
+    "tasks": [
+      {
+        "id": "S1.5-01",
+        "desc": "Inventory & classify data assets across business domains",
+        "man_days": 12
+      },
+      {
+        "id": "S1.5-02",
+        "desc": "Assess data quality & completeness for valuation readiness",
+        "man_days": 10
+      },
+      {
+        "id": "S1.5-03",
+        "desc": "Apply Infonomics valuation models (IVA, BVA, PVA, CVA, EVA, MVA)",
+        "man_days": 15
+      },
+      {
+        "id": "S1.5-04",
+        "desc": "Benchmark data asset value against industry standards",
+        "man_days": 8
+      },
+      {
+        "id": "S1.5-05",
+        "desc": "Design data monetization strategy & revenue model",
+        "man_days": 12
+      },
+      {
+        "id": "S1.5-06",
+        "desc": "Develop data asset balance sheet & executive report",
+        "man_days": 10
+      },
+      {
+        "id": "S1.5-07",
+        "desc": "Define data valuation governance & periodic review process",
+        "man_days": 8
+      },
+      {
+        "id": "S1.5-08",
+        "desc": "Present valuation findings & monetization roadmap",
+        "man_days": 4
+      }
+    ]
+  },
+  "S2.1": {
+    "name": "Data-Centric Digital Product Development & UX Design",
+    "pillar": 2,
+    "tasks": [
+      {
+        "id": "S2.1-01",
+        "desc": "Gather & analyze product requirements (PRD)",
+        "man_days": 10
+      },
+      {
+        "id": "S2.1-02",
+        "desc": "Create business requirements document (BRD)",
+        "man_days": 8
+      },
+      {
+        "id": "S2.1-03",
+        "desc": "Design functional specification document (FSD)",
+        "man_days": 12
+      },
+      {
+        "id": "S2.1-04",
+        "desc": "Design data model (conceptual, logical, physical)",
+        "man_days": 15
+      },
+      {
+        "id": "S2.1-05",
+        "desc": "UI/UX research & wireframing",
+        "man_days": 12
+      },
+      {
+        "id": "S2.1-06",
+        "desc": "UI high-fidelity design & prototyping",
+        "man_days": 15
+      },
+      {
+        "id": "S2.1-07",
+        "desc": "Front-end development",
+        "man_days": 30
+      },
+      {
+        "id": "S2.1-08",
+        "desc": "Back-end development & API design",
+        "man_days": 30
+      },
+      {
+        "id": "S2.1-09",
+        "desc": "Data integration & pipeline setup",
+        "man_days": 15
+      },
+      {
+        "id": "S2.1-10",
+        "desc": "Unit testing & code review",
+        "man_days": 10
+      },
+      {
+        "id": "S2.1-11",
+        "desc": "User acceptance testing (UAT)",
+        "man_days": 10
+      },
+      {
+        "id": "S2.1-12",
+        "desc": "Deploy to staging & production",
+        "man_days": 8
+      },
+      {
+        "id": "S2.1-13",
+        "desc": "Documentation & knowledge transfer",
+        "man_days": 8
+      }
+    ]
+  },
+  "S2.2": {
+    "name": "Core Data Platform & Modernization",
+    "pillar": 2,
+    "tasks": [
+      {
+        "id": "S2.2-01",
+        "desc": "Assess current data infrastructure & architecture",
+        "man_days": 12
+      },
+      {
+        "id": "S2.2-02",
+        "desc": "Design target data architecture (lake/warehouse/mesh)",
+        "man_days": 15
+      },
+      {
+        "id": "S2.2-03",
+        "desc": "Design data modeling & schema for new platform",
+        "man_days": 12
+      },
+      {
+        "id": "S2.2-04",
+        "desc": "Setup cloud/hybrid infrastructure & environments",
+        "man_days": 15
+      },
+      {
+        "id": "S2.2-05",
+        "desc": "Build data ingestion & ETL/ELT pipelines",
+        "man_days": 20
+      },
+      {
+        "id": "S2.2-06",
+        "desc": "Implement data quality framework & monitoring",
+        "man_days": 10
+      },
+      {
+        "id": "S2.2-07",
+        "desc": "Implement metadata management & data catalog",
+        "man_days": 12
+      },
+      {
+        "id": "S2.2-08",
+        "desc": "Implement data security & access control",
+        "man_days": 12
+      },
+      {
+        "id": "S2.2-09",
+        "desc": "Performance testing & optimization",
+        "man_days": 10
+      },
+      {
+        "id": "S2.2-10",
+        "desc": "Data migration from legacy systems",
+        "man_days": 15
+      },
+      {
+        "id": "S2.2-11",
+        "desc": "Documentation, training, & handover",
+        "man_days": 8
+      }
+    ]
+  },
+  "S2.3": {
+    "name": "Government Data Portal Platform",
+    "pillar": 2,
+    "tasks": [
+      {
+        "id": "S2.3-01",
+        "desc": "Analyze SDI & SPBE compliance requirements",
+        "man_days": 10
+      },
+      {
+        "id": "S2.3-02",
+        "desc": "Design portal information architecture",
+        "man_days": 12
+      },
+      {
+        "id": "S2.3-03",
+        "desc": "Design metadata schema & data catalog structure",
+        "man_days": 12
+      },
+      {
+        "id": "S2.3-04",
+        "desc": "Design UI/UX for citizen-facing portal",
+        "man_days": 15
+      },
+      {
+        "id": "S2.3-05",
+        "desc": "Develop portal front-end (Civic Insight)",
+        "man_days": 25
+      },
+      {
+        "id": "S2.3-06",
+        "desc": "Develop portal back-end & API layer",
+        "man_days": 25
+      },
+      {
+        "id": "S2.3-07",
+        "desc": "Build data integration pipelines (multi-OPD)",
+        "man_days": 20
+      },
+      {
+        "id": "S2.3-08",
+        "desc": "Implement open data publishing workflow",
+        "man_days": 10
+      },
+      {
+        "id": "S2.3-09",
+        "desc": "Implement geospatial module (MapEdge)",
+        "man_days": 15
+      },
+      {
+        "id": "S2.3-10",
+        "desc": "Implement executive dashboard module",
+        "man_days": 15
+      },
+      {
+        "id": "S2.3-11",
+        "desc": "Security hardening & penetration testing",
+        "man_days": 10
+      },
+      {
+        "id": "S2.3-12",
+        "desc": "UAT, performance testing, & go-live",
+        "man_days": 12
+      },
+      {
+        "id": "S2.3-13",
+        "desc": "Training, documentation, & knowledge transfer",
+        "man_days": 10
+      }
+    ]
+  },
+  "S2.4": {
+    "name": "Enterprise Data Portal & Self-Service Analytics",
+    "pillar": 2,
+    "tasks": [
+      {
+        "id": "S2.4-01",
+        "desc": "Assess analytics needs & data readiness",
+        "man_days": 10
+      },
+      {
+        "id": "S2.4-02",
+        "desc": "Design semantic layer & data mart structure",
+        "man_days": 12
+      },
+      {
+        "id": "S2.4-03",
+        "desc": "Build analytics data pipelines & transformations",
+        "man_days": 15
+      },
+      {
+        "id": "S2.4-04",
+        "desc": "Design & develop BI dashboards & reports",
+        "man_days": 20
+      },
+      {
+        "id": "S2.4-05",
+        "desc": "Implement self-service analytics tooling",
+        "man_days": 12
+      },
+      {
+        "id": "S2.4-06",
+        "desc": "Implement data quality monitoring for analytics",
+        "man_days": 10
+      },
+      {
+        "id": "S2.4-07",
+        "desc": "Implement metadata & data catalog for discovery",
+        "man_days": 10
+      },
+      {
+        "id": "S2.4-08",
+        "desc": "User training & self-service enablement",
+        "man_days": 8
+      }
+    ]
+  },
+  "S2.5": {
+    "name": "Secure & Trusted Data Exchange - API Gateway Platform",
+    "pillar": 2,
+    "tasks": [
+      {
+        "id": "S2.5-01",
+        "desc": "Analyze data exchange requirements & use cases",
+        "man_days": 10
+      },
+      {
+        "id": "S2.5-02",
+        "desc": "Design API architecture & data exchange patterns",
+        "man_days": 12
+      },
+      {
+        "id": "S2.5-03",
+        "desc": "Design security framework (OAuth, encryption, audit)",
+        "man_days": 10
+      },
+      {
+        "id": "S2.5-04",
+        "desc": "Develop API gateway core platform",
+        "man_days": 25
+      },
+      {
+        "id": "S2.5-05",
+        "desc": "Develop API management console (UI)",
+        "man_days": 15
+      },
+      {
+        "id": "S2.5-06",
+        "desc": "Implement data validation & transformation layer",
+        "man_days": 12
+      },
+      {
+        "id": "S2.5-07",
+        "desc": "Implement rate limiting, logging, & monitoring",
+        "man_days": 10
+      },
+      {
+        "id": "S2.5-08",
+        "desc": "Security testing & penetration testing",
+        "man_days": 8
+      },
+      {
+        "id": "S2.5-09",
+        "desc": "API documentation & developer portal",
+        "man_days": 8
+      }
+    ]
+  },
+  "S2.6": {
+    "name": "Analytics and Visualization Solutions",
+    "pillar": 2,
+    "tasks": [
+      {
+        "id": "S2.6-01",
+        "desc": "Gather analytics & visualization requirements",
+        "man_days": 8
+      },
+      {
+        "id": "S2.6-02",
+        "desc": "Design KPI framework & metrics hierarchy",
+        "man_days": 10
+      },
+      {
+        "id": "S2.6-03",
+        "desc": "Design dashboard wireframes & visual mockups",
+        "man_days": 10
+      },
+      {
+        "id": "S2.6-04",
+        "desc": "Build data preparation & aggregation pipelines",
+        "man_days": 12
+      },
+      {
+        "id": "S2.6-05",
+        "desc": "Develop interactive dashboards & reports",
+        "man_days": 15
+      },
+      {
+        "id": "S2.6-06",
+        "desc": "Conduct UAT & gather user feedback",
+        "man_days": 5
+      },
+      {
+        "id": "S2.6-07",
+        "desc": "User training & solution handover",
+        "man_days": 4
+      }
+    ]
+  },
+  "S3.1": {
+    "name": "Data Literacy & Corporate Training Program",
+    "pillar": 3,
+    "tasks": [
+      {
+        "id": "S3.1-01",
+        "desc": "Conduct training needs analysis (TNA)",
+        "man_days": 8
+      },
+      {
+        "id": "S3.1-02",
+        "desc": "Design curriculum & learning paths by role",
+        "man_days": 15
+      },
+      {
+        "id": "S3.1-03",
+        "desc": "Develop training materials (slides, labs, quizzes)",
+        "man_days": 20
+      },
+      {
+        "id": "S3.1-04",
+        "desc": "Deliver training sessions (instructor-led)",
+        "man_days": 10
+      },
+      {
+        "id": "S3.1-05",
+        "desc": "Develop e-learning modules",
+        "man_days": 15
+      },
+      {
+        "id": "S3.1-06",
+        "desc": "Post-training evaluation & feedback analysis",
+        "man_days": 5
+      }
+    ]
+  },
+  "S3.2": {
+    "name": "Center of Excellence (CoE) Setup & Operations",
+    "pillar": 3,
+    "tasks": [
+      {
+        "id": "S3.2-01",
+        "desc": "Define CoE vision, mission, and charter",
+        "man_days": 8
+      },
+      {
+        "id": "S3.2-02",
+        "desc": "Design CoE operating model & organizational structure",
+        "man_days": 10
+      },
+      {
+        "id": "S3.2-03",
+        "desc": "Develop CoE service catalog & engagement model",
+        "man_days": 8
+      },
+      {
+        "id": "S3.2-04",
+        "desc": "Define CoE roles, responsibilities, and career paths",
+        "man_days": 8
+      },
+      {
+        "id": "S3.2-05",
+        "desc": "Develop CoE governance processes & performance metrics",
+        "man_days": 10
+      },
+      {
+        "id": "S3.2-06",
+        "desc": "Knowledge management & best practice sharing framework",
+        "man_days": 8
+      },
+      {
+        "id": "S3.2-07",
+        "desc": "CoE launch, communication, and change management",
+        "man_days": 10
+      }
+    ]
+  },
+  "S3.3": {
+    "name": "Strategic Staffing & Expert Placement (Body Leasing)",
+    "pillar": 3,
+    "tasks": [
+      {
+        "id": "S3.3-01",
+        "desc": "Client role requirement analysis",
+        "man_days": 5
+      },
+      {
+        "id": "S3.3-02",
+        "desc": "Candidate sourcing & screening",
+        "man_days": 10
+      },
+      {
+        "id": "S3.3-03",
+        "desc": "Technical & cultural fit interviews",
+        "man_days": 8
+      },
+      {
+        "id": "S3.3-04",
+        "desc": "Contract negotiation & onboarding",
+        "man_days": 4
+      }
+    ]
+  },
+  "S3.4": {
+    "name": "Managed Data Services",
+    "pillar": 3,
+    "tasks": [
+      {
+        "id": "S3.4-01",
+        "desc": "Service level agreement (SLA) definition",
+        "man_days": 8
+      },
+      {
+        "id": "S3.4-02",
+        "desc": "Service transition & setup",
+        "man_days": 15
+      },
+      {
+        "id": "S3.4-03",
+        "desc": "Ongoing service delivery & monitoring",
+        "man_days": 30
+      },
+      {
+        "id": "S3.4-04",
+        "desc": "Service reporting & review meetings",
+        "man_days": 5
+      }
+    ]
+  }
+}
