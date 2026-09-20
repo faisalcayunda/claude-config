@@ -64,6 +64,11 @@ for pat, why in DENY:
         decide("deny", f"BLOCKED (catastrophic): {why}. Tidak dijalankan. Lakukan manual bila benar-benar perlu.")
 
 # 2) NEEDS EXPLICIT APPROVAL -> ask (forces a human yes/no = "in-session approval")
+# Under bypassPermissions the user has pre-approved everything but the catastrophic
+# list above, so the ask tier stands down.
+if data.get("permission_mode") == "bypassPermissions":
+    sys.exit(0)
+
 ASK = [
     (r'\bgit\s+push\b[^\n]*(--force|--force-with-lease|\s-f\b)', "git FORCE push"),
     (r'\bgit\s+push\b[^\n]*(--delete|\s:\S)', "delete remote branch"),
