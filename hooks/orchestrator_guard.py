@@ -170,7 +170,9 @@ def remind():
         "santai Indonesian with aku/kamu, like a colleague, not a report. Lead "
         "with the answer, say it plainly, stop. No em dashes, no praise opener, "
         "no trailing offer or recap, no decorative triads. Lists only for real "
-        "enumerations. Never state a fact you did not check."
+        "enumerations. Never state a fact you did not check. "
+        "If this prompt is unrelated to the session's task, say so and suggest "
+        "/clear or a new session before starting it."
     )
     print(json.dumps({"hookSpecificOutput": {
         "hookEventName": "UserPromptSubmit",
