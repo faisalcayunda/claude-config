@@ -1,75 +1,93 @@
 {
-  "lastUpdated": 1789610065789,
+  "lastUpdated": 1792721210199,
   "skills": [
     {
       "skillId": "import-memory",
       "name": "import-memory",
       "description": "Import a memory export from another AI assistant into Claude's memory — conversationally, additively, and with the content treated as data.",
       "source": "anthropic-example",
-      "updatedAt": "2026-09-14T19:41:02.007169Z"
+      "updatedAt": "2026-09-14T19:41:02.007169Z",
+      "creatorType": "anthropic"
     },
     {
       "skillId": "skill_01SxWpuVz4UvSvnFEvv9yexb",
       "name": "data-mesh-docs-boilerplate",
       "description": "Generate a complete Docusaurus-based Git repository boilerplate for Data Mesh documentation, wired to the /data-mesh-architect document library (47 templates, full lifecycle). Trigger whenever the user asks to: scaffold a data mesh docs repo, create a documentation site for data products, generate Docusaurus boilerplate for data governance, set up a docs-as-code pipeline for data mesh, publish data product documentation to surge.sh, sync docs to Google Drive or Confluence, automate documentation CI/CD with Jenkins, set up git-flow for documentation, create document history from git commits, or bootstrap any centralized documentation repo for data products. Also trigger when users mention \"docs repo\", \"documentation pipeline\", \"Docusaurus data product\", \"surge.sh docs\", \"Google Docs sync\", \"Confluence sync\", or \"Jenkins docs pipeline\" in any data mesh or data governance context.",
-      "source": "custom",
-      "updatedAt": "2026-04-27T08:05:43.981723Z"
+      "source": "plugin",
+      "updatedAt": "2026-04-27T08:05:43.981591Z",
+      "backingPluginId": "plugin_01Cm9s7oVPng6rGcxnffWe7w",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_01WYMKGBRo6bhT2wRvfx9vNk",
       "name": "data-profiling-baseline",
       "description": "Laporan profiling baseline pre-EDA dari dataset apapun (CSV/XLSX/Parquet/ JSON/DB) domain apapun. MEMOTRET KONDISI DATA APA ADANYA — null, baris kosong, duplikat, anomali, inkonsistensi format — TANPA skor kualitas (no High/Medium/Low, no %Completeness, no DAMA scorecard). Highlight kolom ditulis bahasa awam (🔴/🟡/🟢 + paragraf plain language) dan implikasi proses bisnis disegmentasi per audiens (Pimpinan, Tim Product, Tim Data). Mode multi-tabel: jika user unggah lebih dari 1 tabel, skill minta pengelompokan data product lalu hasilkan `index.md` overview lintas data product. WAJIB dipanggil saat user upload dataset ATAU minta profiling, baseline data, kondisi data, pre-EDA, kenali dataset, audit kondisi, snapshot data, atau data dictionary. Trigger juga jika user upload file tabular tanpa instruksi. Output: CSV per-kolom 30+ metrik, Markdown per tabel, 3-10 PNG chart, PDF, dan `index.md` lintas data product. Advanced methods otomatis untuk time-series, teks, geospasial, finansial, ID, hierarki.",
-      "source": "custom",
-      "updatedAt": "2026-05-18T04:43:12.656038Z"
+      "source": "plugin",
+      "updatedAt": "2026-05-18T04:43:12.655907Z",
+      "backingPluginId": "plugin_01GkUPHifWP6A4pFysgckBp4",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_01Akj6ZbzdPRxR7sapZT5As1",
       "name": "gx-dataquality-openmetadata",
       "description": "Build, extend, and manually run the config-driven Great Expectations → OpenMetadata data-quality pipeline (`gx_data_quality`): GX computes real pass/fail on live Postgres and mirrors each result into OpenMetadata's Data Quality tab. Use whenever the user wants to scaffold a new pipeline repo for a new database, add checks for a table via a YAML config, add or change a database source/connection, change a check's query or value_set, add a new expectation→OpenMetadata mapping, validate or troubleshoot a config, or run checks manually and verify created test cases and results. It uses the dbhub MCP to profile source tables and the OpenMetadata MCP to confirm a table's exact fully-qualified name, columns, and existing tests, so configs match reality. Trigger even when unnamed, on gx_data_quality, run_all.py, connections.yaml, a table config, BUILTIN_DEFINITIONS, om.py, ensure_test_case, or 'data quality / GX checks'. MANUAL runs only — cron/Airflow scheduling is a separate skill.",
-      "source": "custom",
-      "updatedAt": "2026-07-14T08:28:56.675700Z"
+      "source": "plugin",
+      "updatedAt": "2026-07-14T08:28:56.675566Z",
+      "backingPluginId": "plugin_01FPLU2addmytdrgxp3JjHzC",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_01FAxMk7NZFe1ZVeaC6C2gJC",
       "name": "anti-slop-writing-id",
       "description": "Tulis teks yang menghindari semua pola penulisan AI dan terasa seperti ditulis manusia. Gunakan saat menulis artikel, esai, posting blog, konten media sosial, atau teks apa pun dalam Bahasa Indonesia yang harus terasa autentik. Aktif saat ada permintaan untuk menulis secara natural, menghindari slop AI, menghindari deteksi AI, memanusiakan tulisan, menulis seperti manusia, atau membuat teks terdengar otentik dalam Bahasa Indonesia.",
       "source": "custom",
-      "updatedAt": "2026-08-05T04:30:53.307383Z"
+      "updatedAt": "2026-08-05T04:30:53.307383Z",
+      "backingPluginId": "plugin_01NAFGkWJd5KGvhVGkRTsNzG",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_01QYEAvCvJPnkjAciS7K8f37",
       "name": "data-gap-analyst",
       "description": "Analisis gap DUA sumber data dengan business context sama. Trigger untuk \"gap analysis\", \"analisis gap\", \"bandingkan dua database\", \"compare data sources\", \"data gap\", \"migrasi data validation\", \"validasi migrasi\", \"rekonsiliasi data\", \"data parity\", \"source vs target\", \"data consistency between\", \"konsistensi antar sumber\", \"audit perpindahan data\", \"data lineage gap\", \"before-after data comparison\", \"DWH vs OLTP gap\", \"lake vs warehouse comparison\", \"OLTP vs OLAP\", \"cek konsistensi DB\", \"selisih data antar sistem\", \"data drift antar sistem\". Mengukur 4 dimensi (Volume & Completeness, Schema & Structural, Value Distribution & Semantic, Temporal & Freshness), 7-step reasoning chain, dual-layer writeup (teknis + DAMA-DMBOK; awam + pertanyaan strategis pimpinan). Output 4 artefak (MD/XLSX/PDF/JSON). 4 input mode (live DB, file profiling, raw file, schema-only) plus hybrid. JANGAN trigger untuk profiling 1 sumber (pakai `data-profiling-baseline`) atau dokumentasi schema 1 DB (pakai `data-doc-generator`).",
-      "source": "custom",
-      "updatedAt": "2026-05-23T18:29:27.828072Z"
+      "source": "plugin",
+      "updatedAt": "2026-05-23T18:29:27.827957Z",
+      "backingPluginId": "plugin_0178d7hFUKJauvtXHNaDnYd8",
+      "creatorType": "user"
     },
     {
       "skillId": "morning",
       "name": "morning",
       "description": "Render the user's morning brief as a styled HTML artifact, or set it up as a recurring weekday task. Use only when the user explicitly asks to run, see, or set up their morning brief, or if they invoke /morning by name. A question about their day, schedule, or calendar is not by itself a request for the brief; answer it directly instead.",
       "source": "anthropic-example",
-      "updatedAt": "2026-09-14T19:41:01.990356Z"
+      "updatedAt": "2026-09-14T19:41:01.990356Z",
+      "creatorType": "anthropic"
     },
     {
       "skillId": "skill_01VNgwDeaTpZGPtXn9ypyS37",
       "name": "data-quality-specialist",
       "description": "End-to-end data quality analysis, profiling, rule design, monitoring design, governance documentation, and PNG data visualization. Use when Codex needs to assess data quality from datasets, database tables, query results, schemas, or data dictionaries; create profiling briefs; build field-level data quality rules across Accuracy, Validity, Timeliness, Completeness, Uniqueness, and Consistency; draft SOP, SLA, policy, procedure, or report templates; design SQL checks, validation logic, or monitoring controls across source, ingestion, staging, transformation, warehouse, mart, semantic, or reporting layers; define ownership, stewardship, escalation, and remediation for data quality management; or turn user-provided numeric data into charts or scorecard visuals exported as PNG files.",
-      "source": "custom",
-      "updatedAt": "2026-05-04T06:31:16.055743Z"
+      "source": "plugin",
+      "updatedAt": "2026-05-04T06:31:16.054082Z",
+      "backingPluginId": "plugin_01LmECqz5GDPmsLKTHHCU2Vh",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_01WFg6FJD5cTmVzDSyaF5ZE5",
       "name": "data-doc-generator",
       "description": "Generate Data Vocabulary (G-01) dan Data Dictionary (G-03) untuk satu database (multi-tabel) dari sumber CSV, PostgreSQL via MCP, atau schema manual. Trigger SETIAP KALI user minta bikin data vocabulary, kamus data, data dictionary, dokumentasi schema, G-01, G-03, dokumentasi atribut, daftar enum, panduan standarisasi data baku, profil data, validasi field, atau dokumen governance level field untuk data product apapun (fintech, pemerintahan, BGN, kesehatan, logistik, e-commerce, HR). Juga kalau user kasih CSV/database connection/schema dan minta didokumentasikan markdown Docusaurus. Skill ini auto-profile data aktual (full COUNT DISTINCT untuk DB, pandas chunksize untuk CSV) dan pakai LLM reasoning untuk bedakan field kategorikal (enum) dari numeric/identifier/date yang sekedar distinct rendah — supaya output anti-halusinasi.",
-      "source": "custom",
-      "updatedAt": "2026-06-09T07:11:53.840180Z"
+      "source": "plugin",
+      "updatedAt": "2026-06-09T07:11:53.839066Z",
+      "backingPluginId": "plugin_01Y8PUNPZaeCXDeSAVEKurBh",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_018T8VGnNBcR8ZqnpNgrZ66P",
       "name": "data-mesh-architect",
       "description": "Arsitek Data Mesh dan Data Governance untuk merancang dan mendokumentasikan data products end-to-end dari business brief apapun. Trigger untuk: data mesh, data product, domain mapping, data architecture, data product canvas, data contract, data catalog, pipeline documentation, data API documentation, data governance, federated governance checklist, data vocabulary, kamus data, business glossarium, data dictionary, access control matrix, RoPA, DPIA, data retention policy, data quality design, risk assessment, SCD, audit logging, infra brief, consumer onboarding guide, self-service infra guide, operations runbook, change log, backup DR plan, data science model, dataset artifact, migration report, analytical report, delivery phase, ways of working, RASCI, JIRA, sprint planning, UAT, EDA report. Berlaku untuk semua industri: pemerintahan, fintech, kesehatan, logistik, pendidikan, e-commerce.",
-      "source": "custom",
-      "updatedAt": "2026-04-27T08:05:35.270693Z"
+      "source": "plugin",
+      "updatedAt": "2026-04-27T08:05:35.270562Z",
+      "backingPluginId": "plugin_01J8xyh3fhLs4Z2ERcvfanx1",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_01K6T8YjFbEZq45zNSFNiX8n",
@@ -77,7 +95,8 @@
       "description": "Membaca, mendokumentasikan, dan memperkaya entitas OpenMetadata (tabel, kolom, glossary term, klasifikasi/tag, lineage, data quality test case, RCA) tanpa halusinasi, mengikuti pola Glosarium Data Vocabulary level Data Product & baseline yang ada. Picu saat pengguna menyebut OpenMetadata/Collate, dokumentasi/deskripsi tabel-kolom, link glossary term ke kolom, tag PII/sensitivity/tier, lineage, root cause analysis DQ, patch metadata, dokumentasi schema massal (batch), atau menyalin pola antar database. Picu JUGA untuk tag & deskripsi data quality test case — menandai test case dengan DataQualityDimension (Completeness/Uniqueness/Validity/Consistency/Timeliness) & DQSeverity (Critical/High/Medium/Low) untuk satu tabel atau semua tabel dalam satu database, plus menstandarkan deskripsi test case agar mudah dipahami, termasuk testSuite atau menyamakan pola test case dengan kpm_production. Picu JUGA saat MCP OpenMetadata mati/error/\"connection closed\" — skill auto-fallback ke REST API + script bila token tersedia.",
       "source": "plugin",
       "updatedAt": "2026-09-16T15:27:30.480246Z",
-      "backingPluginId": "plugin_01QAJXgTKEELvtRXyQVb26mh"
+      "backingPluginId": "plugin_01QAJXgTKEELvtRXyQVb26mh",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_01U8721hZzBYCPGD9uy6YrzF",
@@ -85,196 +104,322 @@
       "description": "Explain and visualise any SQL query as an interactive logic map artifact — every step as a plain-language node, plus a data funnel showing how many rows survive each stage and why. Works on PostgreSQL, MySQL and Trino, including CTEs, recursive CTEs, subqueries, window functions, set operations and cross-catalog federated queries. Use this whenever someone pastes a query and asks what it does, why it is slow, why the numbers look wrong, whether it is safe to run, to review or document a query, or to walk a non-engineer through one, or to hand the explanation over as a PDF — even if they only say \"check this query\" or \"apa maksud query ini\" and never mention diagrams or visualisation.",
       "source": "plugin",
       "updatedAt": "2026-09-15T08:16:22.928716Z",
-      "backingPluginId": "plugin_016Ta9abZ7iLNawHnRgnYvu4"
+      "backingPluginId": "plugin_016Ta9abZ7iLNawHnRgnYvu4",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_019WKnY7LR28ewqtSatghJsB",
       "name": "data-mesh-db-bytebase-boilerplate",
       "description": "Bootstrap a PostgreSQL database repo deployed through Bytebase GitOps, run by Jenkins, with one long-lived git branch per environment (main= production, development=dev by default, overridable) instead of sequential promotion down a single branch. Generates: idempotent bootstrap/ SQL (run once per env, by hand), migrations/ for Bytebase- managed changes, a Multibranch Jenkinsfile, .env.example, setup docs, a script to import an existing remote database's schema for onboarding, and a script to run bytebase-action check/rollout manually without Jenkins. Provisions 4 LOGIN roles (owner/readonly/readwrite/ops), 7 schemas (sandbox/extensions/bronze/silver/gold/audit/remote) with grants + DEFAULT PRIVILEGES, free-for-all sandbox (scoped drop_table()), pg_stat_statements, search_path. Trigger for: bootstrap db, bytebase gitops/jenkins, provision db roles, medallion schema, sandbox schema, postgres_fdw, branch-per-env deployment, import/onboard existing db, manual bytebase rollout, test bytebase without jenkins.",
       "source": "custom",
-      "updatedAt": "2026-07-23T11:10:48.979521Z"
+      "updatedAt": "2026-07-23T11:10:48.979521Z",
+      "backingPluginId": "plugin_01MzzRrsMWrQ8wP1qNoBietg",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_01LS3RVSAqisdE7t5ZdnArFG",
       "name": "prompt-master",
       "description": "Generates optimized prompts for any AI tool. Use when writing, fixing, improving, or adapting a prompt for LLM, Cursor, Midjourney, image AI, video AI, coding agents, or any other AI tool.",
-      "source": "custom",
-      "updatedAt": "2026-04-27T06:58:51.815109Z"
+      "source": "plugin",
+      "updatedAt": "2026-04-27T06:58:51.814975Z",
+      "backingPluginId": "plugin_01LFDy4TkR7xQzEEfH3aMvg5",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_01LWz1SYq7iRQ68oWgo21BX7",
       "name": "badan-gizi-nasional",
       "description": "Knowledge base Badan Gizi Nasional (BGN), program Makan Bergizi Gratis (MBG), SIPGN, dan ekosistem data Pusdatin/BGN Digital. Pakai SELALU bila query menyebut entitas BGN/MBG/SIPGN; menang atas skill data umum jika konteksnya BGN — regulasi (Juknis MBG 2026/Kepka 401.1, Perpres 83/2024 & 115/2025, PerBGN 1-7/2026), operasional (SPPG, KPPG, SPPI, yayasan mitra, VA SPPG, BAST, PKS, insentif, suspend), gizi & keamanan pangan (AKG, 3B, SLHS, organoleptik, Kejadian Menonjol), SIPGN (7 modul, 31 submodul, 22+1 dokumen Peruri, IoT CCTV/PVR/POP/Signage, Kong, SSO), portal (mitra/dialur/sipgn.bgn.go.id, Tauwas Care, SAGI 127), ekosistem data (Data Mesh Pusdatin, MDM Penerima Manfaat, KPM, MPM, SMO, Pormit, MonSAKTI, Dapodik/EMIS, OpenMetadata BGN, dashboard SCM/Kinops/Organoleptik, issue Jira/template narasi SIPGN), dan dinamika 2026 (pergantian Kepala BGN, moratorium, refocusing). Trigger pula: \"masak/dapur makan gratis sekolah\", \"mitra BGN\", \"keracunan MBG\". JANGAN untuk PKH/BPNT/KIP/PIP/BLT. Baca references/ dulu.",
-      "source": "custom",
-      "updatedAt": "2026-06-10T08:36:56.741661Z"
+      "source": "plugin",
+      "updatedAt": "2026-06-10T08:36:56.741484Z",
+      "backingPluginId": "plugin_014QJYs4msSqAKoxGyscsJST",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_011aDT6T1GS4MVYFVRLUWTwP",
       "name": "data-mesh-db-boilerplate",
       "description": "Bootstrap a production-ready PostgreSQL database repo using Atlas (atlasgo.io) for Data Mesh data products. Generates: atlas.hcl (local/staging/prod), 6 schemas (sandbox/extensions/bronze/silver/gold/audit), 4 roles (owner/readonly/readwrite/ops) with per-schema grants + DEFAULT PRIVILEGES, 6 extensions (pgcrypto/pg_trgm/ pg_stat_statements/dblink/postgres_fdw/uuid-ossp), UUID v7 polyfill for PG<18, search_path, user-role mapping YAML, direnv .envrc, Makefile, and docs/DEVELOPER_GUIDE.md. DB naming: {DOMAIN}_{PRODUCT} lowercase, hyphens to underscores. Trigger for: bootstrap db, scaffold database, set up atlas, create atlas project, init db for data product, atlas postgres, atlas migrations, atlas schema, direnv atlas, db boilerplate, provision roles, create db roles, medallion schema, bronze silver gold, setup extensions, uuid v7 polyfill, or any atlas+postgres+data-mesh combination. Also trigger to scaffold a database layer for any data mesh domain or data product.",
-      "source": "custom",
-      "updatedAt": "2026-04-30T03:32:35.121259Z"
+      "source": "plugin",
+      "updatedAt": "2026-04-30T03:32:35.119136Z",
+      "backingPluginId": "plugin_01NHTUTmNRzD3ZWRUm4mee6k",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_01GLqtwXDTVLjcrB34N571nV",
       "name": "workflow-designer",
       "description": "Design accurate, detailed, and visually rich workflows as rendered Mermaid diagrams from ANY input source — images (screenshots, photos, whiteboard diagrams), documents (PDF, DOCX, spreadsheets), or chat/conversation. Trigger this skill whenever the user says: \"create a workflow\", \"make a flowchart\", \"map this process\", \"diagram this flow\", \"turn this into a diagram\", \"show me the steps\", \"draw a process\", \"visualize this workflow\", \"make a Mermaid chart\", or uploads any image/document and asks to model a process from it. Also trigger for: SOP visualization, swimlane diagrams, sequence diagrams, state machines, system flow, user journey, data flow, approval workflow, onboarding process, business process modeling (BPMN-style), and any multi-step procedure. Use this skill even when \"workflow\" isn't mentioned — if the user describes or shares a multi-step process and seems to want it structured or visualized, this skill applies.",
-      "source": "custom",
-      "updatedAt": "2026-04-13T03:11:26.841844Z"
+      "source": "plugin",
+      "updatedAt": "2026-04-13T03:11:26.841735Z",
+      "backingPluginId": "plugin_01NGBUbmohRQrksx8U9oL1Co",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_01JHc2UMZSJ8YFLs12XGxEd1",
       "name": "npsn-finder",
       "description": "Temukan dan isi NPSN (Nomor Pokok Sekolah Nasional) secara otomatis dengan mencocokkan data sekolah input ke file referensi data_list_sekolah_kita.csv menggunakan teknik LLM matching berbasis lokasi (provinsi → kabupaten → kecamatan). Gunakan skill ini SETIAP KALI pengguna mengunggah daftar sekolah yang kosong NPSN-nya dan perlu dicocokkan ke database referensi, menyebut \"cari NPSN\", \"isi NPSN\", \"cocokkan NPSN\", \"data sekolah\", \"lookup NPSN\", \"data_list_sekolah_kita\", atau meminta proses matching/entry data sekolah berbasis lokasi. Skill ini menggunakan filter bertingkat untuk membatasi kandidat ke tingkat kecamatan sebelum LLM melakukan pencocokan — memastikan zero hallucination dengan hanya mereferensikan data dari file yang diberikan.",
-      "source": "custom",
-      "updatedAt": "2026-04-21T06:24:16.969297Z"
+      "source": "plugin",
+      "updatedAt": "2026-04-21T06:24:16.969082Z",
+      "backingPluginId": "plugin_01PyqqCe5bERt56R8GoUox5g",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_01SpK7Dzc48BRw3sBvv35nYw",
       "name": "data-sla-sop",
       "description": "Membuat Panduan Lengkap SLA & SOP Data yang menggabungkan Service Level Agreement (SLA) dan Standard Operating Procedure (SOP) ke dalam satu dokumen terintegrasi, selalu berkaitan dengan pengelolaan data. Trigger skill ini setiap kali pengguna menyebut: SLA data, SOP data, panduan SLA SOP, service level agreement data, prosedur operasional data, data pipeline SLA, data quality SLA, data governance SOP, onboarding data SOP, ingestion SOP, data warehouse SLA, data catalog SLA, data incident SOP, panduan operasional data, atau membutuhkan dokumen gabungan SLA dan SOP untuk sistem/proses data apapun — baik pemerintahan (SPBE/Satu Data Indonesia), enterprise, maupun fintech. Trigger juga untuk SLA antar tim data, kontrak layanan data platform, SOP penanganan insiden data, SOP quality gate, SOP pipeline, dan SOP master data management.",
-      "source": "custom",
-      "updatedAt": "2026-04-12T05:04:17.526416Z"
+      "source": "plugin",
+      "updatedAt": "2026-04-12T05:04:17.526286Z",
+      "backingPluginId": "plugin_016m9SYvDv4TvAu5RnfwwC2V",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_01SigUzTT1txp1GxkSmsPQbh",
       "name": "ideas",
       "description": "Orkestrator dan integrator 10 skill untuk Tim IDEAS (PT Indonesian Data Ecosystem). Menyediakan panduan operasionalisasi project, bank prompt, bank use case, dan panduan context gathering untuk semua tipe project. Trigger skill ini setiap kali pengguna menyebut: IDEAS orchestrator, panduan project, bank prompt, bank use case, context project, project kickoff, project planning, \"skill apa yang harus dipakai\", routing skill, integrasi skill, atau meminta bantuan memilih skill yang tepat. Trigger juga ketika pengguna bertanya cara menggunakan skill-skill IDEAS secara terintegrasi, butuh panduan operasionalisasi, ingin tahu use case yang tersedia, atau memerlukan panduan pertanyaan untuk memperjelas konteks project. Bahkan tanpa menyebut \"ideas\" secara eksplisit, trigger jika pengguna tampak bingung memilih antara skill atau membutuhkan orkestrasi multi-skill.",
-      "source": "custom",
-      "updatedAt": "2026-04-06T06:00:40.976230Z"
+      "source": "plugin",
+      "updatedAt": "2026-04-06T06:00:40.976107Z",
+      "backingPluginId": "plugin_01UdsuR6osbGDLjqHNfh9dQV",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_01BRTtfMQMLuvKZvjVt6bQgx",
       "name": "data-management-researcher",
       "description": "Comprehensive Data Management Research skill covering maturity models, modern paradigms (data mesh, fabric, lakehouse), international standards, data governance implementation, and research methodology. Integrated with dama-research skill for DAMA-DMBOK2 deep knowledge. Trigger whenever user mentions data management research, governance frameworks, data mesh, data fabric, data lakehouse, data contracts, data observability, DataOps, data products, maturity assessment (CMMI-DMM, DCAM), ISO 8000/38505, data strategy, data policy, data lifecycle, data valuation, FAIR principles, data democratization, or any data management research deliverable. Also trigger for data governance charter, data quality framework comparison, data architecture blueprint review, MDM strategy research, data catalog evaluation, or data management tool selection.",
-      "source": "custom",
-      "updatedAt": "2026-04-04T16:21:51.825211Z"
+      "source": "plugin",
+      "updatedAt": "2026-04-04T16:21:51.825097Z",
+      "backingPluginId": "plugin_018dmzuf6d17EaHri4U2F3j4",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_016nXRFRkfnjBRAQQS1Z7Jwp",
       "name": "product-analyst",
       "description": "Comprehensive Product Analytics skill covering event tracking, funnel analysis, cohort analysis, A/B testing, experimentation, statistical methods, causal inference, and advanced analytics. Trigger whenever user mentions product analytics, event tracking, funnel analysis, cohort analysis, retention analysis, A/B testing, experiment analysis, statistical significance, sample size calculation, tracking plan, data taxonomy, North Star metric definition, HEART framework metrics, AARRR metrics, feature adoption metrics, engagement metrics, conversion optimization, churn prediction, LTV modeling, propensity scoring, behavioral segmentation, product health scorecard, metric definition, data storytelling, analytics dashboard design, experiment report, or any product analytics deliverable. Also trigger for Amplitude, Mixpanel, PostHog, experimentation platforms, Bayesian analysis for products, causal inference for products, or SQL for product analysis even without explicit analytics mention.",
-      "source": "custom",
-      "updatedAt": "2026-04-04T16:21:15.254920Z"
+      "source": "plugin",
+      "updatedAt": "2026-04-04T16:21:15.254790Z",
+      "backingPluginId": "plugin_01TCYwHDns4vn2K2AeusvP34",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_01JSEXXQ29w6Geb8a6bsfUTF",
       "name": "product-researcher",
       "description": "Comprehensive Product Research skill covering market research methodology, customer discovery, survey design, competitive intelligence, product-market fit, trend analysis, research synthesis, pricing research, VoC programs, and ResearchOps. Trigger whenever user mentions market research, customer discovery, user interviews, survey design, competitive analysis (deep), win/loss analysis, market sizing TAM/SAM/SOM, trend analysis, JTBD interviews, opportunity solution tree research, PMF survey, Van Westendorp, conjoint analysis, MaxDiff, research plan, interview guide, research-based persona, VoC report, insight report, affinity mapping, thematic analysis, research repository, pricing research, or any product research deliverable. Also trigger for Fitzpatrick/Mom Test, Torres/CDH, Blank/Customer Development, Moesta/JTBD Switch, Hansen/Deploy Empathy, Braun-Clarke/thematic analysis, or research methodology even without explicit research mention.",
-      "source": "custom",
-      "updatedAt": "2026-04-04T16:21:22.029445Z"
+      "source": "plugin",
+      "updatedAt": "2026-04-04T16:21:22.028993Z",
+      "backingPluginId": "plugin_01C7Pk1F3bTwT3Pcec1n97Mn",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_01MBbXKsqhyaWYBbb5KPRVvR",
       "name": "product-delivery-specialist",
       "description": "Product Delivery skill covering Scrum, Kanban, SAFe, LeSS, PMBOK 7, delivery metrics (DORA, flow), team dynamics, estimation, change management, continuous improvement, release management, and Go-To-Market execution (positioning, launch, sales enablement, growth metrics). Trigger for sprint planning, retrospectives, agile coaching, kanban boards, WIP limits, SAFe PI planning, DORA metrics, cycle/lead time, velocity, release planning, deployment strategies (blue-green, canary, feature flags), ADKAR/Kotter change management, Team Topologies, psychological safety, Monte Carlo estimation, risk management, value stream mapping, theory of constraints, Definition of Done/Ready, agile transformation, GTM strategy, product launch, positioning, sales enablement, PLG, market entry, adoption metrics, or go-to-market planning.",
-      "source": "custom",
-      "updatedAt": "2026-04-04T16:22:07.921934Z"
+      "source": "plugin",
+      "updatedAt": "2026-04-04T16:22:07.921800Z",
+      "backingPluginId": "plugin_01966fm2DsZFfP4giP9KC9kb",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_018BeT1jRWLioBNCiuwL92iV",
       "name": "ux-researcher",
       "description": "Comprehensive UX Research skill covering usability testing, heuristic evaluation, cognitive walkthrough, user interviews, information architecture, accessibility research, quantitative UX, and design system evaluation. Trigger whenever user mentions usability testing, usability test, heuristic evaluation, cognitive walkthrough, user interviews (UX context), card sorting, tree testing, first-click testing, eye tracking, SUS score, System Usability Scale, NPS, CSAT, task completion rate, UX metrics, accessibility audit, WCAG compliance, inclusive design research, information architecture, navigation testing, mental models, contextual inquiry, UX research report, usability findings, persona creation, journey mapping, empathy mapping, prototype testing, interaction design research, design system research, atomic UX research, research repository, or any UX research deliverable. Also trigger for NNG heuristics, UXPA, or UX research synthesis.",
-      "source": "custom",
-      "updatedAt": "2026-04-04T16:21:43.860874Z"
+      "source": "plugin",
+      "updatedAt": "2026-04-04T16:21:43.860517Z",
+      "backingPluginId": "plugin_01XWc1KzKQ1yGuDHUwjDpvaw",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_01CQwTVLf9ipS31HRzucnfD1",
       "name": "engineering-researcher",
       "description": "Engineering Research skill covering software architecture, system design, DevOps/SRE, cloud architecture, security, data engineering, AI/ML engineering, and quality engineering. Trigger for architecture research, design patterns (GoF/POSA), DDD, microservices, distributed systems, event sourcing, CQRS, CI/CD, IaC, observability, SLOs, AWS/Azure/GCP Well-Architected, OWASP, threat modeling, data pipelines, MLOps, LLMOps, RAG patterns, performance engineering, test strategy, ADR, technical RFC, tech radar, SPACE, TOGAF, platform engineering, or technical debt research.",
-      "source": "custom",
-      "updatedAt": "2026-04-04T16:22:00.511873Z"
+      "source": "plugin",
+      "updatedAt": "2026-04-04T16:22:00.511741Z",
+      "backingPluginId": "plugin_01PyFeGVfSPsWZgk247UnLLQ",
+      "creatorType": "user"
     },
     {
       "skillId": "doc-coauthoring",
       "name": "doc-coauthoring",
       "description": "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.",
       "source": "anthropic-example",
-      "updatedAt": "2026-09-14T19:41:01.438795Z"
+      "updatedAt": "2026-09-14T19:41:01.438795Z",
+      "creatorType": "anthropic"
     },
     {
       "skillId": "skill_013CKsuB1KpfX2Sz5cwt7sdm",
       "name": "backend-architect",
       "description": "Expert backend architect specializing in scalable API design, microservices architecture, and distributed systems.",
-      "source": "custom",
-      "updatedAt": "2026-04-01T06:47:40.651774Z"
+      "source": "plugin",
+      "updatedAt": "2026-04-01T06:47:40.651658Z",
+      "backingPluginId": "plugin_014G4aD8Lo5B1UbSi3JWuftL",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_01JnkBUZQTJT7xfdxQfE7mGM",
       "name": "backend-development",
       "description": "Backend API design, database architecture, microservices patterns, and test-driven development. Use for designing APIs, database schemas, or backend system architecture.",
-      "source": "custom",
-      "updatedAt": "2026-04-01T06:50:15.590191Z"
+      "source": "plugin",
+      "updatedAt": "2026-04-01T06:50:15.590085Z",
+      "backingPluginId": "plugin_016kftp2vb9HMvzYrUTzZjar",
+      "creatorType": "user"
     },
     {
       "skillId": "skill-creator",
       "name": "skill-creator",
       "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
       "source": "anthropic-example",
-      "updatedAt": "2026-09-14T19:41:01.499089Z"
+      "updatedAt": "2026-10-21T20:47:56.610025Z"
     },
     {
       "skillId": "skill_01TCMhS4XpVaEyEzsUarR4Lo",
       "name": "business-analyst",
       "description": "Comprehensive Business Analysis skill based on BABOK v3 (IIBA), PMI-PBA, and BCS standards. Covers requirements engineering, process modeling (BPMN 2.0), stakeholder analysis, solution assessment, agile BA, and enterprise analysis. Trigger whenever user mentions business requirements, BRD, SRS, FRS, requirements elicitation, use cases, user stories (in BA context), process modeling, BPMN, business process, gap analysis, feasibility study, cost-benefit analysis, stakeholder analysis, RACI matrix, requirements traceability (RTM), acceptance criteria, UAT planning, business rules, decision tables, data flow diagrams, entity-relationship diagrams, value stream mapping, capability mapping, or any business analysis deliverable. Also trigger for BABOK, IIBA, PMI-PBA, business case development, root cause analysis (fishbone/5 whys), impact analysis, or requirements management even without explicit BA mention.",
-      "source": "custom",
-      "updatedAt": "2026-04-04T16:21:08.722024Z"
+      "source": "plugin",
+      "updatedAt": "2026-04-04T16:21:08.721863Z",
+      "backingPluginId": "plugin_01BtJhf96X4VVKbmuB67L89T",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_01QCZUMkLm5CqE6G5HgpzrqX",
       "name": "product-manager",
       "description": "Comprehensive Product Management skill covering product strategy, discovery, roadmapping, prioritization, metrics, personas, competitive analysis, pricing, and AI PM. Trigger for product vision, product strategy, PRD, product brief, PR/FAQ, product roadmap, OKRs, North Star Metric, user persona, customer journey map, competitive analysis, product positioning, product launch checklist, feature specification, product metrics, product review, pricing strategy, RICE/ICE/Kano/WSJF prioritization, Jobs-to-be-Done, opportunity solution tree, product-market fit, or any product management deliverable. Also trigger for Cagan/SVPG, Torres/CDH, Perri, DHM model, dual-track agile, product operating model, or PM frameworks even without explicit PM mention.",
-      "source": "custom",
-      "updatedAt": "2026-04-04T16:20:59.625460Z"
+      "source": "plugin",
+      "updatedAt": "2026-04-04T16:20:59.625281Z",
+      "backingPluginId": "plugin_0121HHwbDF8DAwxKDKWi9d4m",
+      "creatorType": "user"
     },
     {
       "skillId": "pdf",
       "name": "pdf",
       "description": "Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, splitting PDFs apart, rotating pages, adding watermarks, creating new PDFs, filling PDF forms, encrypting/decrypting PDFs, extracting images, and OCR on scanned PDFs to make them searchable. If the user mentions a .pdf file or asks to produce one, use this skill.",
       "source": "anthropic",
-      "updatedAt": "2026-07-10T19:23:15.432550Z"
+      "updatedAt": "2026-07-10T19:23:15.432550Z",
+      "creatorType": "anthropic"
     },
     {
       "skillId": "pptx",
       "name": "pptx",
       "description": "Use this skill any time a .pptx or .potx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations as PowerPoint (.pptx) files; reading, parsing, or extracting text from any .pptx or .potx file (even if the extracted content will be used elsewhere, like in an email, summary, or creating a different type of slide deck); editing, modifying, or updating existing presentations; combining or splitting slide files; working with templates (.potx), layouts, speaker notes, or comments. Trigger whenever the user asks for a PowerPoint or .pptx file, or references a .pptx or .potx filename, regardless of what they plan to do with the content afterward. However, when the user asks for a deck, slides, a slide deck, or a presentation without naming a file format, default to using a dedicated slide-deck artifact type or a separate slides skill if this session offers one; otherwise, use this skill.",
       "source": "anthropic",
-      "updatedAt": "2026-09-14T21:00:33.306681Z"
+      "updatedAt": "2026-10-02T22:00:34.625666Z"
     },
     {
       "skillId": "xlsx",
       "name": "xlsx",
       "description": "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .xltx, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger especially when the user references a spreadsheet file by name or path — even casually (like \"the xlsx in my downloads\") — and wants something done to it or produced from it. Also trigger for cleaning or restructuring messy tabular data files (malformed rows, misplaced headers, junk data) into proper spreadsheets. The deliverable must be a spreadsheet file. Do NOT trigger when the primary deliverable is a Word document, HTML report, standalone Python script, database pipeline, or Google Sheets API integration, even if tabular data is involved.",
       "source": "anthropic",
-      "updatedAt": "2026-09-14T21:00:33.324012Z"
+      "updatedAt": "2026-09-14T21:00:33.324012Z",
+      "creatorType": "anthropic"
     },
     {
       "skillId": "docx",
       "name": "docx",
-      "description": "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx) or Word templates (.dotx). Triggers include: any mention of 'Word doc', 'word document', '.docx', '.dotx', or requests to produce professional documents with formatting like tables of contents, page numbers, or letterheads. Also use when extracting or reorganizing content from .docx or .dotx files, inserting or replacing images in documents, find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a 'report', 'memo', 'letter', 'template', or similar deliverable as a Word or .docx file (to download, email or print), use this skill. However, if they ask for a document, page, report, memo, or notes WITHOUT naming a file format and the session offers Claude's own dedicated document or page skill or connector, use that instead. Do NOT use for PDFs, spreadsheets, Google Docs, or coding unrelated to document generation.",
+      "description": "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx) or Word templates (.dotx). Triggers include: any mention of Microsoft Word Documents, such as 'Word doc', 'word document', '.docx', '.dotx', 'microsoft doc'. Also use when extracting or reorganizing content from .docx or .dotx files, inserting or replacing images in documents, find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a deliverable as a Word or .docx file (to download, email or print), use this skill. However, if they ask for a document, page, report, memo, or notes WITHOUT naming a file format and the session offers Claude's own dedicated document or page skill or connector, use that instead, even if they will email or print it. Do NOT use for PDFs, spreadsheets, Google Docs, or coding unrelated to document generation.",
       "source": "anthropic",
-      "updatedAt": "2026-09-14T21:00:33.279708Z"
+      "updatedAt": "2026-09-30T02:00:31.677168Z"
     },
     {
       "skillId": "skill_01JHmD8D3VwMroQ5jxBr2PPB",
       "name": "dama-research",
       "description": "Comprehensive DAMA-DMBOK skill for data strategy, governance, architecture, quality, and deliverable generation. Trigger whenever user mentions data governance, data strategy, data architecture, data quality, maturity, DAMA-DMBOK, MDM, data catalog, data lineage, metadata, data modeling, data security, data warehousing, BI, data mesh, data fabric, data lakehouse, data products, data contracts, data observability, or KA-01 through KA-14. Also trigger for creating deliverables like governance charters, data policies, architecture blueprints, data dictionaries, quality scorecards, maturity assessments, or any enterprise data management document. Even without explicit DAMA mention, trigger for any data management planning, assessment, or deliverable task.",
-      "source": "custom",
-      "updatedAt": "2026-04-02T06:53:38.758752Z"
+      "source": "plugin",
+      "updatedAt": "2026-04-02T06:53:38.758397Z",
+      "backingPluginId": "plugin_018v8VTxJhCU8ZA1pmKwSRG4",
+      "creatorType": "user"
     },
     {
       "skillId": "skill_01P2SMoR7ojstaGQvRH95WuW",
       "name": "ideas-company",
       "description": "Knowledge base for PT Indonesian Data Ecosystem (IDEAS) — Indonesia's data infrastructure & analytics provider. 141 roles, 8 products, PMBOK, Infonomics, business frameworks (BMC, VPC, BSC, SPIN, Shipley, BABOK). Trigger whenever user mentions IDEAS, Indonesian Data Ecosystem, SPBE, or needs proposals, RAB/HPS, COGS, pitch decks, surat penawaran, BoQ, LKPP technical proposals, cost estimates, pricing, service recommendations, case studies, agile planning, data product canvas, or business analysis (SWOT, PESTEL, Five Forces, OKR) for Indonesian government/enterprise data projects. Also trigger for Indonesian government data procurement, SPBE scores, or data ecosystem consulting even without explicit IDEAS mention.",
-      "source": "custom",
-      "updatedAt": "2026-04-02T06:53:55.877854Z"
+      "source": "plugin",
+      "updatedAt": "2026-04-02T06:53:55.877680Z",
+      "backingPluginId": "plugin_01VFZ71fSD4d4EpMH63JWvay",
+      "creatorType": "user"
     },
     {
       "skillId": "canvas-design",
       "name": "canvas-design",
       "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.",
       "source": "anthropic-example",
-      "updatedAt": "2026-09-14T19:41:01.576619Z"
+      "updatedAt": "2026-09-14T19:41:01.576619Z",
+      "creatorType": "anthropic"
+    },
+    {
+      "skillId": "google-workspace",
+      "name": "google-workspace",
+      "description": "Read this before the first Google Drive, Docs, Sheets or Slides connector call whenever the task creates or changes a Google file. Use this skill whenever the user wants to create or change a Google Doc, Sheet or Slides file in their Google Drive. Triggers include: a request that names Google Docs, Sheets, Slides or Drive and asks to make, edit, format, copy or rename a file; a docs.google.com link with a request to change that file, even a one-line fix or suggested edits; and any follow-up change to a Google file from earlier in the chat, even \"change it\" or \"add a tab\". Includes helper scripts for document positions, cell ranges and slide layout. However, if the user asks for a doc, deck or spreadsheet without naming Google, or gives a Google file only as source material for something new, use Claude's own output type instead. Do NOT use for read-only questions about a Google file, or for Word, Excel, PowerPoint or PDF files.",
+      "source": "anthropic-example",
+      "updatedAt": "2026-10-14T14:41:49.960676Z"
+    },
+    {
+      "skillId": "docs",
+      "name": "docs",
+      "description": "docs (editable docs people share and comment on; the default for any document, named as a doc or not: a document, report, proposal, resume, cover letter, letter, contract, policy, form, template, worksheet, essay, handbook, guide, how-to, cheat sheet, SOP or other writing to keep, share, collaborate on, send, submit, print or sign; a doc exports to Word, PDF, Markdown or Google Docs, so needing a file to send, attach, upload, submit or print is no reason to pick Word, and a file nobody asked for is a doc, not Word; a plan, comparison, summary or notes asked in chat stays in chat; a pasted claude.ai artifact link may be a doc: check with docs tools first; Word or another file format named, tracked changes wanted, or a .docx to change or use as a template → that format's skill): making one → if no docs-connector instructions are in context, call its `guide` (topic.instructions) first; then create the doc (headings only, no body) before any search, file read or plan, even with files attached.",
+      "source": "anthropic-example",
+      "updatedAt": "2026-09-30T00:33:27.599727Z"
+    },
+    {
+      "skillId": "computer-use",
+      "name": "computer-use",
+      "description": "Read this skill before the first step of any request to do something in an app on the person's own computer (Notes, Finder, System Settings, any desktop app), to look at their screen, or for \"computer use\". Computer use (desktop control) lets Claude take screenshots of the person's desktop and control it with clicks, typing and scrolling through the Claude desktop app; its tools are named mcp__computer-use__* when the session runs in the desktop app and mcp__remote-devices__computer_* when a cloud session is linked to the person's computer; before computer use is turned on for a conversation there may be no such tools, only an enable__mcp__remote-devices__computer tool, which turns it on. It covers turning it on, picking the right tool, the access flow, and the safety rules for tiered apps, links and financial actions. It is not for websites, which go through Claude in Chrome or the built-in browser and their own skills.",
+      "source": "anthropic-example",
+      "updatedAt": "2026-10-08T17:34:24.164396Z"
+    },
+    {
+      "skillId": "chrome-browser",
+      "name": "chrome-browser",
+      "description": "Read this skill before the first step that uses Claude in Chrome, the browser extension whose tools are named mcp__claude-in-chrome__* (also called Chrome, the browser extension, or the external browser) and which acts in the person's real Chrome with their own sign-ins; before those tools are turned on there may be a single enable__mcp__claude-in-chrome tool instead. It covers loading the tools in one ToolSearch call, checking the person's open tabs and working in a new tab, site permissions, GIF recordings, console logs, dialogs to avoid, and when to stop and ask. It is not for the built-in browser (mcp__Claude_Browser__* or mcp__remote-devices__Claude_Browser__* tools), which has its own skill, and it does not decide which browser to use.",
+      "source": "anthropic-example",
+      "updatedAt": "2026-09-18T21:09:50.227858Z"
+    },
+    {
+      "skillId": "built-in-browser",
+      "name": "built-in-browser",
+      "description": "Read this skill before the first step that uses the built-in browser, the browser pane inside the Claude desktop app (also called the in-app browser, the browser pane, Claude's browser, or \"your own browser\"), whose tools are named mcp__Claude_Browser__* when the session runs in the desktop app and mcp__remote-devices__Claude_Browser__* when a cloud session is linked to the person's computer; before those tools are turned on there may be a single enable__mcp__remote-devices__Claude_Browser tool instead. It covers the pane's persistent sign-ins, tabs and preview_start, reading pages as text, site approvals, what the pane cannot open, and what to do when it cannot be reached. It is not for Claude in Chrome (mcp__claude-in-chrome__* tools), which has its own skill, and it does not decide which browser to use.",
+      "source": "anthropic-example",
+      "updatedAt": "2026-09-21T06:00:29.740604Z"
+    },
+    {
+      "skillId": "deep-research",
+      "name": "deep-research",
+      "description": "Use this skill when the user's prompt requires (1) researching a topic across multiple sources, comparing options or alternatives, analyzing trends or history, understanding markets or industries, or reviewing literature or studies and (2) synthesizing that research into a comprehensive, narrative report. If you're planning to search the web or internal knowledge bases, consider using this skill. This skill coordinates research subagents, so use it only when you have a tool for spawning subagents (the Agent or Task tool); otherwise, research the question directly.",
+      "source": "anthropic-example",
+      "updatedAt": "2026-09-14T19:41:02.015956Z"
+    },
+    {
+      "skillId": "skill_014oTP8SejJTz55HUaaCknNm",
+      "name": "affine-data-product-bootstrap",
+      "description": "Bootstrap or update the documentation of ONE data product inside the BGN Digital AFFiNE workspace (PARA, data mesh, domain then data product). Reads the live MASTER_SHEET_DATA_PRODUCT Google Sheet, creates the product page, instantiates B-03 Canvas and D-02 Data Contract from the T-DP templates, files everything under the right domain folder, links the domain page, and verifies. Use whenever the user says bootstrap, initiate, init, start, or set up a data product in AFFiNE, gives a Domain plus Data Product plus shortcode (for example PEM, master-kelompok-pm), asks to add a doc such as D-05 or B-01 to an existing data product, or asks to sync a product page with the master sheet. Model-agnostic, works with any agent that has the AFFiNE MCP and Google Sheets MCP tools.",
+      "source": "plugin",
+      "updatedAt": "2026-10-08T05:58:10.086439Z",
+      "backingPluginId": "plugin_014JWNa3W3Mm1QCemQ5gyBQ2"
+    },
+    {
+      "skillId": "skill_015NVhrVdY6g95d4Wrd6ZMc6",
+      "name": "cek-mastersheet-kemenkeu",
+      "description": "Cek (read-only) file Drive baru dan rapat Fathom baru project Kemenkeu, lalu beri rekap singkat tanpa mengubah sheet.",
+      "source": "plugin",
+      "updatedAt": "2026-10-23T01:49:06.382608Z",
+      "backingPluginId": "plugin_01BxCv4ZpecUrQ1XKi5J3nCE"
+    },
+    {
+      "skillId": "skill_019zZAUGFZeK6wM86UQRwYiP",
+      "name": "update-mastersheet-kemenkeu",
+      "description": "Update sheet Important Link dan Rapat pada Mastersheet Kemenkeu dengan file Drive dan rapat Fathom baru, sesuai aturan pencocokan dan format yang sudah disepakati.",
+      "source": "plugin",
+      "updatedAt": "2026-10-23T01:49:43.111051Z",
+      "backingPluginId": "plugin_018EL5Atp61QFXyVHrb1WZnm"
+    },
+    {
+      "skillId": "skill_01MJYjyBFU8Dey1NK8nePAJQ",
+      "name": "cek-update-kemenkeu",
+      "description": "Cek (read-only) file Drive baru dan rapat Fathom baru project Kemenkeu, lalu beri rekap singkat tanpa mengubah sheet.",
+      "source": "plugin",
+      "updatedAt": "2026-10-23T01:45:46.086490Z",
+      "backingPluginId": "plugin_016yaPCoVhiicFpTXHhvkzzF"
     }
+  ],
+  "pendingClaims": [
+    "24945:Mon Oct 19 16:54:00 2026/update-mastersheet-kemenkeu",
+    "24945:Mon Oct 19 16:54:00 2026/cek-mastersheet-kemenkeu",
+    "24945:Mon Oct 19 16:54:00 2026/cek-update-kemenkeu",
+    "38596:Thu Oct 22 11:43:57 2026/update-mastersheet-kemenkeu",
+    "38596:Thu Oct 22 11:43:57 2026/cek-update-kemenkeu"
   ]
 }

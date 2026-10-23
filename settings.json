@@ -1,290 +1,47 @@
 {
   "env": {
-    "CLAUDE_CODE_ENABLE_AUTO_MODE": "1",
-    "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet",
-    "PONYTAIL_SUBAGENT_MATCHER": "^(general-purpose|python-pro|data-engineer|frontend-developer|.*-resolver|refactor-cleaner|code-simplifier|tdd-guide|test-engineer|e2e-runner|debugger|gan-generator)$"
-  },
-  "includeCoAuthoredBy": false,
-  "permissions": {
-    "allow": [
-      "Bash",
-      "WebSearch",
-      "WebFetch"
-    ],
-    "defaultMode": "auto"
-  },
-  "model": "opus[1m]",
-  "hooks": {
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/usr/bin/python3 /Users/isal/.claude/hooks/wiki_hooks.py retrieve",
-            "timeout": 5
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/usr/bin/python3 /Users/isal/.claude/hooks/orchestrator_guard.py remind"
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node -e \"const p=require('path');const r=(()=>{var e=process.env.CLAUDE_PLUGIN_ROOT;if(e&&e.trim())return e.trim();var p=require('path'),f=require('fs'),h=require('os').homedir(),d=p.join(h,'.claude'),q=p.join('scripts','lib','utils.js');if(f.existsSync(p.join(d,q)))return d;for(var s of [['ecc'],['ecc@ecc'],['marketplaces','ecc'],['everything-claude-code'],['everything-claude-code@everything-claude-code'],['marketplaces','everything-claude-code']]){var l=p.join(d,'plugins',...s);if(f.existsSync(p.join(l,q)))return l}try{for(var g of ['ecc','everything-claude-code']){var b=p.join(d,'plugins','cache',g);for(var o of f.readdirSync(b,{withFileTypes:true})){if(!o.isDirectory())continue;for(var v of f.readdirSync(p.join(b,o.name),{withFileTypes:true})){if(!v.isDirectory())continue;var c=p.join(b,o.name,v.name);if(f.existsSync(p.join(c,q)))return c}}}}catch(x){}return d})();const s=p.join(r,'scripts/hooks/plugin-hook-bootstrap.js');process.env.CLAUDE_PLUGIN_ROOT=r;process.argv.splice(1,0,s);require(s)\" node scripts/hooks/run-with-flags.js post:ecc-context-monitor scripts/hooks/ecc-context-monitor.js standard,strict",
-            "timeout": 10
-          }
-        ]
-      },
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node -e \"const p=require('path');const r=(()=>{var e=process.env.CLAUDE_PLUGIN_ROOT;if(e&&e.trim())return e.trim();var p=require('path'),f=require('fs'),h=require('os').homedir(),d=p.join(h,'.claude'),q=p.join('scripts','lib','utils.js');if(f.existsSync(p.join(d,q)))return d;for(var s of [['ecc'],['ecc@ecc'],['marketplaces','ecc'],['everything-claude-code'],['everything-claude-code@everything-claude-code'],['marketplaces','everything-claude-code']]){var l=p.join(d,'plugins',...s);if(f.existsSync(p.join(l,q)))return l}try{for(var g of ['ecc','everything-claude-code']){var b=p.join(d,'plugins','cache',g);for(var o of f.readdirSync(b,{withFileTypes:true})){if(!o.isDirectory())continue;for(var v of f.readdirSync(p.join(b,o.name),{withFileTypes:true})){if(!v.isDirectory())continue;var c=p.join(b,o.name,v.name);if(f.existsSync(p.join(c,q)))return c}}}}catch(x){}return d})();const s=p.join(r,'scripts/hooks/plugin-hook-bootstrap.js');process.env.CLAUDE_PLUGIN_ROOT=r;process.argv.splice(1,0,s);require(s)\" node scripts/hooks/run-with-flags.js post:ecc-metrics-bridge scripts/hooks/ecc-metrics-bridge.js minimal,standard,strict",
-            "timeout": 10
-          }
-        ]
-      },
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node -e \"const p=require('path');const r=(()=>{var e=process.env.CLAUDE_PLUGIN_ROOT;if(e&&e.trim())return e.trim();var p=require('path'),f=require('fs'),h=require('os').homedir(),d=p.join(h,'.claude'),q=p.join('scripts','lib','utils.js');if(f.existsSync(p.join(d,q)))return d;for(var s of [['ecc'],['ecc@ecc'],['marketplaces','ecc'],['everything-claude-code'],['everything-claude-code@everything-claude-code'],['marketplaces','everything-claude-code']]){var l=p.join(d,'plugins',...s);if(f.existsSync(p.join(l,q)))return l}try{for(var g of ['ecc','everything-claude-code']){var b=p.join(d,'plugins','cache',g);for(var o of f.readdirSync(b,{withFileTypes:true})){if(!o.isDirectory())continue;for(var v of f.readdirSync(p.join(b,o.name),{withFileTypes:true})){if(!v.isDirectory())continue;var c=p.join(b,o.name,v.name);if(f.existsSync(p.join(c,q)))return c}}}}catch(x){}return d})();const s=p.join(r,'scripts/hooks/plugin-hook-bootstrap.js');process.env.CLAUDE_PLUGIN_ROOT=r;process.argv.splice(1,0,s);require(s)\" node scripts/hooks/run-with-flags.js post:session-activity-tracker scripts/hooks/session-activity-tracker.js standard,strict",
-            "timeout": 10
-          }
-        ]
-      },
-      {
-        "matcher": "Read",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/usr/bin/python3 /Users/isal/.claude/hooks/wiki_hooks.py read-log",
-            "timeout": 5
-          }
-        ]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/isal/.claude/hooks/guard-dangerous.sh"
-          },
-          {
-            "type": "command",
-            "command": "/Users/isal/.claude/hooks/rtk-rewrite.sh"
-          }
-        ]
-      },
-      {
-        "matcher": "Write",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node -e \"const p=require('path');const r=(()=>{var e=process.env.CLAUDE_PLUGIN_ROOT;if(e&&e.trim())return e.trim();var p=require('path'),f=require('fs'),h=require('os').homedir(),d=p.join(h,'.claude'),q=p.join('scripts','lib','utils.js');if(f.existsSync(p.join(d,q)))return d;for(var s of [['ecc'],['ecc@ecc'],['marketplaces','ecc'],['everything-claude-code'],['everything-claude-code@everything-claude-code'],['marketplaces','everything-claude-code']]){var l=p.join(d,'plugins',...s);if(f.existsSync(p.join(l,q)))return l}try{for(var g of ['ecc','everything-claude-code']){var b=p.join(d,'plugins','cache',g);for(var o of f.readdirSync(b,{withFileTypes:true})){if(!o.isDirectory())continue;for(var v of f.readdirSync(p.join(b,o.name),{withFileTypes:true})){if(!v.isDirectory())continue;var c=p.join(b,o.name,v.name);if(f.existsSync(p.join(c,q)))return c}}}}catch(x){}return d})();const s=p.join(r,'scripts/hooks/plugin-hook-bootstrap.js');process.env.CLAUDE_PLUGIN_ROOT=r;process.argv.splice(1,0,s);require(s)\" node scripts/hooks/run-with-flags.js pre:write:doc-file-warning scripts/hooks/doc-file-warning.js standard,strict"
-          }
-        ]
-      },
-      {
-        "matcher": "Write|Edit|MultiEdit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/usr/bin/python3 /Users/isal/.claude/hooks/secret_guard.py",
-            "timeout": 5
-          }
-        ]
-      },
-      {
-        "matcher": "Write|Edit|MultiEdit|NotebookEdit|Bash|Agent",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/usr/bin/python3 /Users/isal/.claude/hooks/orchestrator_guard.py guard",
-            "timeout": 5
-          }
-        ]
-      }
-    ],
-    "PostCompact": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/isal/.claude/hooks/post-compact-restore.sh"
-          }
-        ]
-      }
-    ],
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash /Users/isal/.claude/hooks/drift-check.sh 2>/dev/null; true"
-          }
-        ]
-      }
-    ],
-    "PreCompact": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node -e \"const p=require('path');const r=(()=>{var e=process.env.CLAUDE_PLUGIN_ROOT;if(e&&e.trim())return e.trim();var p=require('path'),f=require('fs'),h=require('os').homedir(),d=p.join(h,'.claude'),q=p.join('scripts','lib','utils.js');if(f.existsSync(p.join(d,q)))return d;for(var s of [['ecc'],['ecc@ecc'],['marketplaces','ecc'],['everything-claude-code'],['everything-claude-code@everything-claude-code'],['marketplaces','everything-claude-code']]){var l=p.join(d,'plugins',...s);if(f.existsSync(p.join(l,q)))return l}try{for(var g of ['ecc','everything-claude-code']){var b=p.join(d,'plugins','cache',g);for(var o of f.readdirSync(b,{withFileTypes:true})){if(!o.isDirectory())continue;for(var v of f.readdirSync(p.join(b,o.name),{withFileTypes:true})){if(!v.isDirectory())continue;var c=p.join(b,o.name,v.name);if(f.existsSync(p.join(c,q)))return c}}}}catch(x){}return d})();const s=p.join(r,'scripts/hooks/plugin-hook-bootstrap.js');process.env.CLAUDE_PLUGIN_ROOT=r;process.argv.splice(1,0,s);require(s)\" node scripts/hooks/run-with-flags.js pre:compact scripts/hooks/pre-compact.js standard,strict"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node -e \"const fs=require('fs');const path=require('path');const {spawnSync}=require('child_process');const raw=fs.readFileSync(0,'utf8');const rel=path.join('scripts','hooks','run-with-flags.js');const hasRunnerRoot=candidate=>{const value=typeof candidate==='string'?candidate.trim():'';return value.length>0&&fs.existsSync(path.join(path.resolve(value),rel));};const root=(()=>{const envRoot=process.env.CLAUDE_PLUGIN_ROOT||'';if(hasRunnerRoot(envRoot))return path.resolve(envRoot.trim());const home=require('os').homedir();const claudeDir=path.join(home,'.claude');if(hasRunnerRoot(claudeDir))return claudeDir;for(const candidate of [path.join(claudeDir,'plugins','ecc'),path.join(claudeDir,'plugins','ecc@ecc'),path.join(claudeDir,'plugins','marketplaces','ecc'),path.join(claudeDir,'plugins','everything-claude-code'),path.join(claudeDir,'plugins','everything-claude-code@everything-claude-code'),path.join(claudeDir,'plugins','marketplaces','everything-claude-code')]){if(hasRunnerRoot(candidate))return candidate;}try{for(const slug of ['ecc','everything-claude-code']){const cacheBase=path.join(claudeDir,'plugins','cache',slug);for(const org of fs.readdirSync(cacheBase,{withFileTypes:true})){if(!org.isDirectory())continue;for(const version of fs.readdirSync(path.join(cacheBase,org.name),{withFileTypes:true})){if(!version.isDirectory())continue;const candidate=path.join(cacheBase,org.name,version.name);if(hasRunnerRoot(candidate))return candidate;}}}}catch{}return claudeDir;})();const script=path.join(root,rel);if(fs.existsSync(script)){const result=spawnSync(process.execPath,[script,'stop:cost-tracker','scripts/hooks/cost-tracker.js','minimal,standard,strict'],{input:raw,encoding:'utf8',env:process.env,cwd:process.cwd(),timeout:30000});const stdout=typeof result.stdout==='string'?result.stdout:'';if(stdout)process.stdout.write(stdout);else process.stdout.write(raw);if(result.stderr)process.stderr.write(result.stderr);if(result.error||result.status===null||result.signal){const reason=result.error?result.error.message:(result.signal?'signal '+result.signal:'missing exit status');process.stderr.write('[Stop] ERROR: hook runner failed: '+reason+String.fromCharCode(10));process.exit(1);}process.exit(Number.isInteger(result.status)?result.status:0);}process.stderr.write('[Stop] WARNING: could not resolve ECC plugin root; skipping hook'+String.fromCharCode(10));process.stdout.write(raw);\"",
-            "timeout": 10,
-            "async": true
-          }
-        ]
-      },
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node -e \"const fs=require('fs');const path=require('path');const {spawnSync}=require('child_process');const raw=fs.readFileSync(0,'utf8');const rel=path.join('scripts','hooks','run-with-flags.js');const hasRunnerRoot=candidate=>{const value=typeof candidate==='string'?candidate.trim():'';return value.length>0&&fs.existsSync(path.join(path.resolve(value),rel));};const root=(()=>{const envRoot=process.env.CLAUDE_PLUGIN_ROOT||'';if(hasRunnerRoot(envRoot))return path.resolve(envRoot.trim());const home=require('os').homedir();const claudeDir=path.join(home,'.claude');if(hasRunnerRoot(claudeDir))return claudeDir;for(const candidate of [path.join(claudeDir,'plugins','ecc'),path.join(claudeDir,'plugins','ecc@ecc'),path.join(claudeDir,'plugins','marketplaces','ecc'),path.join(claudeDir,'plugins','everything-claude-code'),path.join(claudeDir,'plugins','everything-claude-code@everything-claude-code'),path.join(claudeDir,'plugins','marketplaces','everything-claude-code')]){if(hasRunnerRoot(candidate))return candidate;}try{for(const slug of ['ecc','everything-claude-code']){const cacheBase=path.join(claudeDir,'plugins','cache',slug);for(const org of fs.readdirSync(cacheBase,{withFileTypes:true})){if(!org.isDirectory())continue;for(const version of fs.readdirSync(path.join(cacheBase,org.name),{withFileTypes:true})){if(!version.isDirectory())continue;const candidate=path.join(cacheBase,org.name,version.name);if(hasRunnerRoot(candidate))return candidate;}}}}catch{}return claudeDir;})();const script=path.join(root,rel);if(fs.existsSync(script)){const result=spawnSync(process.execPath,[script,'stop:desktop-notify','scripts/hooks/desktop-notify.js','standard,strict'],{input:raw,encoding:'utf8',env:process.env,cwd:process.cwd(),timeout:30000});const stdout=typeof result.stdout==='string'?result.stdout:'';if(stdout)process.stdout.write(stdout);else process.stdout.write(raw);if(result.stderr)process.stderr.write(result.stderr);if(result.error||result.status===null||result.signal){const reason=result.error?result.error.message:(result.signal?'signal '+result.signal:'missing exit status');process.stderr.write('[Stop] ERROR: hook runner failed: '+reason+String.fromCharCode(10));process.exit(1);}process.exit(Number.isInteger(result.status)?result.status:0);}process.stderr.write('[Stop] WARNING: could not resolve ECC plugin root; skipping hook'+String.fromCharCode(10));process.stdout.write(raw);\"",
-            "timeout": 10,
-            "async": true
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/isal/.claude/hooks/wiki-reindex.sh",
-            "timeout": 15,
-            "async": true
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/usr/bin/python3 /Users/isal/.claude/hooks/wiki_capture.py check",
-            "timeout": 10
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/usr/bin/python3 /Users/isal/.claude/hooks/wiki_capture.py autocommit",
-            "timeout": 30,
-            "async": true
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/usr/bin/python3 /Users/isal/.claude/hooks/hindsight_sync.py",
-            "timeout": 60,
-            "async": true
-          }
-        ]
-      }
-    ],
-    "SubagentStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/usr/bin/python3 /Users/isal/.claude/hooks/wiki_hooks.py subagent",
-            "timeout": 5
-          }
-        ]
-      }
-    ]
+    "ARCHIFY_CHROME": "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
   },
   "enabledPlugins": {
-    "vercel@claude-plugins-official": true,
-    "gopls-lsp@claude-plugins-official": true,
-    "ponytail@ponytail": true,
-    "mattpocock-skills@claude-plugins-official": true
+    "antislop@anti-slop": true
   },
   "extraKnownMarketplaces": {
-    "claude-plugins-official": {
+    "anti-slop": {
       "source": {
-        "source": "github",
-        "repo": "anthropics/claude-plugins-official"
-      }
-    },
-    "ponytail": {
-      "source": {
-        "source": "github",
-        "repo": "DietrichGebert/ponytail"
+        "source": "git",
+        "url": "https://github.com/miqdadbadjuber/anti-slop.git"
       }
     }
   },
-  "effortLevel": "xhigh",
-  "modelSettings": {
-    "claude-opus-5": {
-      "effortLevel": "medium"
-    },
-    "claude-sonnet-5": {
-      "effortLevel": "high"
-    }
-  },
-  "tui": "fullscreen",
-  "skipWorkflowUsageWarning": true,
-  "agentPushNotifEnabled": true,
+  "skipDangerousModePermissionPrompt": true,
   "autoMode": {
     "environment": [
       "### Org-wide",
       "**Organization**: None configured",
-      "**Cloud provider(s)**: Huawei Cloud (OBS object storage referenced in README for `mbg-dashboard.json` publication)",
-      "**Repository visibility**: assume private (no remote configured; cannot verify via gh — repo path is under an organizational workspace directory but visibility is unconfirmed)",
+      "**Cloud provider(s)**: None configured",
+      "**Repository visibility**: faisalcayunda/claude-config (origin) — private",
       "**Internal sharing / snippet hosting**: None configured — treat public paste/gist services as outside the trust boundary",
-      "**Secrets management**: infisical (seen in shell history)",
-      "**Default / protected branches**: unknown — origin/HEAD unset, no remotes configured, not queryable via gh",
+      "**Secrets management**: file-based placeholders (e.g. `${VAR}`) with values kept in the environment; a secret guard (hooks/secret_guard.py, scripts/secret_scan.py, scripts/git-pre-commit-secret-scan.sh, .secret-scan-baseline) rejects secrets in wiki/memory writes and pre-commit",
+      "**Default / protected branches**: main (default); protected branches: none listed via gh (rulesets not queryable here — treat as possibly protected by ruleset rather than confirmed unprotected)",
       "**CI/CD deploy targets**: None configured",
       "**Network posture**: None configured",
-      "**Source control**: The trusted repo (mbg-cc-pipelines, local working directory) — no remotes configured",
+      "**Host containment**: None configured — assume Claude Code runs on an ordinary developer machine with open internet",
+      "**Source control**: faisalcayunda/claude-config (origin, private) only — no additional orgs configured",
       "**Trusted internal domains**: None configured",
       "**Trusted cloud buckets**: None configured",
-      "**Key internal services**: Metabase, Tableau Server (referenced in README as upstream data sources for the pipeline)",
+      "**Key internal services**: hindsight-api.cayunda.my.id, 9router.cayunda.my.id, syncthing.cayunda.my.id, affine.nexakara.my.id (contacted repeatedly from this project's transcripts)",
       "**Internal package registry**: None configured",
-      "**Sensitive data locations & audiences**: .env (flagged by sensitive-path scan); MBG dashboard metric data under data/mbg-dashboard.json — preserve exact handles when known and share only with audiences cleared at the [named+specifics] bar",
+      "**Sensitive data locations & audiences**: .secret-scan-baseline, hooks/secret_guard.py, scripts/git-pre-commit-secret-scan.sh, scripts/mcp_secret.py, scripts/secret_scan.py — secret-scanning infra and baseline; share only with audiences cleared at the [named+specifics] bar",
       "**Data retention / declassification**: None configured",
       "**Sensitive remote targets**: any namespace, host, or container whose name carries `prod` or `production` as a whole word or name segment",
       "**Protected deployment namespaces / environments**: None configured — fall back to the Sensitive remote targets heuristic",
       "**Protected IaC scopes**: IAM, RBAC, networking, quota, and node-pool resources; anything whose name or tag carries `prod` or `production` as a whole word or name segment",
       "### User-specific",
-      "**Primary use of Claude Code**: software development (data engineering — Airflow/dbt/PySpark pipelines)",
-      "**Trusted repo**: mbg-cc-pipelines (local working directory at /Users/isal/Workspaces/Organizations/BGN/scripts/mbg-cc-pipelines) — no remotes configured",
+      "**Primary use of Claude Code**: software development — data/backend engineering (Airflow, dbt, PySpark, Trino, Postgres, Go, Python) for digital.bgn.id (BGN), IDEAS, JDS and Trikintech work",
+      "**Trusted repo**: /Users/isal/.claude (this repo), remote origin https://github.com/faisalcayunda/claude-config.git (private) — confidential material is fine here; content ported in from outside this session's repo is not this repo's own work",
+      "**Org-specific CLiS**: None configured",
       "**Org-specific CLIs**: None configured",
-      "routine under isal/ prefix: none found"
+      "routine under faisalcayunda/ prefix: git/gh operations against faisalcayunda/claude-config are the user's own repo"
     ]
-  },
-  "skipDangerousModePermissionPrompt": true
+  }
 }
