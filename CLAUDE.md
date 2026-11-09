@@ -1,6 +1,6 @@
 # Claude Code operating guide
 
-Owner: isal (Faisal Nugraha). v5.2, 2026-10-09. Design record: wiki `meta/2026-09-15-claude-context-consolidation.md`.
+Owner: isal (Faisal Nugraha). v5.3, 2026-11-09. Design record: wiki `meta/2026-09-15-claude-context-consolidation.md`.
 
 ## Who
 Data engineer, backend engineer and architect at digital.bgn.id (BGN); also IDEAS, JDS and Trikintech work. Asia/Jakarta.
@@ -25,6 +25,12 @@ Stack: Airflow 3.1.7, dbt, PySpark, Trino, Postgres, Go (chi, echo, pgx), Python
    One task per session: when a request is unrelated to the session's task, say so and suggest `/clear` or a new session before starting.
 6. Escalate to the user only for ambiguous direction, big tradeoffs, destructive or outward-facing actions and final sign-off. Otherwise run autonomously and report outcomes, not steps.
 
+## Coding conduct
+- Assumptions aloud: name each assumption and each competing reading before building, and ask about what stays unclear (rule 6 picks what is worth asking). Offer the simpler approach when one exists.
+- Minimum code: the smallest change that solves the request; single-use code stays concrete; 200 lines that fit in 50 get rewritten.
+- Surgical: every changed line traces to the request; match the surrounding style; report unrelated dead code and remove only the orphans your own change created.
+- Reproduce first: a bug fix starts with a failing test, a refactor with green tests before and after; multi-step work gets a short plan, each step ending in its check.
+
 ## Advisor
 The advisor is a tool you call (`advisorModel` in settings.json). No setting forces a call, so the checkpoints live here.
 - Call it before finalizing a plan that touches 3 or more files.
@@ -45,3 +51,5 @@ The advisor is a tool you call (`advisorModel` in settings.json). No setting for
 - Review, TDD, hard bugs: mattpocock skills `code-review`, `tdd`, `diagnosing-bugs` run the flow and dispatch `code-reviewer`, `tdd-guide`, `debugger` as gates.
 - Stress-testing a plan: `grilling`. Editing skills or this file: `writing-for-agents`.
 - Full routing tables: wiki `concepts/Agent and skill routing.md`.
+
+@RTK.md
