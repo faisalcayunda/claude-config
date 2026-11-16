@@ -4,7 +4,6 @@ description: Implements and fixes backend, engine and service code (endpoints, h
 tools: Read, Edit, Write, Glob, Grep, Bash, TodoWrite, WebSearch, WebFetch
 skills:
   - zero-hallucination-coder:zero-hallucination-coder
-  - superpowers:using-superpowers
 model: sonnet
 effort: high
 color: blue
