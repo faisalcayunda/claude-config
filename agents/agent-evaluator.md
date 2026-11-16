@@ -2,6 +2,9 @@
 name: agent-evaluator
 description: Evaluates agent output against 5-axis quality rubric (accuracy, completeness, clarity, actionability, conciseness). Use after any non-trivial task when the user wants a quality assessment, or when the agent-self-evaluation skill is active. Produces structured scorecard with evidence and improvement suggestions.
 tools: ["Read", "Grep", "Glob", "Bash"]
+skills:
+  - engineering-advanced-skills:agent-regression-evals
+  - engineering-advanced-skills:self-eval
 model: sonnet
 ---
 

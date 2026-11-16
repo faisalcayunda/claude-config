@@ -2,6 +2,8 @@
 name: backend-developer
 description: Implements and fixes backend, engine and service code (endpoints, handlers, data access, migrations, workers, FFI or bridge layers, and their tests) in whichever repo it runs in, working as a specialist in that repo's language and following its own contract files. Use for any change that lands backend code. Design-only questions go to backend-architect, review passes go to the language reviewer agents (go-reviewer, rust-reviewer, python-reviewer, swift-reviewer, typescript-reviewer and the like).
 tools: Read, Edit, Write, Glob, Grep, Bash, TodoWrite, WebSearch, WebFetch
+skills:
+  - zero-hallucination-coder:zero-hallucination-coder
 model: sonnet
 effort: high
 color: blue
