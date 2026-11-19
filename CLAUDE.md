@@ -50,6 +50,7 @@ The advisor is a tool you call (`advisorModel` in settings.json). No setting for
 - BGN, MBG, SIPGN questions: read the `badan-gizi-nasional` skill first.
 - Review, TDD, hard bugs: mattpocock skills `code-review`, `tdd`, `diagnosing-bugs` run the flow and dispatch `code-reviewer`, `tdd-guide`, `debugger` as gates.
 - Stress-testing a plan: `grilling`. Editing skills or this file: `writing-for-agents`.
+- Web UI: `impeccable`, `design-taste-frontend` and `frontend-design` decide the look; `modern-web-guidance` picks the platform API that implements it, and an existing project's library stays unless asked to replace it.
 - Full routing tables: wiki `concepts/Agent and skill routing.md`.
 
 @RTK.md
